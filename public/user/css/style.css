@@ -3473,8 +3473,18 @@ img[alt="envelope"] {
     left: 10px;
 }
 
-img[alt="envelope"] + input[type="email"] {
-    padding-left: 2.5rem;
+img[alt="envelope"] + input[type="email"], .padding-left-input {
+    padding-left: 2.5rem!important;
+}
+
+.icon-left {
+    position: absolute;
+    left: 10px;
+}
+
+.form-check-input {
+    margin-top: 0.20em!important;
+    border-color: #000;
 }
 
 .wsus__product_sidebar {
