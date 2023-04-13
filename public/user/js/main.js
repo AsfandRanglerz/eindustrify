@@ -55,6 +55,18 @@ $(function() {
         arrows: false,
     });
 
+    /*eye icon, toggle password*/
+    $(".toggle-password").click(function() {
+        $(this).toggleClass("fa-eye fa-eye-slash");
+        var input = $($(this).attr("toggle"));
+        if (input.attr("type") == "password") {
+            input.attr("type", "text");
+        }
+        else {
+            input.attr("type", "password");
+        }
+    });
+
     $(".wsus_menu_category_bar, .product-categories-dropdown").hover(function(){
         $('.product-categories-dropdown').css('visibility', 'visible');
     }, function(){

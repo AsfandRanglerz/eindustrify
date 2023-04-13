@@ -657,7 +657,7 @@ Route::group(['as'=> 'admin.', 'prefix' => 'admin'],function (){
 
 
 });
-
+    Route::view('register', 'register');
 });
 // end admin routes
 

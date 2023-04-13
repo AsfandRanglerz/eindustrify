@@ -115,6 +115,14 @@ body {
     padding-bottom: 13rem;
 }
 
+body .pl-pr-padding {
+    padding: 10px 2.5rem!important;
+}
+
+.text-inherit {
+    text-transform: inherit!important;
+}
+
 select,
 input {
     text-overflow: ellipsis;

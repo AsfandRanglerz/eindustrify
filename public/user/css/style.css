@@ -475,6 +475,9 @@ header {
     -moz-transition: all linear 0.3s ease;
     -ms-transition: all linear 0.3s ease;
     -o-transition: all linear 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .wsus__icon_area li a:hover,
@@ -528,6 +531,9 @@ header {
 }
 
 .wsus__mini_cart h4 span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 25px;
     height: 25px;
     text-align: center;
@@ -3114,6 +3120,9 @@ footer .btn[type="submit"] {
     font-size: 12px;
     background: #1B1C1C;
     color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     transition: all linear 0.3s;
     -webkit-transition: all linear 0.3s ease;
     -moz-transition: all linear 0.3s ease;
@@ -3233,7 +3242,9 @@ SCROLL BUTTON START
     width: 35px;
     height: 35px;
     line-height: 35px;
-    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: #fff;
     right: 25px;
     bottom: 10px;
@@ -3241,7 +3252,6 @@ SCROLL BUTTON START
     position: fixed;
     cursor: pointer;
     z-index: 99;
-    display: none;
     background: #2a9cf5;
     border-radius: 50%;
     animation: move linear 0.8s infinite alternate;
@@ -3473,13 +3483,33 @@ img[alt="envelope"] {
     left: 10px;
 }
 
-img[alt="envelope"] + input[type="email"], .padding-left-input {
+img[alt="envelope"] + input[type="email"] {
     padding-left: 2.5rem!important;
 }
 
 .icon-left {
     position: absolute;
     left: 10px;
+}
+
+.side-section-content .heading {
+    padding-bottom: 34px;
+    margin-bottom: 28px;
+}
+
+.side-section-content .heading:after {
+    content: '';
+    background-color: #FFF;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 17%;
+    height: 8px;
+}
+
+.side-section-content .list {
+    font-size: 15px;
+    margin-bottom: 16px;
 }
 
 .form-check-input {
@@ -7994,7 +8024,7 @@ FORGET PASSWORD START
 ========================*/
 
 .wsus__forget_area {
-    padding: 60px 85px;
+    padding: 48px 85px;
     border: 1px solid #CCCCCC;
 }
 
@@ -8009,13 +8039,12 @@ FORGET PASSWORD START
     margin-bottom: 15px;
 }
 
-.wsus__forget_area h4 {
+.wsus__forget_area .heading {
     margin-bottom: 12px;
     text-align: center;
 }
 
 .wsus__forget_area p {
-    text-transform: capitalize;
     text-align: center;
 }
 
@@ -10390,6 +10419,43 @@ textarea::placeholder {
     width: max-content;
     color: var(--red-theme);
     font-weight: 400;
+}
+
+.red-link {
+    color: var(--red-theme);
+    font-size: 15px;
+}
+
+.red-link:hover, .red-link:active {
+    color: var(--red-theme);
+    text-decoration: underline;
+}
+
+.reg-account {
+    font-size: 15px;
+    text-transform: unset!important;
+}
+
+.font-100 {
+    font-weight: 100!important;
+}
+.font-200 {
+    font-weight: 200!important;
+}
+.font-300 {
+    font-weight: 300!important;
+}
+.font-400 {
+    font-weight: 400!important;
+}
+.font-500 {
+    font-weight: 500!important;
+}
+.font-600 {
+    font-weight: 600!important;
+}
+.font-700 {
+    font-weight: 700!important;
 }
 
 .product-cat-img {

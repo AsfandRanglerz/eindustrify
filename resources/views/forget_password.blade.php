@@ -41,7 +41,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <div class="wsus__forget_area">
-                        <h4>{{__('user.Forget Password')}}?</h4>
+                        <h3 class="heading">{{__('user.Forget Password')}}?</h3>
                         <p>Please enter your email address. You will receive a link to create a new password via email.</p>
                         <div class="wsus__login">
                             <form method="POST" action="{{ route('send-forget-password') }}">
