@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="{{ asset('user/css/jquery.classycountdown.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/venobox.min.css') }}">
     <link rel="stylesheet" href="{{ asset('toastr/toastr.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('intl-tel-input-master/build/css/intlTelInput.min.css') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -1072,10 +1073,9 @@
     <script src="{{ asset('user/js/jquery.classycountdown.js') }}"></script>
 
     <!--main/custom js-->
-    <script src="{{ asset('user/js/main.js') }}"></script>
-
     <script src="{{ asset('toastr/toastr.min.js') }}"></script>
-
+    <script src="{{ asset('intl-tel-input-master/build/js/intlTelInput.min.js') }}"></script>
+    <script src="{{ asset('user/js/main.js') }}"></script>
     <script>
         @if(Session::has('messege'))
         var type="{{Session::get('alert-type','info')}}"
@@ -1438,6 +1438,7 @@
         }
 
     </script>
+    @yield('js')
 </body>
 
 </html>

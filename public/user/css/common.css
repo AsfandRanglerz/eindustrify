@@ -115,6 +115,10 @@ body {
     padding-bottom: 13rem;
 }
 
+body .pr-padding {
+    padding: 10px 2.5rem 10px 10px!important;
+}
+
 body .pl-pr-padding {
     padding: 10px 2.5rem!important;
 }

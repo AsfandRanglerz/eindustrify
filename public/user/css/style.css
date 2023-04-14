@@ -53,7 +53,6 @@ p {
     font-size: 16px;
     font-weight: 400;
     color: #1C1C1C;
-    line-height: 27px;
 }
 
 
@@ -8017,6 +8016,82 @@ TERMS & CONDITION START
 /*======================
 TERMS & CONDITION END
 ========================*/
+
+.label-light-weight {
+    font-weight: 400!important;
+    text-transform: inherit;
+}
+
+.border-segregate {
+    border-top: 1px solid #CCCCCC;
+}
+
+#authData .nav-link.active {
+    color: var(--red-theme);
+}
+
+#authData .nav-link {
+    color: #CCCCCC;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    padding: 18px;
+}
+
+#authData .nav-link.active .badge {
+    background: rgba(232, 32, 36, 0.3);
+    color: #E82024;
+}
+
+#authData .nav-link .badge {
+    background: #CCCCCC;
+    color: #FFF;
+    border-radius: 50px;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#authData {
+    border-top: 2px solid #CCCCCC;
+    border-bottom: 2px solid #CCCCCC;
+}
+
+#authData .seperator {
+    width: 60px;
+    height: 2px;
+    background: #CCCCCC;
+}
+
+.rounded-side-img {
+    border-radius: 20px;
+}
+
+.select2-container--default .select2-selection--single {
+    border-color: #CCCCCC;
+}
+
+.continue_btn {
+    border-radius: 10px;
+    padding: 10px 40px;
+}
+
+.select2-dropdown {
+    border-color: #CCCCCC;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+.iti--separate-dial-code .iti__selected-flag {
+    border-right: 1px solid #CCCCCC;
+    background: none;
+}
 
 
 /*======================
