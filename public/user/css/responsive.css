@@ -1254,24 +1254,8 @@
   }
 
   /* HEADER SRART */
-  header {
-    height: 60px;
-    padding: 0;
-    position: fixed;
-    top: 45px;
-    left: 0;
-    background: #fff;
-    z-index: 999;
-  }
-
   .wsus_logo_area {
     text-align: center;
-  }
-
-  .wsus__header_logo {
-    width: 120px;
-    line-height: 60px;
-    margin-left: 15px;
   }
 
   .wsus__call_area {
@@ -1317,10 +1301,6 @@
   }
 
   /* BANNER START */
-  #wsus__banner {
-    margin-top: 125px;
-  }
-
   #wsus__single_banner {
     padding-top: 40px;
   }
@@ -2413,9 +2393,9 @@
     HOME PAGE 2 END
   =========================*/
 
-  .wsus__flash_coundown .simply-section.simply-days-section, 
-  .wsus__flash_coundown .simply-section.simply-hours-section, 
-  .wsus__flash_coundown .simply-section.simply-minutes-section, 
+  .wsus__flash_coundown .simply-section.simply-days-section,
+  .wsus__flash_coundown .simply-section.simply-hours-section,
+  .wsus__flash_coundown .simply-section.simply-minutes-section,
   .wsus__flash_coundown .simply-section.simply-seconds-section {
     margin: 10px 5px 15px 5px;
   }
@@ -2457,12 +2437,6 @@
 
   .wsus_logo_area {
     text-align: center;
-  }
-
-  .wsus__header_logo {
-    width: 120px;
-    line-height: 60px;
-    margin-left: 15px;
   }
 
   .wsus__call_area {
@@ -2770,7 +2744,7 @@
   #wsus__weekly_best {
     margin-top: 0;
   }
-  
+
   .weekly_best {
     margin-top: 24px;
   }
@@ -3908,9 +3882,9 @@
     margin-bottom: 0;
   }
 
-  .wsus__flash_coundown .simply-section.simply-days-section, 
-  .wsus__flash_coundown .simply-section.simply-hours-section, 
-  .wsus__flash_coundown .simply-section.simply-minutes-section, 
+  .wsus__flash_coundown .simply-section.simply-days-section,
+  .wsus__flash_coundown .simply-section.simply-hours-section,
+  .wsus__flash_coundown .simply-section.simply-minutes-section,
   .wsus__flash_coundown .simply-section.simply-seconds-section {
     margin: 10px 5px 15px 5px;
   }
@@ -3957,12 +3931,6 @@
 
   .wsus_logo_area {
     text-align: center;
-  }
-
-  .wsus__header_logo {
-    width: 120px;
-    line-height: 60px;
-    margin-left: 15px;
   }
 
   .wsus__call_area {
@@ -5658,9 +5626,9 @@
     margin-bottom: 0;
   }
 
-  .wsus__flash_coundown .simply-section.simply-days-section, 
-  .wsus__flash_coundown .simply-section.simply-hours-section, 
-  .wsus__flash_coundown .simply-section.simply-minutes-section, 
+  .wsus__flash_coundown .simply-section.simply-days-section,
+  .wsus__flash_coundown .simply-section.simply-hours-section,
+  .wsus__flash_coundown .simply-section.simply-minutes-section,
   .wsus__flash_coundown .simply-section.simply-seconds-section {
     margin: 0px 5px 15px 5px;
   }

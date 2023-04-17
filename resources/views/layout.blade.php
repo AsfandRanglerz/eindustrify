@@ -124,20 +124,20 @@
                         <span class="wsus__mobile_menu_icon"><i class="fal fa-bars"></i></span>
                     </div>
                 </div>
-                <div class="col-lg-2">
+                <div class="col-lg-2 d-flex align-items-center">
                     <div class="wsus_logo_area">
                         <a class="wsus__header_logo" href="{{ route('home') }}">
                             <img src="{{ asset($setting->logo) }}" alt="logo" class="img-fluid w-100">
                         </a>
                     </div>
                 </div>
-                <div class="col-lg-8 d-none d-lg-block">
+                <div class="col-xl-8 col-lg-7 d-none d-lg-block">
                     <form action="" class="col-xl-9 mx-auto d-flex h-100">
                         <input type="email" class="form-control header-search" placeholder="Search by Keywords, Item #, Brand">
                         <button type="submit" class="btn"><span class="fa fa-search text-white"></span></button>
                     </form>
                 </div>
-                <div class="col-lg-2 position-relative reg-log-cart">
+                <div class="col-xl-2 col-lg-3 position-relative reg-log-cart">
                     <ul class="w-unset wsus__icon_area">
                         <li  class="mx-0"><a class="d-flex justify-content-center align-items-center wsus__user_icon"><img src="{{ asset('public/uploads/website-images/images/user.png') }}" alt="user-img"></a></li>
                         <a href="#" class="ms-2">Login</a>
@@ -891,14 +891,14 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-lg-3 col-md-6 mb-3">
                     <img src="{{ asset('public/uploads/website-images/images/footer-logo.png') }}" alt="footer-logo">
                     <p class="mt-2 text-white">Premier global B2B e-commerce platform for industrial supplies</p>
                 </div>
-                <div class="col-md-9">
+                <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-md-3">
-                            <h5 class="text-white mb-md-4">{{ $footer->first_column }}</h5>
+                        <div class="col-lg-3 col-md-4 mb-xl-3 mb-4">
+                            <h5 class="text-white mb-lg-4 mb-0">{{ $footer->first_column }}</h5>
                             <ul class="wsus__footer_menu">
                                 @foreach ($footerLinks->where('column',1) as $footerLink)
                                 <li><a href="" class="text-white">{{ $footerLink->title }}</a></li>
@@ -906,8 +906,8 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="col-md-3">
-                            <h5 class="text-white mb-md-4">{{ $footer->second_column }}</h5>
+                        <div class="col-lg-3 col-md-4 mb-xl-3 mb-4">
+                            <h5 class="text-white mb-lg-4 mb-0">{{ $footer->second_column }}</h5>
                             <ul class="wsus__footer_menu">
                                 @foreach ($footerLinks->where('column',2) as $footerLink)
                                 <li><a href="" class="text-white">{{ $footerLink->title }}</a></li>
@@ -915,8 +915,8 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="col-md-3">
-                            <h5 class="text-white mb-md-4">{{ $footer->third_column }}</h5>
+                        <div class="col-lg-3 col-md-4 mb-xl-3 mb-4">
+                            <h5 class="text-white mb-lg-4 mb-0">{{ $footer->third_column }}</h5>
                             <ul class="wsus__footer_menu">
                                 @foreach ($footerLinks->where('column',3) as $footerLink)
                                 <li><a href="" class="text-white">{{ $footerLink->title }}</a></li>
@@ -924,9 +924,9 @@
                                 @endforeach
                             </ul>
                         </div>
-                        <div class="col-md-3">
-                            <h5 class="text-white mb-md-4">CONTACT US</h5>
-                            <p class="text-white">{{ $footer->address }}</p>
+                        <div class="col-lg-3">
+                            <h5 class="text-white mb-lg-4 mb-0">CONTACT US</h5>
+                            <p class="mt-2 text-white">{{ $footer->address }}</p>
                             <a class="action text-white" href="callto:{{ $footer->phone }}" class="text-white">{{ $footer->phone }}</a>
                             <a class="action text-white" href="mailto:{{ $footer->email }}" class="text-white">{{ $footer->email }}</a>
                         </div>
@@ -934,24 +934,24 @@
                 </div>
             </div>
 
-            <div class="row mt-5 mb-4">
-                <div class="col-md-3">
+            <div class="row mt-xl-5 mt-4 mb-4">
+                <div class="col-lg-3 col-md-6">
                     <h6 class="text-white text-uppercase mb-2">Signup for Email</h6>
                     <form action="" class="d-flex">
                         <input type="email" class="form-control" placeholder="Email Address">
                         <button type="submit" class="btn">Submit</button>
                     </form>
                 </div>
-                <div class="col-md-9">
+                <div class="col-lg-9">
                     <div class="row">
-                        <div class="col-md-9 footer-images-section">
+                        <div class="col-lg-9 footer-images-section">
                             <img src="{{ asset('public/uploads/website-images/images/footer-img-5.png') }}" alt="footer-img-5">
                             <img src="{{ asset('public/uploads/website-images/images/footer-img-1.png') }}" alt="footer-img-1">
                             <img src="{{ asset('public/uploads/website-images/images/footer-img-2.png') }}" alt="footer-img-2">
                             <img src="{{ asset('public/uploads/website-images/images/footer-img-4.png') }}" alt="footer-img-4">
                             <img src="{{ asset('public/uploads/website-images/images/footer-img-3.png') }}" alt="footer-img-3">
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-lg-3">
                             <h6 class="text-white text-uppercase mb-2">Feedback</h6>
                             <a href="#" class="help-us">Help Us Improve</a>
                         </div>
@@ -961,7 +961,7 @@
 
             <div class="row footer-bottom">
                 <div class="col-md-4 px-0">
-                    <small class="text-white">{{ $footer->copyright }}</small>
+                    <small class="d-block text-center mb-2 text-white">{{ $footer->copyright }}</small>
                 </div>
                 <div class="col-md-4 px-0">
                     <p class="text-center">

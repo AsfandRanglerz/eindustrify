@@ -13,7 +13,7 @@
         <section id="wsus__banner">
             <div class="container px-0">
                 <div class="row wsus__banner_content_main">
-                    <div class="col-xl-8 col-lg-9">
+                    <div class="col-xl-8 col-lg-7">
                         <div class="h-100 wsus__banner_content">
                             <div class="row banner_slider">
                                 <div class="col-xl-12">
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-xl-4 col-lg-3 ps-0">
+                    <div class="col-xl-4 col-lg-5 ps-lg-0">
                         <div class="h-100 wsus__banner_content">
                             <div class="position-relative wsus__banner_content_inner_first">
                                 <img src="{{ asset('public/uploads/website-images/images/left-circum.png') }}" alt="left-circum">
@@ -60,7 +60,7 @@
                                         <img src="{{ asset('public/uploads/website-images/images/business-1.png') }}" class="buis-img">
                                         <p class="content-text">Global Access</p>
                                     </div>
-                                    <div class="col-sm-6 px-0 d-flex align-items-center">
+                                    <div class="col-sm-6 mt-sm-0 mt-2 px-sm-0 d-flex align-items-center">
                                         <img src="{{ asset('public/uploads/website-images/images/business-3.png') }}" class="buis-img">
                                         <p class="content-text">Expert Knowledge</p>
                                     </div>
@@ -70,7 +70,7 @@
                                         <img src="{{ asset('public/uploads/website-images/images/business-2.png') }}" class="buis-img">
                                         <p class="content-text">Accurate Inventory Information</p>
                                     </div>
-                                    <div class="col-sm-6 px-0 d-flex align-items-center">
+                                    <div class="col-sm-6 mt-sm-0 mt-2 px-sm-0 d-flex align-items-center">
                                         <img src="{{ asset('public/uploads/website-images/images/business-4.png') }}" class="buis-img">
                                         <p class="content-text">All-Inclusive ecommerce Marketplace</p>
                                     </div>
@@ -94,8 +94,8 @@
     ==============================-->
 
         <div class="grey-background">
-            <div class="container pt-5 pb-3">
-                <div class="mb-4 d-flex flex-wrap align-items-center justify-content-between">
+            <div class="container pt-xl-5 pt-3 pb-xl-3">
+                <div class="mb-xl-4 mb-2 d-flex flex-wrap align-items-center justify-content-between">
                     <h4 class="mb-0">Explore Product Categories</h4>
                     <a href="#" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>
                 </div>
@@ -195,13 +195,13 @@
         </div>
 
         <div class="featured-products">
-            <div class="container py-5">
-                <div class="mb-3 d-flex flex-wrap align-items-center justify-content-between">
+            <div class="container py-xl-5 py-3">
+                <div class="mb-xl-3 mb-0 d-flex flex-wrap align-items-center justify-content-between">
                     <h4 class="mb-0">Featured Products</h4>
                     <a href="#" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>
                 </div>
                 <div class="row">
-                    <div class="col-md-3 p-2">
+                    <div class="col-lg-3 col-md-6 p-2">
                         <div class="position-relative feature-product-section">
                             <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
                             <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
@@ -215,7 +215,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 p-2">
+                    <div class="col-lg-3 col-md-6 p-2">
                         <div class="position-relative feature-product-section">
                             <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
                             <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
@@ -230,7 +230,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 p-2">
+                    <div class="col-lg-3 col-md-6 p-2">
                         <div class="position-relative feature-product-section">
                             <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
                             <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
@@ -244,7 +244,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 p-2">
+                    <div class="col-lg-3 col-md-6 p-2">
                         <div class="position-relative feature-product-section">
                             <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
                             <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
@@ -258,7 +258,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 p-2">
+                    <div class="col-lg-3 col-md-6 p-2">
                         <div class="position-relative feature-product-section">
                             <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
                             <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
@@ -273,7 +273,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 p-2">
+                    <div class="col-lg-3 col-md-6 p-2">
                         <div class="position-relative feature-product-section">
                             <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
                             <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
@@ -287,7 +287,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 p-2">
+                    <div class="col-lg-3 col-md-6 p-2">
                         <div class="position-relative feature-product-section">
                             <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
                             <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
@@ -301,7 +301,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 p-2">
+                    <div class="col-lg-3 col-md-6 p-2">
                         <div class="position-relative feature-product-section">
                             <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
                             <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
@@ -324,7 +324,7 @@
         ==============================-->
         <div class="container" id="wsus__brand_sleder">
             <h4 class="text-center mb-4">Featured Brands and Partners</h4>
-            <div class="col-xl-10 mx-auto brand_slider">
+            <div class="brand_slider">
                 <img src="{{ asset('public/uploads/website-images/images/feature-slider-1.png') }}" alt="feature-slider-1.png">
                 <img src="{{ asset('public/uploads/website-images/images/feature-slider-3.png') }}" alt="feature-slider-3.png">
                 <img src="{{ asset('public/uploads/website-images/images/feature-slider-2.png') }}" alt="feature-slider-2.png">
