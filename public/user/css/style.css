@@ -8024,7 +8024,7 @@ TERMS & CONDITION END
 
 .label-light-weight {
     font-weight: 400!important;
-    text-transform: inherit;
+    text-transform: inherit!important;
 }
 
 .border-segregate {
@@ -8042,7 +8042,7 @@ TERMS & CONDITION END
     align-items: center;
     background: none;
     border: none;
-    padding: 18px;
+    padding: 16px;
 }
 
 #authData .nav-link.active .badge {
@@ -8067,7 +8067,7 @@ TERMS & CONDITION END
 }
 
 #authData .seperator {
-    width: 60px;
+    width: 45px;
     height: 2px;
     background: #CCCCCC;
 }
@@ -8091,6 +8091,7 @@ TERMS & CONDITION END
 
 label {
     margin-bottom: 8px;
+    font-size: 14px;
 }
 
 .iti--separate-dial-code .iti__selected-flag {
@@ -10388,6 +10389,21 @@ textarea::placeholder {
 
 .wsus__check_single_form .select2-container--default .select2-selection--single .select2-selection__rendered {
     color: #353535;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered,
+.select2-results__option {
+    text-transform: inherit;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__placeholder,
+.select2-container .select2-selection--single .select2-selection__rendered {
+    font-family: 'Open Sans';
+    font-weight: 600!important;
+}
+
+.select2-container .select2-selection--single .select2-selection__rendered {
+    color: #000!important;
 }
 
 .wsus__payment_area .input {

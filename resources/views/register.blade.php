@@ -52,6 +52,12 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="businessInfo-tab" data-bs-toggle="tab" data-bs-target="#businessInfo" type="button" role="tab" aria-controls="businessInfo" aria-selected="false"><span class="badge me-2">2</span> Business Information</button>
                             </li>
+                            <li class="nav-item d-flex align-items-center" role="presentation">
+                                <span class="d-block seperator"></span>
+                            </li>
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link" id="prodInfo-tab" data-bs-toggle="tab" data-bs-target="#prodInfo" type="button" role="tab" aria-controls="prodInfo" aria-selected="false"><span class="badge me-2">3</span> Product Information</button>
+                            </li>
                         </ul>
                         <div class="tab-content" id="authDataContent">
                             <div class="tab-pane fade show active" id="contactInfo" role="tabpanel" aria-labelledby="contactInfo-tab">
@@ -61,7 +67,7 @@
                                             <label class="text-uppercase">Registration type <span class="required">*</span></label>
                                             <select class="form-control" id="selRole">
                                                 <option value=""></option>
-                                                <option value="Register as a customer">Register as a customer</option>
+                                                <option value="Register as a Supplier">Register as a Supplier</option>
                                                 <option value="Register as a Vendor">Register as a Vendor</option>
                                             </select>
                                         </div>
@@ -263,8 +269,143 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="tab-pane fade" id="prodInfo" role="tabpanel" aria-labelledby="prodInfo-tab">
+                                <div class="bg-grey">
+                                    <h5 class="col-xl-10 mx-auto">Business Information</h5>
+                                </div>
+                                <div class="my-4 col-xl-10 mx-auto">
+                                    <form method="POST">
+                                        @csrf
+                                        <div class="row mb-3 mx-auto">
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">business name <span class="required">*</span></label>
+                                                <input type="text" class="form-control" placeholder="XYZ Business">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">Business number <span class="required">*</span></label>
+                                                <input type="tel" class="form-control" placeholder="Business Number" id="businessNumber">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3 mx-auto">
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">tax id <span class="required">*</span></label>
+                                                <input type="text" class="form-control" placeholder="ATU12345678">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">industry type</label>
+                                                <select class="form-control" id="indusType">
+                                                    <option value=""></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="mb-3 bg-grey">
+                                    <h5 class="col-xl-10 mx-auto">Shipping Address</h5>
+                                </div>
+                                <div class="col-xl-10 mx-auto">
+                                    <form method="POST">
+                                        @csrf
+                                        <div class="row mb-3 mx-auto">
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">Street address line 1 <span class="required">*</span></label>
+                                                <input type="text" class="form-control" placeholder="Street, 6001 W Waco Dr #314">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">Suite, building, department etc <span class="required">*</span></label>
+                                                <input type="text" class="form-control" placeholder="Suite, building, department etc">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3 mx-auto">
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">City <span class="required">*</span></label>
+                                                <select class="form-control select-city">
+                                                    <option value=""></option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">state <span class="required">*</span></label>
+                                                <select class="form-control select-state">
+                                                    <option value=""></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mx-auto">
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">Country/Region* <span class="required">*</span></label>
+                                                <select class="form-control select-country">
+                                                    <option value=""></option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">Postal/zip code</label>
+                                                <input type="text" class="form-control" placeholder="147001">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="mt-4 form-check">
+                                                    <input class="form-check-input" type="checkbox" id="billingAddress">
+                                                    <label class="form-check-label label-light-weight" for="billingAddress">Billing address same as shipping address</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="bg-grey">
+                                    <h5 class="col-xl-10 mx-auto">Billing Address</h5>
+                                </div>
+                                <div class="col-xl-10 my-4 mx-auto">
+                                    <form method="POST">
+                                        @csrf
+                                        <div class="row mb-3 mx-auto">
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">Street address line 1 <span class="required">*</span></label>
+                                                <input type="text" class="form-control" placeholder="Street, 6001 W Waco Dr #314">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">Suite, building, department etc <span class="required">*</span></label>
+                                                <input type="text" class="form-control" placeholder="Suite, building, department etc">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3 mx-auto">
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">City <span class="required">*</span></label>
+                                                <select class="form-control select-city">
+                                                    <option value=""></option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">state <span class="required">*</span></label>
+                                                <select class="form-control select-state">
+                                                    <option value=""></option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="row mx-auto">
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">Country/Region* <span class="required">*</span></label>
+                                                <select class="form-control select-country">
+                                                    <option value=""></option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">Postal/zip code</label>
+                                                <input type="text" class="form-control" placeholder="147001">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="border-segregate">
+                                    <div class="col-xl-10 mx-auto">
+                                        <div class="row mx-auto py-2">
+                                            <div class="form-group my-4 text-end">
+                                                <a href="" class="font-600">Back</a>
+                                                <button class="ms-5 common_btn continue_btn" href="" type="submit">Continue</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
                     </div>
                 </div>
                 <div class="col-xl-4 px-0 col-md-6">
