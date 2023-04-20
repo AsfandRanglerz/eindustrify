@@ -8099,6 +8099,20 @@ label {
     background: none;
 }
 
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display,
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove span {
+    color: #FFF;
+    font-size: 15px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: var(--red-theme);
+    border-color: var(--red-theme);
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    border-color: #FFF;
+}
 
 /*======================
 FORGET PASSWORD START

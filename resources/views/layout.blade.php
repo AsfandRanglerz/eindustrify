@@ -54,8 +54,9 @@
 
     <link rel="stylesheet" href="{{ asset('user/css/style.css') }}">
 
-
     <link rel="stylesheet" href="{{ asset('user/css/responsive.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('dropzone/min/dropzone.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('user/css/dev.css') }}">
 
@@ -1076,6 +1077,8 @@
     <!--main/custom js-->
     <script src="{{ asset('toastr/toastr.min.js') }}"></script>
     <script src="{{ asset('intl-tel-input-master/build/js/intlTelInput.min.js') }}"></script>
+    <script src="{{ asset('dropzone/min/dropzone.min.js') }}"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script> --}}
     <script src="{{ asset('user/js/main.js') }}"></script>
     <script>
         @if(Session::has('messege'))
