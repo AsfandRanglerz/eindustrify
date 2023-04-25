@@ -63,10 +63,10 @@
                             <li class="nav-item" role="presentation">
                                 <button class="nav-link" id="businessInfo-tab" data-bs-toggle="tab" data-bs-target="#businessInfo" type="button" role="tab" aria-controls="businessInfo" aria-selected="false"><span class="badge me-2">2</span> Business Information</button>
                             </li>
-                            <li class="nav-item d-flex align-items-center" role="presentation">
+                            <li class="nav-item d-flex align-items-center vendor-section d-none" role="presentation">
                                 <span class="d-block seperator"></span>
                             </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item vendor-section d-none" role="presentation">
                                 <button class="nav-link" id="prodInfo-tab" data-bs-toggle="tab" data-bs-target="#prodInfo" type="button" role="tab" aria-controls="prodInfo" aria-selected="false"><span class="badge me-2">3</span> Product Information</button>
                             </li>
                         </ul>
