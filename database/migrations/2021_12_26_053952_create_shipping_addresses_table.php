@@ -17,6 +17,8 @@ class CreateShippingAddressesTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->string('first_name')->nullable();
+            $table->string('street_address')->nullable();
+            $table->string('department')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();

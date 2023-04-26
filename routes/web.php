@@ -154,6 +154,8 @@ Route::group(['middleware' => ['maintainance']], function () {
 
     Route::get('/login', [LoginController::class, 'loginPage'])->name('login');
     Route::post('/store-login', [LoginController::class, 'storeLogin'])->name('store-login');
+    Route::get('/register', [RegisterController::class, 'Register'])->name('register');
+    Route::post('/customer-register', [RegisterController::class, 'customerRegister']);
     Route::post('/store-register', [RegisterController::class, 'storeRegister'])->name('store-register');
     Route::get('/user-verification/{token}', [RegisterController::class, 'userVerification'])->name('user-verification');
     Route::get('/forget-password', [LoginController::class, 'forgetPage'])->name('forget-password');
@@ -657,7 +659,7 @@ Route::group(['as'=> 'admin.', 'prefix' => 'admin'],function (){
 
 
 });
-    Route::view('register', 'register');
+    // Route::view('register', 'register');
 });
 // end admin routes
 

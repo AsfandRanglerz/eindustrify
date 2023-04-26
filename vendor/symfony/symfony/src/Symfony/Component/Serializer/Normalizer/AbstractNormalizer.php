@@ -213,9 +213,9 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
      * @param string|object $classOrObject
      * @param bool          $attributesAsString If false, return an array of {@link AttributeMetadataInterface}
      *
-     * @throws LogicException if the 'allow_extra_attributes' context variable is false and no class metadata factory is provided
-     *
      * @return string[]|AttributeMetadataInterface[]|bool
+     *
+     * @throws LogicException if the 'allow_extra_attributes' context variable is false and no class metadata factory is provided
      */
     protected function getAllowedAttributes($classOrObject, array $context, bool $attributesAsString = false)
     {
@@ -362,8 +362,8 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
                         }
 
                         $variadicParameters = [];
-                        foreach ($data[$paramName] as $parameterData) {
-                            $variadicParameters[] = $this->denormalizeParameter($reflectionClass, $constructorParameter, $paramName, $parameterData, $context, $format);
+                        foreach ($data[$paramName] as $parameterKey => $parameterData) {
+                            $variadicParameters[$parameterKey] = $this->denormalizeParameter($reflectionClass, $constructorParameter, $paramName, $parameterData, $context, $format);
                         }
 
                         $params = array_merge($params, $variadicParameters);
@@ -404,7 +404,7 @@ abstract class AbstractNormalizer implements NormalizerInterface, DenormalizerIn
                     }
 
                     $exception = NotNormalizableValueException::createForUnexpectedDataType(
-                        sprintf('Failed to create object because the object miss the "%s" property.', $constructorParameter->name),
+                        sprintf('Failed to create object because the class misses the "%s" property.', $constructorParameter->name),
                         $data,
                         ['unknown'],
                         $context['deserialization_path'] ?? null,

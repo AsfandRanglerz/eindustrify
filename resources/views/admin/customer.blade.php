@@ -25,8 +25,10 @@
                             <thead>
                                 <tr>
                                     <th >{{__('admin.SN')}}</th>
-                                    <th >{{__('admin.Name')}}</th>
+                                    <th >{{__('First Name')}}</th>
+                                    <th >{{__('Last Name')}}</th>
                                     <th >{{__('admin.Email')}}</th>
+                                    <th >{{__('admin.Phone')}}</th>
                                     <th >{{__('admin.Image')}}</th>
                                     <th >{{__('admin.Status')}}</th>
                                     <th >{{__('admin.Action')}}</th>
@@ -36,8 +38,10 @@
                                 @foreach ($customers as $index => $customer)
                                     <tr>
                                         <td>{{ ++$index }}</td>
-                                        <td>{{ $customer->name }}</td>
+                                        <td>{{ $customer->first_name }}</td>
+                                        <td>{{ $customer->last_name }}</td>
                                         <td>{{ $customer->email }}</td>
+                                        <td>{{ $customer->phone }}</td>
                                         <td>
                                             @if ($customer->image)
                                             <img src="{{ asset($customer->image) }}" class="rounded-circle" alt="" width="80px">

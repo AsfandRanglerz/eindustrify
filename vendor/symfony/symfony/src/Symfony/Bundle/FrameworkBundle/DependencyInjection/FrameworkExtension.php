@@ -162,8 +162,10 @@ use Symfony\Component\Notifier\Bridge\Twilio\TwilioTransportFactory;
 use Symfony\Component\Notifier\Bridge\Vonage\VonageTransportFactory;
 use Symfony\Component\Notifier\Bridge\Yunpian\YunpianTransportFactory;
 use Symfony\Component\Notifier\Bridge\Zulip\ZulipTransportFactory;
+use Symfony\Component\Notifier\ChatterInterface;
 use Symfony\Component\Notifier\Notifier;
 use Symfony\Component\Notifier\Recipient\Recipient;
+use Symfony\Component\Notifier\TexterInterface;
 use Symfony\Component\Notifier\Transport\TransportFactoryInterface as NotifierTransportFactoryInterface;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 use Symfony\Component\PropertyInfo\Extractor\PhpStanExtractor;
@@ -1176,16 +1178,8 @@ class FrameworkExtension extends Extension
 
         // session handler (the internal callback registered with PHP session management)
         if (null === $config['handler_id']) {
-            // Set the handler class to be null
-            if ($container->hasDefinition('session.storage.native')) {
-                $container->getDefinition('session.storage.native')->replaceArgument(1, null);
-                $container->getDefinition('session.storage.php_bridge')->replaceArgument(0, null);
-            } else {
-                $container->getDefinition('session.storage.factory.native')->replaceArgument(1, null);
-                $container->getDefinition('session.storage.factory.php_bridge')->replaceArgument(0, null);
-            }
-
-            $container->setAlias('session.handler', 'session.handler.native_file');
+            $config['save_path'] = null;
+            $container->setAlias('session.handler', 'session.handler.native');
         } else {
             $container->resolveEnvPlaceholders($config['handler_id'], null, $usedEnvs);
 
@@ -1629,9 +1623,16 @@ class FrameworkExtension extends Extension
 
         $loader->load('annotations.php');
 
+        // registerUniqueLoader exists since doctrine/annotations v1.6
         if (!method_exists(AnnotationRegistry::class, 'registerUniqueLoader')) {
-            $container->getDefinition('annotations.dummy_registry')
-                ->setMethodCalls([['registerLoader', ['class_exists']]]);
+            // registerLoader exists only in doctrine/annotations v1
+            if (method_exists(AnnotationRegistry::class, 'registerLoader')) {
+                $container->getDefinition('annotations.dummy_registry')
+                    ->setMethodCalls([['registerLoader', ['class_exists']]]);
+            } else {
+                // remove the dummy registry when doctrine/annotations v2 is used
+                $container->removeDefinition('annotations.dummy_registry');
+            }
         }
 
         if ('none' === $config['cache']) {
@@ -1768,9 +1769,6 @@ class FrameworkExtension extends Extension
     private function registerSerializerConfiguration(array $config, ContainerBuilder $container, PhpFileLoader $loader)
     {
         $loader->load('serializer.php');
-        if ($container->getParameter('kernel.debug')) {
-            $container->removeDefinition('serializer.mapping.cache_class_metadata_factory');
-        }
 
         $chainLoader = $container->getDefinition('serializer.mapping.chain_loader');
 
@@ -1795,6 +1793,9 @@ class FrameworkExtension extends Extension
         if (isset($config['enable_annotations']) && $config['enable_annotations']) {
             if (\PHP_VERSION_ID < 80000 && !$this->annotationsConfigEnabled) {
                 throw new \LogicException('"enable_annotations" on the serializer cannot be set as the PHP version is lower than 8 and Annotations support is disabled. Consider upgrading PHP.');
+            }
+            if ($container->getParameter('kernel.debug')) {
+                $container->removeDefinition('serializer.mapping.cache_class_metadata_factory');
             }
 
             $annotationLoader = new Definition(
@@ -2489,11 +2490,13 @@ class FrameworkExtension extends Extension
             $container->getDefinition('chatter.transports')->setArgument(0, $config['chatter_transports']);
         } else {
             $container->removeDefinition('chatter');
+            $container->removeAlias(ChatterInterface::class);
         }
         if ($config['texter_transports']) {
             $container->getDefinition('texter.transports')->setArgument(0, $config['texter_transports']);
         } else {
             $container->removeDefinition('texter');
+            $container->removeAlias(TexterInterface::class);
         }
 
         if ($this->mailerConfigEnabled) {
@@ -2583,7 +2586,7 @@ class FrameworkExtension extends Extension
             }
         }
 
-        if (ContainerBuilder::willBeAvailable('symfony/mercure-notifier', MercureTransportFactory::class, $parentPackages, true) && ContainerBuilder::willBeAvailable('symfony/mercure-bundle', MercureBundle::class, $parentPackages, true)) {
+        if (ContainerBuilder::willBeAvailable('symfony/mercure-notifier', MercureTransportFactory::class, $parentPackages, true) && ContainerBuilder::willBeAvailable('symfony/mercure-bundle', MercureBundle::class, $parentPackages, true) && \in_array(MercureBundle::class, $container->getParameter('kernel.bundles'), true)) {
             $container->getDefinition($classToServices[MercureTransportFactory::class])
                 ->replaceArgument('$registry', new Reference(HubRegistry::class));
         } elseif (ContainerBuilder::willBeAvailable('symfony/mercure-notifier', MercureTransportFactory::class, $parentPackages, true)) {
