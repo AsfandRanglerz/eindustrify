@@ -23,6 +23,7 @@ class User extends Authenticatable implements JWTSubject
         'last_name',
         'email',
         'password',
+        'phone',
         'provider',
         'provider_id',
         'provider_avatar',
@@ -64,7 +65,15 @@ class User extends Authenticatable implements JWTSubject
     public function state(){
         return $this->belongsTo(CountryState::class);
     }
-
+    public function billingAddress(){
+        return $this->hasOne(BillingAddress::class);
+    }
+    public function shippingAddress(){
+        return $this->hasOne(ShippingAddress::class);
+    }
+    public function businessInformation(){
+        return $this->hasOne(BusinessInformation::class);
+    }
     public function country(){
         return $this->belongsTo(Country::class);
     }

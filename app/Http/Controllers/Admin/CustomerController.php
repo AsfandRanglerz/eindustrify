@@ -25,7 +25,7 @@ class CustomerController extends Controller
     }
 
     public function index(){
-        $customers = User::orderBy('id','desc')->where('status',1)->get();
+        $customers = User::with('billingAddress','shippingAddress','businessInformation')->orderBy('id','desc')->where('status',1)->get();
         $defaultProfile = BannerImage::whereId('15')->first();
         $orders = Order::all();
         return view('admin.customer', compact('customers','defaultProfile','orders'));
@@ -39,7 +39,7 @@ class CustomerController extends Controller
     }
 
     public function show($id){
-        $customer = User::find($id);
+        $customer = User::with('billingAddress','shippingAddress','businessInformation')->find($id);
         if($customer){
             $defaultProfile = BannerImage::whereId('15')->first();
             return view('admin.show_customer',compact('customer','defaultProfile'));

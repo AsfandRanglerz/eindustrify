@@ -42,8 +42,8 @@
 </style>
 @section('public-content')
     <!--============================
-               LOGIN/REGISTER PAGE START
-            ==============================-->
+                               LOGIN/REGISTER PAGE START
+                            ==============================-->
     <section id="wsus__login_register" class="py-5">
         <div class="container">
             <div class="row mx-auto">
@@ -75,51 +75,58 @@
                                         class="badge me-2">3</span> Product Information</button>
                             </li>
                         </ul>
-                        <div class="tab-content" id="authDataContent">
-                            <div class="tab-pane fade show active" id="contactInfo" role="tabpanel"
-                                aria-labelledby="contactInfo-tab">
-                                <div class="col-xl-10 mx-auto">
-                                    <div class="row mb-4 mx-auto">
-                                        <div class="form-group col-md-6">
-                                            <label class="text-uppercase">Registration type <span
-                                                    class="required">*</span></label>
-                                            <select class="form-control" id="selRole">
-                                                <option value=""></option>
-                                                <option value="Register as a Customer">Register as a Customer</option>
-                                                <option value="Register as a Vendor">Register as a Vendor</option>
-                                            </select>
+                        <form action="{{ Url('customer-register') }}" method="POST">
+                            <div class="tab-content" id="authDataContent">
+
+                                <div class="tab-pane fade show active" id="contactInfo" role="tabpanel"
+                                    aria-labelledby="contactInfo-tab">
+                                    <div class="col-xl-10 mx-auto">
+                                        <div class="row mb-4 mx-auto">
+                                            <div class="form-group col-md-6">
+                                                <label class="text-uppercase">Registration type <span
+                                                        class="required">*</span></label>
+                                                <select class="form-control" id="selRole">
+                                                    <option value=""></option>
+                                                    <option value="Register as a Customer">Register as a Customer</option>
+                                                    <option value="Register as a Vendor">Register as a Vendor</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="mb-3 bg-grey">
-                                    <h5 class="col-xl-10 mx-auto">Contact Information</h5>
-                                </div>
-                                <div class="col-xl-10 mx-auto">
-                                    <form action="{{Url('customer-register')}}" method="POST">
+                                    <div class="mb-3 bg-grey">
+                                        <h5 class="col-xl-10 mx-auto">Contact Information</h5>
+                                    </div>
+                                    <div class="col-xl-10 mx-auto">
                                         @csrf
                                         <div class="row mb-3 mx-auto">
                                             <div class="form-group col-md-6">
                                                 <label class="text-uppercase">First Name <span
                                                         class="required">*</span></label>
-                                                <input type="text" class="form-control" placeholder="First Name">
+                                                <input type="text" class="form-control" name="first_name"
+                                                    value="{{ old('first_name') }}" placeholder="First Name">
                                             </div>
+                                            {{-- @error('first_name')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror --}}
                                             <div class="form-group col-md-6">
                                                 <label class="text-uppercase">Last Name <span
                                                         class="required">*</span></label>
-                                                <input type="text" class="form-control" placeholder="Last Name">
+                                                <input type="text" name="last_name" value="{{ old('last_name') }}"
+                                                    class="form-control" placeholder="Last Name">
                                             </div>
                                         </div>
                                         <div class="row mb-3 mx-auto">
                                             <div class="form-group col-md-6">
                                                 <label class="text-uppercase">Email Address <span
                                                         class="required">*</span></label>
-                                                <input type="email" class="form-control" placeholder="Email Address">
+                                                <input type="email" name="email" value="{{ old('email') }}"
+                                                    class="form-control" placeholder="Email Address">
                                             </div>
                                             <div class="form-group col-md-6">
                                                 <label class="text-uppercase">Phone Number <span
                                                         class="required">*</span></label>
-                                                <input type="tel" class="form-control" placeholder="Phone Number"
-                                                    id="phoneNumber">
+                                                <input type="tel" name="phone" value="{{ old('phone') }}"
+                                                    class="form-control" placeholder="Phone Number" id="phoneNumber">
                                             </div>
                                         </div>
                                         <div class="row mx-auto">
@@ -127,8 +134,9 @@
                                                 <label for="userPassword" class="text-uppercase">Password <span
                                                         class="required">*</span></label>
                                                 <div class="position-relative my-0 wsus__login_input">
-                                                    <input type="password" placeholder="Password" name="password"
-                                                        id="userPassword" class="form-control pr-padding">
+                                                    <input type="password" name="password" value="{{ old('password') }}"
+                                                        placeholder="Password" name="password" id="userPassword"
+                                                        class="form-control pr-padding">
                                                     <span toggle="#userPassword"
                                                         class="fas fa-eye preview-eye-icon toggle-password"
                                                         aria-hidden="true"></span>
@@ -138,8 +146,10 @@
                                                 <label for="userConPassword" class="text-uppercase">Confirm Password <span
                                                         class="required">*</span></label>
                                                 <div class="position-relative my-0 wsus__login_input">
-                                                    <input type="password" placeholder="Password" name="password"
-                                                        id="userConPassword" class="form-control pr-padding">
+                                                    <input type="password" name="confirm_password"
+                                                        value="{{ old('confirm_password') }}" placeholder="Password"
+                                                        name="password" id="userConPassword"
+                                                        class="form-control pr-padding">
                                                     <span toggle="#userConPassword"
                                                         class="fas fa-eye preview-eye-icon toggle-password"
                                                         aria-hidden="true"></span>
@@ -154,39 +164,40 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="border-segregate">
-                                    <div class="col-xl-10 mx-auto">
-                                        <div class="row mx-auto py-2">
-                                            <div class="form-group my-4 text-end">
-                                                <button class="common_btn continue_btn" href=""
-                                                    type="submit">Continue</button>
+
+                                    </div>
+                                    <div class="border-segregate">
+                                        <div class="col-xl-10 mx-auto">
+                                            <div class="row mx-auto py-2">
+                                                <div class="form-group my-4 text-end">
+                                                    <button class="common_btn continue_btn">Continue</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="businessInfo" role="tabpanel"
-                                aria-labelledby="businessInfo-tab">
-                                <div class="customer-section d-none">
-                                    <div class="bg-grey">
-                                        <h5 class="col-xl-10 mx-auto">Business Information</h5>
-                                    </div>
-                                    <div class="my-4 col-xl-10 mx-auto">
-                                        <form method="POST">
+                                <div class="tab-pane fade" id="businessInfo" role="tabpanel"
+                                    aria-labelledby="businessInfo-tab">
+                                    <div class="customer-section d-none">
+                                        <div class="bg-grey">
+                                            <h5 class="col-xl-10 mx-auto">Business Information</h5>
+                                        </div>
+                                        <div class="my-4 col-xl-10 mx-auto">
+                                            {{-- <form method="POST"> --}}
                                             @csrf
                                             <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">business name <span
                                                             class="required">*</span></label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" name="bussiness_name"
+                                                        value="{{ old('bussiness_name') }}" class="form-control"
                                                         placeholder="XYZ Business">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Business number <span
                                                             class="required">*</span></label>
-                                                    <input type="tel" class="form-control"
+                                                    <input type="tel" name="bussiness_phone"
+                                                        value="{{ old('bussiness_phone') }}" class="form-control"
                                                         placeholder="Business Number" id="businessNumber1">
                                                 </div>
                                             </div>
@@ -194,34 +205,41 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">tax id <span
                                                             class="required">*</span></label>
-                                                    <input type="text" class="form-control" placeholder="ATU12345678">
+                                                    <input type="text" name="bussiness_tax_id"
+                                                        value="{{ old('bussiness_tax_id') }}" class="form-control"
+                                                        placeholder="ATU12345678">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">industry type</label>
-                                                    <select class="form-control indus-type">
+                                                    <select class="form-control indus-type"
+                                                        name="bussiness_industry_type">
                                                         <option value=""></option>
+                                                        <option value="industry name">industry one</option>
+                                                        <option value="industry name">industry two</option>
                                                     </select>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="mb-3 bg-grey">
-                                        <h5 class="col-xl-10 mx-auto">Shipping Address</h5>
-                                    </div>
-                                    <div class="col-xl-10 mx-auto">
-                                        <form method="POST">
+                                            {{-- </form> --}}
+                                        </div>
+                                        <div class="mb-3 bg-grey">
+                                            <h5 class="col-xl-10 mx-auto">Shipping Address</h5>
+                                        </div>
+                                        <div class="col-xl-10 mx-auto">
+                                            {{-- <form method="POST"> --}}
                                             @csrf
                                             <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Street address line 1 <span
                                                             class="required">*</span></label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" name="shipping_street_address"
+                                                        value="{{ old('shipping_street_address') }}" class="form-control"
                                                         placeholder="Street, 6001 W Waco Dr #314">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Suite, building, department etc <span
                                                             class="required">*</span></label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" name="shipping_department"
+                                                        value="{{ old('shipping_department') }}" class="form-control"
                                                         placeholder="Suite, building, department etc">
                                                 </div>
                                             </div>
@@ -229,7 +247,7 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">City <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-city">
+                                                    <select class="form-control select-city" name="shipping_city_id">
                                                         <option value=""></option>
                                                         @foreach ($city as $city_data)
                                                             <option value="{{ $city_data->id }}">{{ $city_data->name }}
@@ -240,7 +258,7 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">state <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-state">
+                                                    <select class="form-control select-state" name="shipping_state_id">
                                                         <option value=""></option>
                                                         @foreach ($state as $state_data)
                                                             <option value="{{ $state_data->id }}">{{ $state_data->name }}
@@ -253,7 +271,8 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Country/Region* <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-country">
+                                                    <select class="form-control select-country"
+                                                        name="shipping_country_id">
                                                         <option value=""></option>
                                                         @foreach ($country as $country_data)
                                                             <option value="{{ $country_data->id }}">
@@ -263,7 +282,9 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Postal/zip code</label>
-                                                    <input type="text" class="form-control" placeholder="147001">
+                                                    <input type="text" name="shipping_zip_code"
+                                                        value="{{ old('shipping_zip_code') }}" class="form-control"
+                                                        placeholder="147001">
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="mt-4 form-check">
@@ -275,25 +296,27 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="bg-grey">
-                                        <h5 class="col-xl-10 mx-auto">Billing Address</h5>
-                                    </div>
-                                    <div class="col-xl-10 my-4 mx-auto">
-                                        <form action="{{Url('customer-register')}}" method="POST">
+                                            {{-- </form> --}}
+                                        </div>
+                                        <div class="bg-grey">
+                                            <h5 class="col-xl-10 mx-auto">Billing Address</h5>
+                                        </div>
+                                        <div class="col-xl-10 my-4 mx-auto">
+                                            {{-- <form action="{{Url('customer-register')}}" method="POST"> --}}
                                             @csrf
                                             <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Street address line 1 <span
                                                             class="required">*</span></label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" name="billing_street_address"
+                                                        value="{{ old('billing_street_address') }}" class="form-control"
                                                         placeholder="Street, 6001 W Waco Dr #314">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Suite, building, department etc <span
                                                             class="required">*</span></label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" name="billing_department"
+                                                        value="{{ old('billing_department') }}" class="form-control"
                                                         placeholder="Suite, building, department etc">
                                                 </div>
                                             </div>
@@ -301,7 +324,7 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">City <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-city">
+                                                    <select class="form-control select-city" name="billing_city_id">
                                                         <option value=""></option>
                                                         @foreach ($city as $city_data)
                                                             <option value="{{ $city_data->id }}">{{ $city_data->name }}
@@ -312,7 +335,7 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">state <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-state">
+                                                    <select class="form-control select-state" name="billing_state_id">
                                                         <option value=""></option>
                                                         @foreach ($state as $state_data)
                                                             <option value="{{ $state_data->id }}">{{ $state_data->name }}
@@ -325,7 +348,7 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Country/Region* <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-country">
+                                                    <select class="form-control select-country" name="billing_country_id">
                                                         <option value=""></option>
                                                         @foreach ($country as $country_data)
                                                             <option value="{{ $country_data->id }}">
@@ -335,18 +358,19 @@
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Postal/zip code</label>
-                                                    <input type="text" class="form-control" placeholder="147001">
+                                                    <input type="text" class="form-control" name="billing_zip_code"
+                                                        value="{{ old('billing_zip_code') }}" placeholder="147001">
                                                 </div>
                                             </div>
-                                        </form>
+                                            {{-- </form> --}}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="vendor-section d-none">
-                                    <div class="bg-grey">
-                                        <h5 class="col-xl-10 mx-auto">Business Information</h5>
-                                    </div>
-                                    <div class="my-4 col-xl-10 mx-auto">
-                                        <form method="POST">
+                                    <div class="vendor-section d-none">
+                                        <div class="bg-grey">
+                                            <h5 class="col-xl-10 mx-auto">Business Information</h5>
+                                        </div>
+                                        <div class="my-4 col-xl-10 mx-auto">
+                                            {{-- <form method="POST"> --}}
                                             @csrf
                                             <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
@@ -391,13 +415,13 @@
                                                         placeholder="Business Number" id="businessNumber2">
                                                 </div>
                                             </div>
-                                        </form>
-                                    </div>
-                                    <div class="bg-grey">
-                                        <h5 class="col-xl-10 mx-auto">Billing Address</h5>
-                                    </div>
-                                    <div class="col-xl-10 my-4 mx-auto">
-                                        <form method="POST">
+                                            {{-- </form> --}}
+                                        </div>
+                                        <div class="bg-grey">
+                                            <h5 class="col-xl-10 mx-auto">Billing Address</h5>
+                                        </div>
+                                        <div class="col-xl-10 my-4 mx-auto">
+                                            {{-- <form method="POST"> --}}
                                             @csrf
                                             <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
@@ -406,7 +430,8 @@
                                                         placeholder="Street, 6001 W Waco Dr #314">
                                                 </div>
                                                 <div class="form-group col-md-6">
-                                                    <label class="text-uppercase">Suite, building, department etc</label>
+                                                    <label class="text-uppercase">Suite, building, department
+                                                        etc</label>
                                                     <input type="text" class="form-control"
                                                         placeholder="Suite, building, department etc">
                                                 </div>
@@ -439,24 +464,24 @@
                                                     <input type="text" class="form-control" placeholder="147001">
                                                 </div>
                                             </div>
-                                        </form>
+                                            {{-- </form> --}}
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="border-segregate">
-                                    <div class="col-xl-10 mx-auto">
-                                        <div class="row mx-auto py-2">
-                                            <div class="form-group my-4 text-end">
-                                                <a href="" class="font-600">Back</a>
-                                                <button class="ms-5 common_btn continue_btn" href=""
-                                                    type="submit">Continue</button>
+                                    <div class="border-segregate">
+                                        <div class="col-xl-10 mx-auto">
+                                            <div class="row mx-auto py-2">
+                                                <div class="form-group my-4 text-end">
+                                                    <a href="" class="font-600">Back</a>
+                                                    {{-- <button class="ms-5 common_btn continue_btn">Continue</button> --}}
+                                                    <button class="ms-5 common_btn">Register</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="tab-pane fade" id="prodInfo" role="tabpanel" aria-labelledby="prodInfo-tab">
-                                <div class="my-4 col-xl-10 mx-auto">
-                                    <form method="POST">
+                                <div class="tab-pane fade" id="prodInfo" role="tabpanel"
+                                    aria-labelledby="prodInfo-tab">
+                                    <div class="my-4 col-xl-10 mx-auto">
                                         @csrf
                                         <div class="row mb-3 mx-auto">
                                             <p>Please select the product categories you will be listing.</p>
@@ -485,22 +510,24 @@
                                                 </form>
                                             </div>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="border-segregate">
-                                    <div class="col-xl-10 mx-auto">
-                                        <div class="row mx-auto py-2">
-                                            <div class="form-group my-4 text-end">
-                                                <a href="" class="font-600">Back</a>
-                                                <button class="ms-5 common_btn" href=""
-                                                    type="submit">Register</button>
+                                    </div>
+                                    <div class="border-segregate">
+                                        <div class="col-xl-10 mx-auto">
+                                            <div class="row mx-auto py-2">
+                                                <div class="form-group my-4 text-end">
+                                                    <a href="" class="font-600">Back</a>
+                                                    <button class="ms-5 common_btn" href=""
+                                                        type="submit">Register</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
-                        </div>
+                        </form>
                     </div>
+
                 </div>
                 <div class="col-xl-4 px-0 col-md-6">
                     <div class="position-relative side-section">
@@ -526,8 +553,8 @@
         </div>
     </section>
     <!--============================
-               LOGIN/REGISTER PAGE END
-            ==============================-->
+                               LOGIN/REGISTER PAGE END
+                            ==============================-->
 @endsection
 @section('js')
     <script>

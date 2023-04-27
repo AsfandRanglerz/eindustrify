@@ -29,7 +29,7 @@
                                     <th >{{__('Last Name')}}</th>
                                     <th >{{__('admin.Email')}}</th>
                                     <th >{{__('admin.Phone')}}</th>
-                                    <th >{{__('admin.Image')}}</th>
+                                    {{-- <th >{{__('admin.Image')}}</th> --}}
                                     <th >{{__('admin.Status')}}</th>
                                     <th >{{__('admin.Action')}}</th>
                                   </tr>
@@ -42,11 +42,11 @@
                                         <td>{{ $customer->last_name }}</td>
                                         <td>{{ $customer->email }}</td>
                                         <td>{{ $customer->phone }}</td>
-                                        <td>
+                                        {{-- <td>
                                             @if ($customer->image)
                                             <img src="{{ asset($customer->image) }}" class="rounded-circle" alt="" width="80px">
                                             @endif
-                                        </td>
+                                        </td> --}}
                                         <td>
                                             @if($customer->status == 1)
                                             <a href="javascript:;" onclick="manageCustomerStatus({{ $customer->id }})">

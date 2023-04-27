@@ -23,17 +23,21 @@
                     <div class="card-body">
                       <div class="table-responsive table-invoice">
                         <table class="table table-striped table-bordered">
-                            <tr>
+                            {{-- <tr>
                                 <td>{{__('admin.Image')}}</td>
                                 <td>
                                     @if ($customer->image)
                                     <img src="{{ asset($customer->image) }}" class="rounded-circle" alt="" width="80px">
                                     @endif
                                 </td>
+                            </tr> --}}
+                            <tr>
+                                <td>{{__('First Name')}}</td>
+                                <td>{{ $customer->first_name }}</td>
                             </tr>
                             <tr>
-                                <td>{{__('admin.Name')}}</td>
-                                <td>{{ $customer->name }}</td>
+                                <td>{{__('Last Name')}}</td>
+                                <td>{{ $customer->last_name }}</td>
                             </tr>
                             <tr>
                                 <td>{{__('admin.Email')}}</td>
@@ -44,25 +48,70 @@
                                 <td>{{ $customer->phone }}</td>
                             </tr>
                             <tr>
-                                <td>{{__('admin.Address')}}</td>
-                                <td>{{ $customer->address }}</td>
+                                <td>{{__('Bussiness Name')}}</td>
+                                <td>{{ $customer->businessInformation->name }}</td>
                             </tr>
                             <tr>
-                                <td>{{__('admin.Zip Code')}}</td>
-                                <td>{{ $customer->zip_code }}</td>
+                                <td>{{__('Bussiness Phone')}}</td>
+                                <td>{{ $customer->businessInformation->phone }}</td>
                             </tr>
                             <tr>
-                                <td>{{__('admin.City')}}</td>
-                                <td>{{ $customer->city ? $customer->city->name : '' }}</td>
+                                <td>{{__('Bussiness Tax Id')}}</td>
+                                <td>{{ $customer->businessInformation->tax_id }}</td>
                             </tr>
                             <tr>
-                                <td>{{__('admin.State')}}</td>
-                                <td>{{ $customer->state ? $customer->state->name : '' }}</td>
+                                <td>{{__('Bussiness Industry Type')}}</td>
+                                <td>{{ $customer->businessInformation->industry_type }}</td>
                             </tr>
                             <tr>
-                                <td>{{__('admin.Country')}}</td>
-                                <td>{{ $customer->country ? $customer->country->name : '' }}</td>
+                                <td>{{__('Shipping Address')}}</td>
+                                <td>{{ $customer->shippingAddress->street_address }}</td>
                             </tr>
+                            <tr>
+                                <td>{{__('Shipping Department')}}</td>
+                                <td>{{ $customer->shippingAddress->department }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{__('Shipping Country')}}</td>
+                                <td>{{ $customer->shippingAddress->country->name }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{__('Shipping State')}}</td>
+                                <td>{{ $customer->shippingAddress->countryState->name }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{__('Shipping City')}}</td>
+                                <td>{{ $customer->shippingAddress->city->name }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{__('Shipping Zip Code')}}</td>
+                                <td>{{ $customer->shippingAddress->zip_code }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{__('Billing Address')}}</td>
+                                <td>{{ $customer->billingAddress->street_address }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{__('Billing Department')}}</td>
+                                <td>{{ $customer->billingAddress->department }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{__('Billing Country')}}</td>
+                                <td>{{ $customer->billingAddress->country->name }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{__('Billing State')}}</td>
+                                <td>{{ $customer->billingAddress->countryState->name }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{__('Billing City')}}</td>
+                                <td>{{ $customer->billingAddress->city->name }}</td>
+                            </tr>
+                            <tr>
+                                <td>{{__('Billing Zip Code')}}</td>
+                                <td>{{ $customer->billingAddress->zip_code }}</td>
+                            </tr>
+
                             <tr>
                                 <td>{{__('admin.Status')}}</td>
                                 <td>
