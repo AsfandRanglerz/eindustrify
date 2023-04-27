@@ -921,8 +921,7 @@
                             <h5 class="text-white mb-lg-4 mb-0">{{ $footer->third_column }}</h5>
                             <ul class="wsus__footer_menu">
                                 @foreach ($footerLinks->where('column',3) as $footerLink)
-                                <li><a href="" class="text-white">{{ $footerLink->title }}</a></li>
-                                {{-- <li><a href="{{ $footerLink->link }}" class="text-white">{{ $footerLink->title }}</a></li> --}}
+                                <li><a href="{{ $footerLink->link }}" class="text-white">{{ $footerLink->title }}</a></li>
                                 @endforeach
                             </ul>
                         </div>

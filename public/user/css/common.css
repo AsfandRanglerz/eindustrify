@@ -127,6 +127,18 @@ body .pl-pr-padding {
     text-transform: inherit!important;
 }
 
+.text-underline {
+    text-decoration: underline!important;
+}
+
+.list-style-auto {
+    list-style: auto!important;
+}
+
+.list-style-disc {
+    list-style: disc!important;
+}
+
 select,
 input {
     text-overflow: ellipsis;

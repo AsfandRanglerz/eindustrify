@@ -660,8 +660,9 @@ Route::group(['as'=> 'admin.', 'prefix' => 'admin'],function (){
 
 });
     // Route::view('register', 'register');
+    Route::view('copyright-policy', 'copyright_policy');
+    Route::view('terms-registration', 'terms_registration');
+    Route::view('sales-site-agreement', 'sales_site_agreement');
+    Route::view('terms-and-conditions', 'terms_conditions');
 });
 // end admin routes
-
-
-

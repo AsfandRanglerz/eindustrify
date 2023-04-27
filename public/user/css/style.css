@@ -10578,6 +10578,26 @@ textarea::placeholder {
     color: var(--red-theme);
 }
 
+.dynamic-pg .banner-section {
+    top: 0;
+    padding-top: 55px;
+    padding-left: 95px;
+}
+
+.dynamic-pg .banner-section .heading {
+    margin-top: 98px;
+    color: #FFF;
+}
+
+.dynamic-pg .breadcrumb .breadcrumb-item.active {
+    color: #FFF!important;
+}
+
+.dynamic-pg .breadcrumb .breadcrumb-item,
+.dynamic-pg .breadcrumb-item+.breadcrumb-item::before {
+    color: #dee2e6b5!important;
+}
+
 @media (min-width: 1200px) {
     .container, .container-lg, .container-md, .container-sm, .container-xl {
         max-width: 1225px;
@@ -10641,6 +10661,23 @@ textarea::placeholder {
     .footer-images-section img[alt="footer-img-5"] {
         width: 120px;
     }
+    header {
+        display: none;
+    }
+    .dynamic-pg .banner-section {
+        padding-left: 35px;
+    }
+    .dynamic-pg .banner-section .heading {
+        margin-top: 8px;
+    }
+}
+@media (max-width: 767px) {
+    .dynamic-pg .banner-section {
+        padding-top: 30px;
+    }
+    .dynamic-pg .banner-section .heading {
+        padding-top: 0;
+    }
 }
 @media (max-width: 575px) {
     .product-cat-content {
@@ -10652,6 +10689,13 @@ textarea::placeholder {
     }
     .wsus__single_slider {
         height: 205px!important;
+    }
+    .dynamic-pg .banner-section {
+        padding-left: 25px;
+    }
+    .dynamic-pg .banner-img {
+        height: 150px;
+        object-fit: cover;
     }
 }
 @media (max-width: 315px) {
