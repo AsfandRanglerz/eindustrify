@@ -170,7 +170,7 @@
                                         <div class="col-xl-10 mx-auto">
                                             <div class="row mx-auto py-2">
                                                 <div class="form-group my-4 text-end">
-                                                    <button class="common_btn continue_btn">Continue</button>
+                                                    <a href="#" class="common_btn continue_btn">Continue</a>
                                                 </div>
                                             </div>
                                         </div>

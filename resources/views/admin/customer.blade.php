@@ -15,7 +15,7 @@
           </div>
 
           <div class="section-body">
-              <a href="{{ route('admin.send-email-to-all-customer') }}" class="btn btn-primary">{{__('admin.Send email to all user')}}</a>
+              {{-- <a href="{{ route('admin.send-email-to-all-customer') }}" class="btn btn-primary">{{__('admin.Send email to all user')}}</a> --}}
             <div class="row mt-4">
                 <div class="col">
                   <div class="card">
@@ -64,7 +64,7 @@
 
                                         <a href="{{ route('admin.customer-show',$customer->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
 
-                                        <a href="javascript:;" data-toggle="modal" data-target="#sendEmailModal-{{ $customer->id }}" class="btn btn-success btn-sm"><i class="far fa-envelope" aria-hidden="true"></i></a>
+                                        {{-- <a href="javascript:;" data-toggle="modal" data-target="#sendEmailModal-{{ $customer->id }}" class="btn btn-success btn-sm"><i class="far fa-envelope" aria-hidden="true"></i></a> --}}
 
                                         @php
                                             $existOrder = $orders->where('user_id',$customer->id)->count();
