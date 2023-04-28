@@ -130,5 +130,8 @@ class CustomerController extends Controller
         $notification = array('messege'=>$notification,'alert-type'=>'success');
         return redirect()->back()->with($notification);
     }
+    public function addCustomer(){
+        return view('admin.create-customer');
+    }
 
 }

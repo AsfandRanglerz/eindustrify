@@ -16,7 +16,8 @@
 
           <div class="section-body">
               {{-- <a href="{{ route('admin.send-email-to-all-customer') }}" class="btn btn-primary">{{__('admin.Send email to all user')}}</a> --}}
-            <div class="row mt-4">
+              <a href="{{ route('admin.add-customer') }}" class="btn btn-primary"><i class="fas fa-plus"></i> {{__('admin.Add New')}}</a>
+              <div class="row mt-4">
                 <div class="col">
                   <div class="card">
                     <div class="card-body">
