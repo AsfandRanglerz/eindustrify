@@ -1,16 +1,16 @@
 @extends('admin.master_layout')
 @section('title')
-<title>{{__('Create Customer')}}</title>
+<title>{{__('Update Customer')}}</title>
 @endsection
 @section('admin-content')
       <!-- Main Content -->
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>{{__('Create Customer')}}</h1>
+            <h1>{{__('Update Customer')}}</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('admin.customer-list') }}">{{__('admin.Customer List')}}</a></div>
-              <div class="breadcrumb-item">{{__('Create Customer')}}</div>
+              <div class="breadcrumb-item">{{__('Update Customer')}}</div>
             </div>
           </div>
 
@@ -20,24 +20,25 @@
                 <div class="col-12">
                   <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('admin.create-customer') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('admin.update-customer') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
+                                <input type="hidden" name="id" value="{{$data->id}}">
                                 <div class="form-group col-12">
                                     <label>{{__('First Name')}} <span class="text-danger">*</span></label>
-                                    <input type="text" class="form-control"  name="first_name" placeholder="First Name">
+                                    <input type="text" class="form-control"  name="first_name" placeholder="First Name" value="{{$data->first_name}}">
                                 </div>
                                 <div class="form-group col-12">
                                     <label>{{__('Last Name')}} <span class="text-danger">*</span></label>
-                                    <input type="text" id="name" class="form-control"  name="last_name" placeholder="Last Name">
+                                    <input type="text" id="name" class="form-control"  name="last_name" placeholder="Last Name" value="{{$data->last_name}}">
                                 </div>
                                 <div class="form-group col-12">
                                     <label>{{__('Email Address')}} <span class="text-danger">*</span></label>
-                                    <input type="email" id="email" class="form-control"  name="email" placeholder="Example@gmail.com">
+                                    <input type="email" id="email" class="form-control"  name="email" placeholder="Example@gmail.com" value="{{$data->email}}">
                                 </div>
                                 <div class="form-group col-12">
                                     <label>{{__('Phone Number')}} <span class="text-danger">*</span></label>
-                                    <input type="tel" id="email" class="form-control"  name="phone" placeholder="92xxxxxxxxxx">
+                                    <input type="tel" id="email" class="form-control"  name="phone" placeholder="92xxxxxxxxxx" value="{{$data->phone}}">
                                 </div>
                                 {{-- <div class="form-group col-12">
                                     <label>{{__('admin.Status')}} <span class="text-danger">*</span></label>

@@ -481,7 +481,10 @@ Route::group(['as'=> 'admin.', 'prefix' => 'admin'],function (){
 
     Route::get('customer-list',[CustomerController::class,'index'])->name('customer-list');
     Route::get('customer-show/{id}',[CustomerController::class,'show'])->name('customer-show');
+    Route::get('customer-edit/{id}',[CustomerController::class,'edit'])->name('customer-edit');
+    Route::post('update-customer',[CustomerController::class,'update'])->name('update-customer');
     Route::get('add-customer',[CustomerController::class,'addCustomer'])->name('add-customer');
+    Route::post('create-customer',[CustomerController::class,'createCustomer'])->name('create-customer');
     Route::put('customer-status/{id}',[CustomerController::class,'changeStatus'])->name('customer-status');
     Route::delete('customer-delete/{id}',[CustomerController::class,'destroy'])->name('customer-delete');
     Route::get('pending-customer-list',[CustomerController::class,'pendingCustomerList'])->name('pending-customer-list');

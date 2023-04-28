@@ -131,6 +131,7 @@ class CustomerController extends Controller
         $notification = trans('admin_validation.Email Send Successfully');
         return response()->json(['notification' => $notification], 200);
     }
-   
 
+
+   
 }

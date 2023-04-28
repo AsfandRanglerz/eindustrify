@@ -54,12 +54,14 @@
                                             <td>{{ __('admin.Phone') }}</td>
                                             <td>{{ $customer->phone }}</td>
                                         </tr>
+                                        @if(isset($customer->businessInformation))
                                         <tr>
                                             <td>
                                                 <h4>Bussiness Information</h4>
                                             </td>
                                             <td></td>
                                         </tr>
+
                                         <tr>
                                             <td>{{ __('Bussiness Name') }}</td>
                                             <td>{{ $customer->businessInformation->name }}</td>
@@ -76,12 +78,15 @@
                                             <td>{{ __('Bussiness Industry Type') }}</td>
                                             <td>{{ $customer->businessInformation->industry_type }}</td>
                                         </tr>
+                                        @endif
+                                        @if(isset($customer->shippingAddress))
                                         <tr>
                                             <td>
                                                 <h4>Shipping Address</h4>
                                             </td>
                                             <td></td>
                                         </tr>
+
                                         <tr>
                                             <td>{{ __('Shipping Address') }}</td>
                                             <td>{{ $customer->shippingAddress->street_address }}</td>
@@ -106,12 +111,15 @@
                                             <td>{{ __('Shipping Zip Code') }}</td>
                                             <td>{{ $customer->shippingAddress->zip_code }}</td>
                                         </tr>
+                                        @endif
+                                        @if(isset($customer->billingAddress))
                                         <tr>
                                             <td>
                                                 <h4>Billing Address</h4>
                                             </td>
                                             <td></td>
                                         </tr>
+
                                         <tr>
                                             <td>{{ __('Billing Address') }}</td>
                                             <td>{{ $customer->billingAddress->street_address }}</td>
@@ -136,7 +144,7 @@
                                             <td>{{ __('Billing Zip Code') }}</td>
                                             <td>{{ $customer->billingAddress->zip_code }}</td>
                                         </tr>
-
+                                        @endif
                                         <tr>
                                             <td>{{ __('admin.Status') }}</td>
                                             <td>

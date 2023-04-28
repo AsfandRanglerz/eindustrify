@@ -2,21 +2,26 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use File;
+use Mail;
+use Image;
 use App\Models\User;
-use App\Models\BannerImage;
 use App\Models\Order;
+use App\Models\Wishlist;
+use App\Mail\SendPassword;
+use App\Helpers\MailHelper;
+use App\Models\BannerImage;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Models\ProductReport;
 use App\Models\ProductReview;
-use App\Models\ShippingAddress;
 use App\Models\BillingAddress;
-use App\Models\Wishlist;
-use App\Helpers\MailHelper;
-use Mail;
+use App\Mail\AccountActivation;
+use App\Models\ShippingAddress;
 use App\Mail\SendSingleSellerMail;
-use Image;
-use File;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+
 class CustomerController extends Controller
 {
     public function __construct()
@@ -76,10 +81,18 @@ class CustomerController extends Controller
         if($customer->status == 1){
             $customer->status = 0;
             $customer->save();
+            $data['name'] = $customer->first_name;
+            $data['status'] = $customer->status;
+            $data['subject']= 'Account Dectivation';
+            Mail::to($customer->email)->send(new AccountActivation($data));
             $message = trans('admin_validation.Inactive Successfully');
         }else{
             $customer->status = 1;
             $customer->save();
+            $data['name'] = $customer->first_name;
+            $data['status'] = $customer->status;
+            $data['subject']= 'Account Activation';
+            Mail::to($customer->email)->send(new AccountActivation($data));
             $message = trans('admin_validation.Active Successfully');
         }
         return response()->json($message);
@@ -133,5 +146,37 @@ class CustomerController extends Controller
     public function addCustomer(){
         return view('admin.create-customer');
     }
+    public function createCustomer(Request $request){
+
+
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+        ]);
+        $password = Str::random(8);
+        $data = $request->only(['first_name', 'last_name', 'email', 'phone']);
+        $data['password'] = Hash::make($password);
+        $user = User::create($data);
+        $data['email'] = $user->email;
+        $data['password'] = $password;
+        Mail::to($request->email)->send(new SendPassword($data));
+        $notification = trans('Customer Register Successfully');
+        $notification = array('messege'=>$notification,'alert-type'=>'success');
+        return redirect('admin/pending-customer-list')->with($notification);
+     }
+
+     public function edit($id){
+        $data = User::find($id);
+        return view('admin.edit-customer',compact('data'));
+     }
+     public function update(Request $request){
+        $data = $request->only(['first_name', 'last_name', 'email', 'phone']);
+        User::find($request->id)->update($data);
+        $notification = trans('Customer Updated Successfully');
+        $notification = array('messege'=>$notification,'alert-type'=>'success');
+        return redirect('admin/customer-list')->with($notification);
+     }
 
 }

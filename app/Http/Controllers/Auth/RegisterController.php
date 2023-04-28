@@ -125,7 +125,6 @@ class RegisterController extends Controller
     }
     public function customerRegister(Request $request)
     {
-        dd($request->all());
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',

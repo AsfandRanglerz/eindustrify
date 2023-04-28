@@ -76,7 +76,6 @@
                         </ul>
                         <form action="{{ Url('customer-register') }}" method="POST">
                             <div class="tab-content" id="authDataContent">
-
                                 <div class="tab-pane fade show active" id="contactInfo" role="tabpanel"
                                     aria-labelledby="contactInfo-tab">
                                     <div class="col-xl-10 mx-auto">
@@ -104,9 +103,6 @@
                                                 <input type="text" class="form-control" name="first_name"
                                                     value="{{ old('first_name') }}" placeholder="First Name">
                                             </div>
-                                            {{-- @error('first_name')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror --}}
                                             <div class="form-group col-md-6">
                                                 <label class="text-uppercase">Last Name <span
                                                         class="required">*</span></label>
@@ -515,18 +511,15 @@
                                             <div class="row mx-auto py-2">
                                                 <div class="form-group my-4 text-end">
                                                     <a href="" class="font-600">Back</a>
-                                                    <button class="ms-5 common_btn" href=""
-                                                        type="submit">Register</button>
+                                                    <button class="ms-5 common_btn">Register</button>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                         </form>
                     </div>
-
                 </div>
                 <div class="col-xl-4 px-0 col-md-6">
                     <div class="position-relative side-section">
