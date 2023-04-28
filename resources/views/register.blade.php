@@ -20,7 +20,6 @@
 
     .auth-container {
         border: 1px solid #CCCCCC;
-        border-radius: 20px;
     }
 
     .bg-grey {
@@ -532,7 +531,7 @@
                 <div class="col-xl-4 px-0 col-md-6">
                     <div class="position-relative side-section">
                         <img src="{{ asset('public/uploads/website-images/images/auth-side-img.jpg') }}"
-                            class="img-fluid w-100 rounded-side-img">
+                            class="img-fluid w-100">
                         <div class="position-absolute py-5 px-4 side-section-content">
                             <h3 class="text-white position-relative heading">Register today and you will be able to</h3>
                             <ul>
