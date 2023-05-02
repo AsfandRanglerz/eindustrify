@@ -1624,6 +1624,10 @@ body #wsus__banner .slick-dots li.slick-active button {
     background: #F2F2F2;
 }
 
+.grey-border {
+    border: 1px solid #C8C8C8;
+}
+
 .view-all {
     font-family: 'Inter';
     font-weight: 600;
