@@ -41,8 +41,8 @@
 </style>
 @section('public-content')
     <!--============================
-                               LOGIN/REGISTER PAGE START
-                            ==============================-->
+                                   LOGIN/REGISTER PAGE START
+                                ==============================-->
     <section id="wsus__login_register" class="py-5">
         <div class="container">
             <div class="row mx-auto">
@@ -545,8 +545,8 @@
         </div>
     </section>
     <!--============================
-                               LOGIN/REGISTER PAGE END
-                            ==============================-->
+                                   LOGIN/REGISTER PAGE END
+                                ==============================-->
 @endsection
 @section('js')
     <script>
