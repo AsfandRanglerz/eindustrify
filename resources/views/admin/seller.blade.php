@@ -7,16 +7,17 @@
       <div class="main-content">
         <section class="section">
           <div class="section-header">
-            <h1>{{__('admin.Seller List')}}</h1>
+            <h1>{{__('Vendor List')}}</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{__('admin.Dashboard')}}</a></div>
-              <div class="breadcrumb-item">{{__('admin.Seller List')}}</div>
+              <div class="breadcrumb-item">{{__('Vendor List')}}</div>
             </div>
           </div>
 
           <div class="section-body">
-              <a href="{{ route('admin.send-email-to-all-seller') }}" class="btn btn-primary">{{__('admin.Send email to all seller')}}</a>
-            <div class="row mt-4">
+              {{-- <a href="{{ route('admin.send-email-to-all-seller') }}" class="btn btn-primary">{{__('admin.Send email to all vendor')}}</a> --}}
+              <a href="{{ route('admin.add-vendor') }}" class="btn btn-primary"><i class="fas fa-plus"></i> {{__('admin.Add New')}}</a>
+              <div class="row mt-4">
                 <div class="col">
                   <div class="card">
                     <div class="card-body">
@@ -25,32 +26,36 @@
                             <thead>
                                 <tr>
                                     <th >{{__('admin.SN')}}</th>
-                                    <th >{{__('admin.Seller Name')}}</th>
+                                    <th >{{__('First Name')}}</th>
+                                    <th >{{__('Last Name')}}</th>
                                     <th >{{__('admin.Email')}}</th>
-                                    <th >{{__('admin.Image')}}</th>
+                                    <th >{{__('admin.Phone')}}</th>
+                                    {{-- <th >{{__('admin.Image')}}</th> --}}
                                     <th >{{__('admin.Status')}}</th>
                                     <th >{{__('admin.Action')}}</th>
                                   </tr>
                             </thead>
                             <tbody>
-                                @foreach ($sellers as $index => $seller)
+                                @foreach ($sellers as $index => $vendor)
                                     <tr>
                                         <td>{{ ++$index }}</td>
-                                        <td>{{ $seller->user->name }}</td>
-                                        <td>{{ $seller->user->email }}</td>
-                                        <td>
-                                            @if ($seller->user->image)
-                                            <img src="{{ asset($seller->user->image) }}" class="rounded-circle" alt="" width="80px">
+                                        <td>{{ $vendor->first_name }}</td>
+                                        <td>{{ $vendor->last_name }}</td>
+                                        <td>{{ $vendor->email }}</td>
+                                        <td>{{ $vendor->phone }}</td>
+                                        {{-- <td>
+                                            @if ($vendor->image)
+                                            <img src="{{ asset($vendor->user->image) }}" class="rounded-circle" alt="" width="80px">
                                             @endif
-                                        </td>
+                                        </td> --}}
                                         <td>
-                                            @if($seller->status == 1)
-                                            <a href="javascript:;" onclick="manageCustomerStatus({{ $seller->id }})">
+                                            @if($vendor->status == 1)
+                                            <a href="javascript:;" onclick="manageCustomerStatus({{ $vendor->id }})">
                                                 <input id="status_toggle" type="checkbox" checked data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.Inctive')}}" data-onstyle="success" data-offstyle="danger">
                                             </a>
 
                                             @else
-                                            <a href="javascript:;" onclick="manageCustomerStatus({{ $seller->id }})">
+                                            <a href="javascript:;" onclick="manageCustomerStatus({{ $vendor->id }})">
                                                 <input id="status_toggle" type="checkbox" data-toggle="toggle" data-on="{{__('admin.Active')}}" data-off="{{__('admin.InActive')}}" data-onstyle="success" data-offstyle="danger">
                                             </a>
 
@@ -58,16 +63,16 @@
                                         </td>
                                         <td>
 
-                                        <a href="{{ route('admin.seller-show',$seller->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        <a href="{{ route('admin.seller-show',$vendor->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
 
-                                        <a href="{{ route('admin.send-email-to-seller',$seller->id) }}" class="btn btn-success btn-sm"><i class="far fa-envelope" aria-hidden="true"></i></a>
-
+                                        {{-- <a href="{{ route('admin.send-email-to-seller',$vendor->id) }}" class="btn btn-success btn-sm"><i class="far fa-envelope" aria-hidden="true"></i></a> --}}
+                                        <a href="{{ route('admin.vendor-edit',$vendor->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
                                         @php
-                                            $existProduct = $products->where('vendor_id',$seller->id)->count();
+                                            $existProduct = $products->where('vendor_id',$vendor->id)->count();
                                         @endphp
 
                                         @if ($existProduct == 0)
-                                            <a href="javascript:;" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm" onclick="deleteData({{ $seller->id }})"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                            <a href="javascript:;" data-toggle="modal" data-target="#deleteModal" class="btn btn-danger btn-sm" onclick="deleteData({{ $vendor->id }})"><i class="fa fa-trash" aria-hidden="true"></i></a>
                                         @else
                                             <a href="javascript:;" data-toggle="modal" data-target="#canNotDeleteModal" class="btn btn-danger btn-sm" disabled><i class="fa fa-trash" aria-hidden="true"></i></a>
                                         @endif
