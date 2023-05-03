@@ -36,6 +36,10 @@
                                     <input type="text" placeholder="Type something.." class="form-control">
                                 </div>
                                 <div class="form-group mb-4">
+                                    <label class="text-uppercase">what would you like to see improved first?</label>
+                                    <input type="text" placeholder="Type something.." class="form-control">
+                                </div>
+                                <div class="form-group mb-4">
                                     <label class="text-uppercase">would you recommend eindustrify to a friend or a colleague?</label>
                                     <select name="" id="recomIndus" class="form-control">
                                         <option value=""></option>
