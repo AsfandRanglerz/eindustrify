@@ -1,6 +1,6 @@
 @extends('admin.master_layout')
 @section('title')
-<title>{{__('Create Customer')}}</title>
+<title>{{__('Create Vendor')}}</title>
 @endsection
 @section('admin-content')
       <!-- Main Content -->

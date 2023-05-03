@@ -5,16 +5,20 @@
 
 <div class="main-sidebar">
     <aside id="sidebar-wrapper">
-      <div class="sidebar-brand">
-        <a href="{{ route('admin.dashboard') }}"><img src="{{ asset('public/uploads/website-images/images/Eindustrify_final logo_white_landscape 1.png') }}" width="160" alt="logo"></a>
-      </div>
-      <div class="sidebar-brand sidebar-brand-sm">
-        <a href="{{ route('admin.dashboard') }}">{{ $setting->sidebar_sm_header }}</a>
-      </div>
-      <ul class="sidebar-menu">
-          <li class="{{ Route::is('admin.dashboard') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="fas fa-home"></i> <span>{{__('admin.Dashboard')}}</span></a></li>
+        <div class="sidebar-brand">
+            <a href="{{ route('admin.dashboard') }}"><img
+                    src="{{ asset('public/uploads/website-images/images/Eindustrify_final logo_white_landscape 1.png') }}"
+                    width="160" alt="logo"></a>
+        </div>
+        <div class="sidebar-brand sidebar-brand-sm">
+            <a href="{{ route('admin.dashboard') }}">{{ $setting->sidebar_sm_header }}</a>
+        </div>
+        <ul class="sidebar-menu">
+            <li class="{{ Route::is('admin.dashboard') ? 'active' : '' }}"><a class="nav-link"
+                    href="{{ route('admin.dashboard') }}"><i class="fas fa-home"></i>
+                    <span>{{ __('admin.Dashboard') }}</span></a></li>
 
-          {{-- <li class="nav-item dropdown {{ Route::is('admin.all-order') || Route::is('admin.order-show') || Route::is('admin.pending-order') || Route::is('admin.pregress-order') || Route::is('admin.delivered-order') ||  Route::is('admin.completed-order') || Route::is('admin.declined-order') || Route::is('admin.cash-on-delivery')  ? 'active' : '' }}">
+            {{-- <li class="nav-item dropdown {{ Route::is('admin.all-order') || Route::is('admin.order-show') || Route::is('admin.pending-order') || Route::is('admin.pregress-order') || Route::is('admin.delivered-order') ||  Route::is('admin.completed-order') || Route::is('admin.declined-order') || Route::is('admin.cash-on-delivery')  ? 'active' : '' }}">
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-shopping-cart"></i><span>{{__('admin.Orders')}}</span></a>
 
             <ul class="dropdown-menu">
@@ -32,32 +36,46 @@
             </ul>
           </li> --}}
 
-          <li class="nav-item dropdown {{ Route::is('admin.product-category.*') || Route::is('admin.product-sub-category.*') || Route::is('admin.product-child-category.*') ? 'active' : '' }}">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i><span>{{__('admin.Manage Categories')}}</span></a>
+            <li
+                class="nav-item dropdown {{ Route::is('admin.product-category.*') || Route::is('admin.product-sub-category.*') || Route::is('admin.product-child-category.*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-th-large"></i><span>{{ __('admin.Manage Categories') }}</span></a>
 
-            <ul class="dropdown-menu">
+                <ul class="dropdown-menu">
 
-              <li class="{{ Route::is('admin.product-category.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.product-category.index') }}">{{__('admin.Categories')}}</a></li>
+                    <li class="{{ Route::is('admin.product-category.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.product-category.index') }}">{{ __('admin.Categories') }}</a></li>
 
-              <li class="{{ Route::is('admin.product-sub-category.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.product-sub-category.index') }}">{{__('admin.Sub Categories')}}</a></li>
+                    <li class="{{ Route::is('admin.product-sub-category.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.product-sub-category.index') }}">{{ __('admin.Sub Categories') }}</a>
+                    </li>
 
-              <li class="{{ Route::is('admin.product-child-category.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.product-child-category.index') }}">{{__('admin.Child Categories')}}</a></li>
-            </ul>
-          </li>
+                    <li class="{{ Route::is('admin.product-child-category.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.product-child-category.index') }}">{{ __('admin.Child Categories') }}</a>
+                    </li>
+                </ul>
+            </li>
 
 
-          <li class="nav-item dropdown {{ Route::is('admin.product.*') || Route::is('admin.product-brand.*') || Route::is('admin.product-variant') || Route::is('admin.create-product-variant') || Route::is('admin.edit-product-variant') || Route::is('admin.product-gallery') || Route::is('admin.product-variant-item') || Route::is('admin.create-product-variant-item') || Route::is('admin.edit-product-variant-item') || Route::is('admin.product-review') || Route::is('admin.show-product-review') || Route::is('admin.seller-product') || Route::is('admin.seller-pending-product') || Route::is('admin.wholesale') || Route::is('admin.create-wholesale') || Route::is('admin.edit-wholesale') || Route::is('admin.product-highlight') ||  Route::is('admin.product-report') || Route::is('admin.show-product-report') ? 'active' : '' }}">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i><span>{{__('admin.Manage Products')}}</span></a>
+            <li
+                class="nav-item dropdown {{ Route::is('admin.product.*') || Route::is('admin.product-brand.*') || Route::is('admin.product-variant') || Route::is('admin.create-product-variant') || Route::is('admin.edit-product-variant') || Route::is('admin.product-gallery') || Route::is('admin.product-variant-item') || Route::is('admin.create-product-variant-item') || Route::is('admin.edit-product-variant-item') || Route::is('admin.product-review') || Route::is('admin.show-product-review') || Route::is('admin.seller-product') || Route::is('admin.seller-pending-product') || Route::is('admin.wholesale') || Route::is('admin.create-wholesale') || Route::is('admin.edit-wholesale') || Route::is('admin.product-highlight') || Route::is('admin.product-report') || Route::is('admin.show-product-report') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-th-large"></i><span>{{ __('admin.Manage Products') }}</span></a>
 
-            <ul class="dropdown-menu">
+                <ul class="dropdown-menu">
 
-            <li class="{{ Route::is('admin.product-brand.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.product-brand.index') }}">{{__('admin.Brands')}}</a></li>
+                    <li class="{{ Route::is('admin.product-brand.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.product-brand.index') }}">{{ __('admin.Brands') }}</a></li>
 
-            <li><a class="nav-link" href="{{ route('admin.product.create') }}">{{__('admin.Create Product')}}</a></li>
+                    <li><a class="nav-link"
+                            href="{{ route('admin.product.create') }}">{{ __('admin.Create Product') }}</a></li>
 
-            <li class="{{ Route::is('admin.product.*') || Route::is('admin.product-variant') || Route::is('admin.create-product-variant') || Route::is('admin.edit-product-variant') || Route::is('admin.product-gallery') || Route::is('admin.product-variant-item') || Route::is('admin.create-product-variant-item') || Route::is('admin.edit-product-variant-item') || Route::is('admin.wholesale') || Route::is('admin.create-wholesale') || Route::is('admin.edit-wholesale') || Route::is('admin.product-highlight') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.product.index') }}">{{__('admin.Products')}}</a></li>
+                    <li
+                        class="{{ Route::is('admin.product.*') || Route::is('admin.product-variant') || Route::is('admin.create-product-variant') || Route::is('admin.edit-product-variant') || Route::is('admin.product-gallery') || Route::is('admin.product-variant-item') || Route::is('admin.create-product-variant-item') || Route::is('admin.edit-product-variant-item') || Route::is('admin.wholesale') || Route::is('admin.create-wholesale') || Route::is('admin.edit-wholesale') || Route::is('admin.product-highlight') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.product.index') }}">{{ __('admin.Products') }}</a>
+                    </li>
 
-            {{-- <li class="{{ Route::is('admin.seller-product') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.seller-product') }}">{{__('admin.Seller Products')}}</a></li>
+                    {{-- <li class="{{ Route::is('admin.seller-product') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.seller-product') }}">{{__('admin.Seller Products')}}</a></li>
 
             <li class="{{ Route::is('admin.seller-pending-product') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.seller-pending-product') }}">{{__('admin.Seller Pending Products')}}</a></li>
 
@@ -67,42 +85,52 @@
               <li class="{{ Route::is('admin.product-report') || Route::is('admin.show-product-report') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.product-report') }}">{{__('admin.Product Report')}}</a></li> --}}
 
 
-            </ul>
-          </li>
+                </ul>
+            </li>
 
-          <li class="nav-item dropdown {{ Route::is('admin.country.*') || Route::is('admin.state.*') || Route::is('admin.city.*') ? 'active' : '' }}">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-map-marker-alt"></i><span>{{__('admin.Locations')}}</span></a>
+            <li
+                class="nav-item dropdown {{ Route::is('admin.country.*') || Route::is('admin.state.*') || Route::is('admin.city.*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-map-marker-alt"></i><span>{{ __('admin.Locations') }}</span></a>
 
-            <ul class="dropdown-menu">
-                <li class="{{ Route::is('admin.country.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.country.index') }}">{{__('admin.Country')}}</a></li>
-                <li class="{{ Route::is('admin.state.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.state.index') }}">{{__('admin.State')}}</a></li>
-                <li class="{{ Route::is('admin.city.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.city.index') }}">{{__('admin.City')}}</a></li>
+                <ul class="dropdown-menu">
+                    <li class="{{ Route::is('admin.country.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.country.index') }}">{{ __('admin.Country') }}</a></li>
+                    <li class="{{ Route::is('admin.state.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.state.index') }}">{{ __('admin.State') }}</a></li>
+                    <li class="{{ Route::is('admin.city.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.city.index') }}">{{ __('admin.City') }}</a></li>
 
-            </ul>
-          </li>
+                </ul>
+            </li>
 
-          <li class="nav-item dropdown {{ Route::is('admin.product-tax.*') || Route::is('admin.return-policy.*') || Route::is('admin.specification-key.*') || Route::is('admin.campaign.*') || Route::is('admin.campaign-product') || Route::is('admin.currency.*') || Route::is('admin.shipping.*') || Route::is('admin.coupon.*') || Route::is('admin.payment-method') ? 'active' : '' }}">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-shopping-cart"></i><span>{{__('admin.Ecommerce')}}</span></a>
+            <li
+                class="nav-item dropdown {{ Route::is('admin.product-tax.*') || Route::is('admin.return-policy.*') || Route::is('admin.specification-key.*') || Route::is('admin.campaign.*') || Route::is('admin.campaign-product') || Route::is('admin.currency.*') || Route::is('admin.shipping.*') || Route::is('admin.coupon.*') || Route::is('admin.payment-method') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-shopping-cart"></i><span>{{ __('admin.Ecommerce') }}</span></a>
 
-            <ul class="dropdown-menu">
-                {{-- <li class="{{ Route::is('admin.campaign.*') || Route::is('admin.campaign-product') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.campaign.index') }}">{{__('admin.Campaign')}}</a></li> --}}
+                <ul class="dropdown-menu">
+                    {{-- <li class="{{ Route::is('admin.campaign.*') || Route::is('admin.campaign-product') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.campaign.index') }}">{{__('admin.Campaign')}}</a></li> --}}
 
-                <li class="{{ Route::is('admin.coupon.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.coupon.index') }}">{{__('admin.Coupon')}}</a></li>
+                    <li class="{{ Route::is('admin.coupon.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.coupon.index') }}">{{ __('admin.Coupon') }}</a></li>
 
-                <li class="{{ Route::is('admin.product-tax.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.product-tax.index') }}">{{__('admin.Tax')}}</a></li>
+                    <li class="{{ Route::is('admin.product-tax.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.product-tax.index') }}">{{ __('admin.Tax') }}</a></li>
 
-                {{-- <li class="{{ Route::is('admin.return-policy.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.return-policy.index') }}">{{__('admin.Return Policy')}}</a></li> --}}
+                    {{-- <li class="{{ Route::is('admin.return-policy.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.return-policy.index') }}">{{__('admin.Return Policy')}}</a></li> --}}
 
-                {{-- <li class="{{ Route::is('admin.specification-key.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.specification-key.index') }}">{{__('admin.Specification Key')}}</a></li> --}}
+                    {{-- <li class="{{ Route::is('admin.specification-key.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.specification-key.index') }}">{{__('admin.Specification Key')}}</a></li> --}}
 
-                <li class="{{ Route::is('admin.shipping.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.shipping.index') }}">{{__('admin.Shipping')}}</a></li>
+                    <li class="{{ Route::is('admin.shipping.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.shipping.index') }}">{{ __('admin.Shipping') }}</a></li>
 
-                {{-- <li class="{{ Route::is('admin.payment-method') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.payment-method') }}">{{__('admin.Payment Method')}}</a></li> --}}
+                    {{-- <li class="{{ Route::is('admin.payment-method') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.payment-method') }}">{{__('admin.Payment Method')}}</a></li> --}}
 
-            </ul>
-          </li>
+                </ul>
+            </li>
 
-          {{-- <li class="{{ Route::is('admin.advertisement') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.advertisement') }}"><i class="fas fa-ad"></i> <span>{{__('admin.Advertisement')}}</span></a></li>
+            {{-- <li class="{{ Route::is('admin.advertisement') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.advertisement') }}"><i class="fas fa-ad"></i> <span>{{__('admin.Advertisement')}}</span></a></li>
 
           <li class="nav-item dropdown {{ Route::is('admin.withdraw-method.*') || Route::is('admin.seller-withdraw') || Route::is('admin.pending-seller-withdraw') || Route::is('admin.show-seller-withdraw')  ? 'active' : '' }}">
             <a href="#" class="nav-link has-dropdown"><i class="far fa-newspaper"></i><span>{{__('admin.Withdraw Payment')}}</span></a>
@@ -115,23 +143,68 @@
                 <li class="{{ Route::is('admin.pending-seller-withdraw') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.pending-seller-withdraw') }}">{{__('admin.Pending Seller Withdraw')}}</a></li>
 
             </ul>
-          </li>--}}
+          </li> --}}
 
-          <li class="nav-item dropdown {{  Route::is('admin.customer-list') || Route::is('admin.customer-show') || Route::is('admin.pending-customer-list') || Route::is('admin.seller-list') || Route::is('admin.seller-show') || Route::is('admin.pending-seller-list') || Route::is('admin.seller-shop-detail') || Route::is('admin.seller-reviews') || Route::is('admin.show-seller-review-details') || Route::is('admin.send-email-to-seller') || Route::is('admin.email-history') || Route::is('admin.product-by-seller') || Route::is('admin.send-email-to-all-seller') || Route::is('admin.send-email-to-all-customer') ? 'active' : '' }}">
-            <a href="#" class="nav-link has-dropdown"><i class="fas fa-user"></i><span>{{__('admin.Users')}}</span></a>
-            <ul class="dropdown-menu">
-                <li class="{{ Route::is('admin.customer-list') || Route::is('admin.customer-show') || Route::is('admin.send-email-to-all-customer') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.customer-list') }}">{{__('admin.Customer List')}}</a></li>
+            <li
+                class="nav-item dropdown {{ Route::is('admin.customer-list') || Route::is('admin.customer-show') || Route::is('admin.pending-customer-list') || Route::is('admin.seller-list') || Route::is('admin.seller-show') || Route::is('admin.pending-seller-list') || Route::is('admin.seller-shop-detail') || Route::is('admin.seller-reviews') || Route::is('admin.show-seller-review-details') || Route::is('admin.send-email-to-seller') || Route::is('admin.email-history') || Route::is('admin.product-by-seller') || Route::is('admin.send-email-to-all-seller') || Route::is('admin.send-email-to-all-customer') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-user"></i><span>{{ __('admin.Users') }}</span></a>
+                <ul class="dropdown-menu">
+                    <li
+                        class="{{ Route::is('admin.customer-list') || Route::is('admin.customer-show') || Route::is('admin.send-email-to-all-customer') ? 'active' : '' }}">
+                        <a class="nav-link"
+                            href="{{ route('admin.customer-list') }}">{{ __('admin.Customer List') }}</a></li>
 
-                <li class="{{ Route::is('admin.pending-customer-list') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.pending-customer-list') }}">{{__('admin.Pending Customers')}}</a></li>
+                    <li class="{{ Route::is('admin.pending-customer-list') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.pending-customer-list') }}">{{ __('admin.Pending Customers') }}</a>
+                    </li>
 
-                <li class="{{ Route::is('admin.seller-list') || Route::is('admin.seller-show') || Route::is('admin.seller-shop-detail') || Route::is('admin.seller-reviews') || Route::is('admin.show-seller-review-details') || Route::is('admin.send-email-to-seller') || Route::is('admin.email-history') || Route::is('admin.product-by-seller') || Route::is('admin.send-email-to-all-seller') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.seller-list') }}">{{__('Vendor List')}}</a></li>
+                    <li
+                        class="{{ Route::is('admin.seller-list') || Route::is('admin.seller-show') || Route::is('admin.seller-shop-detail') || Route::is('admin.seller-reviews') || Route::is('admin.show-seller-review-details') || Route::is('admin.send-email-to-seller') || Route::is('admin.email-history') || Route::is('admin.product-by-seller') || Route::is('admin.send-email-to-all-seller') ? 'active' : '' }}">
+                        <a class="nav-link" href="{{ route('admin.seller-list') }}">{{ __('Vendor List') }}</a></li>
 
-                <li class="{{ Route::is('admin.pending-seller-list') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.pending-seller-list') }}">{{__('Pending Vendors')}}</a></li>
+                    <li class="{{ Route::is('admin.pending-seller-list') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.pending-seller-list') }}">{{ __('Pending Vendors') }}</a></li>
 
-            </ul>
-          </li>
+                </ul>
+            </li>
+            <li
+                class="nav-item dropdown {{ Route::is('admin.copyright-policy') || Route::is('admin.privacy-policy') || Route::is('admin.terms-condition') || Route::is('admin.terms-registration') || Route::is('admin.sales-site') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-user"></i><span>{{ __('Pages') }}</span></a>
+                <ul class="dropdown-menu">
+                    <li
+                        class="{{ Route::is('admin.copyright-policy') || Route::is('admin.customer-show') ? 'active' : '' }}">
+                        <a class="nav-link"
+                            href="{{ route('admin.copyright-policy') }}">{{ __('CopyRight Policy') }}</a></li>
 
-          {{--<li class="nav-item dropdown {{ Route::is('admin.service.*') || Route::is('admin.maintainance-mode') || Route::is('admin.announcement') || Route::is('admin.mega-menu-category.*') || Route::is('admin.mega-menu-sub-category') || Route::is('admin.create-mega-menu-sub-category') || Route::is('admin.edit-mega-menu-sub-category') || Route::is('admin.mega-menu-banner') ||  Route::is('admin.slider.*') || Route::is('admin.home-page') || Route::is('admin.banner-image.index') || Route::is('admin.topbar-contact') || Route::is('admin.homepage-one-visibility') || Route::is('admin.cart-bottom-banner') || Route::is('admin.shop-page') || Route::is('admin.seo-setup') || Route::is('admin.menu-visibility') || Route::is('admin.product-detail-page') || Route::is('admin.default-avatar') || Route::is('admin.seller-conditions') ? 'active' : '' }}">
+                    <li class="{{ Route::is('admin.privacy-policy') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.privacy-policy') }}">{{ __('Privacy Policy') }}</a></li>
+
+                    <li
+                        class="{{ Route::is('admin.terms-condition') || Route::is('admin.terms-condition') || Route::is('admin.terms-condition') || Route::is('admin.seller-reviews') ? 'active' : '' }}">
+                        <a class="nav-link"
+                            href="{{ route('admin.terms-condition') }}">{{ __('Terms & Condition') }}</a></li>
+
+                    <li class="{{ Route::is('admin.terms-registration') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.terms-registration') }}">{{ __('Terms Of Registration') }}</a></li>
+
+                    <li class="{{ Route::is('admin.sales-site') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.sales-site') }}">{{ __('Sales Site') }}</a></li>
+
+                </ul>
+            </li>
+            <li class="nav-item dropdown {{ Route::is('admin.help-center') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-th-large"></i><span>{{ __('Help Center') }}</span></a>
+
+                <ul class="dropdown-menu">
+
+                    <li class="{{ Route::is('admin.help-center') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.help-center') }}">{{ __('Help Center') }}</a></li>
+                </ul>
+            </li>
+            {{-- <li class="nav-item dropdown {{ Route::is('admin.service.*') || Route::is('admin.maintainance-mode') || Route::is('admin.announcement') || Route::is('admin.mega-menu-category.*') || Route::is('admin.mega-menu-sub-category') || Route::is('admin.create-mega-menu-sub-category') || Route::is('admin.edit-mega-menu-sub-category') || Route::is('admin.mega-menu-banner') ||  Route::is('admin.slider.*') || Route::is('admin.home-page') || Route::is('admin.banner-image.index') || Route::is('admin.topbar-contact') || Route::is('admin.homepage-one-visibility') || Route::is('admin.cart-bottom-banner') || Route::is('admin.shop-page') || Route::is('admin.seo-setup') || Route::is('admin.menu-visibility') || Route::is('admin.product-detail-page') || Route::is('admin.default-avatar') || Route::is('admin.seller-conditions') ? 'active' : '' }}">
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-globe"></i><span>{{__('admin.Manage Website')}}</span></a>
 
             <ul class="dropdown-menu">
@@ -269,4 +342,4 @@
         </ul>
 
     </aside>
-  </div>
+</div>
