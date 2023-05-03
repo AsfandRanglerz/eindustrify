@@ -10416,8 +10416,8 @@ textarea::placeholder {
 
 .select2-container--default .select2-selection--single .select2-selection__placeholder,
 .select2-container .select2-selection--single .select2-selection__rendered {
-    font-family: 'Open Sans';
-    font-weight: 600!important;
+    font-weight: 500!important;
+    font-size: 14px!important;
 }
 
 .select2-container .select2-selection--single .select2-selection__rendered {
