@@ -5,16 +5,6 @@
 @section('meta')
     <meta name="description" content="Product Inquiry">
 @endsection
-<style>
-    .prod-sup-content .side-content-img {
-        width: 90px;
-        margin-right: 24px;
-    }
-    .prod-sup-content .side-content-text {
-        font-weight: bold;
-        font-size: 14px;
-    }
-</style>
 @section('public-content')
     <!--============================
         CUSTOM PAGES PAGE START

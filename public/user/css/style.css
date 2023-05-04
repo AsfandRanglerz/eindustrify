@@ -711,6 +711,16 @@ header {
     color: #fff;
 }
 
+.prod-sup-content .side-content-img {
+    width: 90px;
+    margin-right: 24px;
+}
+
+.prod-sup-content .side-content-text {
+    font-weight: bold;
+    font-size: 14px;
+}
+
 .wsus_menu_category_bar p span {
     margin-right: 4px;
 }
