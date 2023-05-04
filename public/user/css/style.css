@@ -707,7 +707,7 @@ header {
 
 .wsus_menu_category_bar p {
     text-transform: capitalize;
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
 }
 
@@ -885,7 +885,7 @@ header {
     -moz-transition: all linear 0.3s ease;
     -ms-transition: all linear 0.3s ease;
     -o-transition: all linear 0.3s ease;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 .wsus__menu_item li a i,
@@ -10506,6 +10506,7 @@ textarea::placeholder {
     color: #FFFFFF;
     border: 1px solid;
     padding: 8px 10px;
+    font-size: 14px;
 }
 
 .product-categories-dropdown {

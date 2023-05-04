@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-xl-6 col-lg-8 mx-auto">
                     <div class="mb-4 d-flex justify-content-center align-iems-center">
-                        <h3 class="ms-3">Customer Support</h3>
+                        <h3>Customer Support</h3>
                     </div>
                     <div class="grey-border rounded px-sm-5 px-3 py-sm-5 py-3">
                         <div class="px-sm-5">
