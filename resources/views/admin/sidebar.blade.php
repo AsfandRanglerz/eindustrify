@@ -153,7 +153,8 @@
                     <li
                         class="{{ Route::is('admin.customer-list') || Route::is('admin.customer-show') || Route::is('admin.send-email-to-all-customer') ? 'active' : '' }}">
                         <a class="nav-link"
-                            href="{{ route('admin.customer-list') }}">{{ __('admin.Customer List') }}</a></li>
+                            href="{{ route('admin.customer-list') }}">{{ __('admin.Customer List') }}</a>
+                    </li>
 
                     <li class="{{ Route::is('admin.pending-customer-list') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.pending-customer-list') }}">{{ __('admin.Pending Customers') }}</a>
@@ -161,7 +162,8 @@
 
                     <li
                         class="{{ Route::is('admin.seller-list') || Route::is('admin.seller-show') || Route::is('admin.seller-shop-detail') || Route::is('admin.seller-reviews') || Route::is('admin.show-seller-review-details') || Route::is('admin.send-email-to-seller') || Route::is('admin.email-history') || Route::is('admin.product-by-seller') || Route::is('admin.send-email-to-all-seller') ? 'active' : '' }}">
-                        <a class="nav-link" href="{{ route('admin.seller-list') }}">{{ __('Vendor List') }}</a></li>
+                        <a class="nav-link" href="{{ route('admin.seller-list') }}">{{ __('Vendor List') }}</a>
+                    </li>
 
                     <li class="{{ Route::is('admin.pending-seller-list') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.pending-seller-list') }}">{{ __('Pending Vendors') }}</a></li>
@@ -169,14 +171,15 @@
                 </ul>
             </li>
             <li
-                class="nav-item dropdown {{ Route::is('admin.copyright-policy') || Route::is('admin.privacy-policy') || Route::is('admin.terms-condition') || Route::is('admin.terms-registration') || Route::is('admin.sales-site') ? 'active' : '' }}">
+                class="nav-item dropdown {{ Route::is('admin.copyright-policy') || Route::is('admin.faq.*') || Route::is('admin.privacy-policy') || Route::is('admin.terms-condition') || Route::is('admin.terms-registration') || Route::is('admin.sales-site') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i
-                        class="fas fa-user"></i><span>{{ __('Pages') }}</span></a>
+                        class="fas fa-columns"></i><span>{{ __('Pages') }}</span></a>
                 <ul class="dropdown-menu">
                     <li
                         class="{{ Route::is('admin.copyright-policy') || Route::is('admin.customer-show') ? 'active' : '' }}">
                         <a class="nav-link"
-                            href="{{ route('admin.copyright-policy') }}">{{ __('CopyRight Policy') }}</a></li>
+                            href="{{ route('admin.copyright-policy') }}">{{ __('CopyRight Policy') }}</a>
+                    </li>
 
                     <li class="{{ Route::is('admin.privacy-policy') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.privacy-policy') }}">{{ __('Privacy Policy') }}</a></li>
@@ -184,13 +187,17 @@
                     <li
                         class="{{ Route::is('admin.terms-condition') || Route::is('admin.terms-condition') || Route::is('admin.terms-condition') || Route::is('admin.seller-reviews') ? 'active' : '' }}">
                         <a class="nav-link"
-                            href="{{ route('admin.terms-condition') }}">{{ __('Terms & Condition') }}</a></li>
+                            href="{{ route('admin.terms-condition') }}">{{ __('Terms & Condition') }}</a>
+                    </li>
 
                     <li class="{{ Route::is('admin.terms-registration') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.terms-registration') }}">{{ __('Terms Of Registration') }}</a></li>
 
                     <li class="{{ Route::is('admin.sales-site') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.sales-site') }}">{{ __('Sales Site') }}</a></li>
+                    <li class="{{ Route::is('admin.faq.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.faq.index') }}">{{ __('admin.FAQ') }}</a></li>
+
 
                 </ul>
             </li>
