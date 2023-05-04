@@ -695,5 +695,6 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
     Route::view('sales-site-agreement', 'sales_site_agreement');
     Route::view('terms-and-conditions', 'terms_conditions');
     Route::view('help-center', 'help_center');
+    Route::view('customer-support', 'customer_support');
 });
 // end admin routes

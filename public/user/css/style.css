@@ -3591,7 +3591,7 @@ img[alt="envelope"] + input[type="email"] {
     margin-bottom: 20px;
 }
 
-.form-check input {
+.form-check input[type=checkbox] {
     border-radius: 0 !important;
 }
 
