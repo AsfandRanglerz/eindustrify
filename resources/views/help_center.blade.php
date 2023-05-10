@@ -19,32 +19,33 @@
                     </div>
                     <div class="grey-border rounded px-sm-5 px-3 py-sm-5 py-3">
                         <div class="px-sm-5">
-                            <form action="">
+                            <form action="{{Url('help-center')}}" method="POST">
+                                @csrf
                                 <div class="form-group mb-4">
                                     <label class="text-uppercase">Email Adress <span class="required">*</span></label>
-                                    <input type="text" placeholder="Email Address" class="form-control">
+                                    <input type="text" name="email" placeholder="Email Address" class="form-control">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="text-uppercase">How often do you use eIndustrify?</label>
-                                    <select id="useIndus" class="form-control">
+                                    <select id="useIndus" class="form-control" name="use_industrify">
                                         <option value=""></option>
-                                        <option value="1">Everyday / once a week / never</option>
+                                        <option value="Everyday">Everyday / once a week / never</option>
                                     </select>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="text-uppercase">what is your most loved feature of eindustrify website?</label>
-                                    <input type="text" placeholder="Type something.." class="form-control">
+                                    <input type="text" name="love_feature" placeholder="Type something.." class="form-control">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="text-uppercase">what would you like to see improved first?</label>
-                                    <input type="text" placeholder="Type something.." class="form-control">
+                                    <input type="text" name="improve_first" placeholder="Type something.." class="form-control">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="text-uppercase">would you recommend eindustrify to a friend or a colleague?</label>
-                                    <select name="" id="recomIndus" class="form-control">
+                                    <select name="recommend_endustrify" id="recomIndus" class="form-control">
                                         <option value=""></option>
-                                        <option value="1">Yes</option>
-                                        <option value="2">No</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
                                     </select>
                                 </div>
                                 <div class="form-check d-flex justify-content-between">

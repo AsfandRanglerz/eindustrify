@@ -42,7 +42,7 @@ class BlogController extends Controller
             'description'=>'required',
             'category'=>'required',
             'status'=>'required',
-            'show_homepage'=>'required',
+            // 'show_homepage'=>'required',
         ];
         $customMessages = [
             'title.required' => trans('admin_validation.Title is required'),
@@ -81,7 +81,7 @@ class BlogController extends Controller
         $blog->description = $request->description;
         $blog->blog_category_id = $request->category;
         $blog->status = $request->status;
-        $blog->show_homepage = $request->show_homepage;
+        // $blog->show_homepage = $request->show_homepage;
         $blog->seo_title = $request->seo_title ? $request->seo_title : $request->title;
         $blog->seo_description = $request->seo_description ? $request->seo_description : $request->title;
         $blog->save();
@@ -108,7 +108,7 @@ class BlogController extends Controller
             'description'=>'required',
             'category'=>'required',
             'status'=>'required',
-            'show_homepage'=>'required',
+            // 'show_homepage'=>'required',
         ];
         $customMessages = [
             'title.required' => trans('admin_validation.Title is required'),
@@ -153,7 +153,7 @@ class BlogController extends Controller
         $blog->description = $request->description;
         $blog->blog_category_id = $request->category;
         $blog->status = $request->status;
-        $blog->show_homepage = $request->show_homepage;
+        // $blog->show_homepage = $request->show_homepage;
         $blog->seo_title = $request->seo_title ? $request->seo_title : $request->title;
         $blog->seo_description = $request->seo_description ? $request->seo_description : $request->title;
         $blog->save();

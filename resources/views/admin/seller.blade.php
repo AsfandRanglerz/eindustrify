@@ -63,7 +63,7 @@
                                         </td>
                                         <td>
 
-                                        <a href="{{ route('admin.seller-show',$vendor->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                        {{-- <a href="{{ route('admin.seller-show',$vendor->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-eye" aria-hidden="true"></i></a> --}}
 
                                         {{-- <a href="{{ route('admin.send-email-to-seller',$vendor->id) }}" class="btn btn-success btn-sm"><i class="far fa-envelope" aria-hidden="true"></i></a> --}}
                                         <a href="{{ route('admin.vendor-edit',$vendor->id) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit" aria-hidden="true"></i></a>
