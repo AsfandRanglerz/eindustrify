@@ -10597,6 +10597,23 @@ textarea::placeholder {
     color: var(--red-theme);
 }
 
+.dynamic-pg .help-content-block {
+    background: #F2F2F2;
+    padding: 40px 30px 55px;
+}
+
+.dynamic-pg .help-content-block .main-heading {
+    color: var(--red-theme);
+}
+
+.dynamic-pg .help-content-block .text {
+    font-size: 14px;
+}
+
+.dynamic-pg .section-below-banner {
+    margin-top: 5rem!important;
+}
+
 .dynamic-pg .banner-section {
     top: 0;
     padding-top: 55px;
@@ -10649,6 +10666,12 @@ textarea::placeholder {
 }
 
 @media (max-width: 991px) {
+    .dynamic-pg .section-below-banner {
+        margin-top: 2rem!important;
+    }
+    .dynamic-pg .help-content-block {
+        padding: 20px 16px 20px;
+    }
     .wsus__banner_content_inner_first {
         height: unset;
     }
