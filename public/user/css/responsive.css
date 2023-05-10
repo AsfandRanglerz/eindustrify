@@ -222,10 +222,6 @@
     font-size: 30px;
   }
 
-  .wsus__404_text {
-    margin-top: 50px;
-  }
-
   /* CART VIEW PAGE START */
   .wsus__cart_tab li a::after {
     font-size: 12px;
@@ -899,10 +895,6 @@
 
   .wsus__404_text h4 span {
     font-size: 30px;
-  }
-
-  .wsus__404_text {
-    margin-top: 50px;
   }
 
   /* CART VIEW PAGE START */

@@ -702,5 +702,9 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
     Route::view('help-center-reorder', 'help_center_reorder');
     Route::view('help-center-order-history', 'help_center_order_history');
     Route::view('help-center-online-invoices', 'help_center_online_invoices');
+    Route::view('help-center-cancellations', 'help_center_cancellations');
+    Route::view('help-center-checkout', 'help_center_checkout');
+    Route::view('help-center-management', 'help_center_management');
+    Route::view('help-center-settings', 'help_center_settings');
 });
 // end admin routes
