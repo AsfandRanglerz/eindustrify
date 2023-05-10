@@ -697,5 +697,10 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
     Route::view('help-center', 'help_center');
     Route::view('customer-support', 'customer_support');
     Route::view('product-inquiry', 'product_inquiry');
+    Route::view('help-center-quotes', 'help_center_quotes');
+    Route::view('help-center-lists', 'help_center_lists');
+    Route::view('help-center-reorder', 'help_center_reorder');
+    Route::view('help-center-order-history', 'help_center_order_history');
+    Route::view('help-center-online-invoices', 'help_center_online_invoices');
 });
 // end admin routes
