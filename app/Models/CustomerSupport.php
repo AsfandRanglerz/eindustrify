@@ -5,14 +5,17 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class HelpCenter extends Model
+class CustomerSupport extends Model
 {
     use HasFactory;
     protected $fillable = [
+        'localted_usa',
+        'subject',
+        'bussiness_name',
         'email',
-        'use_industrify',
-        'love_feature',
-        'improve_first',
-        'recommend_endustrify'
+        'first_name',
+        'last_name',
+        'phone',
+        'message'
     ];
 }

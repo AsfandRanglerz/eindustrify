@@ -18,40 +18,41 @@
                     </div>
                     <div class="grey-border rounded px-sm-5 px-3 py-sm-5 py-3">
                         <div class="px-sm-5">
-                            <form action="">
+                            <form action="{{Url('customer-support')}}" method="POST">
+                                @csrf
                                 <div class="form-group">
                                     <label class="d-block font-weight-400">Are you located in the U.S.? <span class="required">*</span></label>
                                     <div class="form-check form-check-inline d-inline-flex">
-                                        <input class="form-check-input me-2" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                        <input class="form-check-input me-2" type="radio" name="localted_usa" id="inlineRadio1" value="Yes">
                                         <label class="form-check-label" for="inlineRadio1">Yes</label>
                                     </div>
                                     <div class="form-check form-check-inline d-inline-flex">
-                                        <input class="form-check-input me-2" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                        <input class="form-check-input me-2" type="radio" name="localted_usa" id="inlineRadio2" value="No">
                                         <label class="form-check-label" for="inlineRadio2">No</label>
                                     </div>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="text-uppercase">Select Subject <span class="required">*</span></label>
-                                    <select id="selSubject" class="form-control">
+                                    <select id="selSubject" class="form-control" name="subject">
                                         <option value=""></option>
-                                        <option value="1">Sales and Orders</option>
+                                        <option value="Sales and Orders">Sales and Orders</option>
                                     </select>
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="text-uppercase">Business Name <span class="required">*</span></label>
-                                    <input type="text" placeholder="Business Name" class="form-control">
+                                    <input type="text" name="bussiness_name" placeholder="Business Name" class="form-control">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="text-uppercase">Email Address <span class="required">*</span></label>
-                                    <input type="email" placeholder="Email Address" class="form-control">
+                                    <input type="email" name="email" placeholder="Email Address" class="form-control">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="text-uppercase">First Name <span class="required">*</span></label>
-                                    <input type="text" placeholder="First Name" class="form-control">
+                                    <input type="text" name="first_name" placeholder="First Name" class="form-control">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="text-uppercase">Last Name <span class="required">*</span></label>
-                                    <input type="text" placeholder="Last Name" class="form-control">
+                                    <input type="text" name="last_name" placeholder="Last Name" class="form-control">
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="text-uppercase">Phone Number</label>
@@ -59,7 +60,7 @@
                                 </div>
                                 <div class="form-group mb-4">
                                     <label class="text-uppercase">Message <span class="required">*</span></label>
-                                    <textarea placeholder="Enter Text Here..." class="form-control" rows="5"></textarea>
+                                    <textarea placeholder="Enter Text Here..." name="message" class="form-control" rows="5"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn-bg">Send</button>

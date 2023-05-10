@@ -41,6 +41,7 @@ use App\Http\Controllers\Admin\FooterLinkController;
 use App\Http\Controllers\Admin\HelpCenterController;
 use App\Http\Controllers\Admin\ProductTaxController;
 use App\Http\Controllers\Admin\SubscriberController;
+use App\Http\Controllers\CustomersSupportController;
 use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\Admin\BlogCommentController;
 use App\Http\Controllers\Admin\ContactPageController;
@@ -63,37 +64,38 @@ use App\Http\Controllers\Admin\MenuVisibilityController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductVariantController;
 use App\Http\Controllers\Admin\SellerWithdrawController;
+
+
+
+
 use App\Http\Controllers\Admin\ShippingMethodController;
-
-
-
-
 use App\Http\Controllers\Admin\WithdrawMethodController;
 use App\Http\Controllers\Seller\SellerProductController;
 use App\Http\Controllers\Seller\SellerProfileController;
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\CampaignProductController;
+use App\Http\Controllers\Admin\CustomerSupportController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\FooterSocialLinkController;
 use App\Http\Controllers\Admin\SpecificationKeyController;
 use App\Http\Controllers\Seller\SellerDashboardController;
+
+
+
+
+
 use App\Http\Controllers\Admin\TermsAndConditionController;
 use App\Http\Controllers\Admin\EmailConfigurationController;
-
-
-
-
-
 use App\Http\Controllers\Admin\HomepageVisibilityController;
 use App\Http\Controllers\Admin\ProductSubCategoryController;
 use App\Http\Controllers\Admin\ProductVariantItemController;
 use App\Http\Controllers\Admin\MegaMenuSubCategoryController;
 use App\Http\Controllers\Seller\SellerProductReportControler;
+
+
+
 use App\Http\Controllers\Admin\ProductChildCategoryController;
 use App\Http\Controllers\Seller\SellerProductReviewController;
-
-
-
 use App\Http\Controllers\Seller\SellerProductGalleryController;
 use App\Http\Controllers\Seller\SellerProductVariantController;
 use App\Http\Controllers\Admin\Auth\AdminForgotPasswordController;
@@ -540,6 +542,9 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('help-center', [HelpCenterController::class, 'getHelpCenter'])->name('help-center');
         Route::delete('help-center-delete/{id}', [HelpCenterController::class, 'destroy'])->name('help-center-delete');
 
+        Route::get('customer-support', [CustomerSupportController::class, 'getCustomerSupport'])->name('customer-support');
+        Route::delete('customer-support-delete/{id}', [CustomerSupportController::class, 'destroy'])->name('customer-support-delete');
+
         Route::get('state-by-country/{id}', [SellerController::class, 'stateByCountry'])->name('state-by-country');
         Route::get('city-by-state/{id}', [SellerController::class, 'cityByState'])->name('city-by-state');
 
@@ -694,8 +699,10 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
     Route::view('terms-registration', 'terms_registration');
     Route::view('sales-site-agreement', 'sales_site_agreement');
     Route::view('terms-and-conditions', 'terms_conditions');
-    Route::view('help-center', 'help_center');
-    Route::view('customer-support', 'customer_support');
+    Route::get('help-center', [HomeController::class, 'helpCenter'])->name('help-center');
+    Route::post('help-center', [HomeController::class, 'storeHelpCenter']);
+    Route::get('customer-support', [CustomersSupportController::class, 'customerSupport'])->name('help-center');
+    Route::post('customer-support', [CustomersSupportController::class, 'storeCustomerSupport']);
     Route::view('product-inquiry', 'product_inquiry');
     Route::view('help-center-quotes', 'help_center_quotes');
     Route::view('help-center-lists', 'help_center_lists');

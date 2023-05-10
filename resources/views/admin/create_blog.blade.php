@@ -75,13 +75,13 @@
                                     <textarea name="description" id="" cols="30" rows="10" class="summernote">{{ old('description') }}</textarea>
                                 </div>
 
-                                <div class="form-group col-12">
+                                {{-- <div class="form-group col-12">
                                     <label>{{__('admin.Show Homepage ?')}}  <span class="text-danger">*</span></label>
                                     <select name="show_homepage" class="form-control">
                                         <option value="0">{{__('admin.No')}}</option>
                                         <option value="1">{{__('admin.Yes')}}</option>
                                     </select>
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group col-12">
                                     <label>{{__('admin.Status')}} <span class="text-danger">*</span></label>
