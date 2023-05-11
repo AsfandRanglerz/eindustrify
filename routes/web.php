@@ -552,6 +552,34 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('help-center-lists-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterLists'])->name('help-center-lists-edit');
         Route::post('update-help-center-lists', [HelpCenterPageController::class, 'updateHelpCenterLists'])->name('update-help-center-lists');
 
+        Route::get('help-center-order-history', [HelpCenterPageController::class, 'getHelpCenterOrderHistory'])->name('help-center-order-history');
+        Route::get('help-center-order-history-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterOrderHistory'])->name('help-center-order-history-edit');
+        Route::post('update-help-center-order-history', [HelpCenterPageController::class, 'updateHelpCenterOrderHistory'])->name('update-help-center-order-history');
+
+        Route::get('help-center-online-invoices', [HelpCenterPageController::class, 'getHelpCenterOnlineInvoices'])->name('help-center-online-invoices');
+        Route::get('help-center-online-invoices-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterOnlineInvoices'])->name('help-center-online-invoices-edit');
+        Route::post('update-help-center-online-invoices', [HelpCenterPageController::class, 'updateHelpCenterOnlineInvoices'])->name('update-help-center-online-invoices');
+
+        Route::get('help-center-returns-cancellation', [HelpCenterPageController::class, 'getHelpCenterReturnsCancellation'])->name('help-center-returns-cancellation');
+        Route::get('help-center-returns-cancellation-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterReturnsCancellation'])->name('help-center-returns-cancellation-edit');
+        Route::post('update-help-center-returns-cancellation', [HelpCenterPageController::class, 'updateHelpCenterReturnsCancellation'])->name('update-help-center-returns-cancellation');
+
+        Route::get('help-center-reorder', [HelpCenterPageController::class, 'getHelpCenterReorder'])->name('help-center-reorder');
+        Route::get('help-center-reorder-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterReorder'])->name('help-center-reorder-edit');
+        Route::post('update-help-center-reorder', [HelpCenterPageController::class, 'updateHelpCenterReorder'])->name('update-help-center-reorder');
+
+        Route::get('help-center-checkout', [HelpCenterPageController::class, 'getHelpCenterCheckout'])->name('help-center-checkout');
+        Route::get('help-center-checkout-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterCheckout'])->name('help-center-checkout-edit');
+        Route::post('update-help-center-checkout', [HelpCenterPageController::class, 'updateHelpCenterCheckout'])->name('update-help-center-checkout');
+
+        Route::get('help-center-user-manangenment', [HelpCenterPageController::class, 'getHelpCenterUserManangenment'])->name('help-center-user-manangenment');
+        Route::get('help-center-user-manangement-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterUserManangenment'])->name('help-center-user-manangement-edit');
+        Route::post('update-help-center-user-manangenment', [HelpCenterPageController::class, 'updateHelpCenterUserManangenment'])->name('update-help-center-user-manangenment');
+
+        Route::get('help-center-account-setting', [HelpCenterPageController::class, 'getHelpCenterAccountSetting'])->name('help-center-account-setting');
+        Route::get('help-center-account-setting-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterAccountSetting'])->name('help-center-account-setting-edit');
+        Route::post('update-help-center-account-setting', [HelpCenterPageController::class, 'updateHelpCenterAccountSetting'])->name('update-help-center-account-setting');
+
         Route::get('help-center', [HelpCenterController::class, 'getHelpCenter'])->name('help-center');
         Route::delete('help-center-delete/{id}', [HelpCenterController::class, 'destroy'])->name('help-center-delete');
 

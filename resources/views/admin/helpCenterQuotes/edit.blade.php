@@ -42,13 +42,6 @@
                                             <textarea type="text" id="editor" class="form-control" name="description"
                                                 placeholder="Description ...">{{ $data->description }}</textarea>
                                         </div>
-                                        {{-- <div class="form-group col-12">
-                                    <label>{{__('admin.Status')}} <span class="text-danger">*</span></label>
-                                    <select name="status" class="form-control">
-                                        <option value="1">{{__('admin.Active')}}</option>
-                                        <option value="0">{{__('admin.InActive')}}</option>
-                                    </select>
-                                </div> --}}
                                     </div>
                                     <div class="row">
                                         <div class="col-12">

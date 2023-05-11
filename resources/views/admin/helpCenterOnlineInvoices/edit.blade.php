@@ -1,28 +1,28 @@
 @extends('admin.master_layout')
 @section('title')
-    <title>{{ __('Help Center Page') }}</title>
+    <title>{{ __('Help Center Online Invoices') }}</title>
 @endsection
 @section('admin-content')
     <!-- Main Content -->
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>{{ __('Update Help Center Page') }}</h1>
+                <h1>{{ __('Update Help Center Online Invoices') }}</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a
-                            href="{{ route('admin.help-center-page') }}">{{ __('Help Center Page') }}</a></div>
-                    <div class="breadcrumb-item">{{ __('Help Center Page') }}</div>
+                            href="{{ route('admin.help-center-online-invoices') }}">{{ __('Help Center Online Invoices') }}</a></div>
+                    <div class="breadcrumb-item">{{ __('Help Center Online Invoices') }}</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <a href="{{ route('admin.help-center-page') }}" class="btn btn-primary"><i class="fas fa-list"></i>
-                    {{ __('help-center-page') }}</a>
+                <a href="{{ route('admin.help-center-online-invoices') }}" class="btn btn-primary"><i class="fas fa-list"></i>
+                    {{ __('help-center-online-invoices') }}</a>
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.update-help-center-page') }}" method="POST"
+                                <form action="{{ route('admin.update-help-center-online-invoices') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">

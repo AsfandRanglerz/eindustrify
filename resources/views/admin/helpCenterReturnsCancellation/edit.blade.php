@@ -7,22 +7,22 @@
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>{{ __('Update Help Center Page') }}</h1>
+                <h1>{{ __('Update Help Center Returns Cancellation') }}</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a
-                            href="{{ route('admin.help-center-page') }}">{{ __('Help Center Page') }}</a></div>
-                    <div class="breadcrumb-item">{{ __('Help Center Page') }}</div>
+                            href="{{ route('admin.help-center-returns-cancellation') }}">{{ __('Help Center Returns Cancellation') }}</a></div>
+                    <div class="breadcrumb-item">{{ __('Help Center Returns & Cancellation') }}</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <a href="{{ route('admin.help-center-page') }}" class="btn btn-primary"><i class="fas fa-list"></i>
-                    {{ __('help-center-page') }}</a>
+                <a href="{{ route('admin.help-center-returns-cancellation') }}" class="btn btn-primary"><i class="fas fa-list"></i>
+                    {{ __('Help-center-returns-cancellation') }}</a>
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.update-help-center-page') }}" method="POST"
+                                <form action="{{ route('admin.update-help-center-returns-cancellation') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">

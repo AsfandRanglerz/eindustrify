@@ -1,28 +1,27 @@
 @extends('admin.master_layout')
 @section('title')
-    <title>{{ __('Help Center Page') }}</title>
+    <title>{{ __('Help Center User Manangement') }}</title>
 @endsection
 @section('admin-content')
     <!-- Main Content -->
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>{{ __('Update Help Center Page') }}</h1>
+                <h1>{{ __('Update Help Center User Manangement') }}</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a
-                            href="{{ route('admin.help-center-page') }}">{{ __('Help Center Page') }}</a></div>
-                    <div class="breadcrumb-item">{{ __('Help Center Page') }}</div>
+                            href="{{ route('admin.help-center-user-manangenment') }}">{{ __('Help Center User Manangement') }}</a></div>
+                    <div class="breadcrumb-item">{{ __('Help Center User Manangement') }}</div>
                 </div>
             </div>
-
             <div class="section-body">
-                <a href="{{ route('admin.help-center-page') }}" class="btn btn-primary"><i class="fas fa-list"></i>
-                    {{ __('help-center-page') }}</a>
+                <a href="{{ route('admin.update-help-center-user-manangenment') }}" class="btn btn-primary"><i class="fas fa-list"></i>
+                    {{ __('help-center-user-manangenment') }}</a>
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.update-help-center-page') }}" method="POST"
+                                <form action="{{ route('admin.update-help-center-user-manangenment') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
@@ -55,7 +54,6 @@
                 </div>
         </section>
     </div>
-
     <script>
         (function($) {
             "use strict";

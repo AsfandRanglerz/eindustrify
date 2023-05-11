@@ -1,28 +1,28 @@
 @extends('admin.master_layout')
 @section('title')
-    <title>{{ __('Help Center Page') }}</title>
+    <title>{{ __('Help Center Reorder') }}</title>
 @endsection
 @section('admin-content')
     <!-- Main Content -->
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>{{ __('Update Help Center Page') }}</h1>
+                <h1>{{ __('Update Help Center Reorder') }}</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a
-                            href="{{ route('admin.help-center-page') }}">{{ __('Help Center Page') }}</a></div>
-                    <div class="breadcrumb-item">{{ __('Help Center Page') }}</div>
+                            href="{{ route('admin.help-center-reorder') }}">{{ __('Help Center Reorder') }}</a></div>
+                    <div class="breadcrumb-item">{{ __('Help Center Reorder') }}</div>
                 </div>
             </div>
 
             <div class="section-body">
-                <a href="{{ route('admin.help-center-page') }}" class="btn btn-primary"><i class="fas fa-list"></i>
-                    {{ __('help-center-page') }}</a>
+                <a href="{{ route('admin.help-center-reorder') }}" class="btn btn-primary"><i class="fas fa-list"></i>
+                    {{ __('help-center-reorder') }}</a>
                 <div class="row mt-4">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="{{ route('admin.update-help-center-page') }}" method="POST"
+                                <form action="{{ route('admin.update-help-center-reorder') }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
                                     <div class="row">
