@@ -26,7 +26,7 @@ class CustomersSupportController extends Controller
         ]);
         $data = $request->only(['localted_usa', 'subject', 'bussiness_name', 'email', 'first_name','last_name','phone','message']);
         CustomerSupport::create($data);
-        $notification = trans('Customer Supprt request send Successfully');
+        $notification = trans('Customer Support request send Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }

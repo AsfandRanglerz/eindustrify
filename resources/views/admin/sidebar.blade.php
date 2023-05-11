@@ -170,19 +170,23 @@
 
                 </ul>
             </li>
-            <li class="nav-item dropdown {{ Route::is('admin.blog-category.*') || Route::is('admin.blog.*') || Route::is('admin.popular-blog.*') || Route::is('admin.blog-comment.*') ? 'active' : '' }}">
-                <a href="#" class="nav-link has-dropdown"><i class="fas fa-th-large"></i><span>{{__('admin.Blogs')}}</span></a>
+            <li
+                class="nav-item dropdown {{ Route::is('admin.blog-category.*') || Route::is('admin.blog.*') || Route::is('admin.popular-blog.*') || Route::is('admin.blog-comment.*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-th-large"></i><span>{{ __('admin.Blogs') }}</span></a>
 
                 <ul class="dropdown-menu">
-                    <li class="{{ Route::is('admin.blog-category.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.blog-category.index') }}">{{__('admin.Categories')}}</a></li>
+                    <li class="{{ Route::is('admin.blog-category.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.blog-category.index') }}">{{ __('admin.Categories') }}</a></li>
 
-                    <li class="{{ Route::is('admin.blog.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.blog.index') }}">{{__('admin.Blogs')}}</a></li>
+                    <li class="{{ Route::is('admin.blog.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.blog.index') }}">{{ __('admin.Blogs') }}</a></li>
 
-                    <li class="{{ Route::is('admin.popular-blog.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.popular-blog.index') }}">{{__('Recent Blogs')}}</a></li>
+                    {{-- <li class="{{ Route::is('admin.popular-blog.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.popular-blog.index') }}">{{__('Recent Blogs')}}</a></li> --}}
 
                     {{-- <li class="{{ Route::is('admin.blog-comment.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.blog-comment.index') }}">{{__('admin.Comments')}}</a></li> --}}
                 </ul>
-              </li>
+            </li>
 
             <li
                 class="nav-item dropdown {{ Route::is('admin.copyright-policy') || Route::is('admin.faq.*') || Route::is('admin.privacy-policy') || Route::is('admin.terms-condition') || Route::is('admin.terms-registration') || Route::is('admin.sales-site') ? 'active' : '' }}">
@@ -211,6 +215,36 @@
                             href="{{ route('admin.sales-site') }}">{{ __('Sales Site') }}</a></li>
                     <li class="{{ Route::is('admin.faq.*') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.faq.index') }}">{{ __('admin.FAQ') }}</a></li>
+                </ul>
+            </li>
+            <li
+                class="nav-item dropdown {{ Route::is('admin.help-center-page') || Route::is('admin.help-center-quotes') || Route::is('admin.help-center-quotes-edit/*') || Route::is('admin.help-center-page-edit/*') || Route::is('admin.faq.*') || Route::is('admin.help-center-lists') || Route::is('admin.help-center-lists-edit/*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-columns"></i><span>{{ __('Help Center Pages') }}</span></a>
+                <ul class="dropdown-menu">
+                    <li
+                        class="{{ Route::is('admin.help-center-page') || Route::is('admin.help-center-page-show') ? 'active' : '' }}">
+                        <a class="nav-link"
+                            href="{{ route('admin.help-center-page') }}">{{ __('Help Center Page') }}</a>
+                    </li>
+
+                    <li class="{{ Route::is('admin.help-center-quotes') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.help-center-quotes') }}">{{ __('Help Center Quotes') }}</a></li>
+
+                    <li
+                        class="{{ Route::is('admin.help-center-lists') || Route::is('admin.help-center-lists') ? 'active' : '' }}">
+                        <a class="nav-link"
+                            href="{{ route('admin.help-center-lists') }}">{{ __('Help Center Lists') }}</a>
+                    </li>
+
+                    {{-- <li class="{{ Route::is('admin.terms-registration') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.terms-registration') }}">{{ __('Terms Of Registration') }}</a>
+                    </li> --}}
+
+                    {{-- <li class="{{ Route::is('admin.sales-site') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.sales-site') }}">{{ __('Sales Site') }}</a></li> --}}
+                    {{-- <li class="{{ Route::is('admin.faq.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.faq.index') }}">{{ __('admin.FAQ') }}</a></li> --}}
                 </ul>
             </li>
             <li class="nav-item dropdown {{ Route::is('admin.help-center') ? 'active' : '' }}">

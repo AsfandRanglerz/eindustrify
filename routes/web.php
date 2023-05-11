@@ -60,14 +60,15 @@ use App\Http\Controllers\Admin\ProductReportController;
 use App\Http\Controllers\Admin\ProductReviewController;
 use App\Http\Controllers\Seller\SellerMessageContoller;
 use App\Http\Controllers\Admin\ContactMessageController;
+use App\Http\Controllers\Admin\HelpCenterPageController;
 use App\Http\Controllers\Admin\MenuVisibilityController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductVariantController;
+
+
+
+
 use App\Http\Controllers\Admin\SellerWithdrawController;
-
-
-
-
 use App\Http\Controllers\Admin\ShippingMethodController;
 use App\Http\Controllers\Admin\WithdrawMethodController;
 use App\Http\Controllers\Seller\SellerProductController;
@@ -78,22 +79,22 @@ use App\Http\Controllers\Admin\CustomerSupportController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\FooterSocialLinkController;
 use App\Http\Controllers\Admin\SpecificationKeyController;
+
+
+
+
+
 use App\Http\Controllers\Seller\SellerDashboardController;
-
-
-
-
-
 use App\Http\Controllers\Admin\TermsAndConditionController;
 use App\Http\Controllers\Admin\EmailConfigurationController;
 use App\Http\Controllers\Admin\HomepageVisibilityController;
 use App\Http\Controllers\Admin\ProductSubCategoryController;
 use App\Http\Controllers\Admin\ProductVariantItemController;
 use App\Http\Controllers\Admin\MegaMenuSubCategoryController;
+
+
+
 use App\Http\Controllers\Seller\SellerProductReportControler;
-
-
-
 use App\Http\Controllers\Admin\ProductChildCategoryController;
 use App\Http\Controllers\Seller\SellerProductReviewController;
 use App\Http\Controllers\Seller\SellerProductGalleryController;
@@ -538,6 +539,18 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('sales-site', [PolicyController::class, 'getSalesSite'])->name('sales-site');
         Route::get('sales-site-edit/{id}', [PolicyController::class, 'getEditSalesSite'])->name('sales-site-edit');
         Route::post('update-sales-site', [PolicyController::class, 'updateSalesSite'])->name('update-sales-site');
+
+        Route::get('help-center-page', [HelpCenterPageController::class, 'getHelpCenterPage'])->name('help-center-page');
+        Route::get('help-center-page-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterPage'])->name('help-center-page-edit');
+        Route::post('update-help-center-page', [HelpCenterPageController::class, 'updateHelpCenterPage'])->name('update-help-center-page');
+
+        Route::get('help-center-quotes', [HelpCenterPageController::class, 'getHelpCenterQuotes'])->name('help-center-quotes');
+        Route::get('help-center-quotes-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterQuotes'])->name('help-center-quotes-edit');
+        Route::post('update-help-center-quotes', [HelpCenterPageController::class, 'updateHelpCenterQuotes'])->name('update-help-center-quotes');
+
+        Route::get('help-center-lists', [HelpCenterPageController::class, 'getHelpCenterLists'])->name('help-center-lists');
+        Route::get('help-center-lists-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterLists'])->name('help-center-lists-edit');
+        Route::post('update-help-center-lists', [HelpCenterPageController::class, 'updateHelpCenterLists'])->name('update-help-center-lists');
 
         Route::get('help-center', [HelpCenterController::class, 'getHelpCenter'])->name('help-center');
         Route::delete('help-center-delete/{id}', [HelpCenterController::class, 'destroy'])->name('help-center-delete');
