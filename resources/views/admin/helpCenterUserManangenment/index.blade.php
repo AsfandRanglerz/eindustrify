@@ -44,7 +44,7 @@
                                                     </td>
                                                     <td>{!! $helpCenterUserManangenment->description !!}</td>
                                                     <td>
-                                                        <a href="{{ route('admin.help-center-user-manangement-edit', $helpCenterUserManangenment->id) }}"
+                                                        <a href="{{ route('admin.help-center-user-manangenment-edit', $helpCenterUserManangenment->id) }}"
                                                             class="btn btn-primary btn-sm"><i class="fa fa-edit"
                                                                 aria-hidden="true"></i></a>
                                                     </td>

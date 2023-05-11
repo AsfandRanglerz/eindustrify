@@ -573,7 +573,7 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::post('update-help-center-checkout', [HelpCenterPageController::class, 'updateHelpCenterCheckout'])->name('update-help-center-checkout');
 
         Route::get('help-center-user-manangenment', [HelpCenterPageController::class, 'getHelpCenterUserManangenment'])->name('help-center-user-manangenment');
-        Route::get('help-center-user-manangement-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterUserManangenment'])->name('help-center-user-manangement-edit');
+        Route::get('help-center-user-manangenment-edit/{id}', [HelpCenterPageController::class, 'getEditHelpCenterUserManangenment'])->name('help-center-user-manangenment-edit');
         Route::post('update-help-center-user-manangenment', [HelpCenterPageController::class, 'updateHelpCenterUserManangenment'])->name('update-help-center-user-manangenment');
 
         Route::get('help-center-account-setting', [HelpCenterPageController::class, 'getHelpCenterAccountSetting'])->name('help-center-account-setting');

@@ -218,46 +218,46 @@
                 </ul>
             </li>
             <li
-                class="nav-item dropdown {{ Route::is('admin.help-center-page') || Route::is('admin.help-center-account-setting') || Route::is('admin.help-center-account-setting-edit/*') || Route::is('admin.help-center-user-manangenment') || Route::is('admin.help-center-checkout') || Route::is('admin.help-center-checkout-edit/*') || Route::is('admin.help-center-online-invoices') || Route::is('admin.help-center-online-invoices-edit/*') || Route::is('admin.help-center-order-history') || Route::is('admin.help-center-order-history-edit/*') || Route::is('admin.help-center-reorder') || Route::is('admin.help-center-reorder-edit/*') || Route::is('admin.help-center-quotes') || Route::is('admin.help-center-quotes-edit/*') || Route::is('admin.help-center-page-edit/*') || Route::is('admin.faq.*') || Route::is('admin.help-center-lists') || Route::is('admin.help-center-lists-edit/*') || Route::is('admin.help-center-returns-cancellation') || Route::is('admin.help-center-returns-cancellation-edit/*')  ? 'active' : '' }}">
+                class="nav-item dropdown {{ Route::is('admin.help-center-page*') || Route::is('admin.help-center-account-setting*') || Route::is('admin.help-center-user-manangenment*') || Route::is('admin.help-center-checkout*')  || Route::is('admin.help-center-online-invoices*') || Route::is('admin.help-center-order-history*') || Route::is('admin.help-center-reorder*') || Route::is('admin.help-center-quotes*') || Route::is('admin.help-center-lists*') || Route::is('admin.help-center-returns-cancellation*')  ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i
                         class="fas fa-columns"></i><span>{{ __('Help Center Pages') }}</span></a>
                 <ul class="dropdown-menu">
                     <li
-                        class="{{ Route::is('admin.help-center-page') || Route::is('admin.help-center-page-show') ? 'active' : '' }}">
+                        class="{{ Route::is('admin.help-center-page*') ? 'active' : '' }}">
                         <a class="nav-link"
                             href="{{ route('admin.help-center-page') }}">{{ __('Help Center Page') }}</a>
                     </li>
 
-                    <li class="{{ Route::is('admin.help-center-quotes') ? 'active' : '' }}"><a class="nav-link"
+                    <li class="{{ Route::is('admin.help-center-quotes*') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.help-center-quotes') }}">{{ __('Help Center Quotes') }}</a></li>
 
                     <li
-                        class="{{ Route::is('admin.help-center-lists') || Route::is('admin.help-center-lists') ? 'active' : '' }}">
+                        class="{{ Route::is('admin.help-center-lists*') || Route::is('admin.help-center-lists') ? 'active' : '' }}">
                         <a class="nav-link"
                             href="{{ route('admin.help-center-lists') }}">{{ __('Help Center Lists') }}</a>
                     </li>
                     <li
-                        class="{{ Route::is('admin.help-center-reorder') || Route::is('admin.help-center-reorder') ? 'active' : '' }}">
+                        class="{{ Route::is('admin.help-center-reorder*') ? 'active' : '' }}">
                         <a class="nav-link"
                             href="{{ route('admin.help-center-reorder') }}">{{ __('Help Center Reorder') }}</a>
                     </li>
 
-                    <li class="{{ Route::is('admin.help-center-order-history') ? 'active' : '' }}"><a class="nav-link"
+                    <li class="{{ Route::is('admin.help-center-order-history*') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.help-center-order-history') }}">{{ __('Help Center Order') }}</a>
                     </li>
-                    <li class="{{ Route::is('admin.help-center-online-invoices') ? 'active' : '' }}"><a class="nav-link"
+                    <li class="{{ Route::is('admin.help-center-online-invoices*') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.help-center-online-invoices') }}">{{ __('Help Center Invoices') }}</a>
                     </li>
-                    <li class="{{ Route::is('admin.help-center-returns-cancellation') ? 'active' : '' }}"><a class="nav-link"
+                    <li class="{{ Route::is('admin.help-center-returns-cancellation*') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.help-center-returns-cancellation') }}">{{ __('Returns Cancellations') }}</a>
                     </li>
-                    <li class="{{ Route::is('admin.help-center-checkout') ? 'active' : '' }}"><a class="nav-link"
+                    <li class="{{ Route::is('admin.help-center-checkout*') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.help-center-checkout') }}">{{ __('Help Center Checkout') }}</a>
                     </li>
-                    <li class="{{ Route::is('admin.help-center-user-manangenment') ? 'active' : '' }}"><a class="nav-link"
+                    <li class="{{ Route::is('admin.help-center-user-manangenment*') ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.help-center-user-manangenment') }}">{{ __('Help User Manangenment') }}</a>
                     </li>
-                    <li class="{{ Route::is('admin.help-center-account-setting') ? 'active' : '' }}"><a class="nav-link"
+                    <li class="{{ Route::is('admin.help-center-account-setting*')  ? 'active' : '' }}"><a class="nav-link"
                             href="{{ route('admin.help-center-account-setting') }}">{{ __('Help Account Setting') }}</a>
                     </li>
                 </ul>
