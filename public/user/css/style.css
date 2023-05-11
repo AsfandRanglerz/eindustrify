@@ -10597,6 +10597,26 @@ textarea::placeholder {
     color: var(--red-theme);
 }
 
+.dynamic-pg .contact-eindus-block {
+    background: #B0191E;
+    height: 100%;
+    padding: 40px 30px;
+    display: flex;
+    align-items: center;
+    column-gap: 42px;
+}
+
+.dynamic-pg .contact-eindus-block .text {
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.dynamic-pg .contact-eindus-block img {
+    height: 45px;
+    width: 55px;
+    object-fit: contain;
+}
+
 .dynamic-pg .help-content-block {
     background: #F2F2F2;
     padding: 40px 30px 55px;
@@ -10738,6 +10758,14 @@ textarea::placeholder {
     .dynamic-pg .banner-img {
         height: 150px;
         object-fit: cover;
+    }
+    .dynamic-pg .contact-eindus-block {
+        padding: 16px 24px;
+        column-gap: 24px;
+    }
+    .dynamic-pg .contact-eindus-block img {
+        height: 25px;
+        width: 35px;
     }
 }
 @media (max-width: 315px) {
