@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CityController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\PolicyPageController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\User\PaypalController;
@@ -34,6 +35,7 @@ use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\MegaMenuController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ErrorPageController;
+use App\Http\Controllers\HelpCenterPagesController;
 use App\Http\Controllers\Seller\WithdrawController;
 use App\Http\Controllers\Admin\BreadcrumbController;
 use App\Http\Controllers\Admin\CustomPageController;
@@ -62,12 +64,12 @@ use App\Http\Controllers\Seller\SellerMessageContoller;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\HelpCenterPageController;
 use App\Http\Controllers\Admin\MenuVisibilityController;
+
+
+
+
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductVariantController;
-
-
-
-
 use App\Http\Controllers\Admin\SellerWithdrawController;
 use App\Http\Controllers\Admin\ShippingMethodController;
 use App\Http\Controllers\Admin\WithdrawMethodController;
@@ -77,23 +79,23 @@ use App\Http\Controllers\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\CampaignProductController;
 use App\Http\Controllers\Admin\CustomerSupportController;
 use App\Http\Controllers\Admin\ProductCategoryController;
+
+
+
+
+
 use App\Http\Controllers\Admin\FooterSocialLinkController;
 use App\Http\Controllers\Admin\SpecificationKeyController;
-
-
-
-
-
 use App\Http\Controllers\Seller\SellerDashboardController;
 use App\Http\Controllers\Admin\TermsAndConditionController;
 use App\Http\Controllers\Admin\EmailConfigurationController;
 use App\Http\Controllers\Admin\HomepageVisibilityController;
 use App\Http\Controllers\Admin\ProductSubCategoryController;
+
+
+
 use App\Http\Controllers\Admin\ProductVariantItemController;
 use App\Http\Controllers\Admin\MegaMenuSubCategoryController;
-
-
-
 use App\Http\Controllers\Seller\SellerProductReportControler;
 use App\Http\Controllers\Admin\ProductChildCategoryController;
 use App\Http\Controllers\Seller\SellerProductReviewController;
@@ -123,7 +125,7 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('/faq', [HomeController::class, 'faq'])->name('faq');
         Route::get('/page/{slug}', [HomeController::class, 'customPage'])->name('page');
         Route::get('/terms-and-conditions', [HomeController::class, 'termsAndCondition'])->name('terms-and-conditions');
-        Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
+        // Route::get('/privacy-policy', [HomeController::class, 'privacyPolicy'])->name('privacy-policy');
         Route::get('/sellers', [HomeController::class, 'seller'])->name('sellers');
         Route::get('/seller-detail', [HomeController::class, 'sellerDetail'])->name('seller-detail');
         Route::get('/product', [HomeController::class, 'product'])->name('product');
@@ -734,26 +736,27 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('website-validation-language', [LanguageController::class, 'websiteValidationLanguage'])->name('website-validation-language');
         Route::post('update-validation-language', [LanguageController::class, 'updateValidationLanguage'])->name('update-validation-language');
     });
-
-    // Route::view('register', 'register');
-    Route::view('copyright-policy', 'copyright_policy');
-    Route::view('terms-registration', 'terms_registration');
-    Route::view('sales-site-agreement', 'sales_site_agreement');
-    Route::view('terms-and-conditions', 'terms_conditions');
+    Route::get('copyright-policy', [PolicyPageController::class, 'copyrightPolicy']);
+    Route::get('privacy-policy', [PolicyPageController::class, 'privacyPolicy']);
+    Route::get('terms-and-conditions', [PolicyPageController::class, 'termsConditions']);
+    Route::get('terms-registration', [PolicyPageController::class, 'termsRegistration']);
+    Route::get('sales-site-agreement', [PolicyPageController::class, 'salesSiteAgreement']);
     Route::get('help-center', [HomeController::class, 'helpCenter'])->name('help-center');
     Route::post('help-center', [HomeController::class, 'storeHelpCenter']);
     Route::get('customer-support', [CustomersSupportController::class, 'customerSupport'])->name('help-center');
     Route::post('customer-support', [CustomersSupportController::class, 'storeCustomerSupport']);
     Route::view('product-inquiry', 'product_inquiry');
-    Route::view('help-center-quotes', 'help_center_quotes');
-    Route::view('help-center-lists', 'help_center_lists');
-    Route::view('help-center-reorder', 'help_center_reorder');
-    Route::view('help-center-order-history', 'help_center_order_history');
-    Route::view('help-center-online-invoices', 'help_center_online_invoices');
-    Route::view('help-center-cancellations', 'help_center_cancellations');
-    Route::view('help-center-checkout', 'help_center_checkout');
-    Route::view('help-center-management', 'help_center_management');
-    Route::view('help-center-settings', 'help_center_settings');
-    Route::view('help-center-details', 'help_center_details');
+
+
+    Route::get('help-center-details', [HelpCenterPagesController::class, 'helpCenterDetail']);
+    Route::get('help-center-quotes', [HelpCenterPagesController::class, 'helpCenterQuotes']);
+    Route::get('help-center-lists', [HelpCenterPagesController::class, 'helpCenterLists']);
+    Route::get('help-center-reorder', [HelpCenterPagesController::class, 'helpCenterReorder']);
+    Route::get('help-center-order-history', [HelpCenterPagesController::class, 'helpCenterOrderHistory']);
+    Route::get('help-center-online-invoices', [HelpCenterPagesController::class, 'helpCenterOnlineInvoices']);
+    Route::get('help-center-cancellations', [HelpCenterPagesController::class, 'helpCenterCancellations']);
+    Route::get('help-center-checkout', [HelpCenterPagesController::class, 'helpCenterCheckout']);
+    Route::get('help-center-management', [HelpCenterPagesController::class, 'helpCenterManagement']);
+    Route::get('help-center-settings', [HelpCenterPagesController::class, 'helpCenterSettings']);
 });
 // end admin routes
