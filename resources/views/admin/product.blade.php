@@ -98,6 +98,8 @@
 
                                               <a class="dropdown-item has-icon" href="{{ route('admin.product-size',$product->id) }}"><i class="fas fa-cog"></i>{{__('Size')}}</a>
 
+                                              <a class="dropdown-item has-icon" href="{{ route('admin.product-overview',$product->id) }}"><i class="fas fa-cog"></i>{{__('Overview')}}</a>
+
                                             </div>
                                           </div>
 

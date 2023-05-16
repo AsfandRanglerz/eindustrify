@@ -85,15 +85,16 @@ use App\Http\Controllers\Admin\CustomerSupportController;
 
 
 use App\Http\Controllers\Admin\ProductCategoryController;
+use App\Http\Controllers\Admin\ProductOverviewController;
 use App\Http\Controllers\Admin\FooterSocialLinkController;
 use App\Http\Controllers\Admin\SpecificationKeyController;
 use App\Http\Controllers\Seller\SellerDashboardController;
 use App\Http\Controllers\Admin\TermsAndConditionController;
 use App\Http\Controllers\Admin\EmailConfigurationController;
+
+
+
 use App\Http\Controllers\Admin\HomepageVisibilityController;
-
-
-
 use App\Http\Controllers\Admin\ProductSubCategoryController;
 use App\Http\Controllers\Admin\ProductVariantItemController;
 use App\Http\Controllers\Admin\MegaMenuSubCategoryController;
@@ -386,6 +387,13 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('product-size/{id}', [ProductSizeController::class, 'index'])->name('product-size');
         Route::get('product-size-edit/{id}', [ProductSizeController::class, 'edit'])->name('product-size-edit');
         Route::post('update-product-size', [ProductSizeController::class, 'update'])->name('update-product-size');
+        Route::post('create-product-size', [ProductSizeController::class, 'store'])->name('create-product-size');
+
+        Route::get('add-product-overview/{id}', [ProductOverviewController::class, 'add'])->name('add-product-overview');
+        Route::get('product-overview/{id}', [ProductOverviewController::class, 'index'])->name('product-overview');
+        Route::get('product-overview-edit/{id}', [ProductOverviewController::class, 'edit'])->name('product-overview-edit');
+        Route::post('update-product-overview', [ProductOverviewController::class, 'update'])->name('update-product-overview');
+        Route::post('create-product-overview', [ProductOverviewController::class, 'store'])->name('create-product-overview');
 
 
 

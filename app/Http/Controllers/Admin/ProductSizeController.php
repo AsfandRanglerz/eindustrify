@@ -40,6 +40,23 @@ class ProductSizeController extends Controller
         return redirect()->route('admin.product-size',$data->product_id)->with($notification);
     }
     public function add($id){
-        return view('admin.productSize.add');
+        return view('admin.productSize.add',compact('id'));
+    }
+    public function store(Request $request){
+        $request->validate(
+            [
+                'product_price' => 'required',
+                'product_size' => 'required',
+              ]
+        );
+        $data = new ProductSize();
+        $data->product_size = $request->product_size;
+        $data->product_price = $request->product_price;
+        $data->product_id = $request->id;
+        $data->save();
+        $notification = trans('Product Size Add Successfully');
+        $notification = array('messege' => $notification, 'alert-type' => 'success');
+        return redirect()->route('admin.product-size',$request->id)->with($notification);
+
     }
 }

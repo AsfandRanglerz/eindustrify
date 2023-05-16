@@ -199,13 +199,10 @@ class ProductController extends Controller
                                 $productOverview = new ProductOverview();
                                 $productOverview->product_id = $product->id;
                                 $productOverview->title = $request->product_overview_title[$index];
-                                // $productOverview->product_overview_image = $request->product_overview_image[$index];
-                                $file = $request->file('product_overview_image')[$index];
-                                $extension = $file->getClientOriginalExtension(); // getting image extension
-                                $filename = time() . '.' . $extension;
-                                $file->move(public_path('images'), $filename);
-                                $productOverview['image'] = 'public/images/' . $filename;
-
+                                $doucments = $request->file('product_overview_image')[$index]->getClientOriginalName();
+                                $request->file('product_overview_image')[$index]->move('public/images/', $doucments);
+                                $file = 'public/images/' . $doucments;
+                                $productOverview['image'] = $file;
                                 $productOverview->save();
                             }
                             $product_overview_image[] = $product_overview_title;
