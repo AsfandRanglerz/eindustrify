@@ -318,7 +318,6 @@
                                                 </div>
                                             @endforeach
                                         @endif
-
                                         <div class="row mt-2">
                                             <div class="col-md-5">
                                                 <label>{{__('admin.Key')}} <span class="text-danger">*</span></label>
@@ -339,10 +338,6 @@
 
                                     </div>
                                 @endif
-
-
-
-
                                 <div id="hidden-specification-box" class="d-none">
                                     <div class="delete-specification-row">
                                         <div class="row mt-2">
@@ -377,8 +372,6 @@
           </div>
         </section>
       </div>
-
-
 <script>
     (function($) {
         "use strict";

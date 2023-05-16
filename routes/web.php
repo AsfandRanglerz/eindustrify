@@ -48,6 +48,7 @@ use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\Admin\BlogCommentController;
 use App\Http\Controllers\Admin\ContactPageController;
 use App\Http\Controllers\Admin\PopularBlogController;
+use App\Http\Controllers\Admin\ProductSizeController;
 use App\Http\Controllers\Admin\AdminProfileController;
 use App\Http\Controllers\Admin\BlogCategoryController;
 use App\Http\Controllers\Admin\CountryStateController;
@@ -63,11 +64,11 @@ use App\Http\Controllers\Admin\ProductReviewController;
 use App\Http\Controllers\Seller\SellerMessageContoller;
 use App\Http\Controllers\Admin\ContactMessageController;
 use App\Http\Controllers\Admin\HelpCenterPageController;
+
+
+
+
 use App\Http\Controllers\Admin\MenuVisibilityController;
-
-
-
-
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductVariantController;
 use App\Http\Controllers\Admin\SellerWithdrawController;
@@ -78,22 +79,22 @@ use App\Http\Controllers\Seller\SellerProfileController;
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\CampaignProductController;
 use App\Http\Controllers\Admin\CustomerSupportController;
+
+
+
+
+
 use App\Http\Controllers\Admin\ProductCategoryController;
-
-
-
-
-
 use App\Http\Controllers\Admin\FooterSocialLinkController;
 use App\Http\Controllers\Admin\SpecificationKeyController;
 use App\Http\Controllers\Seller\SellerDashboardController;
 use App\Http\Controllers\Admin\TermsAndConditionController;
 use App\Http\Controllers\Admin\EmailConfigurationController;
 use App\Http\Controllers\Admin\HomepageVisibilityController;
+
+
+
 use App\Http\Controllers\Admin\ProductSubCategoryController;
-
-
-
 use App\Http\Controllers\Admin\ProductVariantItemController;
 use App\Http\Controllers\Admin\MegaMenuSubCategoryController;
 use App\Http\Controllers\Seller\SellerProductReportControler;
@@ -380,6 +381,13 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::put('update-product-variant/{id}', [ProductVariantController::class, 'update'])->name('update-product-variant');
         Route::delete('delete-product-variant/{id}', [ProductVariantController::class, 'destroy'])->name('delete-product-variant');
         Route::put('product-variant-status/{id}', [ProductVariantController::class, 'changeStatus'])->name('product-variant.status');
+
+        Route::get('add-product-size/{id}', [ProductSizeController::class, 'add'])->name('add-product-size');
+        Route::get('product-size/{id}', [ProductSizeController::class, 'index'])->name('product-size');
+        Route::get('product-size-edit/{id}', [ProductSizeController::class, 'edit'])->name('product-size-edit');
+        Route::post('update-product-size', [ProductSizeController::class, 'update'])->name('update-product-size');
+
+
 
         Route::get('product-variant-item', [ProductVariantItemController::class, 'index'])->name('product-variant-item');
         Route::get('create-product-variant-item/{id}', [ProductVariantItemController::class, 'create'])->name('create-product-variant-item');

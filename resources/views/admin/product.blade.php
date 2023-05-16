@@ -89,11 +89,14 @@
                                             </button>
 
                                             <div class="dropdown-menu" x-placement="top-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, -131px, 0px);">
-                                              <a class="dropdown-item has-icon" href="{{ route('admin.product-gallery',$product->id) }}"><i class="far fa-image"></i> {{__('admin.Image Gallery')}}</a>
+
+                                                <a class="dropdown-item has-icon" href="{{ route('admin.product-gallery',$product->id) }}"><i class="far fa-image"></i> {{__('admin.Image Gallery')}}</a>
 
                                               <a class="dropdown-item has-icon" href="{{ route('admin.product-highlight',$product->id) }}"><i class="fas fa-lightbulb"></i> {{__('admin.Highlight')}}</a>
 
                                               <a class="dropdown-item has-icon" href="{{ route('admin.product-variant',$product->id) }}"><i class="fas fa-cog"></i>{{__('admin.Product Variant')}}</a>
+
+                                              <a class="dropdown-item has-icon" href="{{ route('admin.product-size',$product->id) }}"><i class="fas fa-cog"></i>{{__('Size')}}</a>
 
                                             </div>
                                           </div>
