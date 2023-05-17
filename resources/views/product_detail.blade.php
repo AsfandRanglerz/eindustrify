@@ -65,7 +65,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-5 col-md-7 col-lg-7">
+                <div class="col-xl-8 col-md-7 col-lg-7">
                     <div class="wsus__pro_details_text">
                         <a class="title" href="javascript:;">{{ $product->name }}</a>
                             <input type="hidden" id="stock_qty" value="{{ $product->qty }}">
@@ -345,61 +345,6 @@
                     <!--==========================
                     PRODUCT REPORT MODAL VIEW
                     ===========================-->
-                </div>
-
-                <div class="col-xl-3 col-md-12 mt-md-5 mt-lg-0">
-                    <div class="wsus_pro_det_sidebar" id="sticky_sidebar">
-                        <div class="lg_area">
-                            <div class="wsus_pro_det_sidebar_single">
-                                <i class="fal fa-truck"></i>
-                                <div class="wsus_pro_det_sidebar_text">
-
-                                    @if ($product->is_return == 1)
-                                    <h5>{{__('user.Return Available')}}</h5>
-                                    <p>{{ $product->returnPolicy->details }}</p>
-                                    @else
-                                        <h5>{{__('user.Return Not Available')}}</h5>
-                                    @endif
-
-                                </div>
-                            </div>
-
-
-                            <div class="wsus_pro_det_sidebar_single">
-                                <i class="far fa-shield-check"></i>
-                                <div class="wsus_pro_det_sidebar_text">
-                                    <h5>{{__('user.Secure Payment')}}</h5>
-                                    <p>{{__('user.We ensure secure payment')}}</p>
-                                </div>
-                            </div>
-                            <div class="wsus_pro_det_sidebar_single">
-                                <i class="fal fa-envelope-open-dollar"></i>
-                                <div class="wsus_pro_det_sidebar_text">
-                                    @if ($product->is_warranty == 1)
-                                    <h5>{{__('user.Warranty Available')}}</h5>
-                                    @else
-                                    <h5>{{__('user.Warranty Not Available')}}</h5>
-                                    @endif
-
-                                </div>
-                            </div>
-                        </div>
-
-                        @if ($banner->status == 1)
-                            <div class="wsus__det_sidebar_banner">
-                                <img src="{{ asset($banner->image) }}" alt="banner" class="img-fluid w-100">
-                                    <div class="wsus__det_sidebar_banner_text_overlay">
-                                    <div class="wsus__det_sidebar_banner_text">
-                                        <p>{{ $banner->title }}</p>
-                                        <h4>{{ $banner->description }}</h4>
-                                        <a href="{{ $banner->link }}" class="common_btn">{{__('user.shop now')}}</a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-
-
-                    </div>
                 </div>
                 <div class="col-xl-12">
                     <div class="wsus__pro_det_description">
