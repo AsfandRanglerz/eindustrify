@@ -107,7 +107,7 @@
                                             <input type="text" class="form-control" name="sku">
                                         </div>
 
-                                        <div class="form-group col-12">
+                                        {{-- <div class="form-group col-12">
                                             <label>{{ __('admin.Price') }} <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="price"
                                                 value="{{ old('price') }}">
@@ -117,7 +117,7 @@
                                             <label>{{ __('admin.Offer Price') }}</label>
                                             <input type="text" class="form-control" name="offer_price"
                                                 value="{{ old('offer_price') }}">
-                                        </div>
+                                        </div> --}}
 
 
 
@@ -149,13 +149,13 @@
 
 
 
-                                        <div class="form-group col-12">
+                                        {{-- <div class="form-group col-12">
                                             <label>{{ __('admin.Tags') }}</label>
                                             <input type="text" class="form-control tags" name="tags"
                                                 value="{{ old('tags') }}">
-                                        </div>
+                                        </div> --}}
 
-                                        <div class="form-group col-12">
+                                        {{-- <div class="form-group col-12">
                                             <label>{{ __('admin.Tax') }} <span class="text-danger">*</span></label>
                                             <select name="tax" class="form-control">
                                                 <option value="">{{ __('admin.Select Tax') }}</option>
@@ -164,18 +164,18 @@
                                                         value="{{ $tax->id }}">{{ $tax->title }}</option>
                                                 @endforeach
                                             </select>
-                                        </div>
+                                        </div> --}}
 
-                                        <div class="form-group col-12">
+                                        {{-- <div class="form-group col-12">
                                             <label>{{ __('admin.Product Return Availabe ?') }} <span
                                                     class="text-danger">*</span></label>
                                             <select name="is_return" class="form-control" id="is_return">
                                                 <option value="0">{{ __('admin.No') }}</option>
                                                 <option value="1">{{ __('admin.Yes') }}</option>
                                             </select>
-                                        </div>
+                                        </div> --}}
 
-                                        <div class="form-group col-12 d-none" id="policy_box">
+                                        {{-- <div class="form-group col-12 d-none" id="policy_box">
                                             <label>{{ __('admin.Return Policy') }} <span
                                                     class="text-danger">*</span></label>
                                             <select name="return_policy_id" class="form-control">
@@ -184,17 +184,17 @@
                                                     </option>
                                                 @endforeach
                                             </select>
-                                        </div>
+                                        </div> --}}
 
 
-                                        <div class="form-group col-12">
+                                        {{-- <div class="form-group col-12">
                                             <label>{{ __('admin.Warranty Available ?') }} <span
                                                     class="text-danger">*</span></label>
                                             <select name="is_warranty" class="form-control">
                                                 <option value="1">{{ __('admin.Yes') }}</option>
                                                 <option value="0">{{ __('admin.No') }}</option>
                                             </select>
-                                        </div>
+                                        </div> --}}
 
 
 
@@ -208,7 +208,7 @@
 
 
 
-                                        <div class="form-group col-12">
+                                        {{-- <div class="form-group col-12">
                                             <label>{{ __('admin.SEO Title') }}</label>
                                             <input type="text" class="form-control" name="seo_title"
                                                 value="{{ old('seo_title') }}">
@@ -217,7 +217,7 @@
                                         <div class="form-group col-12">
                                             <label>{{ __('admin.SEO Description') }}</label>
                                             <textarea name="seo_description" id="" cols="30" rows="10" class="form-control text-area-5">{{ old('seo_description') }}</textarea>
-                                        </div>
+                                        </div> --}}
 
                                         <div class="form-group col-12">
                                             <label>{{ __('admin.Specifications') }}</label>

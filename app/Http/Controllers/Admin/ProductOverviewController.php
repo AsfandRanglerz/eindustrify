@@ -69,4 +69,12 @@ class ProductOverviewController extends Controller
         return redirect()->route('admin.product-overview',$request->id)->with($notification);
 
     }
+    public function destroy($id)
+    {
+        $productOverview = ProductOverview::find($id);
+        $productOverview->delete();
+        $notification = trans('Product Overview Delete Successfully');
+        $notification = array('messege'=>$notification,'alert-type'=>'success');
+        return redirect()->back()->with($notification);
+    }
 }

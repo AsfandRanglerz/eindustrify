@@ -72,7 +72,6 @@ class ProductController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
         if ($request->video_link) {
             $valid = preg_match("/^(https?\:\/\/)?(www\.)?(youtube\.com|youtu\.be)\/watch\?v\=\w+$/", $request->video_link);
 
@@ -93,12 +92,12 @@ class ProductController extends Controller
             'short_description' => 'required',
             'long_description' => 'required',
             'brand' => 'required',
-            'price' => 'required|numeric',
+            // 'price' => 'required|numeric',
             'quantity' => 'required',
-            'tax' => 'required',
-            'is_return' => 'required',
-            'is_warranty' => 'required',
-            'return_policy_id' => $request->is_return == 1 ?  'required' : '',
+            // 'tax' => 'required',
+            // 'is_return' => 'required',
+            // 'is_warranty' => 'required',
+            // 'return_policy_id' => $request->is_return == 1 ?  'required' : '',
             'status' => 'required'
         ];
         $customMessages = [
@@ -114,12 +113,12 @@ class ProductController extends Controller
             'short_description.required' => trans('admin_validation.Short description is required'),
             'long_description.required' => trans('admin_validation.Long description is required'),
             'brand.required' => trans('admin_validation.Brand is required'),
-            'price.required' => trans('admin_validation.Price is required'),
+            // 'price.required' => trans('admin_validation.Price is required'),
             'quantity.required' => trans('admin_validation.Quantity is required'),
-            'tax.required' => trans('admin_validation.Tax is required'),
-            'is_return.required' => trans('admin_validation.Return is required'),
-            'is_warranty.required' => trans('admin_validation.Warranty is required'),
-            'return_policy_id.required' => trans('admin_validation.Return policy is required'),
+            // 'tax.required' => trans('admin_validation.Tax is required'),
+            // 'is_return.required' => trans('admin_validation.Return is required'),
+            // 'is_warranty.required' => trans('admin_validation.Warranty is required'),
+            // 'return_policy_id.required' => trans('admin_validation.Return policy is required'),
             'status.required' => trans('admin_validation.Status is required'),
         ];
         $this->validate($request, $rules, $customMessages);
@@ -151,23 +150,23 @@ class ProductController extends Controller
         $product->child_category_id = $request->child_category ? $request->child_category : 0;
         $product->brand_id = $request->brand;
         $product->sku = $request->sku;
-        $product->price = $request->price;
-        $product->offer_price = $request->offer_price;
+        // $product->price = $request->price;
+        // $product->offer_price = $request->offer_price;
         $product->qty = $request->quantity;
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
         $product->video_link = $request->video_link;
-        $product->tags = $request->tags;
-        $product->tax_id = $request->tax;
-        $product->is_warranty = $request->is_warranty;
-        $product->is_return = $request->is_return;
-        $product->return_policy_id = $request->is_return == 1 ? $request->return_policy_id : 0;
+        // $product->tags = $request->tags;
+        // $product->tax_id = $request->tax;
+        // $product->is_warranty = $request->is_warranty;
+        // $product->is_return = $request->is_return;
+        // $product->return_policy_id = $request->is_return == 1 ? $request->return_policy_id : 0;
         $product->status = $request->status;
 
         $product->is_undefine = 1;
         $product->is_specification = $request->is_specification ? 1 : 0;
-        $product->seo_title = $request->seo_title ? $request->seo_title : $request->name;
-        $product->seo_description = $request->seo_description ? $request->seo_description : $request->name;
+        // $product->seo_title = $request->seo_title ? $request->seo_title : $request->name;
+        // $product->seo_description = $request->seo_description ? $request->seo_description : $request->name;
         $product->save();
 
         if ($request->is_specification) {
@@ -283,12 +282,12 @@ class ProductController extends Controller
             'short_description' => 'required',
             'long_description' => 'required',
             'brand' => 'required',
-            'price' => 'required|numeric',
+            // 'price' => 'required|numeric',
             'quantity' => 'required',
-            'tax' => 'required',
-            'is_return' => 'required',
-            'is_warranty' => 'required',
-            'return_policy_id' => $request->is_return == 1 ?  'required' : '',
+            // 'tax' => 'required',
+            // 'is_return' => 'required',
+            // 'is_warranty' => 'required',
+            // 'return_policy_id' => $request->is_return == 1 ?  'required' : '',
             'status' => 'required'
         ];
         $customMessages = [
@@ -304,12 +303,12 @@ class ProductController extends Controller
             'short_description.required' => trans('admin_validation.Short description is required'),
             'long_description.required' => trans('admin_validation.Long description is required'),
             'brand.required' => trans('admin_validation.Brand is required'),
-            'price.required' => trans('admin_validation.Price is required'),
+            // 'price.required' => trans('admin_validation.Price is required'),
             'quantity.required' => trans('admin_validation.Quantity is required'),
-            'tax.required' => trans('admin_validation.Tax is required'),
-            'is_return.required' => trans('admin_validation.Return is required'),
-            'is_warranty.required' => trans('admin_validation.Warranty is required'),
-            'return_policy_id.required' => trans('admin_validation.Return policy is required'),
+            // 'tax.required' => trans('admin_validation.Tax is required'),
+            // 'is_return.required' => trans('admin_validation.Return is required'),
+            // 'is_warranty.required' => trans('admin_validation.Warranty is required'),
+            // 'return_policy_id.required' => trans('admin_validation.Return policy is required'),
             'status.required' => trans('admin_validation.Status is required'),
         ];
         $this->validate($request, $rules, $customMessages);
@@ -351,21 +350,21 @@ class ProductController extends Controller
         $product->child_category_id = $request->child_category ? $request->child_category : 0;
         $product->brand_id = $request->brand;
         $product->sku = $request->sku;
-        $product->price = $request->price;
-        $product->offer_price = $request->offer_price;
+        // $product->price = $request->price;
+        // $product->offer_price = $request->offer_price;
         $product->qty = $request->quantity;
         $product->short_description = $request->short_description;
         $product->long_description = $request->long_description;
         $product->video_link = $request->video_link;
-        $product->tags = $request->tags;
-        $product->tax_id = $request->tax;
-        $product->is_warranty = $request->is_warranty;
-        $product->is_return = $request->is_return;
-        $product->return_policy_id = $request->is_return == 1 ? $request->return_policy_id : 0;
+        // $product->tags = $request->tags;
+        // $product->tax_id = $request->tax;
+        // $product->is_warranty = $request->is_warranty;
+        // $product->is_return = $request->is_return;
+        // $product->return_policy_id = $request->is_return == 1 ? $request->return_policy_id : 0;
         $product->status = $request->status;
         $product->is_specification = $request->is_specification ? 1 : 0;
-        $product->seo_title = $request->seo_title ? $request->seo_title : $request->name;
-        $product->seo_description = $request->seo_description ? $request->seo_description : $request->name;
+        // $product->seo_title = $request->seo_title ? $request->seo_title : $request->name;
+        // $product->seo_description = $request->seo_description ? $request->seo_description : $request->name;
         $product->save();
 
         $exist_specifications = [];

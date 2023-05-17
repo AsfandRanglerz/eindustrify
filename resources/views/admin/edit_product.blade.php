@@ -114,15 +114,15 @@
                                    <input type="text" class="form-control" name="sku" value="{{ $product->sku }}">
                                 </div>
 
-                                <div class="form-group col-12">
+                                {{-- <div class="form-group col-12">
                                     <label>{{__('admin.Price')}} <span class="text-danger">*</span></label>
                                    <input type="text" class="form-control" name="price" value="{{ $product->price }}">
-                                </div>
+                                </div> --}}
 
-                                <div class="form-group col-12">
+                                {{-- <div class="form-group col-12">
                                     <label>{{__('admin.Offer Price')}} </label>
                                    <input type="text" class="form-control" name="offer_price" value="{{ $product->offer_price }}">
-                                </div>
+                                </div> --}}
 
 
 
@@ -161,12 +161,12 @@
                                     <textarea name="long_description" id="" cols="30" rows="10" class="summernote">{{ $product->long_description }}</textarea>
                                 </div>
 
-                                <div class="form-group col-12">
+                                {{-- <div class="form-group col-12">
                                     <label>{{__('admin.Tags')}}</label>
                                    <input type="text" class="form-control tags" name="tags" value="{{ $tags }}">
-                                </div>
+                                </div> --}}
 
-                                <div class="form-group col-12">
+                                {{-- <div class="form-group col-12">
                                     <label>{{__('admin.Tax')}} <span class="text-danger">*</span></label>
                                     <select name="tax" class="form-control">
                                         <option value="">{{__('admin.Select Tax')}}</option>
@@ -174,18 +174,18 @@
                                             <option {{ $product->tax_id == $tax->id ? 'selected' : '' }}  value="{{ $tax->id }}">{{ $tax->title }}</option>
                                         @endforeach
                                     </select>
-                                </div>
+                                </div> --}}
 
-                                <div class="form-group col-12">
+                                {{-- <div class="form-group col-12">
                                     <label>{{__('admin.Product Return Availabe ?')}} <span class="text-danger">*</span></label>
                                     <select name="is_return" class="form-control" id="is_return" >
                                         <option {{ $product->is_return == 0 ? 'selected' : '' }} value="0">{{__('admin.No')}}</option>
                                         <option {{ $product->is_return == 1 ? 'selected' : '' }} value="1">{{__('admin.Yes')}}</option>
                                     </select>
-                                </div>
+                                </div> --}}
 
 
-                                @if ($product->is_return == 1)
+                                {{-- @if ($product->is_return == 1)
                                     <div class="form-group col-12" id="policy_box">
                                         <label>{{__('admin.Return Policy')}} <span class="text-danger">*</span></label>
                                         <select name="return_policy_id" class="form-control">
@@ -194,9 +194,9 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                @endif
+                                @endif --}}
 
-                                @if ($product->is_return != 1)
+                                {{-- @if ($product->is_return != 1)
                                     <div class="form-group col-12 d-none" id="policy_box">
                                         <label>{{__('admin.Return Policy')}} <span class="text-danger">*</span></label>
                                         <select name="return_policy_id" class="form-control">
@@ -205,15 +205,15 @@
                                             @endforeach
                                         </select>
                                     </div>
-                                @endif
+                                @endif --}}
 
-                                <div class="form-group col-12">
+                                {{-- <div class="form-group col-12">
                                     <label>{{__('admin.Warranty Available ?')}}  <span class="text-danger">*</span></label>
                                     <select name="is_warranty" class="form-control">
                                         <option {{ $product->is_warranty == 1 ? 'selected' : '' }} value="1">{{__('admin.Yes')}}</option>
                                         <option {{ $product->is_warranty == 0 ? 'selected' : '' }} value="0">{{__('admin.No')}}</option>
                                     </select>
-                                </div>
+                                </div> --}}
 
 
                                 <div class="form-group col-12">
@@ -225,7 +225,7 @@
                                 </div>
 
 
-                                <div class="form-group col-12">
+                                {{-- <div class="form-group col-12">
                                     <label>{{__('admin.SEO Title')}}</label>
                                    <input type="text" class="form-control" name="seo_title" value="{{ $product->seo_title }}">
                                 </div>
@@ -233,7 +233,7 @@
                                 <div class="form-group col-12">
                                     <label>{{__('admin.SEO Description')}}</label>
                                     <textarea name="seo_description" id="" cols="30" rows="10" class="form-control text-area-5">{{ $product->seo_description }}</textarea>
-                                </div>
+                                </div> --}}
 
                                 <div class="form-group col-12">
                                     <label>{{__('admin.Specifications')}}</label>

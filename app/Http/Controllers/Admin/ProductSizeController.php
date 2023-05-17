@@ -59,4 +59,12 @@ class ProductSizeController extends Controller
         return redirect()->route('admin.product-size',$request->id)->with($notification);
 
     }
+    public function destroy($id)
+    {
+        $productSize = ProductSize::find($id);
+        $productSize->delete();
+        $notification = trans('Product Size Delete Successfully');
+        $notification = array('messege'=>$notification,'alert-type'=>'success');
+        return redirect()->back()->with($notification);
+    }
 }
