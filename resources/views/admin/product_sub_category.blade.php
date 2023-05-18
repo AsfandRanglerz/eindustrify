@@ -28,6 +28,7 @@
                                     <th>{{__('admin.Sub Category')}}</th>
                                     <th>{{__('admin.Slug')}}</th>
                                     <th>{{__('admin.Category')}}</th>
+                                    <th>{{__('admin.Image')}}</th>
                                     <th>{{__('admin.Status')}}</th>
                                     <th>{{__('admin.Action')}}</th>
                                   </tr>
@@ -39,6 +40,7 @@
                                         <td>{{ $subCategory->name }}</td>
                                         <td>{{ $subCategory->slug }}</td>
                                         <td>{{ $subCategory->category->name }}</td>
+                                        <td> <img class="rounded-circle" src="{{ asset($subCategory->image) }}" alt="" width="100px" height="100px"></td>
                                         <td>
                                             @if($subCategory->status == 1)
                                             <a href="javascript:;" onclick="changeProductSubCategoryStatus({{ $subCategory->id }})">

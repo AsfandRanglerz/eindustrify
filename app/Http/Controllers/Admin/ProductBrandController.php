@@ -147,4 +147,23 @@ class ProductBrandController extends Controller
         }
         return response()->json($message);
     }
+
+    public function productBrandHighlight($id)
+    {
+        $brand = Brand::find($id);
+        return view('admin.product_brand_highlight', compact('brand'));
+    }
+    public function productBrandHighlightUpdate(Request $request, $id)
+    {
+
+        $product = Brand::find($id);
+        if ($request->product_type == 1) {
+            $product->is_featured = 1;
+            $product->save();
+        }
+
+        $notification = trans('admin_validation.Update Successfully');
+        $notification = array('messege' => $notification, 'alert-type' => 'success');
+        return redirect()->route('admin.product-brand.index')->with($notification);
+    }
 }

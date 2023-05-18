@@ -374,6 +374,9 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('product-highlight/{id}', [ProductController::class, 'productHighlight'])->name('product-highlight');
         Route::put('update-product-highlight/{id}', [ProductController::class, 'productHighlightUpdate'])->name('update-product-highlight');
 
+        Route::get('product-highlight-brand/{id}', [ProductBrandController::class, 'productBrandHighlight'])->name('product-brand-highlight');
+        Route::put('update-product-highlight-brand/{id}', [ProductBrandController::class, 'productBrandHighlightUpdate'])->name('update-product-brand-highlight');
+
 
         Route::get('product-variant/{id}', [ProductVariantController::class, 'index'])->name('product-variant');
         Route::get('create-product-variant/{id}', [ProductVariantController::class, 'create'])->name('create-product-variant');

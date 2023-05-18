@@ -41,6 +41,10 @@
                                     <label>{{__('admin.Slug')}} <span class="text-danger">*</span></label>
                                     <input type="text" id="slug" class="form-control"  name="slug">
                                 </div>
+                                <div class="form-group col-12">
+                                    <label>{{__('admin.Image')}} <span class="text-danger">*</span></label>
+                                    <input type="file" id="" class="form-control"  name="image">
+                                </div>
 
                                 <div class="form-group col-12">
                                     <label>{{__('admin.Status')}} <span class="text-danger">*</span></label>

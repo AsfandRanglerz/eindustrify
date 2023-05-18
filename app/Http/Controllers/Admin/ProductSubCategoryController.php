@@ -38,7 +38,8 @@ class ProductSubCategoryController extends Controller
             'name'=>'required',
             'slug'=>'required|unique:sub_categories',
             'category'=>'required',
-            'status'=>'required'
+            'status'=>'required',
+            'image' => 'required'
         ];
 
         $customMessages = [
@@ -54,6 +55,13 @@ class ProductSubCategoryController extends Controller
         $subCategory->name = $request->name;
         $subCategory->slug = $request->slug;
         $subCategory->status = $request->status;
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('images'), $filename);
+            $subCategory['image'] = 'public/images/' . $filename;
+        }
         $subCategory->save();
 
         $notification = trans('admin_validation.Created Successfully');
@@ -91,6 +99,13 @@ class ProductSubCategoryController extends Controller
         $subCategory->name = $request->name;
         $subCategory->slug = $request->slug;
         $subCategory->status = $request->status;
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('images'), $filename);
+            $subCategory['image'] = 'public/images/' . $filename;
+        }
         $subCategory->save();
 
         $notification = trans('admin_validation.Update Successfully');
