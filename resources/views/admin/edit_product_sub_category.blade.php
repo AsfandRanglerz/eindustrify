@@ -13,7 +13,6 @@
               <div class="breadcrumb-item">{{__('admin.Edit Product Sub Category')}}</div>
             </div>
           </div>
-
           <div class="section-body">
             <a href="{{ route('admin.product-sub-category.index') }}" class="btn btn-primary"><i class="fas fa-list"></i> {{__('admin.Product Sub Category')}}</a>
             <div class="row mt-4">
@@ -24,7 +23,6 @@
                             @csrf
                             @method('PUT')
                             <div class="row">
-
                                 <div class="form-group col-12">
                                     <label>{{__('admin.Category')}} <span class="text-danger">*</span></label>
                                     <select name="category" id="category" class="form-control">

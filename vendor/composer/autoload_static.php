@@ -811,6 +811,7 @@ class ComposerStaticInit474698736e1a9475595fa53513e2d432
         'App\\Models\\GoogleRecaptcha' => __DIR__ . '/../..' . '/app/Models/GoogleRecaptcha.php',
         'App\\Models\\HelpCenter' => __DIR__ . '/../..' . '/app/Models/HelpCenter.php',
         'App\\Models\\HelpCenterPage' => __DIR__ . '/../..' . '/app/Models/HelpCenterPage.php',
+        'App\\Models\\HomePageBanner' => __DIR__ . '/../..' . '/app/Models/HomePageBanner.php',
         'App\\Models\\HomePageOneVisibility' => __DIR__ . '/../..' . '/app/Models/HomePageOneVisibility.php',
         'App\\Models\\InstamojoPayment' => __DIR__ . '/../..' . '/app/Models/InstamojoPayment.php',
         'App\\Models\\MaintainanceText' => __DIR__ . '/../..' . '/app/Models/MaintainanceText.php',

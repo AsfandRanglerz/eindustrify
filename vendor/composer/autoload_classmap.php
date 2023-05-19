@@ -189,6 +189,7 @@ return array(
     'App\\Models\\GoogleRecaptcha' => $baseDir . '/app/Models/GoogleRecaptcha.php',
     'App\\Models\\HelpCenter' => $baseDir . '/app/Models/HelpCenter.php',
     'App\\Models\\HelpCenterPage' => $baseDir . '/app/Models/HelpCenterPage.php',
+    'App\\Models\\HomePageBanner' => $baseDir . '/app/Models/HomePageBanner.php',
     'App\\Models\\HomePageOneVisibility' => $baseDir . '/app/Models/HomePageOneVisibility.php',
     'App\\Models\\InstamojoPayment' => $baseDir . '/app/Models/InstamojoPayment.php',
     'App\\Models\\MaintainanceText' => $baseDir . '/app/Models/MaintainanceText.php',

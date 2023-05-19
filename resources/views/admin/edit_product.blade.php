@@ -13,7 +13,6 @@
               <div class="breadcrumb-item">{{__('admin.Edit Product')}}</div>
             </div>
           </div>
-
           <div class="section-body">
             <a href="{{ route('admin.product.index') }}" class="btn btn-primary"><i class="fas fa-list"></i> {{__('admin.Products')}}</a>
             <div class="row mt-4">
@@ -114,10 +113,10 @@
                                    <input type="text" class="form-control" name="sku" value="{{ $product->sku }}">
                                 </div>
 
-                                {{-- <div class="form-group col-12">
+                                <div class="form-group col-12">
                                     <label>{{__('admin.Price')}} <span class="text-danger">*</span></label>
                                    <input type="text" class="form-control" name="price" value="{{ $product->price }}">
-                                </div> --}}
+                                </div>
 
                                 {{-- <div class="form-group col-12">
                                     <label>{{__('admin.Offer Price')}} </label>

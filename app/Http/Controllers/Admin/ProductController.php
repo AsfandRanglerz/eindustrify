@@ -92,7 +92,7 @@ class ProductController extends Controller
             'short_description' => 'required',
             'long_description' => 'required',
             'brand' => 'required',
-            // 'price' => 'required|numeric',
+            'price' => 'required|numeric',
             'quantity' => 'required',
             // 'tax' => 'required',
             // 'is_return' => 'required',
@@ -150,7 +150,7 @@ class ProductController extends Controller
         $product->child_category_id = $request->child_category ? $request->child_category : 0;
         $product->brand_id = $request->brand;
         $product->sku = $request->sku;
-        // $product->price = $request->price;
+        $product->price = $request->price;
         // $product->offer_price = $request->offer_price;
         $product->qty = $request->quantity;
         $product->short_description = $request->short_description;
@@ -282,7 +282,7 @@ class ProductController extends Controller
             'short_description' => 'required',
             'long_description' => 'required',
             'brand' => 'required',
-            // 'price' => 'required|numeric',
+            'price' => 'required|numeric',
             'quantity' => 'required',
             // 'tax' => 'required',
             // 'is_return' => 'required',
@@ -350,7 +350,7 @@ class ProductController extends Controller
         $product->child_category_id = $request->child_category ? $request->child_category : 0;
         $product->brand_id = $request->brand;
         $product->sku = $request->sku;
-        // $product->price = $request->price;
+        $product->price = $request->price;
         // $product->offer_price = $request->offer_price;
         $product->qty = $request->quantity;
         $product->short_description = $request->short_description;

@@ -68,6 +68,7 @@ use App\Http\Controllers\Admin\HelpCenterPageController;
 
 
 
+use App\Http\Controllers\Admin\HomePageBannerController;
 use App\Http\Controllers\Admin\MenuVisibilityController;
 use App\Http\Controllers\Admin\ProductGalleryController;
 use App\Http\Controllers\Admin\ProductVariantController;
@@ -78,22 +79,22 @@ use App\Http\Controllers\Seller\SellerProductController;
 use App\Http\Controllers\Seller\SellerProfileController;
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
 use App\Http\Controllers\Admin\CampaignProductController;
+
+
+
+
+
 use App\Http\Controllers\Admin\CustomerSupportController;
-
-
-
-
-
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductOverviewController;
 use App\Http\Controllers\Admin\FooterSocialLinkController;
 use App\Http\Controllers\Admin\SpecificationKeyController;
 use App\Http\Controllers\Seller\SellerDashboardController;
 use App\Http\Controllers\Admin\TermsAndConditionController;
+
+
+
 use App\Http\Controllers\Admin\EmailConfigurationController;
-
-
-
 use App\Http\Controllers\Admin\HomepageVisibilityController;
 use App\Http\Controllers\Admin\ProductSubCategoryController;
 use App\Http\Controllers\Admin\ProductVariantItemController;
@@ -541,6 +542,9 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::post('send-mail-to-all-seller', [VendorController::class, 'sendMailToAllSeller'])->name('send-mail-to-all-seller');
         Route::get('withdraw-list/{id}', [VendorController::class, 'sellerWithdrawList'])->name('withdraw-list');
 
+        Route::get('home-page-banner', [HomePageBannerController::class, 'getHomePageBanner'])->name('home-page-banner');
+        Route::get('home-page-banner-edit/{id}', [HomePageBannerController::class, 'getEditHomePageBanner'])->name('home-page-banner-edit');
+        Route::post('update-home-page-banner', [HomePageBannerController::class, 'updateHomePageBanner'])->name('update-home-page-banner');
 
 
         Route::get('copyright-policy', [PolicyController::class, 'getCopyRightPolicy'])->name('copyright-policy');

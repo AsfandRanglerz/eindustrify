@@ -219,6 +219,15 @@
                 </ul>
             </li>
             <li
+                class="nav-item dropdown {{ Route::is('admin.copyright-policy') || Route::is('admin.faq.*') || Route::is('admin.privacy-policy') || Route::is('admin.terms-condition') || Route::is('admin.terms-registration') || Route::is('admin.sales-site') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-columns"></i><span>{{ __('Home Page Banner') }}</span></a>
+                <ul class="dropdown-menu">
+                    <li class="{{ Route::is('admin.home-page-banner.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.home-page-banner') }}">{{ __('Home Page Banner') }}</a></li>
+                </ul>
+            </li>
+            <li
                 class="nav-item dropdown {{ Route::is('admin.help-center-page*') || Route::is('admin.help-center-account-setting*') || Route::is('admin.help-center-user-manangenment*') || Route::is('admin.help-center-checkout*') || Route::is('admin.help-center-online-invoices*') || Route::is('admin.help-center-order-history*') || Route::is('admin.help-center-reorder*') || Route::is('admin.help-center-quotes*') || Route::is('admin.help-center-lists*') || Route::is('admin.help-center-returns-cancellation*') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i
                         class="fas fa-columns"></i><span>{{ __('Help Center Pages') }}</span></a>

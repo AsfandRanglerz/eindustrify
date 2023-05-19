@@ -107,13 +107,13 @@
                                             <input type="text" class="form-control" name="sku">
                                         </div>
 
-                                        {{-- <div class="form-group col-12">
+                                         <div class="form-group col-12">
                                             <label>{{ __('admin.Price') }} <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="price"
                                                 value="{{ old('price') }}">
                                         </div>
 
-                                        <div class="form-group col-12">
+                                       {{-- <div class="form-group col-12">
                                             <label>{{ __('admin.Offer Price') }}</label>
                                             <input type="text" class="form-control" name="offer_price"
                                                 value="{{ old('offer_price') }}">
