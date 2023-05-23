@@ -38,6 +38,32 @@
         font-weight: 600 !important;
         color: rgba(28, 28, 28, 0.5) !important;
     }
+
+
+#searchCat {
+    border-radius: 0;
+}
+.accordion-button {
+    border-bottom: 1px solid #D9D9D9!important;
+}
+    .cat-dropdown-section {
+        position: absolute;
+        width: 100%;
+        z-index: 1;
+        background: #FFF;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    /* .category-dropdown-container {
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    } */
+
+    .category-dropdown-container .accordion-button {
+        background: rgba(176, 25, 30, 0.1)!important;
+    }
+    .category-dropdown-container .accordion-button.collapsed {
+        background: #FFF!important;
+    }
 </style>
 @section('public-content')
     <!--============================
@@ -480,16 +506,56 @@
                                         @csrf
                                         <div class="row mb-3 mx-auto">
                                             <p>Please select the product categories you will be listing.</p>
-                                            <div class="form-group col-md-7 my-4">
-                                                <label class="text-uppercase">Product Categories</label>
-                                                <select class="form-control select-category" multiple>
-                                                    <option value=""></option>
-                                                    <option value="Battery Recycling">Battery Recycling</option>
-                                                    <option value="Bearings">Bearings</option>
-                                                    <option value="Ball Bearings">Ball Bearings</option>
-                                                    <option value="Fluid Connectors">Fluid Connectors</option>
-                                                    <option value="Industrial Cleaning">Industrial Cleaning</option>
-                                                </select>
+                                            <div class="form-group col-md-12 my-4">
+
+
+
+
+
+                                                <div class="position-relative category-dropdown-container">
+                                                    <input type="text" id="searchCat" class="form-control" placeholder="Please Search/Select Category">
+                                                    <div class="accordion d-none cat-dropdown-section" id="catSubChildDropdown">
+                                                        <div class="accordion-item">
+                                                          <h2 class="accordion-header" id="headingOne">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                                                Battery Recycling
+                                                            </button>
+                                                          </h2>
+                                                          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#catSubChildDropdown">
+                                                            <div class="accordion-body">
+                                                                <div class="accordion" id="catSubChildDropdown1">
+                                                                    <div class="accordion-item">
+                                                                      <h2 class="accordion-header" id="headingOne1">
+                                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
+                                                                            Sub Category
+                                                                        </button>
+                                                                      </h2>
+                                                                      <div id="collapseOne1" class="accordion-collapse collapse" aria-labelledby="headingOne1" data-bs-parent="#catSubChildDropdown1">
+                                                                        <div class="accordion-body">
+                                                                            <input type="text" id="childCatSearch" class="form-control mb-3" placeholder="Please Search/Select Child Category">
+                                                                            <div id="searchSubCat">
+                                                                                <div class="form-check mb-0 sub-cat">
+                                                                                    <input class="form-check-input" type="checkbox" value="" id="accessoriesSub">
+                                                                                    <label class="form-check-label" for="accessoriesSub">Child Category 1</label>
+                                                                                </div>
+                                                                                <div class="form-check mb-0 sub-cat">
+                                                                                    <input class="form-check-input" type="checkbox" value="" id="flangeSub">
+                                                                                    <label class="form-check-label" for="flangeSub">Child Category 2</label>
+                                                                                </div>
+                                                                                <div class="form-check mb-0 sub-cat">
+                                                                                    <input class="form-check-input" type="checkbox" value="" id="hangerSub">
+                                                                                    <label class="form-check-label" for="hangerSub">Child Category 3</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                         <div class="row mb-3 mx-auto">
@@ -551,6 +617,23 @@
 @section('js')
     <script>
         $(function() {
+
+            $(document).ready(function(){
+                $('#childCatSearch').on('keyup', function() {
+                    var value = $(this).val().toLowerCase();
+                    $('#searchSubCat .sub-cat').filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                    });
+                });
+                $(document).on('click', '#searchCat, #catSubChildDropdown', function() {
+                    $('.cat-dropdown-section').removeClass('d-none');
+                });
+                $('#prodInfo').click(function() {
+                    $('.cat-dropdown-section').addClass('d-none');
+                });
+            });
+
+
             $('#selRole').select2({
                 placeholder: 'Select Your Role',
             });
