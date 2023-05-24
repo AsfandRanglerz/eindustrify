@@ -6,66 +6,107 @@
     <meta name="description" content="{{ $product->seo_description }} {{ $tags }}">
 @endsection
 
+<style>
+    .exzoom .exzoom_img_ul_outer {
+        border: none!important;
+    }
+    .multi-product-img {
+        border: 1px solid #ddd;
+    }
+</style>
+
 @section('public-content')
 
-
-    <!--============================
-         BREADCRUMB START
-    ==============================-->
-    <section id="wsus__breadcrumb" style="background: url({{  asset($product->banner_image) }});">
-        <div class="wsus_breadcrumb_overlay">
-            <div class="container">
-                <div class="row">
-                    <div class="col-12">
-                        <h4>{{__('user.Product')}}</h4>
-                        <ul>
-                            <li><a href="{{ route('home') }}">{{__('user.Home')}}</a></li>
-                            <li><a href="{{ route('product') }}">{{__('user.Product')}}</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--============================
-        BREADCRUMB END
-    ==============================-->
 <!--============================
         PRODUCT DETAILS START
     ==============================-->
     <section id="wsus__product_details">
         <div class="container">
+            <div class="slider-for">
+                <div>your content1</div>
+                <div>your content2</div>
+                <div>your content3</div>
+                <div>your content4</div>
+                <div>your content5</div>
+              </div>
+              <div class="slider-nav">
+                <div>your content1</div>
+                <div>your content2</div>
+                <div>your content3</div>
+                <div>your content4</div>
+                <div>your content5</div>
+              </div>
             <div class="row">
-                <div class="col-xl-4 col-md-5 col-lg-5">
-                    <div id="sticky_pro_zoom">
-                        <div class="exzoom hidden" id="exzoom">
-                            <div class="exzoom_img_box">
-                                @if ($product->video_link)
-                                    @php
-                                        $video_id=explode("=",$product->video_link);
-                                    @endphp
-                                    <a class="venobox wsus__pro_det_video" data-autoplay="true" data-vbtype="video"
-                                        href="https://youtu.be/{{ $video_id[1] }}">
-                                        <i class="fas fa-play"></i>
-                                    </a>
-                                @endif
-                                <ul class='exzoom_img_ul'>
-                                    @foreach ($product->gallery as $image)
-                                    <li><img class="zoom ing-fluid w-100" src="{{ asset($image->image) }}" alt="product"></li>
-                                    @endforeach
+                <div class="col-md-5 col-lg-5">
+                    {{-- <div class="multi-product-img">
+                        <div id="sticky_pro_zoom">
+                            <div class="exzoom hidden" id="exzoom">
+                                <div class="exzoom_img_box">
+                                    @if ($product->video_link)
+                                        @php
+                                            $video_id=explode("=",$product->video_link);
+                                        @endphp
+                                        <a class="venobox wsus__pro_det_video" data-autoplay="true" data-vbtype="video"
+                                            href="https://youtu.be/{{ $video_id[1] }}">
+                                            <i class="fas fa-play"></i>
+                                        </a>
+                                    @endif
+                                    <ul class='exzoom_img_ul'>
+                                        @foreach ($product->gallery as $image)
+                                        <li><img class="zoom ing-fluid w-100" src="{{ asset($image->image) }}" alt="product"></li>
+                                        @endforeach
 
 
-                                </ul>
+                                    </ul>
+                                </div>
+                                <div class="exzoom_nav"></div>
+                                <p class="exzoom_btn">
+                                    <a href="javascript:void(0);" class="exzoom_prev_btn"> <i class="far fa-chevron-left"></i> </a>
+                                    <a href="javascript:void(0);" class="exzoom_next_btn"> <i class="far fa-chevron-right"></i> </a>
+                                </p>
                             </div>
-                            <div class="exzoom_nav"></div>
-                            <p class="exzoom_btn">
-                                <a href="javascript:void(0);" class="exzoom_prev_btn"> <i class="far fa-chevron-left"></i> </a>
-                                <a href="javascript:void(0);" class="exzoom_next_btn"> <i class="far fa-chevron-right"></i> </a>
-                            </p>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
-                <div class="col-xl-8 col-md-7 col-lg-7">
+                <div class="col-md-7 col-lg-7">
+                    Home / Electric Motors / Servo Motors & Accessories / Servo Accessories / Electric Motor 1 Phase
+                    <h6></h6>
+                    <form id="reviewFormId" class="vendor_review_modal">
+                        @csrf
+                        <p class="rating">
+                            <span>{{__('user.select your rating')}} : </span>
+                            <i class="fas fa-star product_rat" data-rating="1" onclick="productReview(1)"></i>
+                            <i class="fas fa-star product_rat" data-rating="2" onclick="productReview(2)"></i>
+                            <i class="fas fa-star product_rat" data-rating="3" onclick="productReview(3)"></i>
+                            <i class="fas fa-star product_rat" data-rating="4" onclick="productReview(4)"></i>
+                            <i class="fas fa-star product_rat" data-rating="5" onclick="productReview(5)"></i>
+                        </p>
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="col-xl-12">
+                                    <div class="wsus__single_com">
+                                        <textarea name="review" cols="3" rows="3"
+                                            placeholder="{{__('user.Write your review')}}"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <input type="hidden" id="product_id" name="product_id" value="{{ $product->id }}">
+                        <input type="hidden" name="rating" value="5" id="product_rating">
+                        <input type="hidden" name="seller_id" value="{{ $product->vendor_id }}">
+
+                        @if($recaptchaSetting->status==1)
+                            <div class="col-xl-12">
+                                <div class="wsus__single_com mb-3">
+                                    <div class="g-recaptcha" data-sitekey="{{ $recaptchaSetting->site_key }}"></div>
+                                </div>
+                            </div>
+                        @endif
+
+                    </form>
+
+
                     <div class="wsus__pro_details_text">
                         <a class="title" href="javascript:;">{{ $product->name }}</a>
                             <input type="hidden" id="stock_qty" value="{{ $product->qty }}">
@@ -147,7 +188,6 @@
                                 <h4>{{ $currencySetting->currency_icon }} <span id="mainProductPrice">{{ sprintf("%.2f", $product->offer_price + $variantPrice) }}</span>  <del>{{ $currencySetting->currency_icon }}{{ sprintf("%.2f", $totalPrice) }}</del></h4>
                             @endif
                         @endif
-
 
                         @if ($reviewQty > 0)
                             <p class="review">
@@ -251,9 +291,6 @@
                                 </div>
                             </div>
                         @endif
-
-
-
 
                         <ul class="wsus__button_area">
                             <li><button type="submit" class="add_cart">{{__('user.add to cart')}}</button></li>
@@ -578,400 +615,141 @@
     ==============================-->
 
 
-        <!--============================
+    <!--============================
         RELATED PRODUCT START
     ==============================-->
-    @if ($relatedProducts->count() > 0)
-    <section id="wsus__flash_sell">
-        <div class="container">
+    <div class="featured-products">
+        <div class="container py-xl-5 py-3">
+            <div class="mb-xl-3 mb-0 d-flex flex-wrap align-items-center justify-content-between">
+                <h4 class="mb-0">Related Products</h4>
+            </div>
             <div class="row">
-                <div class="col-xl-12">
-                    <div class="wsus__section_header">
-                        <h3>{{__('user.Related Products')}}</h3>
-                        <a class="see_btn" href="{{ route('product',['category' => $product->category->slug]) }}">{{__('user.see more')}} <i class="fas fa-caret-right"></i></a>
+                <div class="col-lg-3 col-md-6 p-2">
+                    <div class="position-relative feature-product-section">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
+                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/engine15.png') }}">
+                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
+                        </div>
+                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                        <div class="p-3">
+                            <h6 class="mb-2">Release device EM 24V-DC</h6>
+                            <span class="price">$377.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 p-2">
+                    <div class="position-relative feature-product-section">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
+                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/engine2.png') }}">
+                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
+                        </div>
+                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                        <div class="p-3">
+                            <h6 class="mb-2">Release device EM 24V-DC</h6>
+                            <span class="price">$377.00</span>
+                            <s class="ms-3">$8,200.00</s>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 p-2">
+                    <div class="position-relative feature-product-section">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
+                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/engine3.png') }}">
+                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
+                        </div>
+                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                        <div class="p-3">
+                            <h6 class="mb-2">Release device EM 24V-DC</h6>
+                            <span class="price">$377.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 p-2">
+                    <div class="position-relative feature-product-section">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
+                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/engine8.png') }}">
+                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
+                        </div>
+                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                        <div class="p-3">
+                            <h6 class="mb-2">Release device EM 24V-DC</h6>
+                            <span class="price">$377.00</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="row flash_sell_slider ">
-                @foreach ($relatedProducts as $relatedProduct)
-                    @php
-                        $reviewQty = $relatedProduct->reviews->where('status',1)->count();
-                        $totalReview = $relatedProduct->reviews->where('status',1)->sum('rating');
-
-                        if ($reviewQty > 0) {
-                            $average = $totalReview / $reviewQty;
-
-                            $intAverage = intval($average);
-
-                            $nextValue = $intAverage + 1;
-                            $reviewPoint = $intAverage;
-                            $halfReview=false;
-                            if($intAverage < $average && $average < $nextValue){
-                                $reviewPoint= $intAverage + 0.5;
-                                $halfReview=true;
-                            }
-                        }
-                    @endphp
-
-                    @php
-                        $variantPrice = 0;
-                        $variants = $relatedProduct->variants->where('status', 1);
-                        if($variants->count() != 0){
-                            foreach ($variants as $variants_key => $variant) {
-                                if($variant->variantItems->where('status',1)->count() != 0){
-                                    $item = $variant->variantItems->where('is_default',1)->first();
-                                    if($item){
-                                        $variantPrice += $item->price;
-                                    }
-                                }
-                            }
-                        }
-
-                        $isCampaign = false;
-                        $today = date('Y-m-d H:i:s');
-
-                        $campaign = App\Models\CampaignProduct::where(['status' => 1, 'product_id' => $relatedProduct->id])->first();
-                        if($campaign){
-
-                            $campaign = $campaign->campaign;
-                            if($campaign->start_date <= $today &&  $today <= $campaign->end_date){
-                                $isCampaign = true;
-                            }
-
-                            $campaignOffer = $campaign->offer;
-                            $productPrice = $relatedProduct->price;
-                            $campaignOfferPrice = ($campaignOffer / 100) * $productPrice;
-                            $totalPrice = $productPrice;
-                            $campaignOfferPrice = $totalPrice - $campaignOfferPrice;
-                        }
-
-                        $totalPrice = $relatedProduct->price;
-                        if($relatedProduct->offer_price != null){
-                            $offerPrice = $relatedProduct->offer_price;
-                            $offer = $totalPrice - $offerPrice;
-                            $percentage = ($offer * 100) / $totalPrice;
-                            $percentage = round($percentage);
-                        }
-
-                    @endphp
-                    <div class="col-xl-3">
-                        <div class="wsus__product_item wsus__after">
-                            @if ($relatedProduct->new_product == 1)
-                                <span class="wsus__new">{{__('user.New')}}</span>
-                            @elseif ($relatedProduct->is_featured == 1)
-                                <span class="wsus__new">{{__('user.Featured')}}</span>
-                            @elseif ($relatedProduct->is_top == 1)
-                                <span class="wsus__new">{{__('user.Top')}}</span>
-                            @elseif ($relatedProduct->is_best == 1)
-                                <span class="wsus__new">{{__('user.Best')}}</span>
-                            @endif
-
-                            @if ($isCampaign)
-                                <span class="wsus__minus">-{{ $campaignOffer }}%</span>
-                            @else
-                                @if ($relatedProduct->offer_price != null)
-                                    <span class="wsus__minus">-{{ $percentage }}%</span>
-                                @endif
-                            @endif
-                            <a class="wsus__pro_link" href="{{ route('product-detail', $relatedProduct->slug) }}">
-                                <img src="{{ asset($relatedProduct->thumb_image) }}" alt="product" class="img-fluid w-100 img_1" />
-                                <img src="{{ asset($relatedProduct->thumb_image) }}" alt="product" class="img-fluid w-100 img_2" />
-                            </a>
-
-                            <ul class="wsus__single_pro_icon">
-                                <li><a data-bs-toggle="modal" data-bs-target="#productModalView-{{ $relatedProduct->id }}"><i class="fal fa-eye"></i></a></li>
-                                <li><a href="javascript:;" onclick="addToWishlist('{{ $relatedProduct->id }}')"><i class="far fa-heart"></i></a></li>
-                                <li><a href="javascript:;" onclick="addToCompare('{{ $relatedProduct->id }}')"><i class="far fa-random"></i></a>
-                                </li>
-                            </ul>
-                            <div class="wsus__product_details">
-                                <a class="wsus__category" href="{{ route('product',['category' => $relatedProduct->category->slug]) }}">{{ $relatedProduct->category->name }} </a>
-
-                                @if ($reviewQty > 0)
-                                    <p class="wsus__pro_rating">
-                                        @for ($i = 1; $i <=5; $i++)
-                                            @if ($i <= $reviewPoint)
-                                                <i class="fas fa-star"></i>
-                                            @elseif ($i> $reviewPoint )
-                                                @if ($halfReview==true)
-                                                <i class="fas fa-star-half-alt"></i>
-                                                    @php
-                                                        $halfReview=false
-                                                    @endphp
-                                                @else
-                                                <i class="fal fa-star"></i>
-                                                @endif
-                                            @endif
-                                        @endfor
-                                        <span>({{ $reviewQty }} {{__('user.review')}})</span>
-                                    </p>
-                                @endif
-
-                                @if ($reviewQty == 0)
-                                    <p class="wsus__pro_rating">
-                                        <i class="fal fa-star"></i>
-                                        <i class="fal fa-star"></i>
-                                        <i class="fal fa-star"></i>
-                                        <i class="fal fa-star"></i>
-                                        <i class="fal fa-star"></i>
-                                        <span>(0 {{__('user.review')}})</span>
-                                    </p>
-                                @endif
-
-                                <a class="wsus__pro_name" href="{{ route('product-detail', $relatedProduct->slug) }}">{{ $relatedProduct->short_name }}</a>
-                                @if ($isCampaign)
-                                    <p class="wsus__price">{{ $currencySetting->currency_icon }}{{ sprintf("%.2f", $campaignOfferPrice + $variantPrice) }} <del>{{ $currencySetting->currency_icon }}{{ sprintf("%.2f",$totalPrice) }}</del></p>
-                                @else
-                                    @if ($relatedProduct->offer_price == null)
-                                    <p class="wsus__price">{{ $currencySetting->currency_icon }}{{ sprintf("%.2f", $totalPrice + $variantPrice) }}</p>
-                                    @else
-                                    <p class="wsus__price">{{ $currencySetting->currency_icon }}{{ sprintf("%.2f", $relatedProduct->offer_price + $variantPrice) }} <del>{{ $currencySetting->currency_icon }}{{ sprintf("%.2f", $totalPrice) }}</del></p>
-                                    @endif
-                                @endif
-                                <a class="add_cart" onclick="addToCartMainProduct('{{ $relatedProduct->id }}')" href="javascript:;">{{__('user.add to cart')}}</a>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-
-            @foreach ($relatedProducts as $relatedProduct)
-                <section class="product_popup_modal">
-                    <div class="modal fade" id="productModalView-{{ $relatedProduct->id }}" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-body">
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-                                            class="far fa-times"></i></button>
-                                    <div class="row">
-                                        <div class="col-xl-6 col-12 col-sm-10 col-md-8 col-lg-6 m-auto display">
-                                            <div class="wsus__quick_view_img">
-                                                @if ($relatedProduct->video_link)
-                                                    @php
-                                                        $video_id=explode("=",$relatedProduct->video_link);
-                                                    @endphp
-                                                    <a class="venobox wsus__pro_det_video" data-autoplay="true" data-vbtype="video"
-                                                    href="https://youtu.be/{{ $video_id[1] }}">
-                                                    <i class="fas fa-play"></i>
-                                                </a>
-                                                @endif
-
-                                                <div class="row modal_slider">
-                                                    @foreach ($relatedProduct->gallery as $image)
-                                                    <div class="col-xl-12">
-                                                        <div class="modal_slider_img">
-                                                            <img src="{{ asset($image->image) }}" alt="product" class="img-fluid w-100">
-                                                        </div>
-                                                    </div>
-                                                    @endforeach
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-12 col-sm-12 col-md-12 col-lg-6">
-                                            <div class="wsus__pro_details_text">
-                                                <a class="title" href="{{ route('product-detail', $relatedProduct->slug) }}">{{ $relatedProduct->name }}</a>
-
-                                                    @if ($relatedProduct->qty == 0)
-                                                    <p class="wsus__stock_area"><span class="in_stock">{{__('user.Out of Stock')}}</span></p>
-                                                    @else
-                                                        <p class="wsus__stock_area"><span class="in_stock">{{__('user.In stock')}}
-                                                            @if ($setting->show_product_qty == 1)
-                                                                </span> ({{ $relatedProduct->qty }} {{__('user.item')}})
-                                                            @endif
-                                                        </p>
-                                                    @endif
-
-
-                                                @php
-                                                    $reviewQty = $relatedProduct->reviews->where('status',1)->count();
-                                                    $totalReview = $relatedProduct->reviews->where('status',1)->sum('rating');
-
-                                                    if ($reviewQty > 0) {
-                                                        $average = $totalReview / $reviewQty;
-
-                                                        $intAverage = intval($average);
-
-                                                        $nextValue = $intAverage + 1;
-                                                        $reviewPoint = $intAverage;
-                                                        $halfReview=false;
-                                                        if($intAverage < $average && $average < $nextValue){
-                                                            $reviewPoint= $intAverage + 0.5;
-                                                            $halfReview=true;
-                                                        }
-                                                    }
-                                                @endphp
-
-                                                @php
-                                                    $variantPrice = 0;
-                                                    $variants = $relatedProduct->variants->where('status', 1);
-                                                    if($variants->count() != 0){
-                                                        foreach ($variants as $variants_key => $variant) {
-                                                            if($variant->variantItems->where('status',1)->count() != 0){
-                                                                $item = $variant->variantItems->where('is_default',1)->first();
-                                                                if($item){
-                                                                    $variantPrice += $item->price;
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                    $isCampaign = false;
-                                                    $today = date('Y-m-d H:i:s');
-                                                    $campaign = App\Models\CampaignProduct::where(['status' => 1, 'product_id' => $relatedProduct->id])->first();
-                                                    if($campaign){
-                                                        $campaign = $campaign->campaign;
-                                                        if($campaign->start_date <= $today &&  $today <= $campaign->end_date){
-                                                            $isCampaign = true;
-                                                        }
-                                                        $campaignOffer = $campaign->offer;
-                                                        $productPrice = $relatedProduct->price;
-                                                        $campaignOfferPrice = ($campaignOffer / 100) * $productPrice;
-                                                        $totalPrice = $relatedProduct->price;
-                                                        $campaignOfferPrice = $totalPrice - $campaignOfferPrice;
-                                                    }
-
-                                                    $totalPrice = $relatedProduct->price;
-                                                    if($relatedProduct->offer_price != null){
-                                                        $offerPrice = $relatedProduct->offer_price;
-                                                        $offer = $totalPrice - $offerPrice;
-                                                        $percentage = ($offer * 100) / $totalPrice;
-                                                        $percentage = round($percentage);
-                                                    }
-
-
-                                                @endphp
-
-                                                @if ($isCampaign)
-                                                    <h4>{{ $currencySetting->currency_icon }} <span id="mainProductModalPrice-{{ $relatedProduct->id }}">{{ sprintf("%.2f", $campaignOfferPrice + $variantPrice) }}</span>  <del>{{ $currencySetting->currency_icon }}{{ sprintf("%.2f", $totalPrice) }}</del></h4>
-                                                @else
-                                                    @if ($relatedProduct->offer_price == null)
-                                                        <h4>{{ $currencySetting->currency_icon }}<span id="mainProductModalPrice-{{ $relatedProduct->id }}">{{ sprintf("%.2f", $totalPrice + $variantPrice) }}</span></h4>
-                                                    @else
-                                                        <h4>{{ $currencySetting->currency_icon }}<span id="mainProductModalPrice-{{ $relatedProduct->id }}">{{ sprintf("%.2f", $relatedProduct->offer_price + $variantPrice) }}</span> <del>{{ $currencySetting->currency_icon }}{{ sprintf("%.2f", $totalPrice) }}</del></h4>
-                                                    @endif
-                                                @endif
-
-                                                @if ($reviewQty > 0)
-                                                    <p class="review">
-                                                        @for ($i = 1; $i <=5; $i++)
-                                                            @if ($i <= $reviewPoint)
-                                                                <i class="fas fa-star"></i>
-                                                            @elseif ($i> $reviewPoint )
-                                                                @if ($halfReview==true)
-                                                                <i class="fas fa-star-half-alt"></i>
-                                                                    @php
-                                                                        $halfReview=false
-                                                                    @endphp
-                                                                @else
-                                                                <i class="fal fa-star"></i>
-                                                                @endif
-                                                            @endif
-                                                        @endfor
-                                                        <span>({{ $reviewQty }} {{__('user.review')}})</span>
-                                                    </p>
-                                                @endif
-
-                                                @if ($reviewQty == 0)
-                                                    <p class="review">
-                                                        <i class="fal fa-star"></i>
-                                                        <i class="fal fa-star"></i>
-                                                        <i class="fal fa-star"></i>
-                                                        <i class="fal fa-star"></i>
-                                                        <i class="fal fa-star"></i>
-                                                        <span>(0 {{__('user.review')}})</span>
-                                                    </p>
-                                                @endif
-
-                                                @php
-                                                    $productPrice = 0;
-                                                    if($isCampaign){
-                                                        $productPrice = $campaignOfferPrice + $variantPrice;
-                                                    }else{
-                                                        if ($relatedProduct->offer_price == null) {
-                                                            $productPrice = $totalPrice + $variantPrice;
-                                                        }else {
-                                                            $productPrice = $relatedProduct->offer_price + $variantPrice;
-                                                        }
-                                                    }
-                                                @endphp
-                                                <form id="productModalFormId-{{ $relatedProduct->id }}">
-                                                <div class="wsus__quentity">
-                                                    <h5>{{__('user.quantity') }} :</h5>
-                                                    <div class="modal_btn">
-                                                        <button onclick="productModalDecrement('{{ $relatedProduct->id }}')" type="button" class="btn btn-danger btn-sm">-</button>
-                                                        <input id="productModalQty-{{ $relatedProduct->id }}" name="quantity"  readonly class="form-control" type="text" min="1" max="100" value="1" />
-                                                        <button onclick="productModalIncrement('{{ $relatedProduct->id }}', '{{ $relatedProduct->qty }}')" type="button" class="btn btn-success btn-sm">+</button>
-                                                    </div>
-                                                    <h3 class="d-none">{{ $currencySetting->currency_icon }}<span id="productModalPrice-{{ $relatedProduct->id }}">{{ sprintf("%.2f",$productPrice) }}</span></h3>
-
-                                                    <input type="hidden" name="product_id" value="{{ $relatedProduct->id }}">
-                                                    <input type="hidden" name="image" value="{{ $relatedProduct->thumb_image }}">
-                                                    <input type="hidden" name="slug" value="{{ $relatedProduct->slug }}">
-
-                                                </div>
-                                                @php
-                                                    $productVariants = App\Models\ProductVariant::where(['status' => 1, 'product_id'=> $relatedProduct->id])->get();
-                                                @endphp
-                                                @if ($productVariants->count() != 0)
-                                                    <div class="wsus__selectbox">
-                                                        <div class="row">
-                                                            @foreach ($productVariants as $productVariant)
-                                                                @php
-                                                                    $items = App\Models\ProductVariantItem::orderBy('is_default','desc')->where(['product_variant_id' => $productVariant->id, 'product_id' => $relatedProduct->id])->get();
-                                                                @endphp
-                                                                @if ($items->count() != 0)
-                                                                    <div class="col-xl-6 col-sm-6 mb-3">
-                                                                        <h5 class="mb-2">{{ $productVariant->name }}:</h5>
-
-                                                                        <input type="hidden" name="variants[]" value="{{ $productVariant->id }}">
-                                                                        <input type="hidden" name="variantNames[]" value="{{ $productVariant->name }}">
-
-                                                                        <select class="select_2 productModalVariant" name="items[]" data-product="{{ $relatedProduct->id }}">
-                                                                            @foreach ($items as $item)
-                                                                                <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                                                            @endforeach
-                                                                        </select>
-
-                                                                    </div>
-                                                                @endif
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
-                                                @endif
-                                                <ul class="wsus__button_area">
-                                                    <li><button type="button" onclick="addToCartInProductModal('{{ $relatedProduct->id }}')" class="add_cart">{{__('user.add to cart')}}</button></li>
-                                                    <li><a class="buy_now" href="javascript:;" onclick="addToBuyNow('{{ $relatedProduct->id }}')">{{__('user.buy now')}}</a></li>
-                                                    <li><a href="javascript:;" onclick="addToWishlist('{{ $relatedProduct->id }}')"><i class="fal fa-heart"></i></a></li>
-                                                    <li><a href="javascript:;" onclick="addToCompare('{{ $relatedProduct->id }}')"><i class="far fa-random"></i></a></li>
-                                                </ul>
-                                            </form>
-                                            @if ($relatedProduct->sku)
-                                            <p class="brand_model"><span>{{__('user.Model')}} :</span> {{ $relatedProduct->sku }}</p>
-                                            @endif
-
-                                            <p class="brand_model"><span>{{__('user.Brand')}} :</span> <a href="{{ route('product',['brand' => $relatedProduct->brand->slug]) }}">{{ $relatedProduct->brand->name }}</a></p>
-                                            <p class="brand_model"><span>{{__('user.Category')}} :</span> <a href="{{ route('product',['category' => $relatedProduct->category->slug]) }}">{{ $relatedProduct->category->name }}</a></p>
-                                            <div class="wsus__pro_det_share d-none">
-                                                <h5>{{__('user.share')}} :</h5>
-                                                <ul class="d-flex">
-                                                    <li><a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ route('product-detail', $relatedProduct->slug) }}&t={{ $relatedProduct->name }}"><i class="fab fa-facebook-f"></i></a></li>
-                                                    <li><a class="twitter" href="https://twitter.com/share?text={{ $relatedProduct->name }}&url={{ route('product-detail', $relatedProduct->slug) }}"><i class="fab fa-twitter"></i></a></li>
-                                                    <li><a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('product-detail', $relatedProduct->slug) }}&title={{ $relatedProduct->name }}"><i class="fab fa-linkedin"></i></a></li>
-                                                    <li><a class="pinterest" href="https://www.pinterest.com/pin/create/button/?description={{ $relatedProduct->name }}&media=&url={{ route('product-detail', $relatedProduct->slug) }}"><i class="fab fa-pinterest-p"></i></a></li>
-                                                </ul>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            @endforeach
         </div>
-    </section>
-    @endif
+    </div>
+    <div class="featured-products">
+        <div class="container pb-xl-5 pb-3">
+            <div class="mb-xl-3 mb-0 d-flex flex-wrap align-items-center justify-content-between">
+                <h4 class="mb-0">Recently Viewed</h4>
+            </div>
+            <div class="row">
+                <div class="col-lg-3 col-md-6 p-2">
+                    <div class="position-relative feature-product-section">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
+                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/engine15.png') }}">
+                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
+                        </div>
+                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                        <div class="p-3">
+                            <h6 class="mb-2">Release device EM 24V-DC</h6>
+                            <span class="price">$377.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 p-2">
+                    <div class="position-relative feature-product-section">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
+                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/engine2.png') }}">
+                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
+                        </div>
+                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                        <div class="p-3">
+                            <h6 class="mb-2">Release device EM 24V-DC</h6>
+                            <span class="price">$377.00</span>
+                            <s class="ms-3">$8,200.00</s>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 p-2">
+                    <div class="position-relative feature-product-section">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
+                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/engine3.png') }}">
+                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
+                        </div>
+                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                        <div class="p-3">
+                            <h6 class="mb-2">Release device EM 24V-DC</h6>
+                            <span class="price">$377.00</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 p-2">
+                    <div class="position-relative feature-product-section">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
+                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/engine8.png') }}">
+                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
+                        </div>
+                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                        <div class="p-3">
+                            <h6 class="mb-2">Release device EM 24V-DC</h6>
+                            <span class="price">$377.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!--============================
         RELATED PRODUCT END
     ==============================-->
