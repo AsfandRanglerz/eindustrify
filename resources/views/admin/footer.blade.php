@@ -28,7 +28,7 @@
 
 
 
-
+ 
   <script src="{{ asset('backend/js/popper.min.js') }}"></script>
   <script src="{{ asset('backend/js/bootstrap.min.js') }}"></script>
   <script src="{{ asset('backend/datatables/jquery.dataTables.min.js') }}"></script>
@@ -37,7 +37,6 @@
   <script src="{{ asset('backend/js/moment.min.js') }}"></script>
   <script src="{{ asset('backend/js/stisla.js') }}"></script>
   <script src="{{ asset('backend/js/scripts.js') }}"></script>
-  <script src="{{ asset('backend/js/custom.js') }}"></script>
   <script src="{{ asset('backend/js/select2.min.js') }}"></script>
   <script src="{{ asset('backend/js/tagify.js') }}"></script>
   <script src="{{ asset('toastr/toastr.min.js') }}"></script>
@@ -49,7 +48,8 @@
   <script src="{{ asset('backend/datetimepicker/jquery.datetimepicker.js') }}"></script>
   <script src="{{ asset('backend/js/iziToast.min.js') }}"></script>
   <script src="{{ asset('backend/js/modules-toastr.js') }}"></script>
-
+  <script src="{{ asset('public/admin/assets/js/jquery.selectric.min.js')}}"></script>
+  <script src="{{ asset('backend/js/custom.js') }}"></script>
 
     <script>
         @if(Session::has('messege'))

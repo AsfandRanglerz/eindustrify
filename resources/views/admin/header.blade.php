@@ -34,7 +34,7 @@
   <link rel="stylesheet" href="{{ asset('backend/clockpicker/dist/bootstrap-clockpicker.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/datetimepicker/jquery.datetimepicker.css') }}">
   <link rel="stylesheet" href="{{ asset('backend/css/iziToast.min.css') }}">
-
+  <link rel="stylesheet" href="{{ asset('public/admin/assets/css/selectric.css') }}">
   <script src="{{ asset('backend/js/jquery-3.6.0.min.js') }}"></script>
 <style>
     .fade.in {

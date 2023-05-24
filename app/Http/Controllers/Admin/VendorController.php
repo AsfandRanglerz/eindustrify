@@ -12,24 +12,33 @@ use App\Models\Vendor;
 use App\Models\Country;
 use App\Models\Product;
 use App\Models\Setting;
+use App\Models\Category;
 use App\Mail\SendPassword;
 use App\Helpers\MailHelper;
 use App\Models\BannerImage;
+use App\Models\SubCategory;
 use Illuminate\Support\Str;
 use App\Models\CountryState;
 use App\Models\OrderProduct;
 use Illuminate\Http\Request;
+use App\Models\ChildCategory;
 use App\Models\EmailTemplate;
 use App\Models\ProductReview;
 use App\Models\SellerMailLog;
+use App\Models\BillingAddress;
 use App\Models\SellerWithdraw;
+use App\Models\VendorCategory;
 use App\Models\WithdrawMethod;
 use App\Mail\AccountActivation;
 use App\Models\VendorSocialLink;
+use App\Models\VendorSubCategory;
 use App\Mail\SendSingleSellerMail;
 use App\Mail\ApprovedSellerAccount;
+use App\Models\BusinessInformation;
+use App\Models\VendorChildCategory;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class VendorController extends Controller
 {
@@ -40,7 +49,9 @@ class VendorController extends Controller
 
     public function index()
     {
-        $sellers = User::orderBy('id', 'desc')->where('status', 1)->where('role','vendor')->get();
+        // $categorya = Session::get('category');
+        // dd($categorya);
+        $sellers = User::orderBy('id', 'desc')->where('status', 1)->where('role', 'vendor')->get();
         $defaultProfile = BannerImage::whereId('15')->first();
         $products = Product::all();
         $setting = Setting::first();
@@ -49,7 +60,7 @@ class VendorController extends Controller
 
     public function pendingSellerList()
     {
-        $sellers = User::orderBy('id', 'desc')->where('status', 0)->where('role','vendor')->get();
+        $sellers = User::orderBy('id', 'desc')->where('status', 0)->where('role', 'vendor')->get();
         $defaultProfile = BannerImage::whereId('15')->first();
         $products = Product::all();
         $setting = Setting::first();
@@ -58,34 +69,8 @@ class VendorController extends Controller
 
     public function show($id)
     {
-        $seller = Vendor::find($id);
-        if ($seller) {
-            $countries = Country::orderBy('name', 'asc')->where('status', 1)->get();
-            $states = CountryState::orderBy('name', 'asc')->where(['status' => 1, 'country_id' => $seller->user->country_id])->get();
-            $cities = City::orderBy('name', 'asc')->where(['status' => 1, 'country_state_id' => $seller->user->state_id])->get();
-            $user = $seller->user;
-            $totalWithdraw = SellerWithdraw::where('seller_id', $seller->id)->where('status', 1)->sum('total_amount');
-            $totalPendingWithdraw = SellerWithdraw::where('seller_id', $seller->id)->where('status', 0)->sum('withdraw_amount');
-
-            $totalAmount = 0;
-            $totalSoldProduct = 0;
-            $orderProducts = OrderProduct::with('order')->where('seller_id', $id)->get();
-            foreach ($orderProducts as $orderProduct) {
-                if ($orderProduct->order->payment_status == 1 && $orderProduct->order->order_status == 3) {
-                    $price = ($orderProduct->unit_price * $orderProduct->qty) + $orderProduct->vat;
-                    $totalAmount = $totalAmount + $price;
-                    $totalSoldProduct = $totalSoldProduct + $orderProduct->qty;
-                }
-            }
-
-            $defaultProfile = BannerImage::whereId('15')->first();
-            $setting = Setting::first();
-            return view('admin.show_seller', compact('seller', 'countries', 'cities', 'states', 'user', 'totalWithdraw', 'totalAmount', 'totalSoldProduct', 'totalPendingWithdraw', 'defaultProfile', 'setting'));
-        } else {
-            $notification = trans('admin_validation.Something went wrong');
-            $notification = array('messege' => $notification, 'alert-type' => 'error');
-            return redirect()->route('admin.seller-list')->with($notification);
-        }
+        $vendor = User::with('billingAddress', 'businessInformation')->find($id);
+        return view('admin.show_seller', compact('vendor'));
     }
 
     public function stateByCountry($id)
@@ -393,18 +378,19 @@ class VendorController extends Controller
     }
     public function addVendor()
     {
-        return view('admin.create-vendor');
+        $country = Country::get();
+        $categories = Category::get();
+        return view('admin.create-vendor', compact('country','categories'));
     }
 
     public function createVendor(Request $request)
     {
-
-        $request->validate([
-            'first_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email|unique:users,email',
-            'phone' => 'required',
-        ]);
+        // $request->validate([
+        //     'first_name' => 'required',
+        //     'last_name' => 'required',
+        //     'email' => 'required|email|unique:users,email',
+        //     'phone' => 'required',
+        // ]);
         $password = Str::random(8);
         $data = $request->only(['first_name', 'last_name', 'email', 'phone']);
         $data['role'] = 'vendor';
@@ -413,15 +399,74 @@ class VendorController extends Controller
         $data['email'] = $user->email;
         $data['password'] = $password;
         Mail::to($request->email)->send(new SendPassword($data));
-        $notification = trans('Customer Register Successfully');
+
+        // Business Information
+        $bussiness_information = new BusinessInformation();
+        $bussiness_information['name'] = $request->bussiness_phone;
+        $bussiness_information['phone'] = $request->bussiness_phone;
+        $bussiness_information['tax_id'] = $request->bussiness_tax_id;
+        $bussiness_information['industry_type'] = $request->bussiness_industry_type;
+        $bussiness_information['user_id'] = $user->id;
+        $bussiness_information['vat'] = $request->bussiness_vat;
+        $bussiness_information['total_employee'] = $request->total_employee;
+        $bussiness_information->save();
+
+        // Billing Address
+        $billing_address = new BillingAddress();
+        $billing_address['user_id'] = $user->id;
+        $billing_address['street_address'] = $request->billing_street_address;
+        $billing_address['department'] = $request->billing_department;
+        $billing_address['country_id'] = $request->billing_country_id;
+        $billing_address['state_id'] = $request->billing_state_id;
+        $billing_address['city_id'] = $request->billing_city_id;
+        $billing_address['zip_code'] = $request->billing_zip_code;
+        $billing_address->save();
+
+        if (isset($request->category_id)) {
+            for ($i = 0; $i < count($request->category_id); $i++) {
+                $vendor_category = new VendorCategory;
+                $vendor_category->category_id = $request->category_id[$i];
+                $vendor_category->vendor_id = $user->id;
+                $vendor_category->save();
+                for ($j = 0; $j < count($request->subcategory_id); $j++) {
+                    $b =  SubCategory::where('id', $request->subcategory_id[$j])->where('category_id', $request->category_id[$i])->first();
+                    if (isset($b)) {
+                        $vendor_subcategory = new VendorSubCategory;
+                        $vendor_subcategory->category_id = $request->category_id[$i];
+                        $vendor_subcategory->sub_category_id = $b->id;
+                        $vendor_subcategory->vendor_id = $user->id;
+                        $vendor_subcategory->save();
+                    }
+                    for ($k = 0; $k < count($request->childcategory_id); $k++) {
+                        $c =  ChildCategory::where('id', $request->childcategory_id[$k])->where('category_id', $request->category_id[$i])->where('sub_category_id', $request->subcategory_id[$j])->first();
+                        if (isset($c)) {
+                            $vendor_childcategory = new VendorChildCategory;
+                            $vendor_childcategory->category_id = $request->category_id[$i];
+                            $vendor_childcategory->sub_category_id = $c->sub_category_id;
+                            $vendor_childcategory->child_category_id = $c->id;
+                            $vendor_childcategory->vendor_id = $user->id;
+                            $vendor_childcategory->save();
+                        }
+                    }
+                }
+            }
+        }
+
+        $notification = trans('Vendor Register Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect('admin/pending-seller-list')->with($notification);
     }
     // vendor Edit
     public function edit($id)
     {
+        $categories = Category::get();
+        $subcategories = SubCategory::get();
+        $childcategories = ChildCategory::get();
         $data = User::find($id);
-        return view('admin.edit-vendor', compact('data'));
+        $country = Country::get();
+        $billingState = CountryState::where('country_id', $data->billingAddress->country->id)->get();
+        $billingCity = City::where('country_state_id', $data->billingAddress->countryState->id)->get();
+        return view('admin.edit-vendor', compact('data', 'country', 'billingState', 'billingCity','categories','subcategories','childcategories'));
     }
     // vendor Update
     public function update(Request $request)
@@ -434,8 +479,118 @@ class VendorController extends Controller
         ]);
         $data = $request->only(['first_name', 'last_name', 'email', 'phone']);
         User::find($request->id)->update($data);
-        $notification = trans('Customer Updated Successfully');
+        $user = User::find($request->id);
+        // Business Information
+        $bussiness_information = BusinessInformation::find($user->businessInformation->id);
+        $bussiness_information['name'] = $request->bussiness_phone;
+        $bussiness_information['phone'] = $request->bussiness_phone;
+        $bussiness_information['tax_id'] = $request->bussiness_tax_id;
+        $bussiness_information['industry_type'] = $request->bussiness_industry_type;
+        $bussiness_information['user_id'] = $user->id;
+        $bussiness_information['vat'] = $request->bussiness_vat;
+        $bussiness_information['total_employee'] = $request->total_employee;
+        $bussiness_information->save();
+
+        // Billing Address
+        $billing_address = BillingAddress::find($user->billingAddress->id);
+        $billing_address['user_id'] = $user->id;
+        $billing_address['street_address'] = $request->billing_street_address;
+        $billing_address['department'] = $request->billing_department;
+        $billing_address['country_id'] = $request->billing_country_id;
+        $billing_address['state_id'] = $request->billing_state_id;
+        $billing_address['city_id'] = $request->billing_city_id;
+        $billing_address['zip_code'] = $request->billing_zip_code;
+        $billing_address->save();
+
+
+        if (isset($request->category_id)) {
+            VendorCategory::where('vendor_id',$user->id)->delete();
+            VendorSubCategory::where('vendor_id',$user->id)->delete();
+            VendorChildCategory::where('vendor_id',$user->id)->delete();
+            for ($i = 0; $i < count($request->category_id); $i++) {
+                $vendor_category = new VendorCategory;
+                $vendor_category->category_id = $request->category_id[$i];
+                $vendor_category->vendor_id = $user->id;
+                $vendor_category->save();
+                for ($j = 0; $j < count($request->subcategory_id); $j++) {
+                    $b =  SubCategory::where('id', $request->subcategory_id[$j])->where('category_id', $request->category_id[$i])->first();
+                    if (isset($b)) {
+                        $vendor_subcategory = new VendorSubCategory;
+                        $vendor_subcategory->category_id = $request->category_id[$i];
+                        $vendor_subcategory->sub_category_id = $b->id;
+                        $vendor_subcategory->vendor_id = $user->id;
+                        $vendor_subcategory->save();
+                    }
+                    for ($k = 0; $k < count($request->childcategory_id); $k++) {
+                        $c =  ChildCategory::where('id', $request->childcategory_id[$k])->where('category_id', $request->category_id[$i])->where('sub_category_id', $request->subcategory_id[$j])->first();
+                        if (isset($c)) {
+                            $vendor_childcategory = new VendorChildCategory;
+                            $vendor_childcategory->category_id = $request->category_id[$i];
+                            $vendor_childcategory->sub_category_id = $c->sub_category_id;
+                            $vendor_childcategory->child_category_id = $c->id;
+                            $vendor_childcategory->vendor_id = $user->id;
+                            $vendor_childcategory->save();
+                        }
+                    }
+                }
+            }
+        }
+
+        $notification = trans('Vendor Updated Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect('admin/seller-list')->with($notification);
+    }
+    public function getStates(Request $request)
+    {
+        $data =  CountryState::where('country_id', $request->id)->get();
+        return response()->json([
+            'success' => 'States Against Country',
+            'data' => $data,
+        ]);
+    }
+    public function getCity(Request $request)
+    {
+        $data =  City::where('country_state_id', $request->id)->get();
+        return response()->json([
+            'success' => 'Cities Against State',
+            'data' => $data,
+        ]);
+    }
+    public function storeSession(Request $request){
+        $categorys = $request->input('id');
+        Session::put('category', $categorys);
+        $category = Session::get('category');
+        return response()->json([
+            'success' => 'Record store in sessions successfuly',
+            'category' => $category,
+        ]);
+    }
+    public function getSubcategory(Request $request){
+        $id = $request->vendor_id;
+        if (isset($request->id)) {
+            $subCategory = SubCategory::whereIn('category_id', $request->id)->get();
+        } else {
+            $subCategory = null;
+        }
+        return view('admin.getsubcategory', compact('subCategory','id'));
+    }
+
+    public function subCategoryStoreSession(Request $request){
+        $categorys = $request->input('id');
+        Session::put('category', $categorys);
+        $subcategory = Session::get('category');
+        return response()->json([
+            'success' => 'Record store in sessions successfuly',
+            'subcategory' => $subcategory,
+        ]);
+    }
+    public function getChildcategory(Request $request){
+        $id = $request->vendor_id;
+        if (isset($request->id)) {
+            $childCategory = ChildCategory::whereIn('sub_category_id', $request->id)->get();
+        } else {
+            $childCategory = null;
+        }
+        return view('admin.getchildcategory', compact('childCategory','id'));
     }
 }

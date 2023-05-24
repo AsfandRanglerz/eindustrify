@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\FaqController;
@@ -63,11 +64,11 @@ use App\Http\Controllers\Admin\ProductReportController;
 use App\Http\Controllers\Admin\ProductReviewController;
 use App\Http\Controllers\Seller\SellerMessageContoller;
 use App\Http\Controllers\Admin\ContactMessageController;
+
+
+
+
 use App\Http\Controllers\Admin\HelpCenterPageController;
-
-
-
-
 use App\Http\Controllers\Admin\HomePageBannerController;
 use App\Http\Controllers\Admin\MenuVisibilityController;
 use App\Http\Controllers\Admin\ProductGalleryController;
@@ -78,22 +79,22 @@ use App\Http\Controllers\Admin\WithdrawMethodController;
 use App\Http\Controllers\Seller\SellerProductController;
 use App\Http\Controllers\Seller\SellerProfileController;
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
+
+
+
+
+
 use App\Http\Controllers\Admin\CampaignProductController;
-
-
-
-
-
 use App\Http\Controllers\Admin\CustomerSupportController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductOverviewController;
 use App\Http\Controllers\Admin\FooterSocialLinkController;
 use App\Http\Controllers\Admin\SpecificationKeyController;
 use App\Http\Controllers\Seller\SellerDashboardController;
+
+
+
 use App\Http\Controllers\Admin\TermsAndConditionController;
-
-
-
 use App\Http\Controllers\Admin\EmailConfigurationController;
 use App\Http\Controllers\Admin\HomepageVisibilityController;
 use App\Http\Controllers\Admin\ProductSubCategoryController;
@@ -505,6 +506,11 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::delete('delete-product-report/{id}', [ProductReportController::class, 'destroy'])->name('delete-product-report');
         Route::put('de-active-product/{id}', [ProductReportController::class, 'deactiveProduct'])->name('de-active-product');
 
+        Route::get('get-states', [CustomerController::class, 'getStates']);
+        Route::get('get-city', [CustomerController::class, 'getCity']);
+        Route::get('vendor-get-states', [VendorController::class, 'getStates']);
+        Route::get('vendor-get-city', [VendorController::class, 'getCity']);
+
         Route::get('customer-list', [CustomerController::class, 'index'])->name('customer-list');
         Route::get('customer-show/{id}', [CustomerController::class, 'show'])->name('customer-show');
         Route::get('customer-edit/{id}', [CustomerController::class, 'edit'])->name('customer-edit');
@@ -518,6 +524,12 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::post('send-mail-to-all-user', [CustomerController::class, 'sendMailToAllUser'])->name('send-mail-to-all-user');
         Route::post('send-mail-to-single-user/{id}', [CustomerController::class, 'sendMailToSingleUser'])->name('send-mail-to-single-user');
 
+
+
+        Route::get('store-session', [VendorController::class, 'storeSession']);
+        Route::get('subcategory-store-session', [VendorController::class, 'subCategoryStoreSession']);
+        Route::get('get-subcategory', [VendorController::class, 'getSubcategory']);
+        Route::get('get-childcategory', [VendorController::class, 'getChildcategory']);
 
         Route::get('seller-list', [VendorController::class, 'index'])->name('seller-list');
         Route::get('add-vendor', [VendorController::class, 'addVendor'])->name('add-vendor');

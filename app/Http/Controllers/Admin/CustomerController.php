@@ -5,13 +5,16 @@ namespace App\Http\Controllers\Admin;
 use File;
 use Mail;
 use Image;
+use App\Models\City;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Country;
 use App\Models\Wishlist;
 use App\Mail\SendPassword;
 use App\Helpers\MailHelper;
 use App\Models\BannerImage;
 use Illuminate\Support\Str;
+use App\Models\CountryState;
 use Illuminate\Http\Request;
 use App\Models\ProductReport;
 use App\Models\ProductReview;
@@ -19,6 +22,7 @@ use App\Models\BillingAddress;
 use App\Mail\AccountActivation;
 use App\Models\ShippingAddress;
 use App\Mail\SendSingleSellerMail;
+use App\Models\BusinessInformation;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 
@@ -31,7 +35,7 @@ class CustomerController extends Controller
 
     public function index()
     {
-        $customers = User::with('billingAddress', 'shippingAddress', 'businessInformation')->orderBy('id', 'desc')->where('status', 1)->where('role','user')->get();
+        $customers = User::with('billingAddress', 'shippingAddress', 'businessInformation')->orderBy('id', 'desc')->where('status', 1)->where('role', 'user')->get();
         $defaultProfile = BannerImage::whereId('15')->first();
         $orders = Order::all();
         return view('admin.customer', compact('customers', 'defaultProfile', 'orders'));
@@ -39,7 +43,7 @@ class CustomerController extends Controller
 
     public function pendingCustomerList()
     {
-        $customers = User::orderBy('id', 'desc')->where('status', 0)->where('role','user')->get();
+        $customers = User::orderBy('id', 'desc')->where('status', 0)->where('role', 'user')->get();
         $defaultProfile = BannerImage::whereId('15')->first();
         $orders = Order::all();
         return view('admin.customer', compact('customers', 'defaultProfile', 'orders'));
@@ -150,7 +154,10 @@ class CustomerController extends Controller
     }
     public function addCustomer()
     {
-        return view('admin.create-customer');
+        $city = City::get();
+        $state = CountryState::get();
+        $country = Country::get();
+        return view('admin.create-customer', compact('city', 'state', 'country'));
     }
     public function createCustomer(Request $request)
     {
@@ -169,6 +176,38 @@ class CustomerController extends Controller
         $data['email'] = $user->email;
         $data['password'] = $password;
         Mail::to($request->email)->send(new SendPassword($data));
+
+        // Business Information
+        $bussiness_information = new BusinessInformation();
+        $bussiness_information['name'] = $request->bussiness_phone;
+        $bussiness_information['phone'] = $request->bussiness_phone;
+        $bussiness_information['tax_id'] = $request->bussiness_tax_id;
+        $bussiness_information['industry_type'] = $request->bussiness_industry_type;
+        $bussiness_information['user_id'] = $user->id;
+        $bussiness_information->save();
+
+        // Shipping Address
+        $shipping_address = new ShippingAddress();
+        $shipping_address['user_id'] = $user->id;
+        $shipping_address['street_address'] = $request->shipping_street_address;
+        $shipping_address['department'] = $request->shipping_department;
+        $shipping_address['country_id'] = $request->shipping_country_id;
+        $shipping_address['state_id'] = $request->shipping_state_id;
+        $shipping_address['city_id'] = $request->shipping_city_id;
+        $shipping_address['zip_code'] = $request->shipping_zip_code;
+        $shipping_address->save();
+
+        // Billing Address
+        $billing_address = new BillingAddress();
+        $billing_address['user_id'] = $user->id;
+        $billing_address['street_address'] = $request->billing_street_address;
+        $billing_address['department'] = $request->billing_department;
+        $billing_address['country_id'] = $request->billing_country_id;
+        $billing_address['state_id'] = $request->billing_state_id;
+        $billing_address['city_id'] = $request->billing_city_id;
+        $billing_address['zip_code'] = $request->billing_zip_code;
+        $billing_address->save();
+
         $notification = trans('Customer Register Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect('admin/pending-customer-list')->with($notification);
@@ -177,7 +216,12 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $data = User::find($id);
-        return view('admin.edit-customer', compact('data'));
+        $country = Country::get();
+        $state = CountryState::where('country_id', $data->shippingAddress->country->id)->get();
+        $city = City::where('country_state_id', $data->shippingAddress->countryState->id)->get();
+        $billingState = CountryState::where('country_id', $data->billingAddress->country->id)->get();
+        $billingCity = City::where('country_state_id', $data->billingAddress->countryState->id)->get();
+        return view('admin.edit-customer', compact('data', 'country', 'state', 'city', 'billingState', 'billingCity'));
     }
     public function update(Request $request)
     {
@@ -190,8 +234,57 @@ class CustomerController extends Controller
         $data = $request->only(['first_name', 'last_name', 'email', 'phone']);
         $data['role'] = 'user';
         User::find($request->id)->update($data);
+
+        $user = User::find($request->id);
+        // Business Information
+        $bussiness_information = BusinessInformation::find($user->businessInformation->id);
+        $bussiness_information['name'] = $request->bussiness_phone;
+        $bussiness_information['phone'] = $request->bussiness_phone;
+        $bussiness_information['tax_id'] = $request->bussiness_tax_id;
+        $bussiness_information['industry_type'] = $request->bussiness_industry_type;
+        $bussiness_information['user_id'] = $user->id;
+        $bussiness_information->save();
+
+        // Shipping Address
+        $shipping_address = ShippingAddress::find($user->shippingAddress->id);
+        $shipping_address['user_id'] = $user->id;
+        $shipping_address['street_address'] = $request->shipping_street_address;
+        $shipping_address['department'] = $request->shipping_department;
+        $shipping_address['country_id'] = $request->shipping_country_id;
+        $shipping_address['state_id'] = $request->shipping_state_id;
+        $shipping_address['city_id'] = $request->shipping_city_id;
+        $shipping_address['zip_code'] = $request->shipping_zip_code;
+        $shipping_address->save();
+
+        // Billing Address
+        $billing_address = BillingAddress::find($user->billingAddress->id);
+        $billing_address['user_id'] = $user->id;
+        $billing_address['street_address'] = $request->billing_street_address;
+        $billing_address['department'] = $request->billing_department;
+        $billing_address['country_id'] = $request->billing_country_id;
+        $billing_address['state_id'] = $request->billing_state_id;
+        $billing_address['city_id'] = $request->billing_city_id;
+        $billing_address['zip_code'] = $request->billing_zip_code;
+        $billing_address->save();
+
         $notification = trans('Customer Updated Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect('admin/customer-list')->with($notification);
+    }
+    public function getStates(Request $request)
+    {
+        $data =  CountryState::where('country_id', $request->id)->get();
+        return response()->json([
+            'success' => 'States Against Country',
+            'data' => $data,
+        ]);
+    }
+    public function getCity(Request $request)
+    {
+        $data =  City::where('country_state_id', $request->id)->get();
+        return response()->json([
+            'success' => 'Cities Against State',
+            'data' => $data,
+        ]);
     }
 }

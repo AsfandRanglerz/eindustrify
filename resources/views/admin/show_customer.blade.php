@@ -25,13 +25,14 @@
                                 <div class="table-responsive table-invoice">
                                     <table class="table table-striped table-bordered">
                                         {{-- <tr>
-                                <td>{{__('admin.Image')}}</td>
-                                <td>
-                                    @if ($customer->image)
-                                    <img src="{{ asset($customer->image) }}" class="rounded-circle" alt="" width="80px">
-                                    @endif
-                                </td>
-                            </tr> --}}
+                                            <td>{{ __('admin.Image') }}</td>
+                                            <td>
+                                                @if ($customer->image)
+                                                    <img src="{{ asset($customer->image) }}" class="rounded-circle"
+                                                        alt="" width="80px">
+                                                @endif
+                                            </td>
+                                        </tr> --}}
                                         <tr>
                                             <td>
                                                 <h4>Customer Detail</h4>
@@ -54,96 +55,96 @@
                                             <td>{{ __('admin.Phone') }}</td>
                                             <td>{{ $customer->phone }}</td>
                                         </tr>
-                                        @if(isset($customer->businessInformation))
-                                        <tr>
-                                            <td>
-                                                <h4>Bussiness Information</h4>
-                                            </td>
-                                            <td></td>
-                                        </tr>
+                                        @if (isset($customer->businessInformation))
+                                            <tr>
+                                                <td>
+                                                    <h4>Bussiness Information</h4>
+                                                </td>
+                                                <td></td>
+                                            </tr>
 
-                                        <tr>
-                                            <td>{{ __('Bussiness Name') }}</td>
-                                            <td>{{ $customer->businessInformation->name }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Bussiness Phone') }}</td>
-                                            <td>{{ $customer->businessInformation->phone }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Bussiness Tax Id') }}</td>
-                                            <td>{{ $customer->businessInformation->tax_id }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Bussiness Industry Type') }}</td>
-                                            <td>{{ $customer->businessInformation->industry_type }}</td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ __('Bussiness Name') }}</td>
+                                                <td>{{ $customer->businessInformation->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Bussiness Phone') }}</td>
+                                                <td>{{ $customer->businessInformation->phone }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Bussiness Tax Id') }}</td>
+                                                <td>{{ $customer->businessInformation->tax_id }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Bussiness Industry Type') }}</td>
+                                                <td>{{ $customer->businessInformation->industry_type }}</td>
+                                            </tr>
                                         @endif
-                                        @if(isset($customer->shippingAddress))
-                                        <tr>
-                                            <td>
-                                                <h4>Shipping Address</h4>
-                                            </td>
-                                            <td></td>
-                                        </tr>
+                                        @if (isset($customer->shippingAddress))
+                                            <tr>
+                                                <td>
+                                                    <h4>Shipping Address</h4>
+                                                </td>
+                                                <td></td>
+                                            </tr>
 
-                                        <tr>
-                                            <td>{{ __('Shipping Address') }}</td>
-                                            <td>{{ $customer->shippingAddress->street_address }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Shipping Department') }}</td>
-                                            <td>{{ $customer->shippingAddress->department }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Shipping Country') }}</td>
-                                            <td>{{ $customer->shippingAddress->country->name }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Shipping State') }}</td>
-                                            <td>{{ $customer->shippingAddress->countryState->name }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Shipping City') }}</td>
-                                            <td>{{ $customer->shippingAddress->city->name }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Shipping Zip Code') }}</td>
-                                            <td>{{ $customer->shippingAddress->zip_code }}</td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ __('Shipping Address') }}</td>
+                                                <td>{{ $customer->shippingAddress->street_address }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Shipping Department') }}</td>
+                                                <td>{{ $customer->shippingAddress->department }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Shipping Country') }}</td>
+                                                <td>{{ $customer->shippingAddress->country->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Shipping State') }}</td>
+                                                <td>{{ $customer->shippingAddress->countryState->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Shipping City') }}</td>
+                                                <td>{{ $customer->shippingAddress->city->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Shipping Zip Code') }}</td>
+                                                <td>{{ $customer->shippingAddress->zip_code }}</td>
+                                            </tr>
                                         @endif
-                                        @if(isset($customer->billingAddress))
-                                        <tr>
-                                            <td>
-                                                <h4>Billing Address</h4>
-                                            </td>
-                                            <td></td>
-                                        </tr>
+                                        @if (isset($customer->billingAddress))
+                                            <tr>
+                                                <td>
+                                                    <h4>Billing Address</h4>
+                                                </td>
+                                                <td></td>
+                                            </tr>
 
-                                        <tr>
-                                            <td>{{ __('Billing Address') }}</td>
-                                            <td>{{ $customer->billingAddress->street_address }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Billing Department') }}</td>
-                                            <td>{{ $customer->billingAddress->department }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Billing Country') }}</td>
-                                            <td>{{ $customer->billingAddress->country->name }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Billing State') }}</td>
-                                            <td>{{ $customer->billingAddress->countryState->name }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Billing City') }}</td>
-                                            <td>{{ $customer->billingAddress->city->name }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td>{{ __('Billing Zip Code') }}</td>
-                                            <td>{{ $customer->billingAddress->zip_code }}</td>
-                                        </tr>
+                                            <tr>
+                                                <td>{{ __('Billing Address') }}</td>
+                                                <td>{{ $customer->billingAddress->street_address }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Billing Department') }}</td>
+                                                <td>{{ $customer->billingAddress->department }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Billing Country') }}</td>
+                                                <td>{{ $customer->billingAddress->country->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Billing State') }}</td>
+                                                <td>{{ $customer->billingAddress->countryState->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Billing City') }}</td>
+                                                <td>{{ $customer->billingAddress->city->name }}</td>
+                                            </tr>
+                                            <tr>
+                                                <td>{{ __('Billing Zip Code') }}</td>
+                                                <td>{{ $customer->billingAddress->zip_code }}</td>
+                                            </tr>
                                         @endif
                                         <tr>
                                             <td>{{ __('admin.Status') }}</td>
