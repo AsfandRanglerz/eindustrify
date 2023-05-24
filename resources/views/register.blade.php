@@ -40,11 +40,18 @@
     }
 
 
+
+
+img[alt="icon-search"] {
+    position: absolute;
+    right: 14px;
+}
 #searchCat {
     border-radius: 0;
 }
 .accordion-button {
     border-bottom: 1px solid #D9D9D9!important;
+    font-weight: 600;
 }
     .cat-dropdown-section {
         position: absolute;
@@ -513,7 +520,10 @@
 
 
                                                 <div class="position-relative category-dropdown-container">
-                                                    <input type="text" id="searchCat" class="form-control" placeholder="Please Search/Select Category">
+                                                    <div class="position-relative d-flex align-items-center">
+                                                        <input type="text" id="searchCat" class="form-control" placeholder="Please Search/Select Category">
+                                                        <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}" alt="icon-search">
+                                                    </div>
                                                     <div class="accordion d-none cat-dropdown-section" id="catSubChildDropdown">
                                                         <div class="accordion-item">
                                                           <h2 class="accordion-header" id="headingOne">
@@ -523,6 +533,10 @@
                                                           </h2>
                                                           <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#catSubChildDropdown">
                                                             <div class="accordion-body">
+                                                                <div class="position-relative d-flex align-items-center">
+                                                                    <input type="text" id="searchCat" class="form-control" placeholder="Please Search/Select Category">
+                                                                    <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}" alt="icon-search">
+                                                                </div>
                                                                 <div class="accordion" id="catSubChildDropdown1">
                                                                     <div class="accordion-item">
                                                                       <h2 class="accordion-header" id="headingOne1">
@@ -532,7 +546,56 @@
                                                                       </h2>
                                                                       <div id="collapseOne1" class="accordion-collapse collapse" aria-labelledby="headingOne1" data-bs-parent="#catSubChildDropdown1">
                                                                         <div class="accordion-body">
-                                                                            <input type="text" id="childCatSearch" class="form-control mb-3" placeholder="Please Search/Select Child Category">
+                                                                            <div class=" mb-3 position-relative d-flex align-items-center">
+                                                                                <input type="text" id="childCatSearch" class="form-control" placeholder="Please Search/Select Child Category">
+                                                                                <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}" alt="icon-search">
+                                                                            </div>
+                                                                            <div id="searchSubCat">
+                                                                                <div class="form-check mb-0 sub-cat">
+                                                                                    <input class="form-check-input" type="checkbox" value="" id="accessoriesSub">
+                                                                                    <label class="form-check-label" for="accessoriesSub">Child Category 1</label>
+                                                                                </div>
+                                                                                <div class="form-check mb-0 sub-cat">
+                                                                                    <input class="form-check-input" type="checkbox" value="" id="flangeSub">
+                                                                                    <label class="form-check-label" for="flangeSub">Child Category 2</label>
+                                                                                </div>
+                                                                                <div class="form-check mb-0 sub-cat">
+                                                                                    <input class="form-check-input" type="checkbox" value="" id="hangerSub">
+                                                                                    <label class="form-check-label" for="hangerSub">Child Category 3</label>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                      </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                          </div>
+                                                        </div>
+                                                        <div class="accordion-item">
+                                                          <h2 class="accordion-header" id="headingOne2">
+                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                                                Bearings
+                                                            </button>
+                                                          </h2>
+                                                          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne2" data-bs-parent="#catSubChildDropdown">
+                                                            <div class="accordion-body">
+                                                                <div class="position-relative d-flex align-items-center">
+                                                                    <input type="text" id="searchCat" class="form-control" placeholder="Please Search/Select Category">
+                                                                    <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}" alt="icon-search">
+                                                                </div>
+                                                                <div class="accordion" id="catSubChildDropdown2">
+                                                                    <div class="accordion-item">
+                                                                      <h2 class="accordion-header" id="headingOne1">
+                                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
+                                                                            Accessories
+                                                                        </button>
+                                                                      </h2>
+                                                                      <div id="collapseOne1" class="accordion-collapse collapse" aria-labelledby="headingOne1" data-bs-parent="#catSubChildDropdown2">
+                                                                        <div class="accordion-body">
+                                                                            <div class=" mb-3 position-relative d-flex align-items-center">
+                                                                                <input type="text" id="childCatSearch" class="form-control" placeholder="Please Search/Select Child Category">
+                                                                                <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}" alt="icon-search">
+                                                                            </div>
                                                                             <div id="searchSubCat">
                                                                                 <div class="form-check mb-0 sub-cat">
                                                                                     <input class="form-check-input" type="checkbox" value="" id="accessoriesSub">
