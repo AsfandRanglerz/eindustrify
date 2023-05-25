@@ -75,18 +75,18 @@
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Phone Number') }} <span class="text-danger">*</span></label>
-                                            <input type="tel" id="email" class="form-control" name="phone"
+                                            <input type="tel" id="" class="form-control" name="phone"
                                                 placeholder="92xxxxxxxxxx">
                                         </div>
                                         <h4>Business Information</h4>
                                         <div class="form-group col-12">
                                             <label>{{ __('Business Name') }} <span class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control" name="bussiness_name"
+                                            <input type="text" id="" class="form-control" name="bussiness_name"
                                                 placeholder="XYZ Bussiness">
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('TAX ID') }} <span class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control"
+                                            <input type="text" id="" class="form-control"
                                                 name="bussiness_tax_id" placeholder="ATU12345678">
                                         </div>
                                         <div class="form-group col-12">
@@ -109,7 +109,7 @@
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Business Number') }} <span class="text-danger">*</span></label>
-                                            <input type="tel" id="email" class="form-control"
+                                            <input type="tel" id="" class="form-control"
                                                 name="bussiness_phone" placeholder="Business Number">
                                         </div>
                                         <h4>Billing Address</h4>
@@ -117,13 +117,13 @@
                                         <div class="form-group col-12">
                                             <label>{{ __('Street Address Line 1') }} <span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control"
+                                            <input type="text" id="" class="form-control"
                                                 name="billing_street_address" placeholder="Street, 6001 W Waco Dr #314">
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Suite, Building, Department etc') }} <span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control"
+                                            <input type="text" id="" class="form-control"
                                                 name="billing_department" placeholder="Suite, building, department etc">
                                         </div>
                                         <div class="form-group col-12">
@@ -157,7 +157,7 @@
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Postal/Zip Code') }} <span class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control"
+                                            <input type="text" id="" class="form-control"
                                                 name="billing_zip_code" placeholder="147001">
                                         </div>
                                         {{-- <div class="form-group col-12">

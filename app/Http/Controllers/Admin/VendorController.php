@@ -380,17 +380,38 @@ class VendorController extends Controller
     {
         $country = Country::get();
         $categories = Category::get();
-        return view('admin.create-vendor', compact('country','categories'));
+        return view('admin.create-vendor', compact('country', 'categories'));
     }
 
     public function createVendor(Request $request)
     {
-        // $request->validate([
-        //     'first_name' => 'required',
-        //     'last_name' => 'required',
-        //     'email' => 'required|email|unique:users,email',
-        //     'phone' => 'required',
-        // ]);
+        $request->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'phone' => 'required',
+            'bussiness_name' => 'required',
+            'bussiness_phone' => 'required',
+            'bussiness_tax_id' => 'required',
+            'bussiness_industry_type' => 'required',
+            'billing_street_address' => 'required',
+            'billing_department' => 'required',
+            'billing_country_id' => 'required',
+            'billing_state_id' => 'required',
+            'billing_city_id' => 'required',
+            'billing_zip_code' => 'required',
+        ], [
+            'business_name.required' => 'The bussiness name field is required.',
+            'business_phone.required' => 'The bussiness phone field is required.',
+            'bussiness_tax_id.required' => 'The bussiness tax id field is required.',
+            'business_industry_type.required' => 'The bussiness industry type field is required.',
+            'billing_street_address.required' => 'The billing street address field is required.',
+            'billing_department.required' => 'The billing department field is required.',
+            'billing_country_id.required' => 'The billing country  field is required.',
+            'billing_city_id.required' => 'The billing city  field is required.',
+            'billing_state_id.required' => 'The billing state  field is required.',
+            'billing_zip_code.required' => 'The billing zip code  field is required.',
+        ]);
         $password = Str::random(8);
         $data = $request->only(['first_name', 'last_name', 'email', 'phone']);
         $data['role'] = 'vendor';
@@ -428,24 +449,28 @@ class VendorController extends Controller
                 $vendor_category->category_id = $request->category_id[$i];
                 $vendor_category->vendor_id = $user->id;
                 $vendor_category->save();
-                for ($j = 0; $j < count($request->subcategory_id); $j++) {
-                    $b =  SubCategory::where('id', $request->subcategory_id[$j])->where('category_id', $request->category_id[$i])->first();
-                    if (isset($b)) {
-                        $vendor_subcategory = new VendorSubCategory;
-                        $vendor_subcategory->category_id = $request->category_id[$i];
-                        $vendor_subcategory->sub_category_id = $b->id;
-                        $vendor_subcategory->vendor_id = $user->id;
-                        $vendor_subcategory->save();
-                    }
-                    for ($k = 0; $k < count($request->childcategory_id); $k++) {
-                        $c =  ChildCategory::where('id', $request->childcategory_id[$k])->where('category_id', $request->category_id[$i])->where('sub_category_id', $request->subcategory_id[$j])->first();
-                        if (isset($c)) {
-                            $vendor_childcategory = new VendorChildCategory;
-                            $vendor_childcategory->category_id = $request->category_id[$i];
-                            $vendor_childcategory->sub_category_id = $c->sub_category_id;
-                            $vendor_childcategory->child_category_id = $c->id;
-                            $vendor_childcategory->vendor_id = $user->id;
-                            $vendor_childcategory->save();
+                if (isset($request->subcategory_id)) {
+                    for ($j = 0; $j < count($request->subcategory_id); $j++) {
+                        $b =  SubCategory::where('id', $request->subcategory_id[$j])->where('category_id', $request->category_id[$i])->first();
+                        if (isset($b)) {
+                            $vendor_subcategory = new VendorSubCategory;
+                            $vendor_subcategory->category_id = $request->category_id[$i];
+                            $vendor_subcategory->sub_category_id = $b->id;
+                            $vendor_subcategory->vendor_id = $user->id;
+                            $vendor_subcategory->save();
+                        }
+                        if (isset($request->childcategory_id)) {
+                            for ($k = 0; $k < count($request->childcategory_id); $k++) {
+                                $c =  ChildCategory::where('id', $request->childcategory_id[$k])->where('category_id', $request->category_id[$i])->where('sub_category_id', $request->subcategory_id[$j])->first();
+                                if (isset($c)) {
+                                    $vendor_childcategory = new VendorChildCategory;
+                                    $vendor_childcategory->category_id = $request->category_id[$i];
+                                    $vendor_childcategory->sub_category_id = $c->sub_category_id;
+                                    $vendor_childcategory->child_category_id = $c->id;
+                                    $vendor_childcategory->vendor_id = $user->id;
+                                    $vendor_childcategory->save();
+                                }
+                            }
                         }
                     }
                 }
@@ -466,7 +491,7 @@ class VendorController extends Controller
         $country = Country::get();
         $billingState = CountryState::where('country_id', $data->billingAddress->country->id)->get();
         $billingCity = City::where('country_state_id', $data->billingAddress->countryState->id)->get();
-        return view('admin.edit-vendor', compact('data', 'country', 'billingState', 'billingCity','categories','subcategories','childcategories'));
+        return view('admin.edit-vendor', compact('data', 'country', 'billingState', 'billingCity', 'categories', 'subcategories', 'childcategories'));
     }
     // vendor Update
     public function update(Request $request)
@@ -476,6 +501,27 @@ class VendorController extends Controller
             'last_name' => 'required',
             'email' => 'required',
             'phone' => 'required',
+            'bussiness_name' => 'required',
+            'bussiness_phone' => 'required',
+            'bussiness_tax_id' => 'required',
+            'bussiness_industry_type' => 'required',
+            'billing_street_address' => 'required',
+            'billing_department' => 'required',
+            'billing_country_id' => 'required',
+            'billing_state_id' => 'required',
+            'billing_city_id' => 'required',
+            'billing_zip_code' => 'required',
+        ], [
+            'business_name.required' => 'The bussiness name field is required.',
+            'business_phone.required' => 'The bussiness phone field is required.',
+            'bussiness_tax_id.required' => 'The bussiness tax id field is required.',
+            'business_industry_type.required' => 'The bussiness industry type field is required.',
+            'billing_street_address.required' => 'The billing street address field is required.',
+            'billing_department.required' => 'The billing department field is required.',
+            'billing_country_id.required' => 'The billing country  field is required.',
+            'billing_city_id.required' => 'The billing city  field is required.',
+            'billing_state_id.required' => 'The billing state  field is required.',
+            'billing_zip_code.required' => 'The billing zip code  field is required.',
         ]);
         $data = $request->only(['first_name', 'last_name', 'email', 'phone']);
         User::find($request->id)->update($data);
@@ -504,32 +550,36 @@ class VendorController extends Controller
 
 
         if (isset($request->category_id)) {
-            VendorCategory::where('vendor_id',$user->id)->delete();
-            VendorSubCategory::where('vendor_id',$user->id)->delete();
-            VendorChildCategory::where('vendor_id',$user->id)->delete();
+            VendorCategory::where('vendor_id', $user->id)->delete();
+            VendorSubCategory::where('vendor_id', $user->id)->delete();
+            VendorChildCategory::where('vendor_id', $user->id)->delete();
             for ($i = 0; $i < count($request->category_id); $i++) {
                 $vendor_category = new VendorCategory;
                 $vendor_category->category_id = $request->category_id[$i];
                 $vendor_category->vendor_id = $user->id;
                 $vendor_category->save();
-                for ($j = 0; $j < count($request->subcategory_id); $j++) {
-                    $b =  SubCategory::where('id', $request->subcategory_id[$j])->where('category_id', $request->category_id[$i])->first();
-                    if (isset($b)) {
-                        $vendor_subcategory = new VendorSubCategory;
-                        $vendor_subcategory->category_id = $request->category_id[$i];
-                        $vendor_subcategory->sub_category_id = $b->id;
-                        $vendor_subcategory->vendor_id = $user->id;
-                        $vendor_subcategory->save();
-                    }
-                    for ($k = 0; $k < count($request->childcategory_id); $k++) {
-                        $c =  ChildCategory::where('id', $request->childcategory_id[$k])->where('category_id', $request->category_id[$i])->where('sub_category_id', $request->subcategory_id[$j])->first();
-                        if (isset($c)) {
-                            $vendor_childcategory = new VendorChildCategory;
-                            $vendor_childcategory->category_id = $request->category_id[$i];
-                            $vendor_childcategory->sub_category_id = $c->sub_category_id;
-                            $vendor_childcategory->child_category_id = $c->id;
-                            $vendor_childcategory->vendor_id = $user->id;
-                            $vendor_childcategory->save();
+                if (isset($request->subcategory_id)) {
+                    for ($j = 0; $j < count($request->subcategory_id); $j++) {
+                        $b =  SubCategory::where('id', $request->subcategory_id[$j])->where('category_id', $request->category_id[$i])->first();
+                        if (isset($b)) {
+                            $vendor_subcategory = new VendorSubCategory;
+                            $vendor_subcategory->category_id = $request->category_id[$i];
+                            $vendor_subcategory->sub_category_id = $b->id;
+                            $vendor_subcategory->vendor_id = $user->id;
+                            $vendor_subcategory->save();
+                        }
+                        if (isset($request->childcategory_id)) {
+                            for ($k = 0; $k < count($request->childcategory_id); $k++) {
+                                $c =  ChildCategory::where('id', $request->childcategory_id[$k])->where('category_id', $request->category_id[$i])->where('sub_category_id', $request->subcategory_id[$j])->first();
+                                if (isset($c)) {
+                                    $vendor_childcategory = new VendorChildCategory;
+                                    $vendor_childcategory->category_id = $request->category_id[$i];
+                                    $vendor_childcategory->sub_category_id = $c->sub_category_id;
+                                    $vendor_childcategory->child_category_id = $c->id;
+                                    $vendor_childcategory->vendor_id = $user->id;
+                                    $vendor_childcategory->save();
+                                }
+                            }
                         }
                     }
                 }
@@ -556,7 +606,8 @@ class VendorController extends Controller
             'data' => $data,
         ]);
     }
-    public function storeSession(Request $request){
+    public function storeSession(Request $request)
+    {
         $categorys = $request->input('id');
         Session::put('category', $categorys);
         $category = Session::get('category');
@@ -565,17 +616,19 @@ class VendorController extends Controller
             'category' => $category,
         ]);
     }
-    public function getSubcategory(Request $request){
+    public function getSubcategory(Request $request)
+    {
         $id = $request->vendor_id;
         if (isset($request->id)) {
             $subCategory = SubCategory::whereIn('category_id', $request->id)->get();
         } else {
             $subCategory = null;
         }
-        return view('admin.getsubcategory', compact('subCategory','id'));
+        return view('admin.getsubcategory', compact('subCategory', 'id'));
     }
 
-    public function subCategoryStoreSession(Request $request){
+    public function subCategoryStoreSession(Request $request)
+    {
         $categorys = $request->input('id');
         Session::put('category', $categorys);
         $subcategory = Session::get('category');
@@ -584,13 +637,14 @@ class VendorController extends Controller
             'subcategory' => $subcategory,
         ]);
     }
-    public function getChildcategory(Request $request){
+    public function getChildcategory(Request $request)
+    {
         $id = $request->vendor_id;
         if (isset($request->id)) {
             $childCategory = ChildCategory::whereIn('sub_category_id', $request->id)->get();
         } else {
             $childCategory = null;
         }
-        return view('admin.getchildcategory', compact('childCategory','id'));
+        return view('admin.getchildcategory', compact('childCategory', 'id'));
     }
 }

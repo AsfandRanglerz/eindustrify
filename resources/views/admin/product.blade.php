@@ -38,8 +38,8 @@
                                             @foreach ($products as $index => $product)
                                                 <tr>
                                                     <td>{{ ++$index }}</td>
-                                                    <td><a
-                                                            href="{{ route('product-detail', $product->slug) }}">{{ $product->short_name }}</a>
+                                                    <a href="{{ route('product-detail', $product->slug) }}"></a>
+                                                    <td>{{ $product->short_name }}
                                                     </td>
                                                     <td>{{ $setting->currency_icon }}{{ $product->price }}</td>
                                                     <td> <img class="rounded-circle"

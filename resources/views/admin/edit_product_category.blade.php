@@ -34,7 +34,7 @@
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('admin.Image') }} <span class="text-danger">*</span></label>
-                                            <input type="file" class="form-control custom-icon-picker" name="image" value="{{$category->image}}">
+                                            <input type="file" class="form-control" name="image" value="{{$category->image}}">
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('admin.Name') }} <span class="text-danger">*</span></label>

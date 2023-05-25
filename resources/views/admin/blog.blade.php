@@ -37,7 +37,8 @@
                                 @foreach ($blogs as $index => $blog)
                                     <tr>
                                         <td>{{ ++$index }}</td>
-                                        <td><a href="{{ route('blog-detail', $blog->slug) }}">{{ $blog->title }}</a></td>
+                                        {{-- {{ route('blog-detail', $blog->slug) }} --}}
+                                        <td><a href="">{{ $blog->title }}</a></td>
                                         <td>{{ $blog->category->name }}</td>
                                         <td><img src="{{ asset($blog->image) }}" width="80px" height="80px" class="rounded-circle" alt=""></td>
                                         {{-- <td>

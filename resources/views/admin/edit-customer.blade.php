@@ -44,23 +44,23 @@
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Phone Number') }} <span class="text-danger">*</span></label>
-                                            <input type="tel" id="email" class="form-control" name="phone"
+                                            <input type="tel" id="" class="form-control" name="phone"
                                                 placeholder="92xxxxxxxxxx" value="{{ $data->phone }}">
                                         </div>
                                         <h4>Business Information</h4>
                                         <div class="form-group col-12">
                                             <label>{{ __('Business Name') }} <span class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control" name="bussiness_name"
+                                            <input type="text" id="" class="form-control" name="bussiness_name"
                                             value="{{ $data->businessInformation->name }}" placeholder="XYZ Bussiness">
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Business Number') }} <span class="text-danger">*</span></label>
-                                            <input type="tel" id="email" class="form-control" name="bussiness_phone"
+                                            <input type="tel" id="" class="form-control" name="bussiness_phone"
                                             value="{{ $data->businessInformation->phone }}"    placeholder="Business Number">
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('TAX ID') }} <span class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control"
+                                            <input type="text" id="" class="form-control"
                                             value="{{ $data->businessInformation->tax_id }}"  name="bussiness_tax_id" placeholder="ATU12345678">
                                         </div>
                                         <div class="form-group col-12">
@@ -75,20 +75,20 @@
                                         <div class="form-group col-12">
                                             <label>{{ __('Street Address Line 1') }} <span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control"
+                                            <input type="text" id="" class="form-control"
                                              value="{{$data->shippingAddress->street_address}}"   name="shipping_street_address" placeholder="Street, 6001 W Waco Dr #314">
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Suite, Building, Department etc') }} <span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control"
+                                            <input type="text" id="" class="form-control"
                                              value="{{$data->shippingAddress->department}}"   name="shipping_department" placeholder="Suite, building, department etc">
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Country/Region') }} <span class="text-danger">*</span></label>
                                             <select name="shipping_country_id" class="form-control"
                                                 id="shipping_country_id">
-                                                <option value="1">Select Country</option>
+                                                <option value="">Select Country</option>
                                                 @foreach ($country as $country_data)
                                                     <option value="{{ $country_data->id }}" @if ($data->shippingAddress->country->id == $country_data->id) selected @endif>
                                                         {{ $country_data->name }}</option>
@@ -110,7 +110,7 @@
                                             <label>{{ __('City') }} <span class="text-danger">*</span></label>
                                             <select name="shipping_city_id" class="form-control"
                                                 id="shipping_city_append">
-                                                <option value="1">Select City</option>
+                                                <option value="">Select City</option>
                                                 @foreach ($city as $city_data)
                                                     <option value="{{ $city_data->id }}"  @if ($data->shippingAddress->city->id == $city_data->id) selected @endif>{{ $city_data->name }}
                                                     </option>
@@ -119,27 +119,27 @@
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Postal/Zip Code') }} <span class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control"
+                                            <input type="text" id="" class="form-control"
                                              value="{{$data->shippingAddress->zip_code}}"   name="shipping_zip_code" placeholder="147001">
                                         </div>
                                         <h4>Billing Address</h4>
                                         <div class="form-group col-12">
                                             <label>{{ __('Street Address Line 1') }} <span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control"
+                                            <input type="text" id="" class="form-control"
                                              value="{{$data->billingAddress->street_address}}"   name="billing_street_address" placeholder="Street, 6001 W Waco Dr #314">
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Suite, Building, Department etc') }} <span
                                                     class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control"
+                                            <input type="text" id="" class="form-control"
                                              value="{{$data->billingAddress->department}}"    name="billing_department" placeholder="Suite, building, department etc">
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Country/Region') }} <span class="text-danger">*</span></label>
                                             <select name="billing_country_id" class="form-control"
                                                 id="billing_country_id">
-                                                <option value="1">Select Country</option>
+                                                <option value="">Select Country</option>
                                                 @foreach ($country as $country_data)
                                                     <option value="{{ $country_data->id }}" @if ($data->billingAddress->country->id == $country_data->id) selected @endif>
                                                         {{ $country_data->name }}</option>
@@ -160,7 +160,7 @@
                                             <label>{{ __('City') }} <span class="text-danger">*</span></label>
                                             <select name="billing_city_id" class="form-control"
                                                 id="response_billing_city_append">
-                                                <option value="1">Select City</option>
+                                                <option value="">Select City</option>
                                                 @foreach ($billingCity as $city_data)
                                                     <option value="{{ $city_data->id }}" @if ($data->billingAddress->city->id == $city_data->id) selected @endif>{{ $city_data->name }}
                                                     </option>
@@ -169,7 +169,7 @@
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Postal/Zip Code') }} <span class="text-danger">*</span></label>
-                                            <input type="text" id="email" class="form-control"
+                                            <input type="text" id="" class="form-control"
                                               value="{{$data->billingAddress->zip_code}}"  name="billing_zip_code" placeholder="147001">
                                         </div>
                                         {{-- <div class="form-group col-12">

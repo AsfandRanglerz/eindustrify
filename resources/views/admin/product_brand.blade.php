@@ -76,12 +76,10 @@
                                                             class="btn btn-primary btn-sm"><i class="fa fa-edit"
                                                                 aria-hidden="true"></i></a>
 
-                                                        @if ($brand->products->count() == 0)
                                                             <a href="javascript:;" data-toggle="modal"
                                                                 data-target="#deleteModal" class="btn btn-danger btn-sm"
                                                                 onclick="deleteData({{ $brand->id }})"><i
                                                                     class="fa fa-trash" aria-hidden="true"></i></a>
-                                                        @endif
                                                         <div class="dropdown d-inline">
                                                             <button class="btn btn-primary btn-sm dropdown-toggle"
                                                                 type="button" id="dropdownMenuButton2"
