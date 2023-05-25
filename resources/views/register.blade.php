@@ -599,7 +599,7 @@
                                                           <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne2" data-bs-parent="#catSubChildDropdown">
                                                             <div class="accordion-body">
                                                                 <div class="position-relative d-flex align-items-center">
-                                                                    <input type="text" class="form-control search-sub-category" placeholder="Please Search/Select Category">
+                                                                    <input type="text" class="form-control search-sub-category" placeholder="Please Search/Select Sub-Category">
                                                                     <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}" alt="icon-search">
                                                                 </div>
                                                                 <div class="accordion" id="catSubChildDropdown2">
