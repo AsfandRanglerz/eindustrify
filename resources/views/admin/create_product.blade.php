@@ -14,7 +14,6 @@
                     <div class="breadcrumb-item">{{ __('admin.Create Product') }}</div>
                 </div>
             </div>
-
             <div class="section-body">
                 <a href="{{ route('admin.product.index') }}" class="btn btn-primary"><i class="fas fa-list"></i>
                     {{ __('admin.Products') }}</a>
@@ -81,6 +80,10 @@
                                             <label>{{ __('admin.Sub Category') }}</label>
                                             <select name="sub_category" class="form-control select2" id="sub_category">
                                                 <option value="">{{ __('admin.Select Sub Category') }}</option>
+                                                @foreach ($subcategories as $subcategory)
+                                                    <option value="{{ $subcategory->id }}">{{ $subcategory->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
 
@@ -88,6 +91,10 @@
                                             <label>{{ __('admin.Child Category') }}</label>
                                             <select name="child_category" class="form-control select2" id="child_category">
                                                 <option value="">{{ __('admin.Select Child Category') }}</option>
+                                                @foreach ($childcategories as $childcategory)
+                                                    <option value="{{ $childcategory->id }}">{{ $childcategory->name }}
+                                                    </option>
+                                                @endforeach
                                             </select>
                                         </div>
 
@@ -107,13 +114,13 @@
                                             <input type="text" class="form-control" name="sku">
                                         </div>
 
-                                         <div class="form-group col-12">
+                                        <div class="form-group col-12">
                                             <label>{{ __('admin.Price') }} <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="price"
                                                 value="{{ old('price') }}">
                                         </div>
 
-                                       {{-- <div class="form-group col-12">
+                                        {{-- <div class="form-group col-12">
                                             <label>{{ __('admin.Offer Price') }}</label>
                                             <input type="text" class="form-control" name="offer_price"
                                                 value="{{ old('offer_price') }}">
@@ -248,7 +255,9 @@
                                                     <input type="text" class="form-control" name="specifications[]">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <button type="button" class="btn btn-success plus_btn addNewSpecificationRow"><i class="fas fa-plus"></i></button>
+                                                    <button type="button"
+                                                        class="btn btn-success plus_btn addNewSpecificationRow"><i
+                                                            class="fas fa-plus"></i></button>
                                                 </div>
                                             </div>
                                             <div class="d-none hidden-specification-box">
@@ -294,15 +303,19 @@
                                                 <div class="col-md-5">
                                                     <label>{{ __('admin.Title') }} <span
                                                             class="text-danger">*</span></label>
-                                                       <input type="text" class="form-control" name="product_overview_title[]">
+                                                    <input type="text" class="form-control"
+                                                        name="product_overview_title[]">
                                                 </div>
                                                 <div class="col-md-5">
                                                     <label>{{ __('admin.Image') }} <span
                                                             class="text-danger">*</span></label>
-                                                    <input type="file" class="form-control" name="product_overview_image[]">
+                                                    <input type="file" class="form-control"
+                                                        name="product_overview_image[]">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <button type="button" class="btn btn-success plus_btn addNewSpecificationRow"><i class="fas fa-plus"></i></button>
+                                                    <button type="button"
+                                                        class="btn btn-success plus_btn addNewSpecificationRow"><i
+                                                            class="fas fa-plus"></i></button>
                                                 </div>
                                             </div>
                                             <div class="d-none hidden-specification-box">
@@ -311,12 +324,14 @@
                                                         <div class="col-md-5">
                                                             <label>{{ __('admin.Title') }} <span
                                                                     class="text-danger">*</span></label>
-                                                                    <input type="text" class="form-control" name="product_overview_title[]">
+                                                            <input type="text" class="form-control"
+                                                                name="product_overview_title[]">
                                                         </div>
                                                         <div class="col-md-5">
                                                             <label>{{ __('admin.Image') }} <span
                                                                     class="text-danger">*</span></label>
-                                                                    <input type="file" class="form-control" name="product_overview_image[]">
+                                                            <input type="file" class="form-control"
+                                                                name="product_overview_image[]">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <button type="button"
@@ -327,22 +342,21 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-group col-12">
+                                        {{-- <div class="form-group col-12">
                                             <label>{{ __('Product Size') }}</label>
-                                            {{-- <div>
+                                            <div>
                                                 <a href="javascript::void()" id="manageSpecificationBox">
                                                     <input name="is_specification" id="status_toggle" type="checkbox"
                                                         checked data-toggle="toggle" data-on="Enable" data-off="Disabled"
                                                         data-onstyle="success" data-offstyle="danger">
                                                 </a>
-                                            </div> --}}
+                                            </div>
                                         </div>
                                         <div class="form-group col-12 specification-box">
                                             <div class="row">
                                                 <div class="col-md-5">
-                                                    <label>{{ __('Size') }} <span
-                                                            class="text-danger">*</span></label>
-                                                       <input type="text" class="form-control" name="product_size[]">
+                                                    <label>{{ __('Size') }} <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="product_size[]">
                                                 </div>
                                                 <div class="col-md-5">
                                                     <label>{{ __('admin.Price') }} <span
@@ -350,7 +364,9 @@
                                                     <input type="text" class="form-control" name="product_price[]">
                                                 </div>
                                                 <div class="col-md-2">
-                                                    <button type="button" class="btn btn-success plus_btn addNewSpecificationRow"><i class="fas fa-plus"></i></button>
+                                                    <button type="button"
+                                                        class="btn btn-success plus_btn addNewSpecificationRow"><i
+                                                            class="fas fa-plus"></i></button>
                                                 </div>
                                             </div>
                                             <div class="d-none hidden-specification-box">
@@ -359,12 +375,14 @@
                                                         <div class="col-md-5">
                                                             <label>{{ __('Size') }} <span
                                                                     class="text-danger">*</span></label>
-                                                                    <input type="text" class="form-control" name="product_size[]">
+                                                            <input type="text" class="form-control"
+                                                                name="product_size[]">
                                                         </div>
                                                         <div class="col-md-5">
                                                             <label>{{ __('admin.Price') }} <span
                                                                     class="text-danger">*</span></label>
-                                                                    <input type="text" class="form-control" name="product_price[]">
+                                                            <input type="text" class="form-control"
+                                                                name="product_price[]">
                                                         </div>
                                                         <div class="col-md-2">
                                                             <button type="button"
@@ -374,7 +392,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                     <div class="row">
                                         <div class="col-12">
@@ -499,5 +517,42 @@
             }
             reader.readAsDataURL(event.target.files[0]);
         };
+
+
+
+        // child_category
+        $(document).ready(function() {
+            $("#child_category").change(function() {
+                var selectedText = $(this).find("option:selected").text();
+                var childcategoryId = $(this).val();
+                $.ajax({
+                    url: '{{ URL::to('/admin/get-childCategory') }}',
+                    type: 'GET',
+                    data: {
+                        'id': childcategoryId
+                    },
+                    success: function(response) {
+                        $("#category option").each(function() {
+                            if($(this).val()==response.childcategory.category_id){
+                                var childCatVal = $(this).val();
+                                var catVal = $('#category option[value="' + childCatVal + '"]').text();
+                                $('#select2-category-container').text(catVal);
+                            }
+                        });
+                        $("#sub_category option").each(function() {
+                            if($(this).val()==response.childcategory.sub_category_id){
+                                var childCatVal = $(this).val();
+                                var subCatVal = $('#sub_category option[value="' + childCatVal + '"]').text();
+                                $('#select2-sub_category-container').text(subCatVal);
+                            }
+                        });
+                    },
+                    error: function(xhr) {
+                        // Handle error here
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+        });
     </script>
 @endsection

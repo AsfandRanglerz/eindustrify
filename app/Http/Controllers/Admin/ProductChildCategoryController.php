@@ -62,6 +62,7 @@ class ProductChildCategoryController extends Controller
             'category' => 'required',
             'sub_category' => 'required',
             'slug' => 'required|unique:child_categories',
+            // 'child_category_code' => 'required|unique:child_categories',
             'status' => 'required'
         ];
         $customMessages = [
@@ -72,11 +73,30 @@ class ProductChildCategoryController extends Controller
             'sub_category.required' => trans('admin_validation.Sub category is required'),
         ];
         $this->validate($request, $rules, $customMessages);
+        
+        $category = Category::find($request->category);
+        $subcategory = SubCategory::find($request->sub_category);
+        $childcategory = ChildCategory::where('sub_category_id', $request->sub_category)->orderBy('id', 'DESC')->first();
 
         $childCategory = new ChildCategory();
         $childCategory->category_id = $request->category;
         $childCategory->sub_category_id = $request->sub_category;
         $childCategory->name = $request->name;
+
+
+        // $childCategory->child_category_code = $request->child_category_code;
+        if (isset($childcategory)) {
+            $string = $childcategory->child_category_code;
+            $parts = explode("-", $string);
+            $valueAfterHyphen = $parts[2]+ 1;
+            $firstValue = $parts[0];
+            $secoundValue = $parts[1];
+            $childCategory->child_category_code =$firstValue."-".$secoundValue."-".$valueAfterHyphen;
+        } else {
+            $childCategory->child_category_code = $subcategory->sub_category_code .'-1';
+        }
+
+
         $childCategory->slug = $request->slug;
         $childCategory->status = $request->status;
         $childCategory->save();

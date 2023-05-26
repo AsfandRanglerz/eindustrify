@@ -30,6 +30,7 @@
                                     <th>{{__('admin.Slug')}}</th>
                                     <th>{{__('admin.Sub Category')}}</th>
                                     <th>{{__('admin.Category')}}</th>
+                                    <th>{{__('Child Category Code')}}</th>
                                     <th>{{__('admin.Status')}}</th>
                                     <th>{{__('admin.Action')}}</th>
                                   </tr>
@@ -42,6 +43,7 @@
                                         <td>{{ $childCategory->slug }}</td>
                                         <td>{{ $childCategory->subCategory->name }}</td>
                                         <td>{{ $childCategory->category->name }}</td>
+                                        <td>{{ $childCategory->child_category_code }}</td>
                                         <td>
                                             @if($childCategory->status == 1)
                                             <a href="javascript:;" onclick="changeProductSubCategoryStatus({{ $childCategory->id }})">

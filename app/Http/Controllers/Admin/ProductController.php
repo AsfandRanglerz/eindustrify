@@ -63,11 +63,13 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
+        $subcategories = SubCategory::all();
+        $childcategories = ChildCategory::all();
         $brands = Brand::all();
         $productTaxs = ProductTax::where('status', 1)->get();
         $retrunPolicies = ReturnPolicy::where('status', 1)->get();
         $specificationKeys = ProductSpecificationKey::all();
-        return view('admin.create_product', compact('categories', 'brands', 'productTaxs', 'retrunPolicies', 'specificationKeys'));
+        return view('admin.create_product', compact('categories', 'subcategories','childcategories','brands', 'productTaxs', 'retrunPolicies', 'specificationKeys'));
     }
 
     public function store(Request $request)
@@ -210,25 +212,25 @@ class ProductController extends Controller
                 }
             }
         }
-        if ($request->product_price) {
-            $product_price = [];
-            if ($request->product_size) {
-                foreach ($request->product_size as $index => $product_size) {
-                    if ($product_size) {
-                        if ($request->product_price[$index]) {
-                            if (!in_array($product_size, $product_price)) {
-                                $productSize = new ProductSize();
-                                $productSize->product_id = $product->id;
-                                $productSize->product_price = $request->product_price[$index];
-                                $productSize->product_size = $request->product_size[$index];
-                                $productSize->save();
-                            }
-                            $product_price[] = $product_size;
-                        }
-                    }
-                }
-            }
-        }
+        // if ($request->product_price) {
+        //     $product_price = [];
+        //     if ($request->product_size) {
+        //         foreach ($request->product_size as $index => $product_size) {
+        //             if ($product_size) {
+        //                 if ($request->product_price[$index]) {
+        //                     if (!in_array($product_size, $product_price)) {
+        //                         $productSize = new ProductSize();
+        //                         $productSize->product_id = $product->id;
+        //                         $productSize->product_price = $request->product_price[$index];
+        //                         $productSize->product_size = $request->product_size[$index];
+        //                         $productSize->save();
+        //                     }
+        //                     $product_price[] = $product_size;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         $notification = trans('admin_validation.Created Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect()->route('admin.product.index')->with($notification);
@@ -515,5 +517,14 @@ class ProductController extends Controller
         $notification = trans('admin_validation.Update Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect()->route('admin.product.index')->with($notification);
+    }
+
+    public function getChild(Request $request){
+        $childcategory = ChildCategory::with('category','subCategory')->find($request->id);
+        return response()->json([
+            'success' => 'Child Category',
+            'childcategory' => $childcategory,
+        ]);
+
     }
 }

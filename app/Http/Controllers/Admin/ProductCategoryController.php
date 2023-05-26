@@ -43,6 +43,7 @@ class ProductCategoryController extends Controller
             'status' => 'required',
             'icon' => 'required',
             'image' => 'required',
+            'category_code' => 'required|unique:categories',
         ];
         $customMessages = [
             'name.required' => trans('admin_validation.Name is required'),
@@ -60,6 +61,7 @@ class ProductCategoryController extends Controller
         $category->slug = $request->slug;
         $category->status = $request->status;
         $category->icon = $request->icon;
+        $category->category_code = $request->category_code;
         if ($request->hasfile('image')) {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension(); // getting image extension
@@ -89,7 +91,7 @@ class ProductCategoryController extends Controller
             'name' => 'required|unique:categories,name,' . $category->id,
             'slug' => 'required|unique:categories,name,' . $category->id,
             'status' => 'required',
-            'icon' => 'required'
+            'icon' => 'required',
         ];
 
         $customMessages = [

@@ -9,6 +9,7 @@ use App\Models\City;
 use App\Models\User;
 use App\Rules\Captcha;
 use App\Models\Country;
+use App\Models\Category;
 use App\Helpers\MailHelper;
 use App\Models\CountryState;
 use Illuminate\Http\Request;
@@ -121,7 +122,8 @@ class RegisterController extends Controller
         $city = City::get();
         $state = CountryState::get();
         $country = Country::get();
-        return view('register', compact('city', 'state', 'country'));
+        $categories = Category::with('subCategories.childCategories')->get();
+        return view('register', compact('city', 'state', 'country','categories'));
     }
     public function customerRegister(Request $request)
     {

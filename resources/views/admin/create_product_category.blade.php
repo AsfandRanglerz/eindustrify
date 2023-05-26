@@ -35,6 +35,10 @@
                                     <label>{{__('admin.Name')}} <span class="text-danger">*</span></label>
                                     <input type="text" id="name" class="form-control"  name="name">
                                 </div>
+                                {{-- <div class="form-group col-12">
+                                    <label>{{__('Category Code')}} <span class="text-danger">*</span></label>
+                                    <input type="text" id="category_code" class="form-control"  name="category_code">
+                                </div> --}}
                                 <div class="form-group col-12">
                                     <label>{{__('admin.Slug')}} <span class="text-danger">*</span></label>
                                     <input type="text" id="slug" class="form-control"  name="slug">

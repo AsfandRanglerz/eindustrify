@@ -601,6 +601,7 @@ class VendorController extends Controller
     public function getCity(Request $request)
     {
         $data =  City::where('country_state_id', $request->id)->get();
+
         return response()->json([
             'success' => 'Cities Against State',
             'data' => $data,
@@ -619,19 +620,23 @@ class VendorController extends Controller
     public function getSubcategory(Request $request)
     {
         $id = $request->vendor_id;
+
         if (isset($request->id)) {
             $subCategory = SubCategory::whereIn('category_id', $request->id)->get();
         } else {
             $subCategory = null;
         }
-        return view('admin.getsubcategory', compact('subCategory', 'id'));
+        $subcategoryIds = Session::get('subcategory');
+
+        return view('admin.getsubcategory', compact('subCategory', 'id','subcategoryIds'));
     }
 
     public function subCategoryStoreSession(Request $request)
     {
         $categorys = $request->input('id');
-        Session::put('category', $categorys);
-        $subcategory = Session::get('category');
+        Session::put('subcategory', $categorys);
+        $subcategory = Session::get('subcategory');
+        dd($subcategory);
         return response()->json([
             'success' => 'Record store in sessions successfuly',
             'subcategory' => $subcategory,

@@ -262,7 +262,13 @@
                         'id': categoryId
                     },
                     success: function(response) {
-                        // alert('session response ' + response.category);
+                        // console.log('session response ' + response.category);
+                        const arr = response?.category?.toString()?.split(',')
+                        $("#category option").each(function() {
+                            if( arr?.find(item => item==$(this).val())){
+                            $(this).attr('selected', true)
+                            }
+                        });
                         // $('#subcategoryData').empty();
                         // $('#subcategoryData').append(response).selectric();
                     },
@@ -288,6 +294,7 @@
                     success: function(response) {
                         $('#subcategory').empty();
                         $('#subcategory').append(response).selectric();
+                        alert(response.subcategory);
                     },
                     error: function(xhr) {
                         // Handle error here
@@ -311,6 +318,15 @@
                     },
                     success: function(response) {
                         // alert('sub category session response ' + response.subcategory);
+                        console.log('session sub response ' + response.subcategory);
+                        const arr = response?.subcategory?.toString()?.split(',')
+
+                        $("#subcategory option").each(function() {
+
+                            if( arr?.find(item => item==$(this).val())){
+                            $(this).attr('selected', true)
+                            }
+                        });
                         // $('#subcategoryData').empty();
                         // $('#subcategoryData').append(response).selectric();
                     },

@@ -54,6 +54,10 @@
                                     <label>{{__('admin.Slug')}} <span class="text-danger">*</span></label>
                                     <input type="text" id="slug" class="form-control"  name="slug" value="{{ $childCategory->slug }}">
                                 </div>
+                                <div class="form-group col-12">
+                                    <label>{{__('Child Category Code')}} <span class="text-danger">*</span></label>
+                                    <input type="text" id="child_category_code" class="form-control"  name="child_category_code" value="{{ $childCategory->child_category_code }}" readonly>
+                                </div>
 
                                 <div class="form-group col-12">
                                     <label>{{__('admin.Status')}} <span class="text-danger">*</span></label>
