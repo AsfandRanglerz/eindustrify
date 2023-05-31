@@ -59,47 +59,59 @@
         border-radius: 4px;
         margin-right: 8px;
     }
+
     .collapsed::before {
         content: "\f067";
         background: #000;
     }
+
     .accordion-button::after {
         display: none;
     }
+
     img[alt="icon-search"] {
         position: absolute;
         right: 14px;
     }
+
     #searchCat {
         border-radius: 0;
     }
+
     .accordion-item {
-        border-bottom: 1px solid #D9D9D9!important;
+        border-bottom: 1px solid #D9D9D9 !important;
     }
+
     .accordion .accordion-item:last-child {
-        border-bottom: none!important;
+        border-bottom: none !important;
     }
+
     .accordion-button {
         font-weight: 600;
     }
+
     .cat-dropdown-section {
         position: absolute;
         width: 100%;
         z-index: 1;
         background: #FFF;
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        height: 305px;
+        overflow-y: scroll;
     }
+
     .category-dropdown-container .accordion-button {
-        background: rgba(176, 25, 30, 0.1)!important;
+        background: rgba(176, 25, 30, 0.1) !important;
     }
+
     .category-dropdown-container .accordion-button.collapsed {
-        background: #FFF!important;
+        background: #FFF !important;
     }
 </style>
 @section('public-content')
     <!--============================
-                                   LOGIN/REGISTER PAGE START
-                                ==============================-->
+                                       LOGIN/REGISTER PAGE START
+                                    ==============================-->
     <section id="wsus__login_register" class="py-5">
         <div class="container">
             <div class="row mx-auto">
@@ -540,103 +552,96 @@
                                             <div class="form-group col-md-12 my-4">
                                                 <div class="position-relative category-dropdown-container">
                                                     <div class="position-relative d-flex align-items-center">
-                                                        <input type="text" id="searchCat" class="form-control" placeholder="Please Search/Select Category">
-                                                        <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}" alt="icon-search">
+                                                        <input type="text" id="searchCat" class="form-control"
+                                                            placeholder="Please Search/Select Category">
+                                                        <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}"
+                                                            alt="icon-search">
                                                     </div>
-                                                    <div class="accordion d-none cat-dropdown-section" id="catSubChildDropdown">
-                                                        <div class="accordion-item accordion-item-category">
-                                                          <h2 class="accordion-header" id="headingOne">
-                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                                                Battery Recycling
-                                                            </button>
-                                                          </h2>
-                                                          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#catSubChildDropdown">
-                                                            <div class="accordion-body">
-                                                                <div class="position-relative d-flex align-items-center">
-                                                                    <input type="text" class="form-control search-sub-category" placeholder="Please Search/Select Sub-Category">
-                                                                    <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}" alt="icon-search">
-                                                                </div>
-                                                                <div class="accordion" id="catSubChildDropdown1">
-                                                                    <div class="accordion-item accordion-item-sub-category">
-                                                                      <h2 class="accordion-header" id="headingOne1">
-                                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
-                                                                            Sub Category
-                                                                        </button>
-                                                                      </h2>
-                                                                      <div id="collapseOne1" class="accordion-collapse collapse" aria-labelledby="headingOne1" data-bs-parent="#catSubChildDropdown1">
-                                                                        <div class="accordion-body">
-                                                                            <div class=" mb-3 position-relative d-flex align-items-center">
-                                                                                <input type="text" class="form-control child-cat-search" placeholder="Please Search/Select Child-Category">
-                                                                                <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}" alt="icon-search">
-                                                                            </div>
-                                                                            <div class="search-sub-cat-child">
-                                                                                <div class="form-check mb-0 sub-cat-child">
-                                                                                    <input class="form-check-input" type="checkbox" value="" id="accessoriesSub">
-                                                                                    <label class="form-check-label" for="accessoriesSub">Child Category 1</label>
-                                                                                </div>
-                                                                                <div class="form-check mb-0 sub-cat-child">
-                                                                                    <input class="form-check-input" type="checkbox" value="" id="flangeSub">
-                                                                                    <label class="form-check-label" for="flangeSub">Child Category 2</label>
-                                                                                </div>
-                                                                                <div class="form-check mb-0 sub-cat-child">
-                                                                                    <input class="form-check-input" type="checkbox" value="" id="hangerSub">
-                                                                                    <label class="form-check-label" for="hangerSub">Child Category 3</label>
+                                                    <div class="accordion d-none cat-dropdown-section"
+                                                        id="catSubChildDropdown">
+                                                        @foreach ($categories as $category)
+                                                            <div class="accordion-item accordion-item-category">
+                                                                <h2 class="accordion-header"
+                                                                    id="headingOne{{ $category->id }}">
+                                                                    <button class="accordion-button collapsed"
+                                                                        type="button" data-bs-toggle="collapse"
+                                                                        data-bs-target="#collapseOne{{ $category->id }}"
+                                                                        aria-expanded="false"
+                                                                        aria-controls="collapseOne{{ $category->id }}">
+                                                                        {{ $category->name }}
+                                                                    </button>
+                                                                    <input class="form-check-input" name="category_id[]" type="checkbox" value="{{$category->id}}" hidden>
+                                                                </h2>
+                                                                <div id="collapseOne{{ $category->id }}"
+                                                                    class="accordion-collapse collapse"
+                                                                    aria-labelledby="headingOne{{ $category->id }}"
+                                                                    data-bs-parent="#catSubChildDropdown">
+                                                                    <div class="accordion-body">
+                                                                        <div
+                                                                            class="position-relative d-flex align-items-center">
+                                                                            <input type="text"
+                                                                                class="form-control search-sub-category"
+                                                                                placeholder="Please Search/Select Sub-Category">
+                                                                            <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}"
+                                                                                alt="icon-search">
+                                                                        </div>
+                                                                        @foreach ($category->subCategories as $subCategory)
+                                                                        <div class="accordion" id="catSubChildDropdown1{{$subCategory->id}}">
+                                                                            <div class="accordion-item accordion-item-sub-category">
+                                                                                <h2 class="accordion-header"
+                                                                                    id="headingOne1{{$subCategory->id}}">
+                                                                                    <button class="accordion-button collapsed"
+                                                                                        type="button"
+                                                                                        data-bs-toggle="collapse"
+                                                                                        data-bs-target="#collapseOne1{{$subCategory->id}}"
+                                                                                        aria-expanded="false"
+                                                                                        aria-controls="collapseOne1{{$subCategory->id}}">
+                                                                                        {{$subCategory->name}}
+                                                                                    </button>
+                                                                                </h2>
+                                                                                <div id="collapseOne1{{$subCategory->id}}"
+                                                                                    class="accordion-collapse collapse"
+                                                                                    aria-labelledby="headingOne1{{$subCategory->id}}"
+                                                                                    data-bs-parent="#catSubChildDropdown1{{$subCategory->id}}">
+                                                                                    <div class="accordion-body">
+                                                                                        <div
+                                                                                            class=" mb-3 position-relative d-flex align-items-center">
+                                                                                            <input type="text"
+                                                                                                class="form-control child-cat-search"
+                                                                                                placeholder="Please Search/Select Child-Category">
+                                                                                            <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}"
+                                                                                                alt="icon-search">
+                                                                                        </div>
+                                                                                        @foreach ($subCategory->childCategories as $childCategory)
+                                                                                        <div class="search-sub-cat-child">
+                                                                                            <div
+                                                                                                class="form-check mb-0 sub-cat-child">
+                                                                                                <input
+                                                                                                    class="form-check-input"
+                                                                                                    name="child_category_id[]"
+                                                                                                    type="checkbox"
+                                                                                                    value="{{$childCategory->id}}"
+                                                                                                    id="accessoriesSub">
+                                                                                                <label
+                                                                                                    class="form-check-label"
+                                                                                                    for="accessoriesSub">{{$childCategory->name}}</label>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        @endforeach
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                      </div>
+                                                                        @endforeach
+
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                          </div>
-                                                        </div>
-                                                        <div class="accordion-item accordion-item-category">
-                                                          <h2 class="accordion-header" id="headingOne2">
-                                                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                                                Bearings
-                                                            </button>
-                                                          </h2>
-                                                          <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingOne2" data-bs-parent="#catSubChildDropdown">
-                                                            <div class="accordion-body">
-                                                                <div class="position-relative d-flex align-items-center">
-                                                                    <input type="text" class="form-control search-sub-category" placeholder="Please Search/Select Sub-Category">
-                                                                    <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}" alt="icon-search">
-                                                                </div>
-                                                                <div class="accordion" id="catSubChildDropdown2">
-                                                                    <div class="accordion-item accordion-item-sub-category">
-                                                                      <h2 class="accordion-header" id="headingOne1">
-                                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne1" aria-expanded="false" aria-controls="collapseOne1">
-                                                                            Accessories
-                                                                        </button>
-                                                                      </h2>
-                                                                      <div id="collapseOne1" class="accordion-collapse collapse" aria-labelledby="headingOne1" data-bs-parent="#catSubChildDropdown2">
-                                                                        <div class="accordion-body">
-                                                                            <div class=" mb-3 position-relative d-flex align-items-center">
-                                                                                <input type="text" class="form-control child-cat-search" placeholder="Please Search/Select Child-Category">
-                                                                                <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}" alt="icon-search">
-                                                                            </div>
-                                                                            <div class="search-sub-cat-child">
-                                                                                <div class="form-check mb-0 sub-cat-child">
-                                                                                    <input class="form-check-input" type="checkbox" value="" id="accessoriesSub">
-                                                                                    <label class="form-check-label" for="accessoriesSub">Child Category 1</label>
-                                                                                </div>
-                                                                                <div class="form-check mb-0 sub-cat-child">
-                                                                                    <input class="form-check-input" type="checkbox" value="" id="flangeSub">
-                                                                                    <label class="form-check-label" for="flangeSub">Child Category 2</label>
-                                                                                </div>
-                                                                                <div class="form-check mb-0 sub-cat-child">
-                                                                                    <input class="form-check-input" type="checkbox" value="" id="hangerSub">
-                                                                                    <label class="form-check-label" for="hangerSub">Child Category 3</label>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                      </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                          </div>
-                                                        </div>
+                                                        @endforeach
+
+
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -693,8 +698,8 @@
         </div>
     </section>
     <!--============================
-                                   LOGIN/REGISTER PAGE END
-                                ==============================-->
+                                       LOGIN/REGISTER PAGE END
+                                    ==============================-->
 @endsection
 @section('js')
     <script>

@@ -43,7 +43,7 @@ class ProductCategoryController extends Controller
             'status' => 'required',
             'icon' => 'required',
             'image' => 'required',
-            'category_code' => 'required|unique:categories',
+            // 'category_code' => 'required|unique:categories',
         ];
         $customMessages = [
             'name.required' => trans('admin_validation.Name is required'),
@@ -55,13 +55,13 @@ class ProductCategoryController extends Controller
         ];
         $this->validate($request, $rules, $customMessages);
 
+        $category_code=Category::orderBy('id','DESC')->first();
         $category = new Category();
-
         $category->name = $request->name;
         $category->slug = $request->slug;
         $category->status = $request->status;
         $category->icon = $request->icon;
-        $category->category_code = $request->category_code;
+        $category->category_code = $category_code->category_code+1;
         if ($request->hasfile('image')) {
             $file = $request->file('image');
             $extension = $file->getClientOriginalExtension(); // getting image extension
