@@ -152,10 +152,10 @@
                                             <div class="form-group col-md-6">
                                                 <label class="text-uppercase">Registration type <span
                                                         class="required">*</span></label>
-                                                <select class="form-control" id="selRole">
+                                                <select class="form-control" id="selRole" name="role">
                                                     <option value=""></option>
-                                                    <option value="Register as a Customer">Register as a Customer</option>
-                                                    <option value="Register as a Vendor">Register as a Vendor</option>
+                                                    <option value="user">Register as a Customer</option>
+                                                    <option value="vendor">Register as a Vendor</option>
                                                 </select>
                                             </div>
                                         </div>
