@@ -161,7 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
+        // Maatwebsite\Excel\ExcelServiceProvider::class,
         /*
          * Package Service Providers...
          */
@@ -177,7 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\PusherConfig::class,
         Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
-        Maatwebsite\Excel\ExcelServiceProvider::class,
+
     ],
 
     /*
@@ -234,7 +234,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        // 'Excel' => Maatwebsite\Excel\Facades\Excel::class,
     ],
 
 ];

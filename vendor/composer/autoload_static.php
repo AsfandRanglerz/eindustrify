@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit474698736e1a9475595fa53513e2d432
+class ComposerStaticInit12a5bc84dbf3912e5e7a73106b315b62
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -6129,11 +6129,22 @@ class ComposerStaticInit474698736e1a9475595fa53513e2d432
         'Razorpay\\Tests\\InvoiceTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/InvoiceTest.php',
         'Razorpay\\Tests\\ItemTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/ItemTest.php',
         'Razorpay\\Tests\\OrdersTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/OrdersTest.php',
+        'Razorpay\\Tests\\PaperNachTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/PaperNachTest.php',
+        'Razorpay\\Tests\\PaymentLinkTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/PaymentLinkTest.php',
+        'Razorpay\\Tests\\PaymentTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/PaymentTest.php',
+        'Razorpay\\Tests\\PlanTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/PlanTest.php',
+        'Razorpay\\Tests\\QrCodeTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/QrCodeTest.php',
+        'Razorpay\\Tests\\RefundTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/RefundTest.php',
+        'Razorpay\\Tests\\RegisterEmandateTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/RegisterEmandateTest.php',
+        'Razorpay\\Tests\\RegisterNachTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/RegisterNachTest.php',
+        'Razorpay\\Tests\\SettlementTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/SettlementTest.php',
+        'Razorpay\\Tests\\SignatureVerificationTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/SignatureVerificationTest.php',
         'Razorpay\\Tests\\SubscriptionTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/SubscriptionTest.php',
         'Razorpay\\Tests\\TestCase' => __DIR__ . '/..' . '/razorpay/razorpay/tests/TestCase.php',
         'Razorpay\\Tests\\TokenTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/TokenTest.php',
         'Razorpay\\Tests\\TransferTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/TransferTest.php',
         'Razorpay\\Tests\\UpiTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/UpiTest.php',
+        'Razorpay\\Tests\\VirtualAccountTest' => __DIR__ . '/..' . '/razorpay/razorpay/tests/VirtualAccountTest.php',
         'ReCaptcha\\ReCaptcha' => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha/ReCaptcha.php',
         'ReCaptcha\\RequestMethod' => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha/RequestMethod.php',
         'ReCaptcha\\RequestMethod\\Curl' => __DIR__ . '/..' . '/google/recaptcha/src/ReCaptcha/RequestMethod/Curl.php',
@@ -9982,10 +9993,10 @@ class ComposerStaticInit474698736e1a9475595fa53513e2d432
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit474698736e1a9475595fa53513e2d432::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit474698736e1a9475595fa53513e2d432::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInit474698736e1a9475595fa53513e2d432::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInit474698736e1a9475595fa53513e2d432::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit12a5bc84dbf3912e5e7a73106b315b62::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit12a5bc84dbf3912e5e7a73106b315b62::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit12a5bc84dbf3912e5e7a73106b315b62::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit12a5bc84dbf3912e5e7a73106b315b62::$classMap;
 
         }, null, ClassLoader::class);
     }
