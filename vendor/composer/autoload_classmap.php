@@ -136,7 +136,6 @@ return array(
     'App\\Http\\Middleware\\TrustProxies' => $baseDir . '/app/Http/Middleware/TrustProxies.php',
     'App\\Http\\Middleware\\VerifyCsrfToken' => $baseDir . '/app/Http/Middleware/VerifyCsrfToken.php',
     'App\\Http\\Middleware\\XSSProtection' => $baseDir . '/app/Http/Middleware/XSSProtection.php',
-    'App\\Imports\\ProductsImport' => $baseDir . '/app/Imports/ProductsImport.php',
     'App\\Mail\\AccountActivation' => $baseDir . '/app/Mail/AccountActivation.php',
     'App\\Mail\\AdminForgetPassword' => $baseDir . '/app/Mail/AdminForgetPassword.php',
     'App\\Mail\\ApprovedSellerAccount' => $baseDir . '/app/Mail/ApprovedSellerAccount.php',

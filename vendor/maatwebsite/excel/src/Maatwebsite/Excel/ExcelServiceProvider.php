@@ -73,7 +73,7 @@ class ExcelServiceProvider extends ServiceProvider {
 		$me = $this;
 
 		// Bind the PHPExcel class
-		$this->app['phpexcel'] = $this->app->singleton(function($app) use($me) {
+		$this->app['phpexcel'] = $this->app->share(function($app) use($me) {
 
 			// Set locale
 			$me->setLocale();
@@ -93,13 +93,13 @@ class ExcelServiceProvider extends ServiceProvider {
 	protected function bindReaders()
 	{
 		// Bind the laravel excel reader
-		$this->app['excel.reader'] = $this->app->singleton(function($app)
+		$this->app['excel.reader'] = $this->app->share(function($app)
 		{
 			return new LaravelExcelReader($app['files'], $app['excel.identifier']);
 		});
 
 		// Bind the html reader class
-		$this->app['excel.readers.html'] = $this->app->singleton(function($app)
+		$this->app['excel.readers.html'] = $this->app->share(function($app)
 		{
 			return new Html();
 		});
@@ -112,7 +112,7 @@ class ExcelServiceProvider extends ServiceProvider {
 	protected function bindParsers()
 	{
 		// Bind the view parser
-		$this->app['excel.parsers.view'] = $this->app->singleton(function($app)
+		$this->app['excel.parsers.view'] = $this->app->share(function($app)
 		{
 			return new ViewParser($app['excel.readers.html']);
 		});
@@ -125,7 +125,7 @@ class ExcelServiceProvider extends ServiceProvider {
 	protected function bindWriters()
 	{
 		// Bind the excel writer
-		$this->app['excel.writer'] = $this->app->singleton(function($app)
+		$this->app['excel.writer'] = $this->app->share(function($app)
 		{
 			return new LaravelExcelWriter($app->make('Response'), $app['files'], $app['excel.identifier']);
 		});
@@ -138,7 +138,7 @@ class ExcelServiceProvider extends ServiceProvider {
 	protected function bindExcel()
 	{
 		// Bind the Excel class and inject its dependencies
-		$this->app['excel'] = $this->app->singleton(function($app)
+		$this->app['excel'] = $this->app->share(function($app)
         {
             return new Excel($app['phpexcel'], $app['excel.reader'], $app['excel.writer'], $app['excel.parsers.view']);
         });
