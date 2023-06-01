@@ -126,8 +126,25 @@ class RegisterController extends Controller
         // dd($categories);
         return view('register', compact('city', 'state', 'country','categories'));
     }
+    public function vendorGetStates(Request $request){
+        $data =  CountryState::where('country_id', $request->id)->get();
+        return response()->json([
+            'success' => 'States Against Country',
+            'data' => $data,
+        ]);
+    }
+    public function getCity(Request $request)
+    {
+        $data =  City::where('country_state_id', $request->id)->get();
+
+        return response()->json([
+            'success' => 'Cities Against State',
+            'data' => $data,
+        ]);
+    }
     public function customerRegister(Request $request)
     {
+        dd($request->all());
         $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',

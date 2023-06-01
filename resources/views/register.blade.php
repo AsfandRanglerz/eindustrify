@@ -152,10 +152,10 @@
                                             <div class="form-group col-md-6">
                                                 <label class="text-uppercase">Registration type <span
                                                         class="required">*</span></label>
-                                                <select class="form-control" id="selRole" name="role">
+                                                <select class="form-control" id="selRole">
                                                     <option value=""></option>
-                                                    <option value="user">Register as a Customer</option>
-                                                    <option value="vendor">Register as a Vendor</option>
+                                                    <option value="Register as a Customer">Register as a Customer</option>
+                                                    <option value="Register as a Vendor">Register as a Vendor</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -441,12 +441,12 @@
                                                     <label class="text-uppercase">business name <span
                                                             class="required">*</span></label>
                                                     <input type="text" class="form-control"
-                                                        placeholder="XYZ Business">
+                                                     name="vendor_business_name"   placeholder="XYZ Business">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Tax ID number <span
                                                             class="required">*</span></label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" name="vendor_tax_id" class="form-control"
                                                         placeholder="Tax ID Number">
                                                 </div>
                                             </div>
@@ -454,21 +454,21 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Industry <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control indus-type">
+                                                    <select class="form-control indus-type" name="vendor_industry_type">
                                                         <option value=""></option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">VAT Number <span
                                                             class="required">*</span></label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" name="vendor_vat" class="form-control"
                                                         placeholder="Enter VAT Number">
                                                 </div>
                                             </div>
                                             <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">No. of employees</label>
-                                                    <select class="form-control" id="noEmployees">
+                                                    <select class="form-control" id="noEmployees" name="vendor_total_employee">
                                                         <option value=""></option>
                                                     </select>
                                                 </div>
@@ -476,7 +476,7 @@
                                                     <label class="text-uppercase">Business number <span
                                                             class="required">*</span></label>
                                                     <input type="tel" class="form-control"
-                                                        placeholder="Business Number" id="businessNumber2">
+                                                        placeholder="Business Number" name="vendor_business_phone" id="businessNumber2">
                                                 </div>
                                             </div>
                                             {{-- </form> --}}
@@ -490,42 +490,47 @@
                                             <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Street address</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control" name="vendor_street_address"
                                                         placeholder="Street, 6001 W Waco Dr #314">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Suite, building, department
                                                         etc</label>
-                                                    <input type="text" class="form-control"
+                                                    <input type="text" class="form-control" name="vendor_department"
                                                         placeholder="Suite, building, department etc">
                                                 </div>
                                             </div>
                                             <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
-                                                    <label class="text-uppercase">City <span
+                                                    <label class="text-uppercase">Country/Region<span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-city">
+                                                    <select class="form-control select-country" id="vendor_country_id" name="vender_country_id">
                                                         <option value=""></option>
+                                                       @foreach ($country as $country_item)
+                                                         <option value="{{$country_item->id}}">{{$country_item->name}}</option>
+                                                       @endforeach
                                                     </select>
                                                 </div>
+
                                                 <div class="form-group col-md-6">
-                                                    <label class="text-uppercase">state</label>
-                                                    <select class="form-control select-state">
+                                                    <label class="text-uppercase">State<span
+                                                        class="required">*</span></label>
+                                                    <select class="form-control select-state" id="vendor_state_id" name="vender_state_id">
                                                         <option value=""></option>
                                                     </select>
                                                 </div>
                                             </div>
                                             <div class="row mx-auto">
                                                 <div class="form-group col-md-6">
-                                                    <label class="text-uppercase">Country/Region* <span
+                                                    <label class="text-uppercase">City <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-country">
+                                                    <select class="form-control select-city" id="vendor_city_id" name="vender_city_id">
                                                         <option value=""></option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Postal/zip code</label>
-                                                    <input type="text" class="form-control" placeholder="147001">
+                                                    <input type="text" class="form-control" placeholder="147001" vender_zip_code>
                                                 </div>
                                             </div>
                                             {{-- </form> --}}
@@ -679,7 +684,7 @@
                         <img src="{{ asset('public/uploads/website-images/images/auth-side-img.jpg') }}"
                             class="img-fluid w-100">
                         <div class="position-absolute py-5 px-4 side-section-content">
-                            <h3 class="text-white position-relative heading">Register today and you will be able to</h3>
+                            <h3 class="text-white position-relative heading">Register  and you will be able to</h3>
                             <ul>
                                 <li class="text-white list"><img
                                         src="{{ asset('public/uploads/website-images/images/check-circle.png') }}"
@@ -844,6 +849,56 @@
                 $('.customer-section').addClass('d-none');
                 $('.vendor-section').removeClass('d-none');
             }
+        });
+
+
+        $(function() {
+            $("#vendor_country_id").change(function() {
+                var selectedText = $(this).find("option:selected").text();
+                var countryId = $(this).val();
+                $.ajax({
+                    url: '{{ URL::to('/vendor-get-states') }}',
+                    type: 'GET',
+                    data: {
+                        'id': countryId
+                    },
+                    success: function(response) {
+                        $('#vendor_state_id').empty();
+                        $('#response_billing_state_append').html(
+                            '<option value="" disabled selected>Select State</option>');
+                        $.each(response.data, function(key, value) {
+                            $("#vendor_state_id").append(
+                                '<option value="' + value
+                                .id +
+                                '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+        $(function() {
+            $("#vendor_state_id").change(function() {
+                var selectedText = $(this).find("option:selected").text();
+                var stateId = $(this).val();
+                $.ajax({
+                    url: '{{ URL::to('vendor-get-city') }}',
+                    type: 'GET',
+                    data: {
+                        'id': stateId
+                    },
+                    success: function(response) {
+                        $('#vendor_city_id').empty();
+                        $('#response_billing_city_append').html(
+                            '<option value="" disabled selected>Select City</option>');
+                        $.each(response.data, function(key, value) {
+                            $("#vendor_city_id").append(
+                                '<option value="' + value
+                                .id +
+                                '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
         });
     </script>
 @endsection

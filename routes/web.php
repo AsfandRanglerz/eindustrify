@@ -168,6 +168,8 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('/login', [LoginController::class, 'loginPage'])->name('login');
         Route::post('/store-login', [LoginController::class, 'storeLogin'])->name('store-login');
         Route::get('/register', [RegisterController::class, 'Register'])->name('register');
+        Route::get('/vendor-get-states', [RegisterController::class, 'vendorGetStates']);
+        Route::get('vendor-get-city', [RegisterController::class, 'getCity']);
         Route::post('/customer-register', [RegisterController::class, 'customerRegister']);
         Route::post('/store-register', [RegisterController::class, 'storeRegister'])->name('store-register');
         Route::get('/user-verification/{token}', [RegisterController::class, 'userVerification'])->name('user-verification');

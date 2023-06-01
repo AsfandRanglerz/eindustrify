@@ -7,6 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'PayPal' => array($vendorDir . '/paypal/rest-api-sdk-php/lib'),
+    'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
     'Mockery' => array($vendorDir . '/mockery/mockery/library'),
+    'Maatwebsite\\Excel\\' => array($vendorDir . '/maatwebsite/excel/src'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
 );
