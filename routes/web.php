@@ -568,6 +568,7 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('copyright-policy', [PolicyController::class, 'getCopyRightPolicy'])->name('copyright-policy');
         Route::get('copyright-edit/{id}', [PolicyController::class, 'getEditCopyRightPolicy'])->name('copyright-edit');
         Route::post('update-copyright-policy', [PolicyController::class, 'updateCopyRightPolicy'])->name('update-copyright-policy');
+        Route::post('checkss', [PolicyController::class, 'check']);
 
         Route::get('privacy-policy', [PolicyController::class, 'getPrivacyPolicy'])->name('privacy-policy');
         Route::get('privacy-policy-edit/{id}', [PolicyController::class, 'getEditPrivacyPolicy'])->name('privacy-policy-edit');

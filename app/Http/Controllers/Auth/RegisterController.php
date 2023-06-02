@@ -221,6 +221,8 @@ class RegisterController extends Controller
         $billing_address['zip_code'] = $request->billing_zip_code;
         $billing_address->save();
 
+        
+
         $notification = trans('Registration Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect()->back()->with($notification);

@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Policy;
+use App\Imports\RoleImport;
 use Illuminate\Http\Request;
+use App\Imports\ProductsImport;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PolicyController extends Controller
 {
@@ -177,5 +180,11 @@ class PolicyController extends Controller
         $notification = trans('admin_validation.Updated Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect('admin/sales-site')->with($notification);
+    }
+    public function check(){
+        $data = '1';
+        // Excel::import(new ProductsImport($data),request()->file('file'), null, \Maatwebsite\Excel\Excel::XLSX);
+        Excel::import(new RoleImport($data), request()->file('file')->store('temp'));
+        return back();
     }
 }

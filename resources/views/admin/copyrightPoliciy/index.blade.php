@@ -14,7 +14,13 @@
                     <div class="breadcrumb-item">{{ __('CopyRight Policy') }}</div>
                 </div>
             </div>
-
+{{-- <div>
+    <form action="{{URL('admin/checkss')}}" enctype="multipart/form-data" method="POST">
+        @csrf
+    <input type="file" name="file" class="form-control">
+    <button class="btn btn-primary">check</button>
+</form>
+</div> --}}
             <div class="section-body">
                 {{-- <a href="{{ route('admin.send-email-to-all-customer') }}" class="btn btn-primary">{{__('admin.Send email to all user')}}</a> --}}
                 {{-- <a href="{{ route('admin.add-customer') }}" class="btn btn-primary"><i class="fas fa-plus"></i>

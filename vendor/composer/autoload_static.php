@@ -795,6 +795,7 @@ class ComposerStaticInit12a5bc84dbf3912e5e7a73106b315b62
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Http\\Middleware\\XSSProtection' => __DIR__ . '/../..' . '/app/Http/Middleware/XSSProtection.php',
+        'App\\Imports\\ProductsImport' => __DIR__ . '/../..' . '/app/Imports/ProductsImport.php',
         'App\\Mail\\AccountActivation' => __DIR__ . '/../..' . '/app/Mail/AccountActivation.php',
         'App\\Mail\\AdminForgetPassword' => __DIR__ . '/../..' . '/app/Mail/AdminForgetPassword.php',
         'App\\Mail\\ApprovedSellerAccount' => __DIR__ . '/../..' . '/app/Mail/ApprovedSellerAccount.php',
