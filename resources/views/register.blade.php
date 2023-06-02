@@ -107,6 +107,50 @@
     .category-dropdown-container .accordion-button.collapsed {
         background: #FFF !important;
     }
+
+    .bulk-modal .form-check-input[type=checkbox] {
+        border-radius: 50px;
+    }
+
+    .bulk-modal .form-control {
+        padding: 12px 16px!important;
+    }
+
+    .bulk-modal .prod-prop-input {
+        padding: 12px 36px!important;
+    }
+
+    .bulk-modal tr {
+        vertical-align: middle;
+    }
+
+    .bulk-modal .table>thead {
+        vertical-align: bottom;
+        background: #000;
+        color: #FFF;
+        text-align: center;
+    }
+
+    img[alt="property-icon"] {
+        left: 15px;
+    }
+    img[alt="dropdown-icon"] {
+        right: 20px;
+        height: 5px;
+    }
+    .form-control:disabled, .form-control[readonly] {
+        background-color: #F2F2F2;
+        border: none;
+    }
+    .bulk-modal tr {
+        font-size: 14px;
+    }
+    .bulk-modal td {
+        padding: 18px 8px!important;
+    }
+    .bulk-files-table {
+        border: 1px solid black;
+    }
 </style>
 @section('public-content')
     <!--============================
@@ -136,6 +180,7 @@
                             </li>
                             <li class="nav-item d-flex align-items-center vendor-section d-none" role="presentation">
                                 <span class="d-block seperator"></span>
+
                             </li>
                             <li class="nav-item vendor-section d-none" role="presentation">
                                 <button class="nav-link" id="prodInfo-tab" data-bs-toggle="tab" data-bs-target="#prodInfo"
@@ -652,8 +697,74 @@
                                         </div>
                                         <div class="row mb-3 mx-auto">
                                             <div class="form-group">
-                                                <label class="text-uppercase">Please upload your product catalog
-                                                    here</label>
+                                                <div class="mb-2 d-flex align-items-center justify-content-between">
+                                                    <label class="text-uppercase">Please upload your product catalog here</label>
+                                                    <button type="button" class="common_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Bulk Upload</button>
+                                                    <!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade bulk-modal" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Product Mapping Guide</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div>
+                <h6>Product</h6>
+                <h6>Ready to Import Products</h6>
+            </div>
+            <div class="table-responsive bulk-files-table">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">COLUMN <br> HEADER <br> FROM FILE</th>
+                        <th scope="col">PREVIEW INFORMATION</th>
+                        <th scope="col">MAPPED</th>
+                        <th scope="col">IMPORT AS</th>
+                        <th scope="col">eINDUSTRIFY PROPERTY</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td class="text-center">Product Name</td>
+                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
+                        <td class="text-center"><input type="checkbox" class="form-check-input" name="" id=""></td>
+                        <td class="position-relative d-flex align-items-center"><img src="{{ asset('public/uploads/website-images/images/property.png') }}" class="position-absolute" alt="property-icon"><img src="{{ asset('public/uploads/website-images/images/dropdown.png') }}" class="position-absolute" alt="dropdown-icon"><input type="input" placeholder="Product Properties" class="form-control prod-prop-input" name="" id="" readonly></td>
+                        <td><input type="input" placeholder="Product Name*" class="form-control" name="" id="" readonly></td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">Product Name</td>
+                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
+                        <td class="text-center"><input type="checkbox" class="form-check-input" name="" id=""></td>
+                        <td class="position-relative d-flex align-items-center"><img src="{{ asset('public/uploads/website-images/images/property.png') }}" class="position-absolute" alt="property-icon"><img src="{{ asset('public/uploads/website-images/images/dropdown.png') }}" class="position-absolute" alt="dropdown-icon"><input type="input" placeholder="Product Properties" class="form-control prod-prop-input" name="" id="" readonly></td>
+                        <td><input type="input" placeholder="Product Name*" class="form-control" name="" id="" readonly></td>
+                      </tr>
+                      <tr>
+                        <td class="text-center">Product Name</td>
+                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
+                        <td class="text-center"><input type="checkbox" class="form-check-input" name="" id=""></td>
+                        <td class="position-relative d-flex align-items-center"><img src="{{ asset('public/uploads/website-images/images/property.png') }}" class="position-absolute" alt="property-icon"><img src="{{ asset('public/uploads/website-images/images/dropdown.png') }}" class="position-absolute" alt="dropdown-icon"><input type="input" placeholder="Product Properties" class="form-control prod-prop-input" name="" id="" readonly></td>
+                        <td><input type="input" placeholder="Product Name*" class="form-control" name="" id="" readonly></td>
+                      </tr>
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+                                                </div>
                                                 <form action="/upload-target" class="dropzone"></form>
                                                 <!-- Or With An Input Field Fallback -->
                                                 <form action="/upload-target" class="dropzone">
