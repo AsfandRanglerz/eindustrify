@@ -648,6 +648,7 @@
                                                                                         aria-controls="collapseOne1{{$subCategory->id}}">
                                                                                         {{$subCategory->name}}
                                                                                     </button>
+                                                                                    <input class="form-check-input" name="suCategory_id[]" type="checkbox" value="{{$subCategory->id}}" hidden>
                                                                                 </h2>
                                                                                 <div id="collapseOne1{{$subCategory->id}}"
                                                                                     class="accordion-collapse collapse"
@@ -662,8 +663,8 @@
                                                                                             <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}"
                                                                                                 alt="icon-search">
                                                                                         </div>
-                                                                                        @foreach ($subCategory->childCategories as $childCategory)
                                                                                         <div class="search-sub-cat-child">
+                                                                                        @foreach ($subCategory->childCategories as $childCategory)
                                                                                             <div
                                                                                                 class="form-check mb-0 sub-cat-child">
                                                                                                 <input
@@ -671,13 +672,13 @@
                                                                                                     name="child_category_id[]"
                                                                                                     type="checkbox"
                                                                                                     value="{{$childCategory->id}}"
-                                                                                                    id="accessoriesSub">
+                                                                                                    id="accessoriesSub{{$childCategory->id}}">
                                                                                                 <label
                                                                                                     class="form-check-label"
-                                                                                                    for="accessoriesSub">{{$childCategory->name}}</label>
+                                                                                                    for="accessoriesSub{{$childCategory->id}}">{{$childCategory->name}}</label>
                                                                                             </div>
-                                                                                        </div>
                                                                                         @endforeach
+                                                                                        </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -820,6 +821,16 @@
 @section('js')
     <script>
         $(function() {
+            $('input:checkbox').on('click', function() {
+                if($(this).is(':checked') || $(this).parent().siblings().find('input:checkbox').is(':checked')) {
+                    $(this).closest('.accordion-item-category').children('.accordion-header').find('input').attr('selected', true);
+                    $(this).closest('.accordion-item-sub-category').children('.accordion-header').find('input').attr('selected', true);
+                } else {
+                    $(this).closest('.accordion-item-category').children('.accordion-header').find('input').attr('selected', false);
+                    $(this).closest('.accordion-item-sub-category').children('.accordion-header').find('input').attr('selected', false);
+                }
+            });
+
             $('#searchCat').on('keyup', function() {
                 var value = $(this).val().toLowerCase();
                 $('.accordion-item-category').filter(function() {
