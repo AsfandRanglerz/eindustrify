@@ -113,11 +113,11 @@
     }
 
     .bulk-modal .form-control {
-        padding: 12px 16px!important;
+        padding: 12px 16px !important;
     }
 
     .bulk-modal .prod-prop-input {
-        padding: 12px 36px!important;
+        padding: 12px 36px !important;
     }
 
     .bulk-modal tr {
@@ -134,43 +134,55 @@
     img[alt="property-icon"] {
         left: 22px;
     }
+
     img[alt="dropdown-icon"] {
         right: 30px;
         height: 5px;
     }
-    .form-control:disabled, .form-control[readonly] {
+
+    .form-control:disabled,
+    .form-control[readonly] {
         background-color: #F2F2F2;
         border: none;
     }
+
     .bulk-modal tr {
         font-size: 14px;
     }
+
     .bulk-modal td {
-        padding: 18px 16px!important;
+        padding: 18px 16px !important;
     }
+
     .bulk-files-table {
         border-left: 1px solid #C8C8C8;
         border-right: 1px solid #C8C8C8;
     }
+
     .bulk-modal .modal-body {
         background: #F5F5F5;
         padding: 2rem;
     }
+
     .bulk-modal tbody tr {
         background: #FFF;
     }
+
     .bulk-modal .modal-title {
         padding: 8px 16px;
     }
+
     .bulk-modal .modal-title,
     .bulk-modal .bulk-model-steps {
         background: #FFF;
         border: 1px solid #C8C8C8;
         margin-bottom: 20px;
     }
+
     .bulk-modal .bulk-model-steps {
         padding: 12px 16px;
     }
+
     .bulk-files-step2 {
         padding: 85px 0;
         border: 1px solid #CCCCCC;
@@ -178,8 +190,8 @@
 </style>
 @section('public-content')
     <!--============================
-                                       LOGIN/REGISTER PAGE START
-                                    ==============================-->
+                                           LOGIN/REGISTER PAGE START
+                                        ==============================-->
     <section id="wsus__login_register" class="py-5">
         <div class="container">
             <div class="row mx-auto">
@@ -221,7 +233,7 @@
                                             <div class="form-group col-md-6">
                                                 <label class="text-uppercase">Registration type <span
                                                         class="required">*</span></label>
-                                                <select class="form-control" id="selRole">
+                                                <select class="form-control" id="selRole" name="role">
                                                     <option value=""></option>
                                                     <option value="user">Register as a Customer</option>
                                                     <option value="vendor">Register as a Vendor</option>
@@ -510,7 +522,7 @@
                                                     <label class="text-uppercase">business name <span
                                                             class="required">*</span></label>
                                                     <input type="text" class="form-control"
-                                                     name="vendor_business_name"   placeholder="XYZ Business">
+                                                        name="vendor_business_name" placeholder="XYZ Business">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Tax ID number <span
@@ -537,7 +549,8 @@
                                             <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">No. of employees</label>
-                                                    <select class="form-control" id="noEmployees" name="vendor_total_employee">
+                                                    <select class="form-control" id="noEmployees"
+                                                        name="vendor_total_employee">
                                                         <option value=""></option>
                                                     </select>
                                                 </div>
@@ -545,7 +558,8 @@
                                                     <label class="text-uppercase">Business number <span
                                                             class="required">*</span></label>
                                                     <input type="tel" class="form-control"
-                                                        placeholder="Business Number" name="vendor_business_phone" id="businessNumber2">
+                                                        placeholder="Business Number" name="vendor_business_phone"
+                                                        id="businessNumber2">
                                                 </div>
                                             </div>
                                             {{-- </form> --}}
@@ -559,7 +573,8 @@
                                             <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Street address</label>
-                                                    <input type="text" class="form-control" name="vendor_street_address"
+                                                    <input type="text" class="form-control"
+                                                        name="vendor_street_address"
                                                         placeholder="Street, 6001 W Waco Dr #314">
                                                 </div>
                                                 <div class="form-group col-md-6">
@@ -573,18 +588,21 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Country/Region<span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-country" id="vendor_country_id" name="vender_country_id">
+                                                    <select class="form-control select-country" id="vendor_country_id"
+                                                        name="vender_country_id">
                                                         <option value=""></option>
-                                                       @foreach ($country as $country_item)
-                                                         <option value="{{$country_item->id}}">{{$country_item->name}}</option>
-                                                       @endforeach
+                                                        @foreach ($country as $country_item)
+                                                            <option value="{{ $country_item->id }}">
+                                                                {{ $country_item->name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
 
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">State<span
-                                                        class="required">*</span></label>
-                                                    <select class="form-control select-state" id="vendor_state_id" name="vender_state_id">
+                                                            class="required">*</span></label>
+                                                    <select class="form-control select-state" id="vendor_state_id"
+                                                        name="vender_state_id">
                                                         <option value=""></option>
                                                     </select>
                                                 </div>
@@ -593,13 +611,15 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">City <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-city" id="vendor_city_id" name="vender_city_id">
+                                                    <select class="form-control select-city" id="vendor_city_id"
+                                                        name="vender_city_id">
                                                         <option value=""></option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Postal/zip code</label>
-                                                    <input type="text" class="form-control" placeholder="147001" vender_zip_code>
+                                                    <input type="text" class="form-control" placeholder="147001"
+                                                        vender_zip_code>
                                                 </div>
                                             </div>
                                             {{-- </form> --}}
@@ -644,7 +664,9 @@
                                                                         aria-controls="collapseOne{{ $category->id }}">
                                                                         {{ $category->name }}
                                                                     </button>
-                                                                    <input class="form-check-input" name="category_id[]" type="checkbox" value="{{$category->id}}" hidden>
+                                                                    <input class="form-check-input" name="category_id[]"
+                                                                        type="checkbox" value="{{ $category->id }}"
+                                                                        hidden>
                                                                 </h2>
                                                                 <div id="collapseOne{{ $category->id }}"
                                                                     class="accordion-collapse collapse"
@@ -660,53 +682,61 @@
                                                                                 alt="icon-search">
                                                                         </div>
                                                                         @foreach ($category->subCategories as $subCategory)
-                                                                        <div class="accordion" id="catSubChildDropdown1{{$subCategory->id}}">
-                                                                            <div class="accordion-item accordion-item-sub-category">
-                                                                                <h2 class="accordion-header"
-                                                                                    id="headingOne1{{$subCategory->id}}">
-                                                                                    <button class="accordion-button collapsed"
-                                                                                        type="button"
-                                                                                        data-bs-toggle="collapse"
-                                                                                        data-bs-target="#collapseOne1{{$subCategory->id}}"
-                                                                                        aria-expanded="false"
-                                                                                        aria-controls="collapseOne1{{$subCategory->id}}">
-                                                                                        {{$subCategory->name}}
-                                                                                    </button>
-                                                                                    <input class="form-check-input" name="suCategory_id[]" type="checkbox" value="{{$subCategory->id}}" hidden>
-                                                                                </h2>
-                                                                                <div id="collapseOne1{{$subCategory->id}}"
-                                                                                    class="accordion-collapse collapse"
-                                                                                    aria-labelledby="headingOne1{{$subCategory->id}}"
-                                                                                    data-bs-parent="#catSubChildDropdown1{{$subCategory->id}}">
-                                                                                    <div class="accordion-body">
-                                                                                        <div
-                                                                                            class=" mb-3 position-relative d-flex align-items-center">
-                                                                                            <input type="text"
-                                                                                                class="form-control child-cat-search"
-                                                                                                placeholder="Please Search/Select Child-Category">
-                                                                                            <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}"
-                                                                                                alt="icon-search">
-                                                                                        </div>
-                                                                                        <div class="search-sub-cat-child">
-                                                                                        @foreach ($subCategory->childCategories as $childCategory)
+                                                                            <div class="accordion"
+                                                                                id="catSubChildDropdown1{{ $subCategory->id }}">
+                                                                                <div
+                                                                                    class="accordion-item accordion-item-sub-category">
+                                                                                    <h2 class="accordion-header"
+                                                                                        id="headingOne1{{ $subCategory->id }}">
+                                                                                        <button
+                                                                                            class="accordion-button collapsed"
+                                                                                            type="button"
+                                                                                            data-bs-toggle="collapse"
+                                                                                            data-bs-target="#collapseOne1{{ $subCategory->id }}"
+                                                                                            aria-expanded="false"
+                                                                                            aria-controls="collapseOne1{{ $subCategory->id }}">
+                                                                                            {{ $subCategory->name }}
+                                                                                        </button>
+                                                                                        <input class="form-check-input"
+                                                                                            name="suCategory_id[]"
+                                                                                            type="checkbox"
+                                                                                            value="{{ $subCategory->id }}"
+                                                                                            hidden>
+                                                                                    </h2>
+                                                                                    <div id="collapseOne1{{ $subCategory->id }}"
+                                                                                        class="accordion-collapse collapse"
+                                                                                        aria-labelledby="headingOne1{{ $subCategory->id }}"
+                                                                                        data-bs-parent="#catSubChildDropdown1{{ $subCategory->id }}">
+                                                                                        <div class="accordion-body">
                                                                                             <div
-                                                                                                class="form-check mb-0 sub-cat-child">
-                                                                                                <input
-                                                                                                    class="form-check-input"
-                                                                                                    name="child_category_id[]"
-                                                                                                    type="checkbox"
-                                                                                                    value="{{$childCategory->id}}"
-                                                                                                    id="accessoriesSub{{$childCategory->id}}">
-                                                                                                <label
-                                                                                                    class="form-check-label"
-                                                                                                    for="accessoriesSub{{$childCategory->id}}">{{$childCategory->name}}</label>
+                                                                                                class=" mb-3 position-relative d-flex align-items-center">
+                                                                                                <input type="text"
+                                                                                                    class="form-control child-cat-search"
+                                                                                                    placeholder="Please Search/Select Child-Category">
+                                                                                                <img src="{{ asset('public/uploads/website-images/images/icon-search.png') }}"
+                                                                                                    alt="icon-search">
                                                                                             </div>
-                                                                                        @endforeach
+                                                                                            <div
+                                                                                                class="search-sub-cat-child">
+                                                                                                @foreach ($subCategory->childCategories as $childCategory)
+                                                                                                    <div
+                                                                                                        class="form-check mb-0 sub-cat-child">
+                                                                                                        <input
+                                                                                                            class="form-check-input"
+                                                                                                            name="child_category_id[]"
+                                                                                                            type="checkbox"
+                                                                                                            value="{{ $childCategory->id }}"
+                                                                                                            id="accessoriesSub{{ $childCategory->id }}">
+                                                                                                        <label
+                                                                                                            class="form-check-label"
+                                                                                                            for="accessoriesSub{{ $childCategory->id }}">{{ $childCategory->name }}</label>
+                                                                                                    </div>
+                                                                                                @endforeach
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
                                                                         @endforeach
 
                                                                     </div>
@@ -723,102 +753,12 @@
                                         <div class="row mb-3 mx-auto">
                                             <div class="form-group">
                                                 <div class="mb-2 d-flex align-items-center justify-content-between">
-                                                    <label class="text-uppercase">Please upload your product catalog here</label>
-                                                    <button type="button" class="common_btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Bulk Upload</button>
+                                                    <label class="text-uppercase">Please upload your product catalog
+                                                        here</label>
+                                                    <button type="button" class="common_btn" data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdrop">Bulk Upload</button>
                                                     <!-- Button trigger modal -->
-<!-- Modal -->
-{{-- data-bs-backdrop="static" --}}
-<div class="modal fade bulk-modal" id="staticBackdrop" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-body">
-            <h5 class="modal-title" id="staticBackdropLabel">Product Mapping Guide</h5>
-            <div class="d-flex bulk-model-steps">
-                <div class="d-flex align-items-center">
-                    <span class="fa fa-angle-right"></span>
-                    <img class="mx-2" src="{{ asset('/public/uploads/website-images/images/property.png') }}">
-                    <h6 class="me-5">Product</h6>
-                </div>
-                <div class="d-flex align-items-center">
-                    <img src="{{ asset('/public/uploads/website-images/images/import-product.png') }}">
-                    <h6 class="ms-2">Ready to Import Products</h6>
-                </div>
-            </div>
-            <div class="table-responsive bulk-files-table bulk-files-step1 product-mapping-1">
-                <table class="table mb-0">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">COLUMN <br> HEADER <br> FROM FILE</th>
-                        <th scope="col">PREVIEW INFORMATION</th>
-                        <th scope="col">MAPPED</th>
-                        <th scope="col">IMPORT AS</th>
-                        <th scope="col">eINDUSTRIFY PROPERTY</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="text-center">Product Name</td>
-                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
-                        <td class="text-center"><input type="checkbox" class="form-check-input" name="" id=""></td>
-                        <td class="position-relative d-flex align-items-center"><img src="{{ asset('public/uploads/website-images/images/property.png') }}" class="position-absolute" alt="property-icon"><img src="{{ asset('public/uploads/website-images/images/dropdown.png') }}" class="position-absolute" alt="dropdown-icon"><input type="input" placeholder="Product Properties" class="form-control prod-prop-input" name="" id="" readonly></td>
-                        <td><input type="input" placeholder="Product Name*" class="form-control" name="" id="" readonly></td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">Product Name</td>
-                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
-                        <td class="text-center"><input type="checkbox" class="form-check-input" name="" id=""></td>
-                        <td class="position-relative d-flex align-items-center"><img src="{{ asset('public/uploads/website-images/images/property.png') }}" class="position-absolute" alt="property-icon"><img src="{{ asset('public/uploads/website-images/images/dropdown.png') }}" class="position-absolute" alt="dropdown-icon"><input type="input" placeholder="Product Properties" class="form-control prod-prop-input" name="" id="" readonly></td>
-                        <td><input type="input" placeholder="Product Name*" class="form-control" name="" id="" readonly></td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">Product Name</td>
-                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
-                        <td class="text-center"><input type="checkbox" class="form-check-input" name="" id=""></td>
-                        <td class="position-relative d-flex align-items-center"><img src="{{ asset('public/uploads/website-images/images/property.png') }}" class="position-absolute" alt="property-icon"><img src="{{ asset('public/uploads/website-images/images/dropdown.png') }}" class="position-absolute" alt="dropdown-icon"><input type="input" placeholder="Product Properties" class="form-control prod-prop-input" name="" id="" readonly></td>
-                        <td><input type="input" placeholder="Product Name*" class="form-control" name="" id="" readonly></td>
-                      </tr>
-                      <tr>
-                        <td class="text-center">Product Name</td>
-                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
-                        <td class="text-center"><input type="checkbox" class="form-check-input" name="" id=""></td>
-                        <td class="position-relative d-flex align-items-center"><img src="{{ asset('public/uploads/website-images/images/property.png') }}" class="position-absolute" alt="property-icon"><img src="{{ asset('public/uploads/website-images/images/dropdown.png') }}" class="position-absolute" alt="dropdown-icon"><input type="input" placeholder="Product Properties" class="form-control prod-prop-input" name="" id="" readonly></td>
-                        <td><input type="input" placeholder="Product Name*" class="form-control" name="" id="" readonly></td>
-                      </tr>
-                    </tbody>
-                  </table>
-            </div>
-            <div class="bg-white d-none mb-4 bulk-files-step2 product-mapping-2">
-                <div class="col-sm-5 mx-auto">
-                    <h4 class="mb-3">Product Mapping Final Details</h4>
-                    <label for="formFile" class="form-label">Import File Name*</label>
-                    <input class="form-control" type="file" id="formFile">
-                    <div class="mt-3 form-check">
-                        <input class="form-check-input" type="checkbox" id="agreeOffer2">
-                        <label class="form-check-label label-light-weight" for="agreeOffer2">I agree that all the products in this import are expecting to hear from eIndustrify itself. eIndustry has the necessary information saved regarding each product and is confidential and will remain confidential. I can hereby confirm this list wasn’t purchased, rented, appended, or provided by a third party.</label>
-                    </div>
-                </div>
-            </div>
-            <div class="bulk-files-step1 product-mapping-1 mt-4 d-flex align-items-center justify-content-between">
-                <button type="button" class="bg-dark common_btn" data-bs-dismiss="modal"><span class="me-2 fa fa-angle-left text-white"></span>Back</button>
-                <div class="d-flex align-items-center">
-                    <div class="me-3">
-                        <b>You have 3 unmapped columns</b>
-                        <div class="mt-2 mb-0 form-check">
-                            <input class="form-check-input" type="checkbox" id="agreeOffer1">
-                            <label class="form-check-label label-light-weight" for="agreeOffer1">Don’t import data from unmapped columns</label>
-                        </div>
-                    </div>
-                    <button type="button" class="common_btn next_btn">Next<span class="ms-2 fa fa-angle-right text-white"></span></button>
-                </div>
-            </div>
-            <div class="product-mapping-2 d-none d-flex align-items-center justify-content-between">
-                <button type="button" class="bg-dark common_btn to-step-1"><span class="me-2 fa fa-angle-left text-white"></span>Back</button>
-                <button type="button" class="common_btn next_btn">Finish Import</button>
-            </div>
-        </div>
-      </div>
-    </div>
-  </div>
+
 
 
 
@@ -836,6 +776,163 @@
                                             </div>
                                         </div>
                                     </div>
+                                                                <!-- Modal -->
+                            {{-- data-bs-backdrop="static" --}}
+                            <div class="modal fade bulk-modal" id="staticBackdrop" tabindex="-1" role="dialog"
+                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <h5 class="modal-title" id="staticBackdropLabel">Product Mapping Guide</h5>
+                                        <div class="d-flex bulk-model-steps">
+                                            <div class="d-flex align-items-center">
+                                                <span class="fa fa-angle-right"></span>
+                                                <img class="mx-2"
+                                                    src="{{ asset('/public/uploads/website-images/images/property.png') }}">
+                                                <h6 class="me-5">Product</h6>
+                                            </div>
+                                            <div class="d-flex align-items-center">
+                                                <img
+                                                    src="{{ asset('/public/uploads/website-images/images/import-product.png') }}">
+                                                <h6 class="ms-2">Ready to Import Products</h6>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="table-responsive bulk-files-table bulk-files-step1 product-mapping-1">
+                                            <table class="table mb-0">
+                                                <thead class="thead-dark">
+                                                    <tr>
+                                                        <th scope="col">COLUMN <br> HEADER <br> FROM FILE</th>
+                                                        <th scope="col">PREVIEW INFORMATION</th>
+                                                        <th scope="col">MAPPED</th>
+                                                        <th scope="col">IMPORT AS</th>
+                                                        <th scope="col">eINDUSTRIFY PROPERTY</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="text-center">Product Name</td>
+                                                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
+                                                        <td class="text-center"><input type="checkbox"
+                                                                class="form-check-input" name=""
+                                                                id=""></td>
+                                                        <td class="position-relative d-flex align-items-center"><img
+                                                                src="{{ asset('public/uploads/website-images/images/property.png') }}"
+                                                                class="position-absolute" alt="property-icon"><img
+                                                                src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
+                                                                class="position-absolute" alt="dropdown-icon"><input
+                                                                type="input" placeholder="Product Properties"
+                                                                class="form-control prod-prop-input" name=""
+                                                                id="" readonly></td>
+                                                        <td><input type="input" placeholder="Product Name*"
+                                                                class="form-control" name="" id=""
+                                                                readonly></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">Product Name</td>
+                                                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
+                                                        <td class="text-center"><input type="checkbox"
+                                                                class="form-check-input" name=""
+                                                                id=""></td>
+                                                        <td class="position-relative d-flex align-items-center"><img
+                                                                src="{{ asset('public/uploads/website-images/images/property.png') }}"
+                                                                class="position-absolute" alt="property-icon"><img
+                                                                src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
+                                                                class="position-absolute" alt="dropdown-icon"><input
+                                                                type="input" placeholder="Product Properties"
+                                                                class="form-control prod-prop-input" name=""
+                                                                id="" readonly></td>
+                                                        <td><input type="input" placeholder="Product Name*"
+                                                                class="form-control" name="" id=""
+                                                                readonly></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">Product Name</td>
+                                                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
+                                                        <td class="text-center"><input type="checkbox"
+                                                                class="form-check-input" name=""
+                                                                id=""></td>
+                                                        <td class="position-relative d-flex align-items-center"><img
+                                                                src="{{ asset('public/uploads/website-images/images/property.png') }}"
+                                                                class="position-absolute" alt="property-icon"><img
+                                                                src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
+                                                                class="position-absolute" alt="dropdown-icon"><input
+                                                                type="input" placeholder="Product Properties"
+                                                                class="form-control prod-prop-input" name=""
+                                                                id="" readonly></td>
+                                                        <td><input type="input" placeholder="Product Name*"
+                                                                class="form-control" name="" id=""
+                                                                readonly></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="text-center">Product Name</td>
+                                                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
+                                                        <td class="text-center"><input type="checkbox"
+                                                                class="form-check-input" name=""
+                                                                id=""></td>
+                                                        <td class="position-relative d-flex align-items-center"><img
+                                                                src="{{ asset('public/uploads/website-images/images/property.png') }}"
+                                                                class="position-absolute" alt="property-icon"><img
+                                                                src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
+                                                                class="position-absolute" alt="dropdown-icon"><input
+                                                                type="input" placeholder="Product Properties"
+                                                                class="form-control prod-prop-input" name=""
+                                                                id="" readonly></td>
+                                                        <td><input type="input" placeholder="Product Name*"
+                                                                class="form-control" name="" id=""
+                                                                readonly></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="bg-white d-none mb-4 bulk-files-step2 product-mapping-2">
+                                            <div class="col-sm-5 mx-auto">
+                                                <h4 class="mb-3">Product Mapping Final Details</h4>
+                                                <label for="formFile" class="form-label">Import File Name*</label>
+                                                <input class="form-control" type="file" id="formFile" name="file">
+                                                <div class="mt-3 form-check">
+                                                    <input class="form-check-input" type="checkbox" id="agreeOffer2">
+                                                    <label class="form-check-label label-light-weight"
+                                                        for="agreeOffer2">I agree that all the products in this import
+                                                        are expecting to hear from eIndustrify itself. eIndustry has the
+                                                        necessary information saved regarding each product and is
+                                                        confidential and will remain confidential. I can hereby confirm
+                                                        this list wasn’t purchased, rented, appended, or provided by a
+                                                        third party.</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="bulk-files-step1 product-mapping-1 mt-4 d-flex align-items-center justify-content-between">
+                                            <button type="button" class="bg-dark common_btn"
+                                                data-bs-dismiss="modal"><span
+                                                    class="me-2 fa fa-angle-left text-white"></span>Back</button>
+                                            <div class="d-flex align-items-center">
+                                                <div class="me-3">
+                                                    <b>You have 3 unmapped columns</b>
+                                                    <div class="mt-2 mb-0 form-check">
+                                                        <input class="form-check-input" type="checkbox"
+                                                            id="agreeOffer1">
+                                                        <label class="form-check-label label-light-weight"
+                                                            for="agreeOffer1">Don’t import data from unmapped
+                                                            columns</label>
+                                                    </div>
+                                                </div>
+                                                <button type="button" class="common_btn next_btn">Next<span
+                                                        class="ms-2 fa fa-angle-right text-white"></span></button>
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="product-mapping-2 d-none d-flex align-items-center justify-content-between">
+                                            <button type="button" class="bg-dark common_btn to-step-1"><span
+                                                    class="me-2 fa fa-angle-left text-white"></span>Back</button>
+                                            <button type="button" class="common_btn next_btn"
+                                                data-bs-dismiss="modal">Finish Import</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                                     <div class="border-segregate">
                                         <div class="col-xl-10 mx-auto">
                                             <div class="row mx-auto py-2">
@@ -856,7 +953,7 @@
                         <img src="{{ asset('public/uploads/website-images/images/auth-side-img.jpg') }}"
                             class="img-fluid w-100">
                         <div class="position-absolute py-5 px-4 side-section-content">
-                            <h3 class="text-white position-relative heading">Register  and you will be able to</h3>
+                            <h3 class="text-white position-relative heading">Register and you will be able to</h3>
                             <ul>
                                 <li class="text-white list"><img
                                         src="{{ asset('public/uploads/website-images/images/check-circle.png') }}"
@@ -875,8 +972,8 @@
         </div>
     </section>
     <!--============================
-                                       LOGIN/REGISTER PAGE END
-                                    ==============================-->
+                                           LOGIN/REGISTER PAGE END
+                                        ==============================-->
 @endsection
 @section('js')
     <script>
@@ -891,12 +988,17 @@
             });
 
             $('input:checkbox').on('click', function() {
-                if($(this).is(':checked') || $(this).parent().siblings().find('input:checkbox').is(':checked')) {
-                    $(this).closest('.accordion-item-category').children('.accordion-header').find('input').attr('selected', true);
-                    $(this).closest('.accordion-item-sub-category').children('.accordion-header').find('input').attr('selected', true);
+                if ($(this).is(':checked') || $(this).parent().siblings().find('input:checkbox').is(
+                        ':checked')) {
+                    $(this).closest('.accordion-item-category').children('.accordion-header').find('input')
+                        .attr('selected', true);
+                    $(this).closest('.accordion-item-sub-category').children('.accordion-header').find(
+                        'input').attr('selected', true);
                 } else {
-                    $(this).closest('.accordion-item-category').children('.accordion-header').find('input').attr('selected', false);
-                    $(this).closest('.accordion-item-sub-category').children('.accordion-header').find('input').attr('selected', false);
+                    $(this).closest('.accordion-item-category').children('.accordion-header').find('input')
+                        .attr('selected', false);
+                    $(this).closest('.accordion-item-sub-category').children('.accordion-header').find(
+                        'input').attr('selected', false);
                 }
             });
 

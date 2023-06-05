@@ -145,12 +145,13 @@ class RegisterController extends Controller
             'data' => $data,
         ]);
     }
-    public function customerRegister(CustomerRegister $request)
+    // CustomerRegister
+    public function customerRegister(Request $request)
     {
-        if($request->role='Register as a Customer'){
+        // dd($request->all());
+        if($request->role=='user'){
             RegisterCustomer::userRegistration($request);
         }else{
-            dd('usmanusmanusmanusmanusmanusmanusmanusmanusmanusman');
             RegisterCustomer::vendorRegistration($request);
         }
         $notification = trans('Registration Successfully');

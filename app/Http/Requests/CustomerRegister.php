@@ -23,7 +23,7 @@ class CustomerRegister extends FormRequest
      */
     public function rules()
     {
-        if (request()->role == 'Register as a Customer') {
+        if (request()->role == 'user') {
             return [
                 'first_name' => 'required',
                 'last_name' => 'required',
@@ -48,11 +48,30 @@ class CustomerRegister extends FormRequest
                 'billing_city_id.required' => 'The billing city  field is required.',
                 'billing_zip_code' => 'required',
             ];
+        }else{
+            return [
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required|email|unique:users,email',
+                'phone' => 'required',
+                'vendor_business_name' => 'required',
+                'vendor_business_phone' => 'required',
+                'vendor_vat' => 'required',
+                // 'vendor_total_employee' => 'required',
+                'vendor_tax_id' => 'required',
+                // 'vendor_industry_type' => 'required',
+                'vendor_street_address' => 'required',
+                'vendor_department' => 'required',
+                'vender_country_id' => 'required',
+                'vender_state_id' => 'required',
+                'vender_city_id' => 'required',
+                'vender_zip_code' => 'required',
+            ];
         }
     }
     public function messages()
     {
-        if (request()->role == 'Register as a Customer') {
+        if (request()->role == 'user') {
             return [
                 'business_name.required' => 'The bussiness name field is required.',
                 'business_phone.required' => 'The bussiness phone field is required.',
@@ -70,6 +89,19 @@ class CustomerRegister extends FormRequest
                 'billing_city_id.required' => 'The billing city  field is required.',
                 'billing_state_id.required' => 'The billing state  field is required.',
                 'billing_zip_code.required' => 'The billing zip code  field is required.',
+            ];
+        }else{
+            return [
+                'vendor_business_name.required' => 'The bussiness name field is required.',
+                'vendor_business_phone.required' => 'The bussiness phone field is required.',
+                'vendor_tax_id.required' => 'The bussiness tax id field is required.',
+                'vendor_industry_type.required' => 'The bussiness industry type field is required.',
+                'vendor_street_address.required' => 'The billing street address field is required.',
+                'vendor_department.required' => 'The billing department field is required.',
+                'vender_country_id.required' => 'The billing country  field is required.',
+                'vender_state_id.required' => 'The billing state  field is required.',
+                'vender_city_id.required' => 'The billing city  field is required.',
+                'vender_zip_code.required' => 'The billing zip code  field is required.',
             ];
         }
     }
