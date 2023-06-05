@@ -24,7 +24,7 @@ class ProductsImport implements ToModel, WithHeadingRow
             'short_name' => 'required',
             'slug' => 'required',
         ])->validate();
-        $childcategory = ChildCategory::where('name', $row['post_name'])->first();
+        // $childcategory = ChildCategory::where('name', $row['post_name'])->first();
         return new Product([
             'name' => $row['name'],
             'vendor_id' =>  $this->vendor,
