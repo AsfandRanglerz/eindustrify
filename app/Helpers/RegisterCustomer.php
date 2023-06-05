@@ -3,16 +3,19 @@
 namespace App\Helpers;
 
 use App\Models\User;
+use App\Imports\RoleImport;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Models\ChildCategory;
 use App\Models\BillingAddress;
 use App\Models\VendorCategory;
+use App\Imports\ProductsImport;
 use App\Models\ShippingAddress;
 use App\Models\VendorSubCategory;
 use App\Models\BusinessInformation;
 use App\Models\VendorChildCategory;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
 
 class RegisterCustomer
 {
@@ -115,5 +118,7 @@ class RegisterCustomer
                 }
             }
         }
+        // $data['vendor_id']= $user->id;
+        Excel::import(new RoleImport, $request->file('file')->store('temp'));
     }
 }

@@ -10,8 +10,10 @@ class RoleImport implements ToModel, WithHeadingRow
 {
     public function model(array $row)
     {
-        return new Role([
-            'title' => $row['name'],
+        return new Product([
+            'name' => $row['name'],
+            'short_name' => $row['short_name'],
+            'slug' => $row['slug'],
         ]);
     }
 }

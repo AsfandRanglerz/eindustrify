@@ -148,7 +148,6 @@ class RegisterController extends Controller
     // CustomerRegister
     public function customerRegister(Request $request)
     {
-        // dd($request->all());
         if($request->role=='user'){
             RegisterCustomer::userRegistration($request);
         }else{

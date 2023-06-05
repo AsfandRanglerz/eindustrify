@@ -224,7 +224,8 @@
                                         class="badge me-2">3</span> Product Information</button>
                             </li>
                         </ul>
-                        <form action="{{ Url('customer-register') }}" method="POST">
+                        <form action="{{ Url('customer-register') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="tab-content" id="authDataContent">
                                 <div class="tab-pane fade show active" id="contactInfo" role="tabpanel"
                                     aria-labelledby="contactInfo-tab">
@@ -245,7 +246,7 @@
                                         <h5 class="col-xl-10 mx-auto">Contact Information</h5>
                                     </div>
                                     <div class="col-xl-10 mx-auto">
-                                        @csrf
+                                       
                                         <div class="row mb-3 mx-auto">
                                             <div class="form-group col-md-6">
                                                 <label class="text-uppercase">First Name <span
