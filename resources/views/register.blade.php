@@ -199,8 +199,8 @@
                                                         class="required">*</span></label>
                                                 <select class="form-control" id="selRole">
                                                     <option value=""></option>
-                                                    <option value="Register as a Customer">Register as a Customer</option>
-                                                    <option value="Register as a Vendor">Register as a Vendor</option>
+                                                    <option value="user">Register as a Customer</option>
+                                                    <option value="vendor">Register as a Vendor</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -964,7 +964,7 @@
         });
 
         $('#selRole').on('change', function() {
-            if ($(this).val() == 'Register as a Customer') {
+            if ($(this).val() == 'user') {
                 $('.customer-section').removeClass('d-none');
                 $('.vendor-section').addClass('d-none');
             } else {
