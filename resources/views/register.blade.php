@@ -246,7 +246,7 @@
                                         <h5 class="col-xl-10 mx-auto">Contact Information</h5>
                                     </div>
                                     <div class="col-xl-10 mx-auto">
-                                       
+
                                         <div class="row mb-3 mx-auto">
                                             <div class="form-group col-md-6">
                                                 <label class="text-uppercase">First Name <span
@@ -919,7 +919,7 @@
                                                             columns</label>
                                                     </div>
                                                 </div>
-                                                <button type="button" class="common_btn next_btn">Next<span
+                                                <button type="button" class="common_btn next_btn" disabled>Next<span
                                                         class="ms-2 fa fa-angle-right text-white"></span></button>
                                             </div>
                                         </div>
