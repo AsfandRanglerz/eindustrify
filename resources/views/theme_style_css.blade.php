@@ -315,11 +315,6 @@
     border-color: {{ $setting->theme_one }} !important;
 }
 
-.form-check-input:checked {
-  background-color: {{ $setting->theme_one }} !important;
-  border-color: {{ $setting->theme_one }} !important;
-}
-
 .wsus__product_topbar_left #v-pills-tab button {
     color : {{ $setting->theme_one }} !important;
     background: #fff !important;

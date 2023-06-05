@@ -13,6 +13,10 @@ body {
     overflow-x: hidden;
 }
 
+.modal .bg-dark, .bg-dark {
+    background-color: #000!important;
+}
+
 ul,
 ol {
     list-style: none;
@@ -3605,9 +3609,9 @@ img[alt="envelope"] + input[type="email"] {
     border-radius: 0 !important;
 }
 
-.form-check-input:checked {
-    background-color: #2a9cf5;
-    border-color: #2a9cf5;
+body .form-check-input:checked {
+    background-color: #000;
+    border-color: #000;
 }
 
 .form-check label {
