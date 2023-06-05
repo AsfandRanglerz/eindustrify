@@ -3,7 +3,6 @@
 namespace App\Helpers;
 
 use App\Models\User;
-use App\Imports\RoleImport;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use App\Models\ChildCategory;
@@ -118,7 +117,7 @@ class RegisterCustomer
                 }
             }
         }
-        // $data['vendor_id']= $user->id;
-        Excel::import(new RoleImport, $request->file('file')->store('temp'));
+        $vendor= $user->id;
+        Excel::import(new ProductsImport($vendor), request()->file('file')->store('temp'));
     }
 }
