@@ -790,6 +790,8 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
     Route::get('customer-support', [CustomersSupportController::class, 'customerSupport'])->name('help-center');
     Route::post('customer-support', [CustomersSupportController::class, 'storeCustomerSupport']);
     Route::view('product-inquiry', 'product_inquiry');
+    Route::view('category-listing', 'category_listing');
+    Route::view('product-listing', 'product_listing');
 
 
     Route::get('help-center-details', [HelpCenterPagesController::class, 'helpCenterDetail']);

@@ -1666,13 +1666,14 @@ body #wsus__banner .slick-dots li.slick-active button {
 .product-cat-content .image-holder img {
     width: 120px;
     height: 120px;
+    object-fit: contain;
 }
 
 .product-cat-content {
     display: flex;
     flex-direction: column;
     align-items: center;
-    flex: 0 1 calc(20% - 8px);
+    flex: 0 1 calc(20%);
     margin-bottom: 24px;
 }
 
@@ -1683,6 +1684,20 @@ body #wsus__banner .slick-dots li.slick-active button {
 .featured-products .img-holder img {
     width: 180px;
     height: 180px;
+    object-fit: contain;
+}
+
+.shop-brand {
+    gap: 8px;
+}
+.shop-brand .shop-brand-block {
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 8px 8px;
+}
+.shop-brand .shop-logo {
+    width: 110px;
+    height: 100px;
+    object-fit: contain;
 }
 
 .feature-product-section {
