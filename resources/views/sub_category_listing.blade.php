@@ -11,7 +11,10 @@
             ==============================-->
     <div class="featured-products">
         <div class="container py-xl-5 py-3">
-            <h4 class="mb-3">Motors & Power Transmission</h4>
+            <div class="mb-xl-3 mb-2 d-flex flex-wrap align-items-center justify-content-between">
+                <h4>Motors & Power Transmission</h4>
+                <a href="#" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>
+            </div>
             <div class="d-flex flex-wrap">
                 <div class="product-cat-content">
                     <div class="image-holder">
