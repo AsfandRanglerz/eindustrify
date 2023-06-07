@@ -1,9 +1,9 @@
 @extends('layout')
 @section('title')
-    <title>Sub-Category Listing</title>
+    <title>Child-Category Listing</title>
 @endsection
 @section('meta')
-    <meta name="description" content="Sub-Category Listing">
+    <meta name="description" content="Child-Category Listing">
 @endsection
 @section('public-content')
     <!--============================
@@ -13,7 +13,7 @@
         <div class="container py-xl-5 py-3">
             <div class="mb-xl-3 mb-2 d-flex flex-wrap align-items-center justify-content-between">
                 <h4>Motors & Power Transmission</h4>
-                <a href="{{ url('/all-sub-categories') }}" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>
+                <a href="{{ url('/all-child-categories') }}" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>
             </div>
             <div class="d-flex flex-wrap">
                 <a class="product-cat-content" href="{{ url('/child-category-listing') }}">

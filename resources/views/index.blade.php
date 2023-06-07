@@ -123,107 +123,107 @@
         <div class="container pt-xl-5 pt-3 pb-xl-3">
             <div class="mb-xl-4 mb-2 d-flex flex-wrap align-items-center justify-content-between">
                 <h4 class="mb-0">Explore Product Categories</h4>
-                <a href="#" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>
+                <a href="{{ url('/all-categories') }}" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>
             </div>
             <div class="d-flex flex-wrap justify-content-between">
-                @foreach ($categories as $category)
-                    <div class="product-cat-content">
+                <!-- @foreach ($categories as $category)
+                    <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                         <div class="image-holder">
                             <img src="{{ asset($category->image) }}">
                         </div>
                         <h6 class="mt-3 px-4 text-center">{{$category->name}}</h6>
-                    </div>
-                @endforeach
-                {{-- <div class="product-cat-content">
+                    </a>
+                @endforeach -->
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine11.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Safety & Security</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine11.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Safety & Security</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine12.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Pneumatics & Hydraulics</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine13.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Metalworking & Fabrication</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine14.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Plumbing & Pumps</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine10.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Motors & Power Transmission</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine2.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Safety & Security</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine3.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Metalworking & Fabrication</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine9.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Motors & Power Transmission</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine1.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Plumbing & Pumps</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine1.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Plumbing & Pumps</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine11.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Safety & Security</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine12.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Pneumatics & Hydraulics</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine13.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Metalworking & Fabrication</h6>
-                </div>
-                <div class="product-cat-content">
+                </a>
+                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine14.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Plumbing & Pumps</h6>
-                </div> --}}
+                </a>
             </div>
         </div>
     </div>

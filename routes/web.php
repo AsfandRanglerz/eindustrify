@@ -796,8 +796,11 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
     Route::view('product-inquiry', 'product_inquiry');
     Route::view('category-listing', 'category_listing');
     Route::view('sub-category-listing', 'sub_category_listing');
-    Route::view('child-category-listing', 'sub_category_listing');
+    Route::view('child-category-listing', 'child_category_listing');
     Route::view('product-listing', 'product_listing');
+    Route::view('all-categories', 'all_categories');
+    Route::view('all-sub-categories', 'all_sub_categories');
+    Route::view('all-child-categories', 'all_child_categories');
 
     Route::get('help-center-details', [HelpCenterPagesController::class, 'helpCenterDetail']);
     Route::get('help-center-quotes', [HelpCenterPagesController::class, 'helpCenterQuotes']);
