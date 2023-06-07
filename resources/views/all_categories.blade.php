@@ -13,13 +13,16 @@
         <div class="container py-xl-5 py-3">
             <h4 class="mb-3">All Categories</h4>
             <div class="d-flex flex-wrap">
-                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
+                @foreach ($categories as $category)
+                <a class="product-cat-content" href="{{ url('sub-category-listing/'.$category->slug) }}">
                     <div class="image-holder">
-                        <img src="{{ asset('public/uploads/website-images/images/motor-1.png') }}">
+                        <img src="{{ asset($category->image) }}">
                     </div>
-                    <h6 class="mt-3 px-3 text-center">AC Motors & Accessories</h6>
-                </a>
-                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
+                    <h6 class="mt-3 px-3 text-center">{{$category->name}}</h6>
+                </a>    
+                @endforeach
+                
+                {{-- <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/motor-5.png') }}">
                     </div>
@@ -72,7 +75,7 @@
                         <img src="{{ asset('public/uploads/website-images/images/motor-8.png') }}">
                     </div>
                     <h6 class="mt-3 px-3 text-center">Motor Brakes</h6>
-                </a>
+                </a> --}}
             </div>
         </div>
     </div>

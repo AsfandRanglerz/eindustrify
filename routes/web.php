@@ -795,12 +795,18 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
     Route::post('customer-support', [CustomersSupportController::class, 'storeCustomerSupport']);
     Route::view('product-inquiry', 'product_inquiry');
     Route::view('category-listing', 'category_listing');
-    Route::view('sub-category-listing', 'sub_category_listing');
-    Route::view('child-category-listing', 'child_category_listing');
-    Route::view('product-listing', 'product_listing');
-    Route::view('all-categories', 'all_categories');
-    Route::view('all-sub-categories', 'all_sub_categories');
-    Route::view('all-child-categories', 'all_child_categories');
+    // Route::view('sub-category-listing', 'sub_category_listing');
+    Route::get('sub-category-listing/{slug}', [HomeController::class, 'subCategoryListing']);
+    Route::get('child-category-listing/{slug}', [HomeController::class, 'childCategoryListing']);
+    // Route::view('child-category-listing', 'child_category_listing');
+    // Route::view('product-listing', 'product_listing');
+    Route::get('product-listing/{slug}', [HomeController::class, 'productListing']);
+    // Route::view('all-categories', 'all_categories');
+    Route::get('all-categories', [HomeController::class, 'allCategories']);
+    // Route::view('all-sub-categories', 'all_sub_categories');
+    Route::get('all-sub-categories/{slug}', [HomeController::class, 'allSubCategories']);
+    // Route::view('all-child-categories', 'all_child_categories');
+    Route::get('all-child-categories/{slug}', [HomeController::class, 'allChildCategories']);
 
     Route::get('help-center-details', [HelpCenterPagesController::class, 'helpCenterDetail']);
     Route::get('help-center-quotes', [HelpCenterPagesController::class, 'helpCenterQuotes']);

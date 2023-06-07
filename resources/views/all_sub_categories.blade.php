@@ -11,15 +11,17 @@
             ==============================-->
     <div class="featured-products">
         <div class="container py-xl-5 py-3">
-            <h4 class="mb-3">Sub-Name Sub-Categories</h4>
+            <h4 class="mb-3">{{$category->name}}</h4>
             <div class="d-flex flex-wrap">
-                <div class="product-cat-content">
+                @foreach ($category->subCategories as $subcategory)    
+                <a class="product-cat-content" href="{{URL('child-category-listing/'.$subcategory->slug)}}">
                     <div class="image-holder">
-                        <img src="{{ asset('public/uploads/website-images/images/motor-1.png') }}">
+                        <img src="{{ asset($subcategory->image) }}">
                     </div>
-                    <h6 class="mt-3 px-3 text-center">AC Motors & Accessories</h6>
-                </div>
-                <div class="product-cat-content">
+                    <h6 class="mt-3 px-3 text-center">{{$subcategory->name}}</h6>
+                </a>
+                @endforeach
+                {{-- <div class="product-cat-content">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/motor-5.png') }}">
                     </div>
@@ -72,7 +74,7 @@
                         <img src="{{ asset('public/uploads/website-images/images/motor-8.png') }}">
                     </div>
                     <h6 class="mt-3 px-3 text-center">Motor Brakes</h6>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

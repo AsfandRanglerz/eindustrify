@@ -126,15 +126,15 @@
                 <a href="{{ url('/all-categories') }}" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>
             </div>
             <div class="d-flex flex-wrap justify-content-between">
-                <!-- @foreach ($categories as $category)
-                    <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
+                @foreach ($categories as $category)
+                    <a class="product-cat-content" href="{{ url('sub-category-listing/'.$category->slug) }}">
                         <div class="image-holder">
                             <img src="{{ asset($category->image) }}">
                         </div>
                         <h6 class="mt-3 px-4 text-center">{{$category->name}}</h6>
                     </a>
-                @endforeach -->
-                <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
+                @endforeach
+                {{-- <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine11.png') }}">
                     </div>
@@ -223,7 +223,7 @@
                         <img src="{{ asset('public/uploads/website-images/images/engine14.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Plumbing & Pumps</h6>
-                </a>
+                </a> --}}
             </div>
         </div>
     </div>

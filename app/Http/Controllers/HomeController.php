@@ -61,7 +61,7 @@ class HomeController extends Controller
         $homePageBanner = HomePageBanner::get();
         $products = Product::where('is_featured', 1)->get();
         $brands = Brand::where('is_featured', 1)->get();
-        return view('index', compact('categories', 'products', 'brands','homePageBanner','seoSetting'));
+        return view('index', compact('categories', 'products', 'brands', 'homePageBanner', 'seoSetting'));
     }
 
     public function aboutUs()
@@ -247,7 +247,38 @@ class HomeController extends Controller
         $page = CustomPage::where(['slug' => $slug, 'status' => 1])->first();
         return view('custom_page', compact('page'));
     }
-
+    public function subCategoryListing($slug)
+    {
+        $category = Category::with('subCategories', 'products')->where(['slug' => $slug, 'status' => 1])->first();
+        $brands = Brand::where('status', 1)->get();
+        return view('sub_category_listing', compact('category', 'brands'));
+    }
+    public function allCategories()
+    {
+        $categories = Category::where('status', 1)->get();
+        return view('all_categories', compact('categories'));
+    }
+    public function allSubCategories($slug)
+    {
+        $category = Category::with('subCategories', 'products')->where(['slug' => $slug, 'status' => 1])->first();
+        return view('all_sub_categories', compact('category'));
+    }
+    public function childCategoryListing($slug)
+    {
+        $subcategory = SubCategory::with('childCategories', 'products')->where(['slug' => $slug, 'status' => 1])->first();
+        $brands = Brand::where('status', 1)->get();
+        return view('child_category_listing', compact('subcategory', 'brands'));
+    }
+    public function allChildCategories($slug){
+        $subcategory = SubCategory::with('childCategories', 'products')->where(['slug' => $slug, 'status' => 1])->first();
+        return view('all_child_categories',compact('subcategory'));
+    }
+    public function productListing($slug){
+        
+        $childcategory = ChildCategory::with('category','subCategory','products')->where(['slug' => $slug, 'status' => 1])->first();
+        // dd($childcategory);
+        return view('product_listing',compact('childcategory'));
+    }
     public function termsAndCondition()
     {
         $terms_conditions = TermsAndCondition::first();
