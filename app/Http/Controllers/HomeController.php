@@ -276,7 +276,6 @@ class HomeController extends Controller
     public function productListing($slug){
         
         $childcategory = ChildCategory::with('category','subCategory','products')->where(['slug' => $slug, 'status' => 1])->first();
-        // dd($childcategory);
         return view('product_listing',compact('childcategory'));
     }
     public function termsAndCondition()

@@ -23,6 +23,10 @@ class ProductsImport implements ToModel, WithHeadingRow
             'name' => 'required',
             'short_name' => 'required',
             'slug' => 'required',
+            'qty' => 'required',
+            'price' => 'required',
+            'short_description' => 'required',
+            'long_description' => 'required',
         ])->validate();
         // $childcategory = ChildCategory::where('name', $row['post_name'])->first();
         return new Product([
@@ -30,6 +34,10 @@ class ProductsImport implements ToModel, WithHeadingRow
             'vendor_id' =>  $this->vendor,
             'short_name' => $row['short_name'],
             'slug' => $row['slug'],
+            'qty' => $row['qty'],
+            'price' => $row['price'],
+            'short_description' => $row['short_description'],
+            'long_description' => $row['long_description'],
             // Add other fields here if necessary
         ]);
     }

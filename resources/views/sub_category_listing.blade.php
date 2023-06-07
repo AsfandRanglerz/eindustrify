@@ -81,13 +81,13 @@
             </div>
             <h4 class="my-4">Shop by Brand</h4>
             <div class="d-flex shop-brand">
-                @foreach ($brands as $brand)
+                {{-- @foreach ($brands as $brand)
                 <div class="text-center shop-brand-block">
                     <img src="{{ asset($brand->logo) }}" class="shop-logo">
                     <img src="{{ asset('public/uploads/website-images/images/shop-3.png') }}" class="w-100">
                 </div>
-                @endforeach
-                {{-- <div class="text-center shop-brand-block">
+                @endforeach --}}
+                <div class="text-center shop-brand-block">
                     <img src="{{ asset('public/uploads/website-images/images/shop-logo-6.png') }}" class="shop-logo">
                     <img src="{{ asset('public/uploads/website-images/images/shop-3.png') }}" class="w-100">
                 </div>
@@ -110,7 +110,7 @@
                 <div class="text-center shop-brand-block">
                     <img src="{{ asset('public/uploads/website-images/images/shop-logo-5.png') }}" class="shop-logo">
                     <img src="{{ asset('public/uploads/website-images/images/shop-2.png') }}" class="w-100">
-                </div> --}}
+                </div>
             </div>
             <h4 class="mt-4 mb-3">Popular Picks in Motors</h4>
             <div class="row">

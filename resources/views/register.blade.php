@@ -360,8 +360,10 @@
                                                     <select class="form-control indus-type"
                                                         name="bussiness_industry_type">
                                                         <option value=""></option>
-                                                        <option value="industry name">industry one</option>
-                                                        <option value="industry name">industry two</option>
+                                                        @foreach ($industries as $industry)
+                                                            <option value="{{$industry->id}}">{{$industry->name}}</option>
+                                                        @endforeach
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -615,6 +617,9 @@
                                                             class="required">*</span></label>
                                                     <select class="form-control indus-type" name="vendor_industry_type">
                                                         <option value=""></option>
+                                                        @foreach ($industries as $industry)
+                                                            <option value="{{$industry->id}}">{{$industry->name}}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-6">
@@ -1023,7 +1028,7 @@
                                                                 </div>
                                                             </div>
                                                             <button type="button" class="common_btn next_btn"
-                                                                disabled>Next<span
+                                                                >Next<span
                                                                     class="ms-2 fa fa-angle-right text-white"></span></button>
                                                         </div>
                                                     </div>

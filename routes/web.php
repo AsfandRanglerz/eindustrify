@@ -176,7 +176,8 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('/user-verification/{token}', [RegisterController::class, 'userVerification'])->name('user-verification');
         Route::get('/forget-password', [LoginController::class, 'forgetPage'])->name('forget-password');
         Route::post('/send-forget-password', [LoginController::class, 'sendForgetPassword'])->name('send-forget-password');
-        Route::view('/reset-password', 'reset_password');
+        // Route::view('/reset-password', 'reset_password');
+        Route::get('/reset-password/{token}', [LoginController::class, 'resetPassword']);
         // Route::get('/reset-password/{token}', [LoginController::class, 'resetPasswordPage'])->name('reset-password');
         Route::post('/store-reset-password/{token}', [LoginController::class, 'storeResetPasswordPage'])->name('store-reset-password');
         Route::get('/user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
