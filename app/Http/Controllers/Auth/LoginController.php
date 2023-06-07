@@ -2,26 +2,29 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use Illuminate\Http\Request;
-use App\Models\BannerImage;
-use App\Models\BreadcrumbImage;
-use App\Models\GoogleRecaptcha;
+use Str;
+use Mail;
+use Socialite;
 use App\Models\User;
 use App\Models\Vendor;
 use App\Rules\Captcha;
-use Auth;
-use Hash;
-use App\Mail\UserForgetPassword;
 use App\Helpers\MailHelper;
+use App\Models\BannerImage;
+use Illuminate\Http\Request;
 use App\Models\EmailTemplate;
-use App\Models\SocialLoginInformation;
-use Mail;
-use Str;
+
+
+use App\Models\BreadcrumbImage;
+use App\Models\GoogleRecaptcha;
+use App\Mail\UserForgetPassword;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Validator,Redirect,Response,File;
-use Socialite;
+use App\Models\SocialLoginInformation;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+
 class LoginController extends Controller
 {
 
@@ -44,8 +47,7 @@ class LoginController extends Controller
     public function storeLogin(Request $request){
         $rules = [
             'email'=>'required',
-            'password'=>'required',
-            'g-recaptcha-response'=>new Captcha()
+            'password'=>'required'
         ];
         $customMessages = [
             'email.required' => trans('user_validation.Email is required'),
@@ -61,18 +63,19 @@ class LoginController extends Controller
         if($user){
             if($user->status==1){
                 if(Hash::check($request->password,$user->password)){
-                    if(Auth::guard('web')->attempt($credential,$request->remember)){
+                    if(Auth::attempt($credential,$request->remember)){
                         $notification = trans('user_validation.Login Successfully');
                         $notification=array('messege'=>$notification,'alert-type'=>'success');
-                        $isVendor = Vendor::where('user_id',$user->id)->first();
-                        if($isVendor) {
-                            if($isVendor->status == 1) {
-                                return redirect()->intended(route('seller.dashboard'))->with($notification);
-                            }
-                        }else {
-                            return redirect()->intended(route('user.dashboard'))->with($notification);
-                        }
+                        if(Auth::user()->role=='user'){
+                            // dd('user');
+                            // Auth::logout();
+                            dd(Auth::id(),'user');
+                        }elseif(Auth::user()->role=='vendor')
+                        {
+                            dd('vendor');
 
+                        }
+                        // return redirect()->intended(route('user.dashboard'))->with($notification);
                     }
                 }else{
                     $notification = trans('user_validation.Credentials does not exist');

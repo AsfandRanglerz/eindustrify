@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BusinessInformation extends Model
 {
+    protected $guarded=[];
     use HasFactory;
     protected $casts = [
         'user_id' => 'integer',

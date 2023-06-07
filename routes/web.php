@@ -32,6 +32,7 @@ use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\Admin\CampaignController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\HomePageController;
+use App\Http\Controllers\Admin\IndustryController;
 use App\Http\Controllers\Admin\LanguageController;
 use App\Http\Controllers\Admin\MegaMenuController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -63,11 +64,11 @@ use App\Http\Controllers\Admin\PrivacyPolicyController;
 use App\Http\Controllers\Admin\ProductReportController;
 use App\Http\Controllers\Admin\ProductReviewController;
 use App\Http\Controllers\Seller\SellerMessageContoller;
+
+
+
+
 use App\Http\Controllers\Admin\ContactMessageController;
-
-
-
-
 use App\Http\Controllers\Admin\HelpCenterPageController;
 use App\Http\Controllers\Admin\HomePageBannerController;
 use App\Http\Controllers\Admin\MenuVisibilityController;
@@ -78,22 +79,22 @@ use App\Http\Controllers\Admin\ShippingMethodController;
 use App\Http\Controllers\Admin\WithdrawMethodController;
 use App\Http\Controllers\Seller\SellerProductController;
 use App\Http\Controllers\Seller\SellerProfileController;
+
+
+
+
+
 use App\Http\Controllers\Admin\Auth\AdminLoginController;
-
-
-
-
-
 use App\Http\Controllers\Admin\CampaignProductController;
 use App\Http\Controllers\Admin\CustomerSupportController;
 use App\Http\Controllers\Admin\ProductCategoryController;
 use App\Http\Controllers\Admin\ProductOverviewController;
 use App\Http\Controllers\Admin\FooterSocialLinkController;
 use App\Http\Controllers\Admin\SpecificationKeyController;
+
+
+
 use App\Http\Controllers\Seller\SellerDashboardController;
-
-
-
 use App\Http\Controllers\Admin\TermsAndConditionController;
 use App\Http\Controllers\Admin\EmailConfigurationController;
 use App\Http\Controllers\Admin\HomepageVisibilityController;
@@ -166,7 +167,7 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
 
 
         Route::get('/login', [LoginController::class, 'loginPage'])->name('login');
-        Route::post('/store-login', [LoginController::class, 'storeLogin'])->name('store-login');
+        Route::post('login', [LoginController::class, 'storeLogin'])->name('store-login');
         Route::get('/register', [RegisterController::class, 'Register'])->name('register');
         Route::get('/vendor-get-states', [RegisterController::class, 'vendorGetStates']);
         Route::get('vendor-get-city', [RegisterController::class, 'getCity']);
@@ -682,6 +683,9 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::resource('country', CountryController::class);
         Route::put('country-status/{id}', [CountryController::class, 'changeStatus'])->name('country-status');
 
+        Route::resource('industry', IndustryController::class);
+        Route::put('industry-status/{id}', [IndustryController::class, 'changeStatus'])->name('industry-status');
+
         Route::resource('state', CountryStateController::class);
         Route::put('state-status/{id}', [CountryStateController::class, 'changeStatus'])->name('state-status');
 
@@ -790,8 +794,6 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
     Route::get('customer-support', [CustomersSupportController::class, 'customerSupport'])->name('help-center');
     Route::post('customer-support', [CustomersSupportController::class, 'storeCustomerSupport']);
     Route::view('product-inquiry', 'product_inquiry');
-    Route::view('category-listing', 'category_listing');
-    Route::view('product-listing', 'product_listing');
 
 
     Route::get('help-center-details', [HelpCenterPagesController::class, 'helpCenterDetail']);

@@ -188,7 +188,16 @@
                     {{-- <li class="{{ Route::is('admin.blog-comment.*') ? 'active' : '' }}"><a class="nav-link" href="{{ route('admin.blog-comment.index') }}">{{__('admin.Comments')}}</a></li> --}}
                 </ul>
             </li>
+            <li class="nav-item dropdown {{ Route::is('admin.industry.*') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-th-large"></i><span>{{ __('Industry') }}</span></a>
 
+                <ul class="dropdown-menu">
+
+                    <li class="{{ Route::is('admin.country.*') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.industry.index') }}">{{ __('Industry') }}</a></li>
+                </ul>
+            </li>
             <li
                 class="nav-item dropdown {{ Route::is('admin.copyright-policy') || Route::is('admin.faq.*') || Route::is('admin.privacy-policy') || Route::is('admin.terms-condition') || Route::is('admin.terms-registration') || Route::is('admin.sales-site') ? 'active' : '' }}">
                 <a href="#" class="nav-link has-dropdown"><i

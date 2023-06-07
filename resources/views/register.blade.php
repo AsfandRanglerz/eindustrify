@@ -190,8 +190,8 @@
 </style>
 @section('public-content')
     <!--============================
-                                           LOGIN/REGISTER PAGE START
-                                        ==============================-->
+                                               LOGIN/REGISTER PAGE START
+                                            ==============================-->
     <section id="wsus__login_register" class="py-5">
         <div class="container">
             <div class="row mx-auto">
@@ -389,7 +389,7 @@
                                                         placeholder="Suite, building, department etc">
                                                 </div>
                                             </div>
-                                            <div class="row mb-3 mx-auto">
+                                            {{-- <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">City <span
                                                             class="required">*</span></label>
@@ -412,9 +412,36 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
-                                            </div>
-                                            <div class="row mx-auto">
+                                            </div> --}}
+                                            <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
+                                                    <label class="text-uppercase">Country/Region* <span
+                                                            class="required">*</span></label>
+                                                    <select class="form-control select-country"
+                                                        id="user_shipping_country_id" name="shipping_country_id">
+                                                        <option value=""></option>
+                                                        @foreach ($country as $country_data)
+                                                            <option value="{{ $country_data->id }}">
+                                                                {{ $country_data->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="text-uppercase">state <span
+                                                            class="required">*</span></label>
+                                                    <select class="form-control select-state" name="shipping_state_id"
+                                                        id="user_shipping_state_id">
+                                                        <option value=""></option>
+                                                        @foreach ($state as $state_data)
+                                                            <option value="{{ $state_data->id }}">{{ $state_data->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="row mx-auto">
+                                                {{-- <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Country/Region* <span
                                                             class="required">*</span></label>
                                                     <select class="form-control select-country"
@@ -423,6 +450,18 @@
                                                         @foreach ($country as $country_data)
                                                             <option value="{{ $country_data->id }}">
                                                                 {{ $country_data->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div> --}}
+                                                <div class="form-group col-md-6">
+                                                    <label class="text-uppercase">City <span
+                                                            class="required">*</span></label>
+                                                    <select class="form-control select-city" name="shipping_city_id"
+                                                        id="user_shipping_city_id">
+                                                        <option value=""></option>
+                                                        @foreach ($city as $city_data)
+                                                            <option value="{{ $city_data->id }}">{{ $city_data->name }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -466,7 +505,7 @@
                                                         placeholder="Suite, building, department etc">
                                                 </div>
                                             </div>
-                                            <div class="row mb-3 mx-auto">
+                                            {{-- <div class="row mb-3 mx-auto">
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">City <span
                                                             class="required">*</span></label>
@@ -489,9 +528,35 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
+                                            </div> --}}
+                                            <div class="row mb-3 mx-auto">
+                                                <div class="form-group col-md-6">
+                                                    <label class="text-uppercase">Country/Region* <span
+                                                            class="required">*</span></label>
+                                                    <select class="form-control select-country"
+                                                        id="user_shipping_country_id" name="shipping_country_id">
+                                                        <option value=""></option>
+                                                        @foreach ($country as $country_data)
+                                                            <option value="{{ $country_data->id }}">
+                                                                {{ $country_data->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="text-uppercase">state <span
+                                                            class="required">*</span></label>
+                                                    <select class="form-control select-state" name="shipping_state_id"
+                                                        id="user_shipping_state_id">
+                                                        <option value=""></option>
+                                                        @foreach ($state as $state_data)
+                                                            <option value="{{ $state_data->id }}">{{ $state_data->name }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </div>
                                             </div>
                                             <div class="row mx-auto">
-                                                <div class="form-group col-md-6">
+                                                {{-- <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Country/Region* <span
                                                             class="required">*</span></label>
                                                     <select class="form-control select-country" name="billing_country_id">
@@ -499,6 +564,18 @@
                                                         @foreach ($country as $country_data)
                                                             <option value="{{ $country_data->id }}">
                                                                 {{ $country_data->name }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </div> --}}
+                                                <div class="form-group col-md-6">
+                                                    <label class="text-uppercase">City <span
+                                                            class="required">*</span></label>
+                                                    <select class="form-control select-city" name="shipping_city_id"
+                                                        id="user_shipping_city_id">
+                                                        <option value=""></option>
+                                                        @foreach ($city as $city_data)
+                                                            <option value="{{ $city_data->id }}">{{ $city_data->name }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -777,163 +854,190 @@
                                             </div>
                                         </div>
                                     </div>
-                                                                <!-- Modal -->
-                            {{-- data-bs-backdrop="static" --}}
-                            <div class="modal fade bulk-modal" id="staticBackdrop" tabindex="-1" role="dialog"
-                            aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <h5 class="modal-title" id="staticBackdropLabel">Product Mapping Guide</h5>
-                                        <div class="d-flex bulk-model-steps">
-                                            <div class="d-flex align-items-center">
-                                                <span class="fa fa-angle-right"></span>
-                                                <img class="mx-2"
-                                                    src="{{ asset('/public/uploads/website-images/images/property.png') }}">
-                                                <h6 class="me-5">Product</h6>
-                                            </div>
-                                            <div class="d-flex align-items-center">
-                                                <img
-                                                    src="{{ asset('/public/uploads/website-images/images/import-product.png') }}">
-                                                <h6 class="ms-2">Ready to Import Products</h6>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="table-responsive bulk-files-table bulk-files-step1 product-mapping-1">
-                                            <table class="table mb-0">
-                                                <thead class="thead-dark">
-                                                    <tr>
-                                                        <th scope="col">COLUMN <br> HEADER <br> FROM FILE</th>
-                                                        <th scope="col">PREVIEW INFORMATION</th>
-                                                        <th scope="col">MAPPED</th>
-                                                        <th scope="col">IMPORT AS</th>
-                                                        <th scope="col">eINDUSTRIFY PROPERTY</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="text-center">Product Name</td>
-                                                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
-                                                        <td class="text-center"><input type="checkbox"
-                                                                class="form-check-input" name=""
-                                                                id=""></td>
-                                                        <td class="position-relative d-flex align-items-center"><img
-                                                                src="{{ asset('public/uploads/website-images/images/property.png') }}"
-                                                                class="position-absolute" alt="property-icon"><img
-                                                                src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
-                                                                class="position-absolute" alt="dropdown-icon"><input
-                                                                type="input" placeholder="Product Properties"
-                                                                class="form-control prod-prop-input" name=""
-                                                                id="" readonly></td>
-                                                        <td><input type="input" placeholder="Product Name*"
-                                                                class="form-control" name="" id=""
-                                                                readonly></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">Product Name</td>
-                                                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
-                                                        <td class="text-center"><input type="checkbox"
-                                                                class="form-check-input" name=""
-                                                                id=""></td>
-                                                        <td class="position-relative d-flex align-items-center"><img
-                                                                src="{{ asset('public/uploads/website-images/images/property.png') }}"
-                                                                class="position-absolute" alt="property-icon"><img
-                                                                src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
-                                                                class="position-absolute" alt="dropdown-icon"><input
-                                                                type="input" placeholder="Product Properties"
-                                                                class="form-control prod-prop-input" name=""
-                                                                id="" readonly></td>
-                                                        <td><input type="input" placeholder="Product Name*"
-                                                                class="form-control" name="" id=""
-                                                                readonly></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">Product Name</td>
-                                                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
-                                                        <td class="text-center"><input type="checkbox"
-                                                                class="form-check-input" name=""
-                                                                id=""></td>
-                                                        <td class="position-relative d-flex align-items-center"><img
-                                                                src="{{ asset('public/uploads/website-images/images/property.png') }}"
-                                                                class="position-absolute" alt="property-icon"><img
-                                                                src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
-                                                                class="position-absolute" alt="dropdown-icon"><input
-                                                                type="input" placeholder="Product Properties"
-                                                                class="form-control prod-prop-input" name=""
-                                                                id="" readonly></td>
-                                                        <td><input type="input" placeholder="Product Name*"
-                                                                class="form-control" name="" id=""
-                                                                readonly></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-center">Product Name</td>
-                                                        <td class="text-center">Mophorn 3 HP Electric Motor</td>
-                                                        <td class="text-center"><input type="checkbox"
-                                                                class="form-check-input" name=""
-                                                                id=""></td>
-                                                        <td class="position-relative d-flex align-items-center"><img
-                                                                src="{{ asset('public/uploads/website-images/images/property.png') }}"
-                                                                class="position-absolute" alt="property-icon"><img
-                                                                src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
-                                                                class="position-absolute" alt="dropdown-icon"><input
-                                                                type="input" placeholder="Product Properties"
-                                                                class="form-control prod-prop-input" name=""
-                                                                id="" readonly></td>
-                                                        <td><input type="input" placeholder="Product Name*"
-                                                                class="form-control" name="" id=""
-                                                                readonly></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="bg-white d-none mb-4 bulk-files-step2 product-mapping-2">
-                                            <div class="col-sm-5 mx-auto">
-                                                <h4 class="mb-3">Product Mapping Final Details</h4>
-                                                <label for="formFile" class="form-label">Import File Name*</label>
-                                                <input class="form-control" type="file" id="formFile" name="file">
-                                                <div class="mt-3 form-check">
-                                                    <input class="form-check-input" type="checkbox" id="agreeOffer2">
-                                                    <label class="form-check-label label-light-weight"
-                                                        for="agreeOffer2">I agree that all the products in this import
-                                                        are expecting to hear from eIndustrify itself. eIndustry has the
-                                                        necessary information saved regarding each product and is
-                                                        confidential and will remain confidential. I can hereby confirm
-                                                        this list wasn’t purchased, rented, appended, or provided by a
-                                                        third party.</label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div
-                                            class="bulk-files-step1 product-mapping-1 mt-4 d-flex align-items-center justify-content-between">
-                                            <button type="button" class="bg-dark common_btn"
-                                                data-bs-dismiss="modal"><span
-                                                    class="me-2 fa fa-angle-left text-white"></span>Back</button>
-                                            <div class="d-flex align-items-center">
-                                                <div class="me-3">
-                                                    <b>You have 3 unmapped columns</b>
-                                                    <div class="mt-2 mb-0 form-check">
-                                                        <input class="form-check-input" type="checkbox"
-                                                            id="agreeOffer1">
-                                                        <label class="form-check-label label-light-weight"
-                                                            for="agreeOffer1">Don’t import data from unmapped
-                                                            columns</label>
+                                    <!-- Modal -->
+                                    {{-- data-bs-backdrop="static" --}}
+                                    <div class="modal fade bulk-modal" id="staticBackdrop" tabindex="-1" role="dialog"
+                                        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
+                                            <div class="modal-content">
+                                                <div class="modal-body">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Product Mapping Guide
+                                                    </h5>
+                                                    <div class="d-flex bulk-model-steps">
+                                                        <div class="d-flex align-items-center">
+                                                            <span class="fa fa-angle-right"></span>
+                                                            <img class="mx-2"
+                                                                src="{{ asset('/public/uploads/website-images/images/property.png') }}">
+                                                            <h6 class="me-5">Product</h6>
+                                                        </div>
+                                                        <div class="d-flex align-items-center">
+                                                            <img
+                                                                src="{{ asset('/public/uploads/website-images/images/import-product.png') }}">
+                                                            <h6 class="ms-2">Ready to Import Products</h6>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="table-responsive bulk-files-table bulk-files-step1 product-mapping-1">
+                                                        <table class="table mb-0">
+                                                            <thead class="thead-dark">
+                                                                <tr>
+                                                                    <th scope="col">COLUMN <br> HEADER <br> FROM FILE
+                                                                    </th>
+                                                                    <th scope="col">PREVIEW INFORMATION</th>
+                                                                    <th scope="col">MAPPED</th>
+                                                                    <th scope="col">IMPORT AS</th>
+                                                                    <th scope="col">eINDUSTRIFY PROPERTY</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="text-center">Product Name</td>
+                                                                    <td class="text-center">Mophorn 3 HP Electric Motor
+                                                                    </td>
+                                                                    <td class="text-center"><input type="checkbox"
+                                                                            class="form-check-input" name=""
+                                                                            id=""></td>
+                                                                    <td
+                                                                        class="position-relative d-flex align-items-center">
+                                                                        <img src="{{ asset('public/uploads/website-images/images/property.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="property-icon"><img
+                                                                            src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="dropdown-icon"><input type="input"
+                                                                            placeholder="Product Properties"
+                                                                            class="form-control prod-prop-input"
+                                                                            name="" id="" readonly></td>
+                                                                    <td><input type="input" placeholder="Product Name*"
+                                                                            class="form-control" name=""
+                                                                            id="" readonly></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-center">Product Name</td>
+                                                                    <td class="text-center">Mophorn 3 HP Electric Motor
+                                                                    </td>
+                                                                    <td class="text-center"><input type="checkbox"
+                                                                            class="form-check-input" name=""
+                                                                            id=""></td>
+                                                                    <td
+                                                                        class="position-relative d-flex align-items-center">
+                                                                        <img src="{{ asset('public/uploads/website-images/images/property.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="property-icon"><img
+                                                                            src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="dropdown-icon"><input type="input"
+                                                                            placeholder="Product Properties"
+                                                                            class="form-control prod-prop-input"
+                                                                            name="" id="" readonly></td>
+                                                                    <td><input type="input" placeholder="Product Name*"
+                                                                            class="form-control" name=""
+                                                                            id="" readonly></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-center">Product Name</td>
+                                                                    <td class="text-center">Mophorn 3 HP Electric Motor
+                                                                    </td>
+                                                                    <td class="text-center"><input type="checkbox"
+                                                                            class="form-check-input" name=""
+                                                                            id=""></td>
+                                                                    <td
+                                                                        class="position-relative d-flex align-items-center">
+                                                                        <img src="{{ asset('public/uploads/website-images/images/property.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="property-icon"><img
+                                                                            src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="dropdown-icon"><input type="input"
+                                                                            placeholder="Product Properties"
+                                                                            class="form-control prod-prop-input"
+                                                                            name="" id="" readonly></td>
+                                                                    <td><input type="input" placeholder="Product Name*"
+                                                                            class="form-control" name=""
+                                                                            id="" readonly></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td class="text-center">Product Name</td>
+                                                                    <td class="text-center">Mophorn 3 HP Electric Motor
+                                                                    </td>
+                                                                    <td class="text-center"><input type="checkbox"
+                                                                            class="form-check-input" name=""
+                                                                            id=""></td>
+                                                                    <td
+                                                                        class="position-relative d-flex align-items-center">
+                                                                        <img src="{{ asset('public/uploads/website-images/images/property.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="property-icon"><img
+                                                                            src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="dropdown-icon"><input type="input"
+                                                                            placeholder="Product Properties"
+                                                                            class="form-control prod-prop-input"
+                                                                            name="" id="" readonly></td>
+                                                                    <td><input type="input" placeholder="Product Name*"
+                                                                            class="form-control" name=""
+                                                                            id="" readonly></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <div class="bg-white d-none mb-4 bulk-files-step2 product-mapping-2">
+                                                        <div class="col-sm-5 mx-auto">
+                                                            <h4 class="mb-3">Product Mapping Final Details</h4>
+                                                            <label for="formFile" class="form-label">Import File
+                                                                Name*</label>
+                                                            <input class="form-control" type="file" id="formFile"
+                                                                name="file">
+                                                            <div class="mt-3 form-check">
+                                                                <input class="form-check-input" type="checkbox"
+                                                                    id="agreeOffer2">
+                                                                <label class="form-check-label label-light-weight"
+                                                                    for="agreeOffer2">I agree that all the products in this
+                                                                    import
+                                                                    are expecting to hear from eIndustrify itself. eIndustry
+                                                                    has the
+                                                                    necessary information saved regarding each product and
+                                                                    is
+                                                                    confidential and will remain confidential. I can hereby
+                                                                    confirm
+                                                                    this list wasn’t purchased, rented, appended, or
+                                                                    provided by a
+                                                                    third party.</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="bulk-files-step1 product-mapping-1 mt-4 d-flex align-items-center justify-content-between">
+                                                        <button type="button" class="bg-dark common_btn"
+                                                            data-bs-dismiss="modal"><span
+                                                                class="me-2 fa fa-angle-left text-white"></span>Back</button>
+                                                        <div class="d-flex align-items-center">
+                                                            <div class="me-3">
+                                                                <b>You have 3 unmapped columns</b>
+                                                                <div class="mt-2 mb-0 form-check">
+                                                                    <input class="form-check-input" type="checkbox"
+                                                                        id="agreeOffer1">
+                                                                    <label class="form-check-label label-light-weight"
+                                                                        for="agreeOffer1">Don’t import data from unmapped
+                                                                        columns</label>
+                                                                </div>
+                                                            </div>
+                                                            <button type="button" class="common_btn next_btn"
+                                                                disabled>Next<span
+                                                                    class="ms-2 fa fa-angle-right text-white"></span></button>
+                                                        </div>
+                                                    </div>
+                                                    <div
+                                                        class="product-mapping-2 d-none d-flex align-items-center justify-content-between">
+                                                        <button type="button" class="bg-dark common_btn to-step-1"><span
+                                                                class="me-2 fa fa-angle-left text-white"></span>Back</button>
+                                                        <button type="button" class="common_btn next_btn"
+                                                            data-bs-dismiss="modal">Finish Import</button>
                                                     </div>
                                                 </div>
-                                                <button type="button" class="common_btn next_btn" disabled>Next<span
-                                                        class="ms-2 fa fa-angle-right text-white"></span></button>
                                             </div>
                                         </div>
-                                        <div
-                                            class="product-mapping-2 d-none d-flex align-items-center justify-content-between">
-                                            <button type="button" class="bg-dark common_btn to-step-1"><span
-                                                    class="me-2 fa fa-angle-left text-white"></span>Back</button>
-                                            <button type="button" class="common_btn next_btn"
-                                                data-bs-dismiss="modal">Finish Import</button>
-                                        </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
                                     <div class="border-segregate">
                                         <div class="col-xl-10 mx-auto">
                                             <div class="row mx-auto py-2">
@@ -973,8 +1077,8 @@
         </div>
     </section>
     <!--============================
-                                           LOGIN/REGISTER PAGE END
-                                        ==============================-->
+                                               LOGIN/REGISTER PAGE END
+                                            ==============================-->
 @endsection
 @section('js')
     <script>
@@ -1186,6 +1290,102 @@
                             '<option value="" disabled selected>Select City</option>');
                         $.each(response.data, function(key, value) {
                             $("#vendor_city_id").append(
+                                '<option value="' + value
+                                .id +
+                                '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+        $(function() {
+            $("#user_billing_country_id").change(function() {
+                var selectedText = $(this).find("option:selected").text();
+                var countryId = $(this).val();
+                $.ajax({
+                    url: '{{ URL::to('/vendor-get-states') }}',
+                    type: 'GET',
+                    data: {
+                        'id': countryId
+                    },
+                    success: function(response) {
+                        $('#user_billing_state_id').empty();
+                        $('#response_billing_state_append').html(
+                            '<option value="" disabled selected>Select State</option>');
+                        $.each(response.data, function(key, value) {
+                            $("#user_billing_state_id").append(
+                                '<option value="' + value
+                                .id +
+                                '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+        $(function() {
+            $("#user_billing_state_id").change(function() {
+                var selectedText = $(this).find("option:selected").text();
+                var stateId = $(this).val();
+                $.ajax({
+                    url: '{{ URL::to('vendor-get-city') }}',
+                    type: 'GET',
+                    data: {
+                        'id': stateId
+                    },
+                    success: function(response) {
+                        $('#user_billing_city_id').empty();
+                        $('#response_billing_city_append').html(
+                            '<option value="" disabled selected>Select City</option>');
+                        $.each(response.data, function(key, value) {
+                            $("#user_billing_city_id").append(
+                                '<option value="' + value
+                                .id +
+                                '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+        $(function() {
+            $("#user_shipping_country_id").change(function() {
+                var selectedText = $(this).find("option:selected").text();
+                var countryId = $(this).val();
+                $.ajax({
+                    url: '{{ URL::to('/vendor-get-states') }}',
+                    type: 'GET',
+                    data: {
+                        'id': countryId
+                    },
+                    success: function(response) {
+                        $('#user_shipping_state_id').empty();
+                        $('#response_billing_state_append').html(
+                            '<option value="" disabled selected>Select State</option>');
+                        $.each(response.data, function(key, value) {
+                            $("#user_shipping_state_id").append(
+                                '<option value="' + value
+                                .id +
+                                '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+        });
+        $(function() {
+            $("#user_shipping_state_id").change(function() {
+                var selectedText = $(this).find("option:selected").text();
+                var stateId = $(this).val();
+                $.ajax({
+                    url: '{{ URL::to('vendor-get-city') }}',
+                    type: 'GET',
+                    data: {
+                        'id': stateId
+                    },
+                    success: function(response) {
+                        $('#user_shipping_city_id').empty();
+                        $('#response_billing_city_append').html(
+                            '<option value="" disabled selected>Select City</option>');
+                        $.each(response.data, function(key, value) {
+                            $("#user_shipping_city_id").append(
                                 '<option value="' + value
                                 .id +
                                 '">' + value.name + '</option>');

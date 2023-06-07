@@ -20,7 +20,7 @@ class RegisterCustomer
 {
     public static function userRegistration($request)
     {
-        $data = $request->only(['first_name', 'last_name', 'email', 'phone','role']);
+        $data = $request->only(['first_name', 'last_name', 'email', 'phone', 'role']);
         $data['password'] = Hash::make($request->password);
         $user = User::create($data);
 
@@ -29,7 +29,7 @@ class RegisterCustomer
         $bussiness_information['name'] = $request->bussiness_phone;
         $bussiness_information['phone'] = $request->bussiness_phone;
         $bussiness_information['tax_id'] = $request->bussiness_tax_id;
-        $bussiness_information['industry_type'] = $request->bussiness_industry_type;
+        $bussiness_information['industry_id'] = $request->bussiness_industry_type_id;
         $bussiness_information['user_id'] = $user->id;
         $bussiness_information->save();
 
@@ -55,11 +55,20 @@ class RegisterCustomer
         $billing_address['zip_code'] = $request->billing_zip_code;
         $billing_address->save();
     }
-    public static function vendorRegistration($request){
+    public static function vendorRegistration($request)
+    {
 
-        $data = $request->only(['first_name', 'last_name', 'email', 'phone','role']);
+        // dd($request);
+        $data = $request->only(['first_name', 'last_name', 'email', 'phone', 'role']);
         // $data['role'] = 'vendor';
         $data['password'] = Hash::make($request->password);
+        if ($request->hasFile('pdf_file')) {
+            $file = $request->file('pdf_file');
+            $extension = $file->getClientOriginalExtension(); // getting file extension
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('uploads'), $filename);
+            $data['pdf_file'] = 'uploads/' . $filename;
+        }
         $user = User::create($data);
 
         // Business Information
@@ -67,7 +76,7 @@ class RegisterCustomer
         $bussiness_information['name'] = $request->vendor_business_name;
         $bussiness_information['phone'] = $request->vendor_business_phone;
         $bussiness_information['tax_id'] = $request->vendor_tax_id;
-        // $bussiness_information['industry_type'] = $request->bussiness_industry_type;
+        $bussiness_information['industry_id'] = $request->bussiness_industry_type_id;
         $bussiness_information['user_id'] = $user->id;
         $bussiness_information['vat'] = $request->vendor_vat;
         // $bussiness_information['total_employee'] = $request->vendor_total_employee;
@@ -117,7 +126,9 @@ class RegisterCustomer
                 }
             }
         }
-        $vendor= $user->id;
-        Excel::import(new ProductsImport($vendor), request()->file('file')->store('temp'));
+        $vendor = $user->id;
+        if (isset($request->file)) {
+            Excel::import(new ProductsImport($vendor), request()->file('file')->store('temp'));
+        }
     }
 }

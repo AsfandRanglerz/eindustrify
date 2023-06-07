@@ -10,6 +10,7 @@ use App\Models\User;
 use App\Rules\Captcha;
 use App\Models\Country;
 use App\Models\Category;
+use App\Models\Industry;
 use App\Helpers\MailHelper;
 use App\Models\CountryState;
 use Illuminate\Http\Request;
@@ -123,11 +124,12 @@ class RegisterController extends Controller
     public function Register()
     {
         $city = City::get();
+        $industries = Industry::get();
         $state = CountryState::get();
         $country = Country::get();
         $categories = Category::with('subCategories.childCategories')->get();
         // dd($categories);
-        return view('register', compact('city', 'state', 'country','categories'));
+        return view('register', compact('city', 'state', 'country','categories','industries'));
     }
     public function vendorGetStates(Request $request){
         $data =  CountryState::where('country_id', $request->id)->get();

@@ -16,7 +16,7 @@
                 <div class="col-xl-8 col-lg-7">
                     <div class="h-100 wsus__banner_content">
                         <div class="row banner_slider">
-                            <div class="col-xl-12">
+                            {{-- <div class="col-xl-12">
                                 <div class="position-relative wsus__single_slider"
                                     style="background-image: linear-gradient(90.73deg, #000000 3.54%, rgba(0, 0, 0, 0) 96.91%), url({{ asset('public/uploads/website-images/images/slide-2.png') }});">
                                     <div class="wsus__single_slider_text">
@@ -25,11 +25,11 @@
                                         <a class="view-more" href="#">View More</a>
                                     </div>
                                 </div>
-                            </div>
-                            {{-- @foreach ($homePageBanner as $homePage)
+                            </div> --}}
+                            @foreach ($homePageBanner as $homePage)
                                 <div class="col-xl-12">
                                     <div class="position-relative wsus__single_slider"
-                                        style="background-image: linear-gradient(90.73deg, #000000 3.54%, rgba(0, 0, 0, 0) 96.91%), url({{ asset($homePage->image) }});">
+                                        style="background-image:url({{ asset($homePage->image) }});">
                                         <div class="wsus__single_slider_text">
                                             @if (isset($homePage->pre_title))
                                             <p class="text-white small heading-caption">Growth, Marketing & Sales Practice</p>
@@ -40,8 +40,8 @@
                                         </div>
                                     </div>
                                 </div>
-                                @endforeach --}}
-                            <div class="col-xl-12">
+                            @endforeach
+                            {{-- <div class="col-xl-12">
                                 <div class="position-relative wsus__single_slider"
                                     style="background-image: linear-gradient(90.73deg, #000000 3.54%, rgba(0, 0, 0, 0) 96.91%), url({{ asset('public/uploads/website-images/images/slide-3.png') }});">
                                     <div class="wsus__single_slider_text">
@@ -61,7 +61,7 @@
                                         <a class="view-more" href="#">View More</a>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -126,15 +126,15 @@
                 <a href="#" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>
             </div>
             <div class="d-flex flex-wrap justify-content-between">
-                {{-- @foreach ($categories as $category)
+                @foreach ($categories as $category)
                     <div class="product-cat-content">
                         <div class="image-holder">
                             <img src="{{ asset($category->image) }}">
                         </div>
                         <h6 class="mt-3 px-4 text-center">{{$category->name}}</h6>
                     </div>
-                    @endforeach --}}
-                <div class="product-cat-content">
+                @endforeach
+                {{-- <div class="product-cat-content">
                     <div class="image-holder">
                         <img src="{{ asset('public/uploads/website-images/images/engine11.png') }}">
                     </div>
@@ -223,7 +223,7 @@
                         <img src="{{ asset('public/uploads/website-images/images/engine14.png') }}">
                     </div>
                     <h6 class="mt-3 px-4 text-center">Plumbing & Pumps</h6>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -235,7 +235,7 @@
                 <a href="#" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>
             </div>
             <div class="row">
-                {{-- @foreach ($products as $product)
+                @foreach ($products as $product)
                     <div class="col-lg-3 col-md-6 p-2">
                         <div class="position-relative feature-product-section">
                             <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
@@ -250,9 +250,9 @@
                             </div>
                         </div>
                     </div>
-                    @endforeach --}}
+                @endforeach
 
-                <div class="col-lg-3 col-md-6 p-2">
+                {{-- <div class="col-lg-3 col-md-6 p-2">
                     <div class="position-relative feature-product-section">
                         <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
                                 aria-hidden="true"></span></button>
@@ -382,7 +382,7 @@
                             <s class="ms-3">$8,200.00</s>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -393,10 +393,10 @@
     <div class="container" id="wsus__brand_sleder">
         <h4 class="text-center mb-4">Featured Brands and Partners</h4>
         <div class="brand_slider">
-            {{-- @foreach ($brands as $brand)
+            @foreach ($brands as $brand)
                 <img src="{{ asset($brand->logo) }}" alt="feature-slider-1.png">
-                @endforeach --}}
-            <img src="{{ asset('public/uploads/website-images/images/feature-slider-3.png') }}"
+            @endforeach
+            {{-- <img src="{{ asset('public/uploads/website-images/images/feature-slider-3.png') }}"
                 alt="feature-slider-3.png">
             <img src="{{ asset('public/uploads/website-images/images/feature-slider-2.png') }}"
                 alt="feature-slider-2.png">
@@ -404,7 +404,7 @@
                 alt="feature-slider-4.png">
             <img src="{{ asset('public/uploads/website-images/images/feature-slider-3.png') }}"
                 alt="feature-slider-3.png">
-            <img src="{{ asset('public/uploads/website-images/images/feature-slider-3.png') }}"
+            <img src="{{ asset('public/uploads/website-images/images/feature-slider-3.png') }}" --}}
                 alt="feature-slider-3.png">
         </div>
     </div>

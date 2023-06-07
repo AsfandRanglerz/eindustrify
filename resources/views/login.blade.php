@@ -32,7 +32,7 @@
                         <h3 class="text-inherit heading">Login to your account.</h3>
                         <p>Fill your email and password to login</p>
                         <div class="wsus__login">
-                            <form method="POST">
+                            <form action="{{Url('login')}}" method="POST">
                                 @csrf
                                 <div class="position-relative wsus__login_input">
                                     <img src="{{ asset('public/uploads/website-images/images/envelope.png') }}" alt="envelope">
@@ -43,13 +43,13 @@
                                     <input type="password" placeholder="Password" name="password" id="userPassword" class="pl-pr-padding">
                                     <span toggle="#userPassword" class="fas fa-eye preview-eye-icon toggle-password" aria-hidden="true"></span>
                                 </div>
-                                @if($recaptchaSetting->status==1)
+                                {{-- @if($recaptchaSetting->status==1)
                                     <div class="col-xl-12">
                                         <div class="wsus__single_com mb-3">
                                             <div class="g-recaptcha" data-sitekey="{{ $recaptchaSetting->site_key }}"></div>
                                         </div>
                                     </div>
-                                @endif
+                                @endif --}}
                                 <div class="d-flex justify-content-between">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" id="rememberMe">
