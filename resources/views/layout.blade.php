@@ -141,7 +141,7 @@
                 <div class="col-xl-2 col-lg-3 position-relative reg-log-cart">
                     <ul class="w-unset wsus__icon_area">
                         <li  class="mx-0"><a class="d-flex justify-content-center align-items-center wsus__user_icon"><img src="{{ asset('public/uploads/website-images/images/user.png') }}" alt="user-img"></a></li>
-                        <a href="{{ url('') }}" class="ms-2">Login</a>
+                        <a href="{{ url('login') }}" class="ms-2">Login</a>
                     </ul>
                     <ul class="w-unset wsus__icon_area">
                         @if ($menus->where('id',19)->first()->status == 1)
