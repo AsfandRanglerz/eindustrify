@@ -48,6 +48,7 @@ use App\Models\CustomPagination;
 use App\Models\TermsAndCondition;
 use App\Models\ProductVariantItem;
 use App\Models\ThreeColumnCategory;
+use Illuminate\Support\Facades\Auth;
 use App\Models\HomePageOneVisibility;
 use App\Mail\SubscriptionVerification;
 use App\Mail\ContactMessageInformation;
@@ -587,5 +588,16 @@ class HomeController extends Controller
         $notification = trans('Help Request send Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect()->back()->with($notification);
+    }
+    public function vendorDashboard(){
+
+        return view('vendor.index');
+    }
+    public function logout()
+    {
+        Auth::guard('web')->logout();
+        $notification = trans('Logout Successfully');
+        $notification = array('messege' => $notification, 'alert-type' => 'success');
+        return redirect('/login')->with($notification);
     }
 }

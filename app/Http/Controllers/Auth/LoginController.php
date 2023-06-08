@@ -76,7 +76,8 @@ class LoginController extends Controller
                             // Auth::logout();
                             dd(Auth::id(), 'user');
                         } elseif (Auth::user()->role == 'vendor') {
-                            dd('vendor');
+
+                            return redirect('vendor-dashboard')->with('message', 'Login Successfully');
                         }
                         // return redirect()->intended(route('user.dashboard'))->with($notification);
                     }
@@ -107,6 +108,7 @@ class LoginController extends Controller
 
     public function sendForgetPassword(Request $request)
     {
+        DB::table('password_resets')->where(['email' => $request->email])->delete();
         $rules = [
             'email' => 'required',
         ];
@@ -224,7 +226,11 @@ class LoginController extends Controller
     public function resetPassword($token)
     {
         $data = DB::table('password_resets')->where('token', $token)->first();
-        return view('reset_password', compact('data'));
+        if(isset($data)){
+            return view('reset_password', compact('data'));
+        }else{
+            return 'token expire';
+        }
     }
 
     function createUser($getInfo, $provider)
@@ -245,25 +251,21 @@ class LoginController extends Controller
     }
     public function updatePassword(Request $request)
     {
-        // $request->validate([
-        //     'password' => 'require',
-        //     'confirm_password' => 'required|same:password',
-        // ]);
-        // $validator = Validator::make($request->all(), [
-        //     'password' => 'required',
-        //     'confirm_password' => 'required|same:password',
-        // ]);
-
-        // if ($validator->fails()) {
-        //     $errorMessage = $validator->errors()->first();
-        //     $notification = trans($errorMessage);
-        //     $notification = array('message' => $notification, 'alert-type' => 'error');
-        //     return redirect()->back()->with($notification);
-        // }
+        $validator = Validator::make($request->all(), [
+            'password' => 'required',
+            'confirm_password' => 'required|same:password',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
         $token = DB::table('password_resets')->where(['token' => $request->token,])->first();
-        $user = User::where('email', $token->email)
-            ->update(['password' => Hash::make($request->password)]);
-        DB::table('password_resets')->where(['token' => $request->token])->delete();
-        return redirect('login');
+        if (isset($token)) {
+            $user = User::where('email', $token->email)
+                ->update(['password' => Hash::make($request->password)]);
+            DB::table('password_resets')->where(['token' => $request->token])->delete();
+            return redirect('login');
+        }else{
+            return 'token expired';
+        }
     }
 }

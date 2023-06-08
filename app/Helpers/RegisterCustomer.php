@@ -57,8 +57,6 @@ class RegisterCustomer
     }
     public static function vendorRegistration($request)
     {
-
-        // dd($request);
         $data = $request->only(['first_name', 'last_name', 'email', 'phone', 'role']);
         // $data['role'] = 'vendor';
         $data['password'] = Hash::make($request->password);

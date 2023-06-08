@@ -10,3 +10,15 @@
         </div>
     </div>
 @endsection
+@section('scripts')
+    @if (\Illuminate\Support\Facades\Session::has('message'))
+        <script>
+            toastr.success('{{ \Illuminate\Support\Facades\Session::get('message') }}');
+        </script>
+    @endif
+    @if (\Illuminate\Support\Facades\Session::has('error'))
+        <script>
+            toastr.error('{{ \Illuminate\Support\Facades\Session::get('error') }}');
+        </script>
+    @endif
+@endsection

@@ -1101,14 +1101,14 @@
                 if ($(this).is(':checked') || $(this).parent().siblings().find('input:checkbox').is(
                         ':checked')) {
                     $(this).closest('.accordion-item-category').children('.accordion-header').find('input')
-                        .attr('selected', true);
+                        .attr('checked', true);
                     $(this).closest('.accordion-item-sub-category').children('.accordion-header').find(
-                        'input').attr('selected', true);
+                        'input').attr('checked', true);
                 } else {
                     $(this).closest('.accordion-item-category').children('.accordion-header').find('input')
-                        .attr('selected', false);
+                        .attr('checked', false);
                     $(this).closest('.accordion-item-sub-category').children('.accordion-header').find(
-                        'input').attr('selected', false);
+                        'input').attr('checked', false);
                 }
             });
 

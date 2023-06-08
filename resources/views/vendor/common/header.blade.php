@@ -86,9 +86,9 @@ $setting = App\Models\Setting::first();
                     </a>
                     <div
                         class="dropdown-menu dropdown-menu-right animated-dropdown slideIn w-100 border-0 dark-box-shadow">
-                        <b class="text-muted text-uppercase d-block mb-2 user-name-text">AB Corp.</b>
+                        <b class="text-muted text-uppercase d-block mb-2 user-name-text">{{Auth::user()->first_name}}</b>
                         <hr class="my-1">
-                        <a class="dropdown-item" href="https://ranglerzclients.pw/voj/logout"><span
+                        <a class="dropdown-item" href="{{URL('logout')}}"><span
                                 class="fas fa-sign-out-alt mr-2"></span><b>Logout</b></a>
                     </div>
                 </div>

@@ -63,7 +63,8 @@ class ProductChildCategoryController extends Controller
             'sub_category' => 'required',
             'slug' => 'required|unique:child_categories',
             // 'child_category_code' => 'required|unique:child_categories',
-            'status' => 'required'
+            'status' => 'required',
+            'image' => 'required'
         ];
         $customMessages = [
             'name.required' => trans('admin_validation.Name is required'),
@@ -82,7 +83,13 @@ class ProductChildCategoryController extends Controller
         $childCategory->category_id = $request->category;
         $childCategory->sub_category_id = $request->sub_category;
         $childCategory->name = $request->name;
-
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('images'), $filename);
+            $childCategory->image = 'public/images/' . $filename;
+        }
 
         // $childCategory->child_category_code = $request->child_category_code;
         if (isset($childcategory)) {
@@ -139,6 +146,13 @@ class ProductChildCategoryController extends Controller
         $childCategory->name = $request->name;
         $childCategory->slug = $request->slug;
         $childCategory->status = $request->status;
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('images'), $filename);
+            $childCategory->image = 'public/images/' . $filename;
+        }
         $childCategory->save();
 
         $notification = trans('admin_validation.Update Successfully');
