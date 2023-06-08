@@ -44,8 +44,10 @@
                         <h3 class="heading">{{__('user.Reset Password')}}</h3>
                         <p>Fill the below fields to reset your password</p>
                         <div class="wsus__login">
-                            <form method="POST" action="{{ route('send-forget-password') }}">
+                            <form method="POST" action="{{ URL('update-password') }}">
                                 @csrf
+                                <input type="hidden" name="token" value="{{$data->token}}">
+                                <input type="hidden" name="email" value="{{$data->email}}">
                                 <div class="position-relative wsus__login_input">
                                     <img src="{{ asset('public/uploads/website-images/images/lock.png') }}" alt="lock" class="icon-left">
                                     <input type="password" placeholder="New Password" name="password" id="userPassword" class="pl-pr-padding">
@@ -53,7 +55,7 @@
                                 </div>
                                 <div class="position-relative wsus__login_input">
                                     <img src="{{ asset('public/uploads/website-images/images/lock.png') }}" alt="lock" class="icon-left">
-                                    <input type="password" placeholder="Confirm Password" name="password" id="confirmPassword" class="pl-pr-padding">
+                                    <input type="password" placeholder="Confirm Password" name="confirm_password" id="confirmPassword" class="pl-pr-padding">
                                     <span toggle="#confirmPassword" class="fas fa-eye preview-eye-icon toggle-password" aria-hidden="true"></span>
                                 </div>
                                 <button class="common_btn" href="" type="submit">Reset Password</button>

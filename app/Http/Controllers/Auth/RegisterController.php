@@ -128,7 +128,6 @@ class RegisterController extends Controller
         $state = CountryState::get();
         $country = Country::get();
         $categories = Category::with('subCategories.childCategories')->get();
-        // dd($categories);
         return view('register', compact('city', 'state', 'country','categories','industries'));
     }
     public function vendorGetStates(Request $request){

@@ -22,9 +22,10 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Validator, Redirect, Response, File;
 use App\Models\SocialLoginInformation;
 use App\Providers\RouteServiceProvider;
+use Redirect, Response, File;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -220,9 +221,10 @@ class LoginController extends Controller
         return redirect()->intended(route('user.dashboard'));
     }
 
-    public function resetPassword()
+    public function resetPassword($token)
     {
-        return view('reset_password');
+        $data = DB::table('password_resets')->where('token', $token)->first();
+        return view('reset_password', compact('data'));
     }
 
     function createUser($getInfo, $provider)
@@ -240,5 +242,28 @@ class LoginController extends Controller
             ]);
         }
         return $user;
+    }
+    public function updatePassword(Request $request)
+    {
+        // $request->validate([
+        //     'password' => 'require',
+        //     'confirm_password' => 'required|same:password',
+        // ]);
+        // $validator = Validator::make($request->all(), [
+        //     'password' => 'required',
+        //     'confirm_password' => 'required|same:password',
+        // ]);
+
+        // if ($validator->fails()) {
+        //     $errorMessage = $validator->errors()->first();
+        //     $notification = trans($errorMessage);
+        //     $notification = array('message' => $notification, 'alert-type' => 'error');
+        //     return redirect()->back()->with($notification);
+        // }
+        $token = DB::table('password_resets')->where(['token' => $request->token,])->first();
+        $user = User::where('email', $token->email)
+            ->update(['password' => Hash::make($request->password)]);
+        DB::table('password_resets')->where(['token' => $request->token])->delete();
+        return redirect('login');
     }
 }
