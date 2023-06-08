@@ -810,6 +810,7 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
     Route::get('all-sub-categories/{slug}', [HomeController::class, 'allSubCategories']);
     // Route::view('all-child-categories', 'all_child_categories');
     Route::get('all-child-categories/{slug}', [HomeController::class, 'allChildCategories']);
+    Route::view('vendor/index', 'vendor/index');
 
     Route::get('help-center-details', [HelpCenterPagesController::class, 'helpCenterDetail']);
     Route::get('help-center-quotes', [HelpCenterPagesController::class, 'helpCenterQuotes']);

@@ -57,6 +57,10 @@ body {
     padding: 0;
 }
 
+.dark-box-shadow {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, .314);
+}
+
 .header-navbar .header-navbar-inner {
     background-color: #00000055;
     backdrop-filter: blur(42px);
