@@ -58,7 +58,7 @@
                                     <a href="{{ url('forget-password') }}" class="red-link">Forgot your password?</a>
                                 </div>
                                 <button class="mb-4 common_btn" href="" type="submit">Login</button>
-                                <p class="reg-account">No account yet? <a href="" class="font-600 red-link">Register here</a></p>
+                                <p class="reg-account">No account yet? <a href="{{ url('register') }}" class="font-600 red-link">Register here</a></p>
                             </form>
                         </div>
                     </div>
