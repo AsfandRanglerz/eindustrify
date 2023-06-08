@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Auth\Helper;
 use App\Http\Requests\CustomerRegister;
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -128,7 +129,9 @@ class RegisterController extends Controller
         $state = CountryState::get();
         $country = Country::get();
         $categories = Category::with('subCategories.childCategories')->get();
-        return view('register', compact('city', 'state', 'country','categories','industries'));
+        $tableName = 'products';
+        $columns = Schema::getColumnListing($tableName);
+        return view('register', compact('city', 'state', 'country','categories','industries','columns'));
     }
     public function vendorGetStates(Request $request){
         $data =  CountryState::where('country_id', $request->id)->get();

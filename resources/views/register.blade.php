@@ -536,7 +536,7 @@
                                                     <label class="text-uppercase">Country/Region* <span
                                                             class="required">*</span></label>
                                                     <select class="form-control select-country"
-                                                        id="user_shipping_country_id" name="shipping_country_id">
+                                                        id="user_billing_country_id" name="billing_country_id">
                                                         <option value=""></option>
                                                         @foreach ($country as $country_data)
                                                             <option value="{{ $country_data->id }}">
@@ -547,8 +547,8 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">state <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-state" name="shipping_state_id"
-                                                        id="user_shipping_state_id">
+                                                    <select class="form-control select-state" name="billing_state_id"
+                                                        id="user_billing_state_id">
                                                         <option value=""></option>
                                                         @foreach ($state as $state_data)
                                                             <option value="{{ $state_data->id }}">{{ $state_data->name }}
@@ -572,8 +572,8 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">City <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-city" name="shipping_city_id"
-                                                        id="user_shipping_city_id">
+                                                    <select class="form-control select-city" name="billing_city_id"
+                                                        id="user_billing_city_id">
                                                         <option value=""></option>
                                                         @foreach ($city as $city_data)
                                                             <option value="{{ $city_data->id }}">{{ $city_data->name }}
@@ -902,7 +902,7 @@
                                                                     <td class="text-center"><input type="checkbox"
                                                                             class="form-check-input" name=""
                                                                             id=""></td>
-                                                                    <td
+                                                                    {{-- <td
                                                                         class="position-relative d-flex align-items-center">
                                                                         <img src="{{ asset('public/uploads/website-images/images/property.png') }}"
                                                                             class="position-absolute"
@@ -912,7 +912,18 @@
                                                                             alt="dropdown-icon"><input type="input"
                                                                             placeholder="Product Properties"
                                                                             class="form-control prod-prop-input"
-                                                                            name="" id="" readonly></td>
+                                                                            name="" id="" readonly></td> --}}
+                                                                            <td
+                                                                        class="position-relative d-flex align-items-center">
+                                                                        <img src="{{ asset('public/uploads/website-images/images/property.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="property-icon"><img
+                                                                            src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="dropdown-icon"><input type="input"
+                                                                            placeholder="Product Properties"
+                                                                            class="form-control prod-prop-input"
+                                                                            name="" id="" ></td>
                                                                     <td><input type="input" placeholder="Product Name*"
                                                                             class="form-control" name=""
                                                                             id="" readonly></td>
