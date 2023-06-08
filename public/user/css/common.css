@@ -377,10 +377,6 @@ body .datepicker-dropdown.datepicker-orient-top:before {
     box-shadow: 0 2px 10px  var(--theme-light-box-shadow);
 }
 
-.dark-box-shadow {
-    box-shadow: 0 2px 10px  var(--theme-dark-box-shadow);
-}
-
 body .input-group .input-group-prepend .input-group-text {
     background-color: transparent;
     border: 2px solid #ced4da;
