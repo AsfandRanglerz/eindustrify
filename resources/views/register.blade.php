@@ -190,8 +190,8 @@
 </style>
 @section('public-content')
     <!--============================
-                                                   LOGIN/REGISTER PAGE START
-                                                ==============================-->
+                                                       LOGIN/REGISTER PAGE START
+                                                    ==============================-->
     <section id="wsus__login_register" class="py-5">
         <div class="container">
             <div class="row mx-auto">
@@ -239,10 +239,10 @@
                                                     var input = document.getElementById('input');
                                                     var jQueryArray = <?php echo json_encode($selectedColumns); ?>;
                                                     jQueryArray = Object.values(jQueryArray);
-                                                    console.log(jQueryArray);
+                                                    // console.log(jQueryArray);
                                                     input.addEventListener('change', function() {
                                                         readXlsxFile(input.files[0]).then(function(data) {
-                                                            // console.log(data);
+                                                            console.log(data);
 
                                                             for (let index = 0; index < data[0].length; index++) {
                                                                 // const element = data[0][index];
@@ -255,23 +255,47 @@
                                                                 }
                                                                 const flag = jQueryArray.find(item => item == data[0][index]);
 
-                                                                console.log(flag, index);
+                                                                // console.log(flag, index);
+
+                                                                // var colHeadFile = $('.col-head-file');
+                                                                // for (let index = 0; index < colHeadFile.length; index++) {
+                                                                //     const element = array[index];
+                                                                //     console.log(element);
+                                                                // }
+
                                                                 $("#tbl-data").append(
                                                                     "<tr>" +
-                                                                    "<td>" + data[0][index] + "</td>" +
+                                                                    "<td class='col-head-file'>" + data[0][index] + "</td>" +
                                                                     "<td>" + data[1][index] + "</td>" +
                                                                     "<td>" +
                                                                     `<input ${flag && "checked"} type='checkbox' class='form-check-input' id='mapId` +
                                                                     index + "'>" + "</td>" +
-                                                                    "<td><select class='select2'>" + selOptions + "</select></td>" +
+                                                                    "<td class='import-as'><select class='select2'>" + selOptions +
+                                                                    "</select></td>" +
                                                                     "<td>" + "<input type='checkbox' class='form-control' id='mapId'>" + "</td>" +
                                                                     "</tr>"
                                                                 );
                                                             }
                                                         });
                                                     });
+
+                                                    $(document).on('click', '.next_btn', function() {
+                                                        var a = $("#tbl-data").find('input:checked').closest('tr');
+
+                                                        var obj = {}
+                                                        for (let index = 0; index < a.length; index++) {
+                                                            const element = a[index];
+                                                            const heading = $(element).find('.col-head-file').text()
+                                                            const selectedVal = $(element).find('.import-as').find('.select2').val()
+                                                            obj[heading] = selectedVal
+                                                        }
+                                                        obj=JSON.stringify(obj)
+                                                        console.log('objjjj',obj)
+                                                        $('#objValues').val(obj);
+                                                    });
                                                 </script>
 
+                                                <input type="hidden" id="objValues" name="keyValue">
                                                 <label class="text-uppercase">Registration type <span
                                                         class="required">*</span></label>
                                                 <select class="form-control" id="selRole" name="role">
@@ -1068,8 +1092,8 @@
         </div>
     </section>
     <!--============================
-                                                   LOGIN/REGISTER PAGE END
-                                                ==============================-->
+                                                       LOGIN/REGISTER PAGE END
+                                                    ==============================-->
 @endsection
 <script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
 @section('js')

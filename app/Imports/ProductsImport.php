@@ -33,7 +33,7 @@ class ProductsImport implements ToModel, WithHeadingRow
         return new Product([
             'name' => $row['name'],
             'vendor_id' =>  $this->vendor,
-            'short_name' => $row['short_name'],
+            'short_name' => $row['short_names'],
             'slug' => $row['slug'],
             'qty' => $row['qty'],
             'price' => $row['price'],

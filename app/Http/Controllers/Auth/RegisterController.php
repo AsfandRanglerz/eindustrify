@@ -154,6 +154,11 @@ class RegisterController extends Controller
     // CustomerRegister
     public function customerRegister(Request $request)
     {
+        // dd(json_decode($request->keyValue));
+        foreach (json_decode($request->keyValue) as $key => $data) {
+            return $data;
+        }
+        dd($request->all());
         if($request->role=='user'){
             RegisterCustomer::userRegistration($request);
         }else{
