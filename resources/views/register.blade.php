@@ -250,7 +250,7 @@
 
                                                                 let selOptions = '';
                                                                 for(let i=0;i<jQueryArray.length;i++) {
-                                                                    selOptions +=  "<option>" + jQueryArray[i] + "</option>";
+                                                                    selOptions +=  `<option ${ i==index  && "selected"} >` + jQueryArray[i] + "</option>";
                                                                 }
 
                                                                 // console.log(selOptions);
