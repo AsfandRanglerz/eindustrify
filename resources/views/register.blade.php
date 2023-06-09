@@ -234,22 +234,35 @@
                                             <div class="form-group col-md-6">
 
                                                 <input type="file" id="input">
+                                                {{-- @dd($selectedColumns); --}}
                                                 <script>
                                                     var input = document.getElementById('input');
+                                                    var jQueryArray = <?php echo json_encode($selectedColumns); ?>;
+                                                    jQueryArray = Object.values(jQueryArray);
+                                                    console.log(jQueryArray);
                                                     input.addEventListener('change', function() {
                                                         readXlsxFile(input.files[0]).then(function(data) {
-                                                            console.log(data);
-                                                            console.log(data[0].length);
-                                                            if() {
+                                                            // console.log(data);
 
-                                                            }
-                                                            var headCol= $('.head-column');
-                                                            var headColVal= $('.head-column-value');
-                                                            for (var i = 0; i < headCol.length; i++) {
-                                                            $(headCol[i]).text(data[0][i]);
-                                                            }
-                                                            for (var i = 0; i < headColVal.length; i++) {
-                                                            $(headColVal[i]).text(data[1][i]);
+                                                            for (let index = 0; index < data[0].length; index++) {
+                                                                // const element = data[0][index];
+                                                                // console.log(element);
+
+                                                                let selOptions = '';
+                                                                for(let i=0;i<jQueryArray.length;i++) {
+                                                                    selOptions +=  "<option>" + jQueryArray[i] + "</option>";
+                                                                }
+
+                                                                // console.log(selOptions);
+                                                                $("#tbl-data").append(
+                                                                    "<tr>" +
+                                                                        "<td>" + data[0][index] + "</td>" +
+                                                                        "<td>" + data[1][index] + "</td>" +
+                                                                        "<td>" + "<input type='checkbox' class='form-check-input' id='mapId" + index + "'>" + "</td>" +
+                                                                        "<td><select class='select2'>" + selOptions + "</select></td>" +
+                                                                        "<td>" + "<input type='checkbox' class='form-control' id='mapId'>" + "</td>" +
+                                                                    "</tr>"
+                                                                );
                                                             }
                                                         });
                                                     });
@@ -918,39 +931,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                <tr>
-                                                                    <th class="text-center head-column"></th>
-                                                                    <td class="text-center head-column-value"></td>
-                                                                    <td class="text-center"><input type="checkbox"
-                                                                            class="form-check-input" name=""
-                                                                            id=""></td>
-                                                                    {{-- <td
-                                                                        class="position-relative d-flex align-items-center">
-                                                                        <img src="{{ asset('public/uploads/website-images/images/property.png') }}"
-                                                                            class="position-absolute"
-                                                                            alt="property-icon"><img
-                                                                            src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
-                                                                            class="position-absolute"
-                                                                            alt="dropdown-icon"><input type="input"
-                                                                            placeholder="Product Properties"
-                                                                            class="form-control prod-prop-input"
-                                                                            name="" id="" readonly></td> --}}
-                                                                            <td
-                                                                        class="position-relative d-flex align-items-center">
-                                                                        <img src="{{ asset('public/uploads/website-images/images/property.png') }}"
-                                                                            class="position-absolute"
-                                                                            alt="property-icon"><img
-                                                                            src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
-                                                                            class="position-absolute"
-                                                                            alt="dropdown-icon"><input type="input"
-                                                                            placeholder="Product Properties"
-                                                                            class="form-control prod-prop-input"
-                                                                            name="" id="" ></td>
-                                                                    <td><input type="input" placeholder="Product Name*"
-                                                                            class="form-control" name=""
-                                                                            id="" readonly></td>
-                                                                </tr>
-                                                                <tr>
+                                                                {{-- <tr>
                                                                     <th class="text-center head-column"></th>
                                                                     <td class="text-center head-column-value"></td>
                                                                     <td class="text-center"><input type="checkbox"
@@ -967,10 +948,21 @@
                                                                             placeholder="Product Properties"
                                                                             class="form-control prod-prop-input"
                                                                             name="" id="" readonly></td>
+                                                                            <td
+                                                                        class="position-relative d-flex align-items-center">
+                                                                        <img src="{{ asset('public/uploads/website-images/images/property.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="property-icon"><img
+                                                                            src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="dropdown-icon"><input type="input"
+                                                                            placeholder="Product Properties"
+                                                                            class="form-control prod-prop-input"
+                                                                            name="" id="" ></td>
                                                                     <td><input type="input" placeholder="Product Name*"
                                                                             class="form-control" name=""
                                                                             id="" readonly></td>
-                                                                </tr>
+                                                                </tr> --}}
                                                             </tbody>
                                                         </table>
                                                     </div>
