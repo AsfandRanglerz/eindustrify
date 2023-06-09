@@ -190,8 +190,8 @@
 </style>
 @section('public-content')
     <!--============================
-                                               LOGIN/REGISTER PAGE START
-                                            ==============================-->
+                                                   LOGIN/REGISTER PAGE START
+                                                ==============================-->
     <section id="wsus__login_register" class="py-5">
         <div class="container">
             <div class="row mx-auto">
@@ -249,18 +249,22 @@
                                                                 // console.log(element);
 
                                                                 let selOptions = '';
-                                                                for(let i=0;i<jQueryArray.length;i++) {
-                                                                    selOptions +=  `<option ${ jQueryArray[i]==data[0][index]  && "selected"} >` + jQueryArray[i] + "</option>";
+                                                                for (let i = 0; i < jQueryArray.length; i++) {
+                                                                    selOptions += `<option ${jQueryArray[i]==data[0][index]  && "selected"} >` +
+                                                                        jQueryArray[i] + "</option>";
                                                                 }
+                                                                const flag = jQueryArray.find(item => item == data[0][index]);
 
-                                                                // console.log(selOptions);
+                                                                console.log(flag, index);
                                                                 $("#tbl-data").append(
                                                                     "<tr>" +
-                                                                        "<td>" + data[0][index] + "</td>" +
-                                                                        "<td>" + data[1][index] + "</td>" +
-                                                                        "<td>" + "<input type='checkbox' class='form-check-input' id='mapId" + index + "'>" + "</td>" +
-                                                                        "<td><select class='select2'>" + selOptions + "</select></td>" +
-                                                                        "<td>" + "<input type='checkbox' class='form-control' id='mapId'>" + "</td>" +
+                                                                    "<td>" + data[0][index] + "</td>" +
+                                                                    "<td>" + data[1][index] + "</td>" +
+                                                                    "<td>" +
+                                                                    `<input ${flag && "checked"} type='checkbox' class='form-check-input' id='mapId` +
+                                                                    index + "'>" + "</td>" +
+                                                                    "<td><select class='select2'>" + selOptions + "</select></td>" +
+                                                                    "<td>" + "<input type='checkbox' class='form-control' id='mapId'>" + "</td>" +
                                                                     "</tr>"
                                                                 );
                                                             }
@@ -397,7 +401,8 @@
                                                         name="bussiness_industry_type">
                                                         <option value=""></option>
                                                         @foreach ($industries as $industry)
-                                                            <option value="{{$industry->id}}">{{$industry->name}}</option>
+                                                            <option value="{{ $industry->id }}">{{ $industry->name }}
+                                                            </option>
                                                         @endforeach
 
                                                     </select>
@@ -654,7 +659,8 @@
                                                     <select class="form-control indus-type" name="vendor_industry_type">
                                                         <option value=""></option>
                                                         @foreach ($industries as $industry)
-                                                            <option value="{{$industry->id}}">{{$industry->name}}</option>
+                                                            <option value="{{ $industry->id }}">{{ $industry->name }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -998,7 +1004,8 @@
                                                                 class="me-2 fa fa-angle-left text-white"></span>Back</button>
                                                         <div class="d-flex align-items-center">
                                                             <div class="me-3">
-                                                                <b>You have <span id="mapCount">4</span> unmapped columns</b>
+                                                                <b>You have <span id="mapCount">4</span> unmapped
+                                                                    columns</b>
                                                                 <div class="mt-2 mb-0 form-check">
                                                                     <input class="form-check-input" type="checkbox"
                                                                         id="agreeOffer1">
@@ -1007,8 +1014,7 @@
                                                                         columns</label>
                                                                 </div>
                                                             </div>
-                                                            <button type="button" class="common_btn next_btn"
-                                                                >Next<span
+                                                            <button type="button" class="common_btn next_btn">Next<span
                                                                     class="ms-2 fa fa-angle-right text-white"></span></button>
                                                         </div>
                                                     </div>
@@ -1062,12 +1068,12 @@
         </div>
     </section>
     <!--============================
-                                               LOGIN/REGISTER PAGE END
-                                            ==============================-->
+                                                   LOGIN/REGISTER PAGE END
+                                                ==============================-->
 @endsection
 <script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
 @section('js')
-<script>
+    <script>
         $(function() {
             $('.bulk-modal .next_btn').on('click', function() {
                 $('.product-mapping-1').addClass('d-none');

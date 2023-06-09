@@ -126,6 +126,8 @@ class RegisterCustomer
         }
         $vendor = $user->id;
         if (isset($request->file)) {
+            $header = Excel::toArray([],request()->file('file'))[0][0];
+            // dd($header);
             Excel::import(new ProductsImport($vendor), request()->file('file')->store('temp'));
         }
     }

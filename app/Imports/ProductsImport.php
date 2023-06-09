@@ -19,6 +19,7 @@ class ProductsImport implements ToModel, WithHeadingRow
 
     public function model(array $row)
     {
+        // dd($row);
         Validator::make($row, [
             'name' => 'required',
             'short_name' => 'required',

@@ -813,6 +813,7 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
     // Route::view('vendor/index', 'vendor/index');
     Route::get('vendor-dashboard', [HomeController::class, 'vendorDashboard']);
     Route::get('logout', [HomeController::class, 'logout']);
+    Route::post('get-file-header', [HomeController::class, 'getFileHeader']);
     Route::get('help-center-details', [HelpCenterPagesController::class, 'helpCenterDetail']);
     Route::get('help-center-quotes', [HelpCenterPagesController::class, 'helpCenterQuotes']);
     Route::get('help-center-lists', [HelpCenterPagesController::class, 'helpCenterLists']);

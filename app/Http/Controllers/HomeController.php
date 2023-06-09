@@ -34,6 +34,7 @@ use App\Models\PopularPost;
 use App\Models\SubCategory;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\ChildCategory;
 use App\Models\EmailTemplate;
 use App\Models\ProductReview;
@@ -599,5 +600,13 @@ class HomeController extends Controller
         $notification = trans('Logout Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect('/login')->with($notification);
+    }
+    public function getFileHeader(Request $request){
+        $header = Excel::toArray([],$request->file('excel-file'))[0][0];
+        return response()->json([
+            'success' => 'Status  successfully',
+            'header' => $header,
+        ]);
+
     }
 }
