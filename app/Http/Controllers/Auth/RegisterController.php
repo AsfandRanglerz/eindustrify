@@ -131,7 +131,9 @@ class RegisterController extends Controller
         $categories = Category::with('subCategories.childCategories')->get();
         $tableName = 'products';
         $columns = Schema::getColumnListing($tableName);
-        return view('register', compact('city', 'state', 'country','categories','industries','columns'));
+        $selectedColumns = array_intersect($columns, ['name', 'short_name' , 'price','slug','qty','short_description','long_description']);
+        // dd($selectedColumns);
+        return view('register', compact('city', 'state', 'country','categories','industries','selectedColumns'));
     }
     public function vendorGetStates(Request $request){
         $data =  CountryState::where('country_id', $request->id)->get();
