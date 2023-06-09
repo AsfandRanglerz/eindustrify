@@ -232,6 +232,41 @@
                                     <div class="col-xl-10 mx-auto">
                                         <div class="row mb-4 mx-auto">
                                             <div class="form-group col-md-6">
+                                                <input type="file" id="input">
+                                                {{-- <table id="tbl-data"></table> --}}
+                                                <script>
+                                                    var input = document.getElementById('input');
+                                                    input.addEventListener('change', function() {
+                                                        readXlsxFile(input.files[0]).then(function(data) {
+                                                            var i = 0;
+                                                            // console.log(data);
+                                                            data.map((row, index)=> {
+                                                                console.log(row);
+                                                                if(i==0) {
+                                                                    // console.log(row);
+                                                                    let table = document.getElementById('tbl-data');
+                                                                    generateTableHead(table, row);
+                                                                }
+                                                                i++;
+                                                            });
+                                                        });
+                                                    });
+                                                    function generateTableHead(table, data) {
+                                                        let thead = table.createTHead();
+
+
+                                                        let row = thead.insertRow();
+                                                        for (let key of data) {
+                                                            let th = document.createElement('td');
+                                                            let text = document.createTextNode(key);
+                                                            th.appendChild(text);
+                                                            row.appendChild(th);
+                                                        }
+                                                    }
+                                                </script>
+
+
+
                                                 <label class="text-uppercase">Registration type <span
                                                         class="required">*</span></label>
                                                 <select class="form-control" id="selRole" name="role">
@@ -883,7 +918,7 @@
                                                     </div>
                                                     <div
                                                         class="table-responsive bulk-files-table bulk-files-step1 product-mapping-1">
-                                                        <table class="table mb-0">
+                                                        <table class="table mb-0" id="tbl-data">
                                                             <thead class="thead-dark">
                                                                 <tr>
                                                                     <th scope="col">COLUMN <br> HEADER <br> FROM FILE
@@ -896,7 +931,7 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <td class="text-center">Product Name</td>
+                                                                    <th class="text-center">Product Name</th>
                                                                     <td class="text-center">Mophorn 3 HP Electric Motor
                                                                     </td>
                                                                     <td class="text-center"><input type="checkbox"
@@ -929,7 +964,7 @@
                                                                             id="" readonly></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="text-center">Product Name</td>
+                                                                    <th class="text-center">Product Name</th>
                                                                     <td class="text-center">Mophorn 3 HP Electric Motor
                                                                     </td>
                                                                     <td class="text-center"><input type="checkbox"
@@ -951,7 +986,7 @@
                                                                             id="" readonly></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="text-center">Product Name</td>
+                                                                    <th class="text-center">Product Name</th>
                                                                     <td class="text-center">Mophorn 3 HP Electric Motor
                                                                     </td>
                                                                     <td class="text-center"><input type="checkbox"
@@ -973,7 +1008,7 @@
                                                                             id="" readonly></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td class="text-center">Product Name</td>
+                                                                    <th class="text-center">Product Name</th>
                                                                     <td class="text-center">Mophorn 3 HP Electric Motor
                                                                     </td>
                                                                     <td class="text-center"><input type="checkbox"
@@ -1029,7 +1064,7 @@
                                                                 class="me-2 fa fa-angle-left text-white"></span>Back</button>
                                                         <div class="d-flex align-items-center">
                                                             <div class="me-3">
-                                                                <b>You have 3 unmapped columns</b>
+                                                                <b>You have <span id="mapCount">4</span> unmapped columns</b>
                                                                 <div class="mt-2 mb-0 form-check">
                                                                     <input class="form-check-input" type="checkbox"
                                                                         id="agreeOffer1">
@@ -1096,8 +1131,9 @@
                                                LOGIN/REGISTER PAGE END
                                             ==============================-->
 @endsection
+<script src="https://unpkg.com/read-excel-file@4.x/bundle/read-excel-file.min.js"></script>
 @section('js')
-    <script>
+<script>
         $(function() {
             $('.bulk-modal .next_btn').on('click', function() {
                 $('.product-mapping-1').addClass('d-none');
