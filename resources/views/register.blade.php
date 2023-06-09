@@ -232,40 +232,28 @@
                                     <div class="col-xl-10 mx-auto">
                                         <div class="row mb-4 mx-auto">
                                             <div class="form-group col-md-6">
+
                                                 <input type="file" id="input">
-                                                {{-- <table id="tbl-data"></table> --}}
                                                 <script>
                                                     var input = document.getElementById('input');
                                                     input.addEventListener('change', function() {
                                                         readXlsxFile(input.files[0]).then(function(data) {
-                                                            var i = 0;
-                                                            // console.log(data);
-                                                            data.map((row, index)=> {
-                                                                console.log(row);
-                                                                if(i==0) {
-                                                                    // console.log(row);
-                                                                    let table = document.getElementById('tbl-data');
-                                                                    generateTableHead(table, row);
-                                                                }
-                                                                i++;
-                                                            });
+                                                            console.log(data);
+                                                            console.log(data[0].length);
+                                                            if() {
+
+                                                            }
+                                                            var headCol= $('.head-column');
+                                                            var headColVal= $('.head-column-value');
+                                                            for (var i = 0; i < headCol.length; i++) {
+                                                            $(headCol[i]).text(data[0][i]);
+                                                            }
+                                                            for (var i = 0; i < headColVal.length; i++) {
+                                                            $(headColVal[i]).text(data[1][i]);
+                                                            }
                                                         });
                                                     });
-                                                    function generateTableHead(table, data) {
-                                                        let thead = table.createTHead();
-
-
-                                                        let row = thead.insertRow();
-                                                        for (let key of data) {
-                                                            let th = document.createElement('td');
-                                                            let text = document.createTextNode(key);
-                                                            th.appendChild(text);
-                                                            row.appendChild(th);
-                                                        }
-                                                    }
                                                 </script>
-
-
 
                                                 <label class="text-uppercase">Registration type <span
                                                         class="required">*</span></label>
@@ -931,9 +919,8 @@
                                                             </thead>
                                                             <tbody>
                                                                 <tr>
-                                                                    <th class="text-center">Product Name</th>
-                                                                    <td class="text-center">Mophorn 3 HP Electric Motor
-                                                                    </td>
+                                                                    <th class="text-center head-column"></th>
+                                                                    <td class="text-center head-column-value"></td>
                                                                     <td class="text-center"><input type="checkbox"
                                                                             class="form-check-input" name=""
                                                                             id=""></td>
@@ -964,53 +951,8 @@
                                                                             id="" readonly></td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <th class="text-center">Product Name</th>
-                                                                    <td class="text-center">Mophorn 3 HP Electric Motor
-                                                                    </td>
-                                                                    <td class="text-center"><input type="checkbox"
-                                                                            class="form-check-input" name=""
-                                                                            id=""></td>
-                                                                    <td
-                                                                        class="position-relative d-flex align-items-center">
-                                                                        <img src="{{ asset('public/uploads/website-images/images/property.png') }}"
-                                                                            class="position-absolute"
-                                                                            alt="property-icon"><img
-                                                                            src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
-                                                                            class="position-absolute"
-                                                                            alt="dropdown-icon"><input type="input"
-                                                                            placeholder="Product Properties"
-                                                                            class="form-control prod-prop-input"
-                                                                            name="" id="" readonly></td>
-                                                                    <td><input type="input" placeholder="Product Name*"
-                                                                            class="form-control" name=""
-                                                                            id="" readonly></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th class="text-center">Product Name</th>
-                                                                    <td class="text-center">Mophorn 3 HP Electric Motor
-                                                                    </td>
-                                                                    <td class="text-center"><input type="checkbox"
-                                                                            class="form-check-input" name=""
-                                                                            id=""></td>
-                                                                    <td
-                                                                        class="position-relative d-flex align-items-center">
-                                                                        <img src="{{ asset('public/uploads/website-images/images/property.png') }}"
-                                                                            class="position-absolute"
-                                                                            alt="property-icon"><img
-                                                                            src="{{ asset('public/uploads/website-images/images/dropdown.png') }}"
-                                                                            class="position-absolute"
-                                                                            alt="dropdown-icon"><input type="input"
-                                                                            placeholder="Product Properties"
-                                                                            class="form-control prod-prop-input"
-                                                                            name="" id="" readonly></td>
-                                                                    <td><input type="input" placeholder="Product Name*"
-                                                                            class="form-control" name=""
-                                                                            id="" readonly></td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th class="text-center">Product Name</th>
-                                                                    <td class="text-center">Mophorn 3 HP Electric Motor
-                                                                    </td>
+                                                                    <th class="text-center head-column"></th>
+                                                                    <td class="text-center head-column-value"></td>
                                                                     <td class="text-center"><input type="checkbox"
                                                                             class="form-check-input" name=""
                                                                             id=""></td>
