@@ -233,7 +233,7 @@
                                         <div class="row mb-4 mx-auto">
                                             <div class="form-group col-md-6">
 
-                                                <input type="file" id="input">
+                                                <input type="file" id="input" name="file">
                                                 {{-- @dd($selectedColumns); --}}
                                                 <script>
                                                     var input = document.getElementById('input');

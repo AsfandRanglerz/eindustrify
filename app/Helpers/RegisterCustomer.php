@@ -125,10 +125,12 @@ class RegisterCustomer
             }
         }
         $vendor = $user->id;
+        $keyValue = json_decode($request->keyValue);
+       $headerMapping = $keyValue;
         if (isset($request->file)) {
-            $header = Excel::toArray([],request()->file('file'))[0][0];
-            // dd($header);
-            Excel::import(new ProductsImport($vendor), request()->file('file')->store('temp'));
+            $import = new ProductsImport($vendor,$keyValue,$headerMapping);
+            $file = request()->file('file')->store('temp');
+            Excel::import($import, $file);
         }
     }
 }

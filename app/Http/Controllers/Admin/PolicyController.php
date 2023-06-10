@@ -181,7 +181,8 @@ class PolicyController extends Controller
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect('admin/sales-site')->with($notification);
     }
-    public function check(){
+    public function check(Request $request){
+        dd($request->all());
         $data = '1';
         // Excel::import(new ProductsImport($data),request()->file('file'), null, \Maatwebsite\Excel\Excel::XLSX);
         Excel::import(new RoleImport($data), request()->file('file')->store('temp'));

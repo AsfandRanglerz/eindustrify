@@ -17,7 +17,10 @@
 {{-- <div>
     <form action="{{URL('admin/checkss')}}" enctype="multipart/form-data" method="POST">
         @csrf
-    <input type="file" name="file" class="form-control">
+        <?php
+        // $data=['usman','usman','usman'];
+        ?>
+    <input type="hidden" name="data" value="{{$data}}"  class="form-control">
     <button class="btn btn-primary">check</button>
 </form>
 </div> --}}
