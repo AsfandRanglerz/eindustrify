@@ -113,7 +113,7 @@
     }
 
     .bulk-modal .form-control {
-        padding: 12px 16px !important;
+        padding: 8px 12px !important;
     }
 
     .bulk-modal .prod-prop-input {
@@ -187,6 +187,20 @@
         padding: 85px 0;
         border: 1px solid #CCCCCC;
     }
+
+    body .table .form-check-input:checked {
+        background-color: var(--red-theme);
+        border-color: var(--red-theme);
+    }
+
+    #formFileVal {
+        padding: 12px 24px 12px 50px!important;
+        border-radius: 0;
+    }
+
+    img[alt="map-icon"] {
+        left: 14px;
+    }
 </style>
 @section('public-content')
     <!--============================
@@ -232,70 +246,6 @@
                                     <div class="col-xl-10 mx-auto">
                                         <div class="row mb-4 mx-auto">
                                             <div class="form-group col-md-6">
-
-                                                <input type="file" id="input" name="file">
-                                                {{-- @dd($selectedColumns); --}}
-                                                <script>
-                                                    var input = document.getElementById('input');
-                                                    var jQueryArray = <?php echo json_encode($selectedColumns); ?>;
-                                                    jQueryArray = Object.values(jQueryArray);
-                                                    // console.log(jQueryArray);
-                                                    input.addEventListener('change', function() {
-                                                        readXlsxFile(input.files[0]).then(function(data) {
-                                                            console.log(data);
-
-                                                            for (let index = 0; index < data[0].length; index++) {
-                                                                // const element = data[0][index];
-                                                                // console.log(element);
-
-                                                                let selOptions = '';
-                                                                for (let i = 0; i < jQueryArray.length; i++) {
-                                                                    selOptions += `<option ${jQueryArray[i]==data[0][index]  && "selected"} >` +
-                                                                        jQueryArray[i] + "</option>";
-                                                                }
-                                                                const flag = jQueryArray.find(item => item == data[0][index]);
-
-                                                                // console.log(flag, index);
-
-                                                                // var colHeadFile = $('.col-head-file');
-                                                                // for (let index = 0; index < colHeadFile.length; index++) {
-                                                                //     const element = array[index];
-                                                                //     console.log(element);
-                                                                // }
-
-                                                                $("#tbl-data").append(
-                                                                    "<tr>" +
-                                                                    "<td class='col-head-file'>" + data[0][index] + "</td>" +
-                                                                    "<td>" + data[1][index] + "</td>" +
-                                                                    "<td>" +
-                                                                    `<input ${flag && "checked"} type='checkbox' class='form-check-input' id='mapId` +
-                                                                    index + "'>" + "</td>" +
-                                                                    "<td class='import-as'><select class='select2'>" + selOptions +
-                                                                    "</select></td>" +
-                                                                    "<td>" + "<input type='checkbox' class='form-control' id='mapId'>" + "</td>" +
-                                                                    "</tr>"
-                                                                );
-                                                            }
-                                                        });
-                                                    });
-
-                                                    $(document).on('click', '.next_btn', function() {
-                                                        var a = $("#tbl-data").find('input:checked').closest('tr');
-
-                                                        var obj = {}
-                                                        for (let index = 0; index < a.length; index++) {
-                                                            const element = a[index];
-                                                            const heading = $(element).find('.col-head-file').text()
-                                                            const selectedVal = $(element).find('.import-as').find('.select2').val()
-                                                            obj[heading] = selectedVal
-                                                        }
-                                                        obj=JSON.stringify(obj)
-                                                        console.log('objjjj',obj)
-                                                        $('#objValues').val(obj);
-                                                    });
-                                                </script>
-
-                                                <input type="hidden" id="objValues" name="keyValue">
                                                 <label class="text-uppercase">Registration type <span
                                                         class="required">*</span></label>
                                                 <select class="form-control" id="selRole" name="role">
@@ -904,8 +854,9 @@
                                                 <div class="mb-2 d-flex align-items-center justify-content-between">
                                                     <label class="text-uppercase">Please upload your product catalog
                                                         here</label>
-                                                    <button type="button" class="common_btn" data-bs-toggle="modal"
-                                                        data-bs-target="#staticBackdrop">Bulk Upload</button>
+                                                    {{-- <button type="button" class="common_btn" data-bs-toggle="modal"
+                                                        data-bs-target="#staticBackdrop">Bulk Upload</button> --}}
+                                                    <button type="button" class="common_btn" id="bulkUpload">Bulk Upload</button>
                                                     <!-- Button trigger modal -->
 
 
@@ -1001,8 +952,80 @@
                                                             <h4 class="mb-3">Product Mapping Final Details</h4>
                                                             <label for="formFile" class="form-label">Import File
                                                                 Name*</label>
-                                                            <input class="form-control" type="file" id="formFile"
-                                                                name="file">
+                                                            <input class="form-control d-none" type="file" id="formFile" name="file">
+                                                            <div class="position-relative d-flex align-items-center">
+                                                                <img src="{{ asset('public/uploads/website-images/images/map-import.png') }}"
+                                                                            class="position-absolute"
+                                                                            alt="map-icon">
+                                                                <input type="text" id="formFileVal" class="form-control" disabled>
+                                                            </div>
+                                                            {{-- <input type="file" id="input" name="file"> --}}
+                                                                {{-- @dd($selectedColumns); --}}
+                                                                <script>
+                                                                    var input = document.getElementById('formFile');
+                                                                    var jQueryArray = <?php echo json_encode($selectedColumns); ?>;
+                                                                    jQueryArray = Object.values(jQueryArray);
+                                                                    // console.log(jQueryArray);
+                                                                    input.addEventListener('change', function() {
+                                                                        readXlsxFile(input.files[0]).then(function(data) {
+                                                                            console.log(data);
+
+                                                                            for (let index = 0; index < data[0].length; index++) {
+                                                                                // const element = data[0][index];
+                                                                                // console.log(element);
+
+                                                                                let selOptions = '';
+                                                                                for (let i = 0; i < jQueryArray.length; i++) {
+                                                                                    selOptions += `<option ${jQueryArray[i]==data[0][index]  && "selected"} >` +
+                                                                                        jQueryArray[i] + "</option>";
+                                                                                }
+                                                                                const flag = jQueryArray.find(item => item == data[0][index]);
+
+                                                                                // console.log(flag, index);
+
+                                                                                // var colHeadFile = $('.col-head-file');
+                                                                                // for (let index = 0; index < colHeadFile.length; index++) {
+                                                                                //     const element = array[index];
+                                                                                //     console.log(element);
+                                                                                // }
+
+                                                                                $("#tbl-data").append(
+                                                                                    "<tr>" +
+                                                                                    "<td class='col-head-file'>" + data[0][index] + "</td>" +
+                                                                                    "<td>" + data[1][index] + "</td>" +
+                                                                                    "<td>" +
+                                                                                    `<input ${flag && "checked"} type='checkbox' class='form-check-input map-checkbox' id='mapId` +
+                                                                                    index + "'>" + "</td>" +
+                                                                                    "<td class='import-as'><select class='form-control'>" + selOptions +
+                                                                                    "</select></td>" +
+                                                                                    "<td><select class='form-control' disabled>" + selOptions + "</select></td>" +
+                                                                                    "</tr>"
+                                                                                );
+                                                                            }
+                                                                        });
+                                                                    });
+
+                                                                    $(document).on('click', '.next_btn', function() {
+                                                                        var a = $("#tbl-data").find('input:checked').closest('tr');
+
+                                                                        var obj = {}
+                                                                        for (let index = 0; index < a.length; index++) {
+                                                                            const element = a[index];
+                                                                            const heading = $(element).find('.col-head-file').text()
+                                                                            const selectedVal = $(element).find('.import-as').find('.select2').val()
+                                                                            obj[heading] = selectedVal
+                                                                        }
+                                                                        obj=JSON.stringify(obj)
+                                                                        console.log('objjjj',obj)
+                                                                        $('#objValues').val(obj);
+                                                                    });
+                                                                </script>
+
+                                                                <input type="hidden" id="objValues" name="keyValue">
+
+
+
+
                                                             <div class="mt-3 form-check">
                                                                 <input class="form-check-input" type="checkbox"
                                                                     id="agreeOffer2">
@@ -1028,7 +1051,7 @@
                                                                 class="me-2 fa fa-angle-left text-white"></span>Back</button>
                                                         <div class="d-flex align-items-center">
                                                             <div class="me-3">
-                                                                <b>You have <span id="mapCount">4</span> unmapped
+                                                                <b>You have <span id="mapCount"></span> unmapped
                                                                     columns</b>
                                                                 <div class="mt-2 mb-0 form-check">
                                                                     <input class="form-check-input" type="checkbox"
@@ -1038,7 +1061,7 @@
                                                                         columns</label>
                                                                 </div>
                                                             </div>
-                                                            <button type="button" class="common_btn next_btn">Next<span
+                                                            <button type="button" class="common_btn next_btn" disabled>Next<span
                                                                     class="ms-2 fa fa-angle-right text-white"></span></button>
                                                         </div>
                                                     </div>
@@ -1046,8 +1069,8 @@
                                                         class="product-mapping-2 d-none d-flex align-items-center justify-content-between">
                                                         <button type="button" class="bg-dark common_btn to-step-1"><span
                                                                 class="me-2 fa fa-angle-left text-white"></span>Back</button>
-                                                        <button type="button" class="common_btn next_btn"
-                                                            data-bs-dismiss="modal">Finish Import</button>
+                                                        <button type="button" class="common_btn"
+                                                            data-bs-dismiss="modal" id="finishImport" disabled>Finish Import</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1099,6 +1122,46 @@
 @section('js')
     <script>
         $(function() {
+            $('#formFile').change(function() {
+                var files = $(this).prop('files');
+                if (files.length !== 0) {
+                    $('#staticBackdrop').modal('show');
+                    $('#formFileVal').val($('#formFile').val().replace(/C:\\fakepath\\/i, ''));
+                    setTimeout(() => {
+                        var unMappLenght = $('.map-checkbox:not(:checked)').length;
+                        $('#mapCount').text(unMappLenght);
+                    }, 300);
+                }
+            });
+
+            $(document).on('click', '#bulkUpload', function() {
+                if($('#formFile').val()=='') {
+                    $('#formFile').trigger('click');
+                }
+                $('#formFile').trigger('change');
+            });
+
+            $(document).on('click', '.map-checkbox', function() {
+                var unMappLenght = $('.map-checkbox:not(:checked)').length;
+                $('#mapCount').text(unMappLenght);
+            });
+
+            $(document).on('click', '#agreeOffer1', function() {
+                if($('#agreeOffer1').prop('checked')==true) {
+                    $('.next_btn').attr('disabled', false);
+                } else {
+                    $('.next_btn').attr('disabled', true);
+                }
+            });
+
+            $(document).on('click', '#agreeOffer2', function() {
+                if($('#agreeOffer2').prop('checked')==true) {
+                    $('#finishImport').attr('disabled', false);
+                } else {
+                    $('#finishImport').attr('disabled', true);
+                }
+            });
+
             $('.bulk-modal .next_btn').on('click', function() {
                 $('.product-mapping-1').addClass('d-none');
                 $('.product-mapping-2').removeClass('d-none');

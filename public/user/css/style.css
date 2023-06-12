@@ -3624,7 +3624,7 @@ img[alt="envelope"] + input[type="email"] {
     border-radius: 0 !important;
 }
 
-.next_btn[disabled], .next_btn[disabled]:hover, .next_btn[disabled]:active {
+button[disabled], button[disabled]:hover, button[disabled]:active {
     cursor: no-drop;
     background: rgba(176, 25, 30, 0.3)!important;
 }
