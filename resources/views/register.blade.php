@@ -232,23 +232,18 @@
                         <h3 class="text-center text-inherit heading">Register your account.</h3>
                         <p class="pb-5 text-center">Reap the benefits of a personalized shopping experience.</p>
                         <ul class="mb-4 nav nav-tabs justify-content-center" id="authData" role="tablist">
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item positon-relative d-flex align-items-center" role="presentation">
                                 <button class="nav-link active" id="contactInfo-tab" data-bs-toggle="tab"
                                     data-bs-target="#contactInfo" type="button" role="tab" aria-controls="contactInfo"
                                     aria-selected="true"><span class="badge me-2">1</span> Contact Information</button>
+                                    <span class="d-block seperator"></span>
                             </li>
-                            <li class="nav-item d-flex align-items-center" role="presentation">
-                                <span class="d-block seperator"></span>
-                            </li>
-                            <li class="nav-item" role="presentation">
+                            <li class="nav-item positon-relative d-flex align-items-center" role="presentation">
                                 <button class="nav-link" id="businessInfo-tab" data-bs-toggle="tab"
                                     data-bs-target="#businessInfo" type="button" role="tab"
                                     aria-controls="businessInfo" aria-selected="false"><span class="badge me-2">2</span>
                                     Business Information</button>
-                            </li>
-                            <li class="nav-item d-flex align-items-center vendor-section d-none" role="presentation">
-                                <span class="d-block seperator"></span>
-
+                                    <span class="d-block seperator vendor-section d-none"></span>
                             </li>
                             <li class="nav-item vendor-section d-none" role="presentation">
                                 <button class="nav-link" id="prodInfo-tab" data-bs-toggle="tab" data-bs-target="#prodInfo"
@@ -342,13 +337,12 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                     </div>
                                     <div class="border-segregate">
                                         <div class="col-xl-10 mx-auto">
                                             <div class="row mx-auto py-2">
                                                 <div class="form-group my-4 text-end">
-                                                    <a href="#" class="common_btn continue_btn">Continue</a>
+                                                    <a href="#" class="common_btn continue_btn1">Continue</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -746,8 +740,8 @@
                                         <div class="col-xl-10 mx-auto">
                                             <div class="row mx-auto py-2">
                                                 <div class="form-group my-4 text-end">
-                                                    <a href="" class="font-600">Back</a>
-                                                    {{-- <button class="ms-5 common_btn continue_btn">Continue</button> --}}
+                                                    <a href="#" class="font-600">Back</a>
+                                                    <a href="#" class="d-none ms-5 common_btn continue_btn2">Continue</a>
                                                     <button class="ms-5 common_btn">Register</button>
                                                 </div>
                                             </div>
@@ -1130,6 +1124,37 @@
 @section('js')
     <script>
         $(function() {
+            $('.continue_btn1, .continue_btn2').click(function() {
+                // Get the current active tab
+                var currentTab = $('.tab-pane.active');
+                var currentLink = $('.nav-link.active');
+
+                // Hide the current tab
+                currentTab.removeClass('show active');
+                currentLink.removeClass('active');
+
+                // Find the next tab
+                var nextTab = currentTab.next('.tab-pane');
+                var nextLink = currentLink.closest('.nav-item').next('.nav-item').find('.nav-link');
+
+
+                // Check if there is a next tab
+                if (nextTab.length > 0) {
+                    // Show the next tab
+                    nextTab.addClass('show active');
+                    if($('#selRole').val()=='vendor') {
+                        nextTab.find('.continue_btn2').removeClass('d-none');
+                        nextTab.find('.continue_btn2').siblings('.common_btn').addClass('d-none');
+                    } else {
+                        nextTab.find('.continue_btn2').addClass('d-none');
+                        nextTab.find('.continue_btn2').siblings('.common_btn').removeClass('d-none');
+                    }
+                    // nextLink = $('.nav-link:first');
+                }
+                nextLink.addClass('active');
+
+            });
+
             $('#formFile').change(function() {
                 var files = $(this).prop('files');
                 if (files.length !== 0) {
@@ -1331,6 +1356,13 @@
             }
         });
 
+        $('#businessInfo-tab').on('click', function() {
+            if($('#selRole').val()=='vendor') {
+                $('.continue_btn2').removeClass('d-none').siblings('.common_btn').addClass('d-none');
+            } else {
+                $('.continue_btn2').addClass('d-none').siblings('.common_btn').removeClass('d-none');
+            }
+        });
 
         $(function() {
             $("#vendor_country_id").change(function() {
