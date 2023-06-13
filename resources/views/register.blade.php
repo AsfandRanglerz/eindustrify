@@ -201,6 +201,24 @@
     img[alt="map-icon"] {
         left: 14px;
     }
+
+    .box {
+    width: 100%;
+    min-height: 150px;
+    cursor: pointer;
+    background: #F7F7F7;
+    border: 2px dashed rgba(48, 48, 48, 0.3);
+    padding: 20px 20px;
+}
+.box-inside {
+    text-align: center;
+    margin: 2em 0;
+}
+.box-inside .heading {
+    font-family: 'Inter';
+    font-weight: 600;
+    color: rgba(28, 28, 28, 0.5);
+}
 </style>
 @section('public-content')
     <!--============================
@@ -858,21 +876,14 @@
                                                         data-bs-target="#staticBackdrop">Bulk Upload</button> --}}
                                                     <button type="button" class="common_btn" id="bulkUpload">Bulk Upload</button>
                                                     <!-- Button trigger modal -->
-
-
-
-
-
-
-
                                                 </div>
-                                                <form action="/upload-target" class="dropzone"></form>
-                                                <!-- Or With An Input Field Fallback -->
-                                                <form action="/upload-target" class="dropzone">
-                                                    <div class="fallback">
-                                                        <input name="file" type="file" multiple />
+                                                <div id="htmlBox" class="box">
+                                                    <div class="box-inside">
+                                                        <img class="d-block mx-auto mb-md-4 mb-3" src="{{ asset('/public/uploads/website-images/images/drag-drop.png') }}">
+                                                        <h6 class="heading file-val">Click to upload or Drag and Drop</h6>
+                                                        <small class="d-block mt-2">Maximum file size 50MB</small>
                                                     </div>
-                                                </form>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1012,7 +1023,7 @@
                                                                         for (let index = 0; index < a.length; index++) {
                                                                             const element = a[index];
                                                                             const heading = $(element).find('.col-head-file').text()
-                                                                            const selectedVal = $(element).find('.import-as').find('.select2').val()
+                                                                            const selectedVal = $(element).find('.import-as').find('select').val()
                                                                             obj[heading] = selectedVal
                                                                         }
                                                                         obj=JSON.stringify(obj)
@@ -1022,9 +1033,6 @@
                                                                 </script>
 
                                                                 <input type="hidden" id="objValues" name="keyValue">
-
-
-
 
                                                             <div class="mt-3 form-check">
                                                                 <input class="form-check-input" type="checkbox"
@@ -1127,6 +1135,7 @@
                 if (files.length !== 0) {
                     $('#staticBackdrop').modal('show');
                     $('#formFileVal').val($('#formFile').val().replace(/C:\\fakepath\\/i, ''));
+                    $('.file-val').text($('#formFile').val().replace(/C:\\fakepath\\/i, ''));
                     setTimeout(() => {
                         var unMappLenght = $('.map-checkbox:not(:checked)').length;
                         $('#mapCount').text(unMappLenght);
@@ -1134,7 +1143,7 @@
                 }
             });
 
-            $(document).on('click', '#bulkUpload', function() {
+            $(document).on('click', '#bulkUpload, .box', function() {
                 if($('#formFile').val()=='') {
                     $('#formFile').trigger('click');
                 }
@@ -1310,12 +1319,6 @@
                     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"
                 });
             }
-        });
-
-        $(".dropzone").dropzone({
-            url: "upload-target",
-            maxFiles: 3,
-            uploadMultiple: false,
         });
 
         $('#selRole').on('change', function() {
