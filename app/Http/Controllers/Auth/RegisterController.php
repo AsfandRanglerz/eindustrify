@@ -152,7 +152,7 @@ class RegisterController extends Controller
         ]);
     }
     // CustomerRegister
-    public function customerRegister(Request $request)
+    public function customerRegister(CustomerRegister $request)
     {
         // dd(json_decode($request->keyValue));
         // foreach (json_decode($request->keyValue) as $key => $data) {

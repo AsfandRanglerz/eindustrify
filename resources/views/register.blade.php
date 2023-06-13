@@ -736,7 +736,7 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Postal/zip code</label>
                                                     <input type="text" class="form-control" placeholder="147001"
-                                                        vender_zip_code>
+                                                      name="vender_zip_code" >
                                                 </div>
                                             </div>
                                             {{-- </form> --}}
