@@ -1,609 +1,336 @@
 @extends('layout')
 @section('title')
-    <title>{{ $product->seo_title }}</title>
+    <title></title>
 @endsection
 @section('meta')
-    <meta name="description" content="{{ $product->seo_description }} {{ $tags }}">
+    <meta name="description" content="">
 @endsection
 
 <style>
-    .exzoom .exzoom_img_ul_outer {
-        border: none!important;
+    ul {
+        list-style: none outside none;
+        padding-left: 0;
+        margin-bottom: 0;
     }
-    .multi-product-img {
-        border: 1px solid #ddd;
+
+    li {
+        display: block;
+        float: left;
+        margin-right: 6px;
+        cursor: pointer;
+    }
+
+    img {
+        display: block;
+        height: auto;
+        max-width: 100%;
+    }
+
+    .demo {
+        border: 1px solid #B7B7B7;
+        border-radius: 20px;
+        padding: 12px 36px;
+    }
+
+    .lSSlideOuter .lSPager.lSGallery {
+        margin: 24px auto 0 !important;
+    }
+
+    .prod-size-block {
+        column-gap: 16px;
+        row-gap: 12px;
+    }
+
+    .prod-size-block .prod-size {
+        background: #F2F2F2;
+        border: 1px solid #C8C8C8;
+        padding: 8px 24px;
+        width: 140px;
+    }
+
+    .prod-size-block .prod-size.active {
+        border-color: #B0191E;
+    }
+
+    .prod-size-block .prod-size.active .price {
+        color: #B0191E;
+        font-weight: 700;
+    }
+
+    .prod-size-block .price {
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 14px;
+    }
+
+    .similar-item-section .similar-item-block {
+        flex: 0 1 calc(20%);
+    }
+
+    .similar-item-block .price {
+        color: #B0191E;
+    }
+
+    .similar-item-block .inner {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+
+    }
+
+    .similar-item-block.active .inner {
+        border-color: #B0191E;
+        border-width: 2px;
+        box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    }
+
+    .spec-item {
+        border-top: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .list {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .list:last-child {
+        border-bottom: none;
+    }
+
+    .current-item {
+        background: rgba(176, 25, 30, 0.2);
+        border: 1px solid #B0191E;
+        font-weight: 700;
+        font-size: 16px;
+        line-height: 30px;
+        text-align: center;
+        color: #B0191E;
+        margin: 2px;
+    }
+
+    .prod-detail-section {
+        border: 1px solid #B7B7B7;
+        border-radius: 20px;
+    }
+
+    .prod-detail-section .accordion-item:first-child {
+        border-top: 2px solid #b7b7b765;
+    }
+
+    .prod-detail-section .accordion-item {
+        border-bottom: 1px solid #B7B7B7;
+    }
+
+    .prod-detail-section .accordion-button {
+        font-size: inherit!important;
+    }
+
+    .prod-detail-section .accordion-button.collapsed {
+        background: #FFF!important;
+    }
+
+    .prod-detail-section .accordion-button:not(.collapsed) {
+        background: #F2F2F2!important;
+    }
+
+    .prod-detail-section .accordion-button::after {
+        content: "\f107";
+        width: unset;
+        height: unset;
+        line-height: unset;
+        font-size: unset;
+        background: none!important;
+        box-shadow: none;
+    }
+
+    img[alt="prod-view"] {
+        width: 25px;
+        height: 35px;
+        object-fit: contain;
     }
 </style>
 
 @section('public-content')
-
-<!--============================
-        PRODUCT DETAILS START
-    ==============================-->
+    <!--============================
+            PRODUCT DETAILS START
+        ==============================-->
     <section id="wsus__product_details">
         <div class="container">
-            <div class="slider-for">
-                <div>your content1</div>
-                <div>your content2</div>
-                <div>your content3</div>
-                <div>your content4</div>
-                <div>your content5</div>
-              </div>
-              <div class="slider-nav">
-                <div>your content1</div>
-                <div>your content2</div>
-                <div>your content3</div>
-                <div>your content4</div>
-                <div>your content5</div>
-              </div>
             <div class="row">
-                <div class="col-md-5 col-lg-5">
-                    {{-- <div class="multi-product-img">
-                        <div id="sticky_pro_zoom">
-                            <div class="exzoom hidden" id="exzoom">
-                                <div class="exzoom_img_box">
-                                    @if ($product->video_link)
-                                        @php
-                                            $video_id=explode("=",$product->video_link);
-                                        @endphp
-                                        <a class="venobox wsus__pro_det_video" data-autoplay="true" data-vbtype="video"
-                                            href="https://youtu.be/{{ $video_id[1] }}">
-                                            <i class="fas fa-play"></i>
-                                        </a>
-                                    @endif
-                                    <ul class='exzoom_img_ul'>
-                                        @foreach ($product->gallery as $image)
-                                        <li><img class="zoom ing-fluid w-100" src="{{ asset($image->image) }}" alt="product"></li>
-                                        @endforeach
-
-
-                                    </ul>
-                                </div>
-                                <div class="exzoom_nav"></div>
-                                <p class="exzoom_btn">
-                                    <a href="javascript:void(0);" class="exzoom_prev_btn"> <i class="far fa-chevron-left"></i> </a>
-                                    <a href="javascript:void(0);" class="exzoom_next_btn"> <i class="far fa-chevron-right"></i> </a>
-                                </p>
-                            </div>
-                        </div>
-                    </div> --}}
-                </div>
-                <div class="col-md-7 col-lg-7">
-                    Home / Electric Motors / Servo Motors & Accessories / Servo Accessories / Electric Motor 1 Phase
-                    <h6></h6>
-                    <form id="reviewFormId" class="vendor_review_modal">
-                        @csrf
-                        <p class="rating">
-                            <span>{{__('user.select your rating')}} : </span>
-                            <i class="fas fa-star product_rat" data-rating="1" onclick="productReview(1)"></i>
-                            <i class="fas fa-star product_rat" data-rating="2" onclick="productReview(2)"></i>
-                            <i class="fas fa-star product_rat" data-rating="3" onclick="productReview(3)"></i>
-                            <i class="fas fa-star product_rat" data-rating="4" onclick="productReview(4)"></i>
-                            <i class="fas fa-star product_rat" data-rating="5" onclick="productReview(5)"></i>
-                        </p>
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="col-xl-12">
-                                    <div class="wsus__single_com">
-                                        <textarea name="review" cols="3" rows="3"
-                                            placeholder="{{__('user.Write your review')}}"></textarea>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <input type="hidden" id="product_id" name="product_id" value="{{ $product->id }}">
-                        <input type="hidden" name="rating" value="5" id="product_rating">
-                        <input type="hidden" name="seller_id" value="{{ $product->vendor_id }}">
-
-                        @if($recaptchaSetting->status==1)
-                            <div class="col-xl-12">
-                                <div class="wsus__single_com mb-3">
-                                    <div class="g-recaptcha" data-sitekey="{{ $recaptchaSetting->site_key }}"></div>
-                                </div>
-                            </div>
-                        @endif
-
-                    </form>
-
-
-                    <div class="wsus__pro_details_text">
-                        <a class="title" href="javascript:;">{{ $product->name }}</a>
-                            <input type="hidden" id="stock_qty" value="{{ $product->qty }}">
-                            @if ($product->qty == 0)
-                            <p class="wsus__stock_area"><span class="in_stock">{{__('user.Out of Stock')}}</span></p>
-                            @else
-                                <p class="wsus__stock_area"><span class="in_stock">{{__('user.In stock')}}</span>
-                                    @if ($setting->show_product_qty == 1)
-                                    ({{ $product->qty }} {{__('user.item')}})
-                                    @endif
-                                </p>
-                            @endif
-
-
-                        @php
-                            $reviewQty = $product->reviews->where('status',1)->count();
-                            $totalReview = $product->reviews->where('status',1)->sum('rating');
-
-                            if ($reviewQty > 0) {
-                                $average = $totalReview / $reviewQty;
-
-                                $intAverage = intval($average);
-
-                                $nextValue = $intAverage + 1;
-                                $reviewPoint = $intAverage;
-                                $halfReview=false;
-                                if($intAverage < $average && $average < $nextValue){
-                                    $reviewPoint= $intAverage + 0.5;
-                                    $halfReview=true;
-                                }
-                            }
-                        @endphp
-
-                        @php
-                            $variantPrice = 0;
-                            $variants = $product->variants->where('status', 1);
-                            if($variants->count() != 0){
-                                foreach ($variants as $variants_key => $variant) {
-                                    if($variant->variantItems->where('status',1)->count() != 0){
-                                        $item = $variant->variantItems->where('is_default',1)->first();
-                                        if($item){
-                                            $variantPrice += $item->price;
-                                        }
-                                    }
-                                }
-                            }
-                            $isCampaign = false;
-                            $today = date('Y-m-d H:i:s');
-                            $campaign = App\Models\CampaignProduct::where(['status' => 1, 'product_id' => $product->id])->first();
-                            if($campaign){
-                                $campaign = $campaign->campaign;
-                                if($campaign->start_date <= $today &&  $today <= $campaign->end_date){
-                                    $isCampaign = true;
-                                }
-                                $campaignOffer = $campaign->offer;
-                                $productPrice = $product->price;
-                                $campaignOfferPrice = ($campaignOffer / 100) * $productPrice;
-                                $totalPrice = $product->price;
-                                $campaignOfferPrice = $totalPrice - $campaignOfferPrice;
-                            }
-
-                            $totalPrice = $product->price;
-                            if($product->offer_price != null){
-                                $offerPrice = $product->offer_price;
-                                $offer = $totalPrice - $offerPrice;
-                                $percentage = ($offer * 100) / $totalPrice;
-                                $percentage = round($percentage);
-                            }
-
-
-                        @endphp
-
-                        @if ($isCampaign)
-                            <h4>{{ $currencySetting->currency_icon }} <span id="mainProductPrice">{{ sprintf("%.2f", $campaignOfferPrice + $variantPrice) }}</span>  <del>{{ $currencySetting->currency_icon }}{{ sprintf("%.2f", $totalPrice) }}</del></h4>
-                        @else
-                            @if ($product->offer_price == null)
-                                <h4>{{ $currencySetting->currency_icon }} <span id="mainProductPrice">{{ sprintf("%.2f", $totalPrice + $variantPrice) }}</span> </h4>
-                            @else
-                                <h4>{{ $currencySetting->currency_icon }} <span id="mainProductPrice">{{ sprintf("%.2f", $product->offer_price + $variantPrice) }}</span>  <del>{{ $currencySetting->currency_icon }}{{ sprintf("%.2f", $totalPrice) }}</del></h4>
-                            @endif
-                        @endif
-
-                        @if ($reviewQty > 0)
-                            <p class="review">
-                                @for ($i = 1; $i <=5; $i++)
-                                    @if ($i <= $reviewPoint)
-                                        <i class="fas fa-star"></i>
-                                    @elseif ($i> $reviewPoint )
-                                        @if ($halfReview==true)
-                                        <i class="fas fa-star-half-alt"></i>
-                                            @php
-                                                $halfReview=false
-                                            @endphp
-                                        @else
-                                        <i class="fal fa-star"></i>
-                                        @endif
-                                    @endif
-                                @endfor
-                                <span>({{ $reviewQty }} {{__('user.review')}})</span>
-                            </p>
-                        @endif
-
-                        @if ($reviewQty == 0)
-                            <p class="review">
-                                <i class="fal fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <i class="fal fa-star"></i>
-                                <span>(0 {{__('user.review')}})</span>
-                            </p>
-                        @endif
-
-                        <p class="description">{{ $product->short_description }}</p>
-
-                        @if ($product->is_flash_deal == 1)
-                            @php
-                                $end_time = $product->flash_deal_date;
-                            @endphp
-                            <script>
-                                var end_year = {{ date('Y', strtotime($end_time)) }};
-                                var end_month = {{ date('m', strtotime($end_time)) }};
-                                var end_date = {{ date('d', strtotime($end_time)) }};
-                            </script>
-                            <div class="wsus_pro_hot_deals">
-                                <h5>{{__('user.offer ending time')}} : </h5>
-                                <div class="simply-countdown product-details"></div>
-                            </div>
-                        @endif
-
-                        @php
-                            $productPrice = 0;
-                            if($isCampaign){
-                                $productPrice = $campaignOfferPrice + $variantPrice;
-                            }else{
-                                if ($product->offer_price == null) {
-                                    $productPrice = $totalPrice + $variantPrice;
-                                }else {
-                                    $productPrice = $product->offer_price + $variantPrice;
-                                }
-                            }
-                        @endphp
-
-                        <form id="shoppingCartForm">
-                        <div class="wsus__quentity">
-                            <h5>{{__('user.Quantity')}} :</h5>
-                            <div class="modal_btn">
-                                <button type="button" class="btn btn-danger btn-sm decrementProduct">-</button>
-                                <input class="form-control product_qty" name="quantity" readonly type="text" min="1" max="{{ $product->qty }}" value="1" data-qty="{{ $product->qty }}"/>
-                                <button type="button" class="btn btn-success btn-sm incrementProduct">+</button>
-                            </div>
-                            <h3 class="d-none">{{ $currencySetting->currency_icon }}<span id="product_price">{{ sprintf("%.2f",$productPrice) }}</span></h3>
-                        </div>
-
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <input type="hidden" name="image" value="{{ $product->thumb_image }}">
-                        <input type="hidden" name="slug" value="{{ $product->slug }}">
-
-                        @if ($productVariants->count() != 0)
-                            <div class="wsus__selectbox">
-                                <div class="row">
-                                    @foreach ($productVariants as $productVariant)
-                                        @php
-                                            $items = App\Models\ProductVariantItem::orderBy('is_default','desc')->where(['product_variant_id' => $productVariant->id, 'product_id' => $product->id])->get();
-                                        @endphp
-                                        @if ($items->count() != 0)
-                                            <div class="col-xl-6 col-sm-6 mb-3">
-                                                <h5 class="mb-2">{{ $productVariant->name }}:</h5>
-
-                                                <input type="hidden" name="variants[]" value="{{ $productVariant->id }}">
-                                                <input type="hidden" name="variantNames[]" value="{{ $productVariant->name }}">
-
-                                                <select class="select_2 productVariant" name="items[]">
-                                                    @foreach ($items as $item)
-                                                        <option value="{{ $item->id }}">{{ $item->name }}</option>
-                                                    @endforeach
-                                                </select>
-
-                                            </div>
-                                        @endif
-                                    @endforeach
-                                </div>
-                            </div>
-                        @endif
-
-                        <ul class="wsus__button_area">
-                            <li><button type="submit" class="add_cart">{{__('user.add to cart')}}</button></li>
-                            <li><a class="buy_now" href="javascript:;" id="buyNowBtn">{{__('user.buy now')}}</a></li>
-                            <li><a href="javascript:;" onclick="addToWishlist('{{ $product->id }}')"><i class="fal fa-heart"></i></a></li>
-                            <li><a href="javascript:;" onclick="addToCompare('{{ $product->id }}')"><i class="far fa-random"></i></a></li>
-                        </ul>
-
-                    </form>
-                        @if ($product->sku)
-                        <p class="brand_model"><span>{{__('user.Model')}} :</span> {{ $product->sku }}</p>
-                        @endif
-
-                        <p class="brand_model"><span>{{__('user.Brand')}} :</span> <a href="{{ route('product',['brand' => $product->brand->slug]) }}">{{ $product->brand->name }}</a></p>
-                        <p class="brand_model"><span>{{__('user.Category')}} :</span> <a href="{{ route('product',['category' => $product->category->slug]) }}">{{ $product->category->name }}</a></p>
-                        <div class="wsus__pro_det_share d-none">
-                            <h5>{{__('user.share')}} :</h5>
-                            <ul class="d-flex">
-                                <li><a class="facebook" href="https://www.facebook.com/sharer/sharer.php?u={{ route('product-detail', $product->slug) }}&t={{ $product->name }}"><i class="fab fa-facebook-f"></i></a></li>
-                                <li><a class="twitter" href="https://twitter.com/share?text={{ $product->name }}&url={{ route('product-detail', $product->slug) }}"><i class="fab fa-twitter"></i></a></li>
-                                <li><a class="linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url={{ route('product-detail', $product->slug) }}&title={{ $product->name }}"><i class="fab fa-linkedin"></i></a></li>
-                                <li><a class="pinterest" href="https://www.pinterest.com/pin/create/button/?description={{ $product->name }}&media=&url={{ route('product-detail', $product->slug) }}"><i class="fab fa-pinterest-p"></i></a></li>
+                <div class="col-lg-4 px-2">
+                    <div class="demo">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                Share
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
                             </ul>
                         </div>
-                        @auth
-                            @php
-                                $user = Auth::guard('web')->user();
-                                $isExist = false;
-                                $orders = App\Models\Order::where(['user_id' => $user->id])->get();
-                                foreach ($orders as $key => $order) {
-                                    foreach ($order->orderProducts as $key => $orderProduct) {
-                                        if($orderProduct->product_id == $product->id){
-                                            $isExist = true;
-                                        }
-                                    }
-                                }
-                            @endphp
-                        @if ($isExist)
-                            <a class="wsus__pro_report" href="#" data-bs-toggle="modal" data-bs-target="#productReportModal"><i
-                            class="fal fa-comment-alt-smile"></i> {{__('user.Report incorrect product information')}}</a>
-                        @endif
-
-                        @endauth
-
-                    </div>
-
-                    <!--==========================
-                    PRODUCT  REPORT MODAL VIEW
-                    ===========================-->
-                    @auth
-                        @if ($isExist)
-                            <section class="product_popup_modal report_modal">
-                                <div class="modal fade" id="productReportModal" tabindex="-1" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h5 class="modal-title">{{__('user.Report Product')}}</h5>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"><i
-                                                        class="far fa-times"></i></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <form id="reportModalForm">
-                                                            @csrf
-                                                            <div class="wsus__single_input">
-                                                                <label>{{__('user.Subject')}}</label>
-                                                                <input type="text" name="subject" placeholder="{{__('user.Type Subject')}}">
-                                                                <input type="hidden" name="product_id" value="{{ $product->id }}">
-                                                                <input type="hidden" name="seller_id" value="{{ $product->vendor_id }}">
-                                                            </div>
-                                                            <div class="wsus__single_input">
-                                                                <label>{{__('user.Description')}}</label>
-                                                                <textarea name="description" cols="3" rows="3"
-                                                                    placeholder="{{__('user.Description')}}"></textarea>
-                                                            </div>
-
-                                                            <button type="submit" class="common_btn">{{__('user.submit')}}</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </section>
-                        @endif
-                    @endauth
-                    <!--==========================
-                    PRODUCT REPORT MODAL VIEW
-                    ===========================-->
-                </div>
-                <div class="col-xl-12">
-                    <div class="wsus__pro_det_description">
-                        <ul class="nav nav-pills mb-3" id="pills-tab3" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="pills-home-tab7" data-bs-toggle="pill"
-                                    data-bs-target="#pills-home22" type="button" role="tab" aria-controls="pills-home"
-                                    aria-selected="true">{{__('user.Description')}}</button>
+                        <ul id="lightSlider">
+                            <li data-thumb="{{ asset('public/uploads/website-images/images/engine41.png') }}">
+                                <img src="{{ asset('public/uploads/website-images/images/engine41.png') }}" />
                             </li>
-                            @if ($product->is_specification == 1)
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-profile-tab7" data-bs-toggle="pill"
-                                    data-bs-target="#pills-profile22" type="button" role="tab"
-                                    aria-controls="pills-profile" aria-selected="false">{{__('user.Specification')}}</button>
+                            <li data-thumb="{{ asset('public/uploads/website-images/images/engine42.png') }}">
+                                <img src="{{ asset('public/uploads/website-images/images/engine42.png') }}" />
                             </li>
-                            @endif
-
-                            @if ($product->vendor_id != 0)
-                            @if ($setting->enable_multivendor == 1)
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill"
-                                    data-bs-target="#pills-contact" type="button" role="tab"
-                                    aria-controls="pills-contact" aria-selected="false">{{__('user.Seller Information')}}</button>
+                            <li data-thumb="{{ asset('public/uploads/website-images/images/engine43.png') }}">
+                                <img src="{{ asset('public/uploads/website-images/images/engine43.png') }}" />
                             </li>
-                            @endif
-                            @endif
-
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="pills-contact-tab2" data-bs-toggle="pill"
-                                    data-bs-target="#pills-contact2" type="button" role="tab"
-                                    aria-controls="pills-contact2" aria-selected="false">{{__('user.Reviews')}}</button>
+                            <li data-thumb="{{ asset('public/uploads/website-images/images/engine44.png') }}">
+                                <img src="{{ asset('public/uploads/website-images/images/engine44.png') }}" />
                             </li>
-
+                            <li data-thumb="{{ asset('public/uploads/website-images/images/engine45.png') }}">
+                                <img src="{{ asset('public/uploads/website-images/images/engine45.png') }}" />
+                            </li>
                         </ul>
-                        <div class="tab-content" id="pills-tabContent4">
-                            <div class="tab-pane fade  show active " id="pills-home22" role="tabpanel"
-                                aria-labelledby="pills-home-tab7">
-                                <div class="row">
-                                    <div class="col-12">
-                                        {!! $product->long_description !!}
-                                    </div>
-
-
-                                </div>
+                    </div>
+                </div>
+                <div class="col-lg-8 px-2">
+                    <div class="prod-detail-section">
+                        <div class="px-3 pt-3 pb-4">
+                            Home / Electric Motors / Servo Motors & Accessories / Servo Accessories / Electric Motor 1 Phase
+                            <h5>Mophorn 3 HP Electric Motor 1 Phase AC Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW Air Compressor Motor,
+                                115/230V</h5>
+                            <div class="my-4 d-flex align-items-center">
+                                <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}" class="me-1">
+                                <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}" class="me-1">
+                                <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}" class="me-1">
+                                <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}" class="me-1">
+                                <img src="{{ asset('public/uploads/website-images/images/rating-star2.png') }}" class="me-1">
+                                <b class="ms-1">4.0 <a href="#" class="mx-2 text-decoration-underline red-link">429 Reviews</a> | See More by <a href="#" class="text-decoration-underline red-link">Supplier</a></b>
                             </div>
-                            <div class="tab-pane fade" id="pills-profile22" role="tabpanel"
-                                aria-labelledby="pills-profile-tab7">
-                                <div class="row">
-                                    <div class="col-xl-6 col-lg-6 mb-4 mb-lg-0">
-                                        <div class="wsus__pro_det_info">
-                                            <h4>{{__('user.Additional Information')}}</h4>
-                                            @foreach ($product->specifications as $specification)
-                                            <p><span>{{ $specification->key->key }}</span> <span>{{ $specification->specification }}</span></p>
-                                            @endforeach
-                                        </div>
-                                    </div>
 
-                                </div>
+                            <div class="d-flex align-items-center">
+                                <h3 class="d-inline-block red-text">$198.00</h3>
+                                <s>$230.00</s>
+                                <span class="red-text">14%</span>OFF
                             </div>
-                            @if ($product->vendor_id != 0)
-                            @php
-                                $user = $product->seller;
-                                $user = $user->user;
-                            @endphp
-                            <div class="tab-pane fade" id="pills-contact" role="tabpanel"
-                                aria-labelledby="pills-contact-tab">
-                                <div class="wsus__pro_det_vendor">
-                                    <div class="row">
-                                        <div class="col-xl-6 col-xxl-5 col-md-6">
-                                            <div class="wsus__vebdor_img">
-                                                @if ($user->image)
-                                                <img src="{{ asset($user->image) }}" alt="vensor" class="img-fluid w-100">
-                                                @else
-                                                <img src="{{ asset($defaultProfile->image) }}" alt="vensor" class="img-fluid w-100">
-                                                @endif
 
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-6 col-xxl-7 col-md-6 mt-4 mt-md-0">
-                                            <div class="wsus__pro_det_vendor_text">
-                                                <h4>{{ $user->name }}</h4>
-                                                @php
-                                                    $reviewQty = App\Models\ProductReview::where('status',1)->where('product_vendor_id',$product->vendor_id)->count();
-                                                    $totalReview = App\Models\ProductReview::where('status',1)->where('product_vendor_id',$product->vendor_id)->sum('rating');
-                                                    if ($reviewQty > 0) {
-                                                        $average = $totalReview / $reviewQty;
-                                                        $intAverage = intval($average);
-                                                        $nextValue = $intAverage + 1;
-                                                        $reviewPoint = $intAverage;
-                                                        $halfReview = false;
-                                                        if($intAverage < $average && $average < $nextValue){
-                                                            $reviewPoint= $intAverage + 0.5;
-                                                            $halfReview=true;
-                                                        }
-                                                    }
-                                                @endphp
-
-                                                @if ($reviewQty > 0)
-                                                <p class="rating">
-                                                    @for ($i = 1; $i <=5; $i++)
-                                                        @if ($i <= $reviewPoint)
-                                                            <i class="fas fa-star"></i>
-                                                        @elseif ($i> $reviewPoint )
-                                                            @if ($halfReview==true)
-                                                            <i class="fas fa-star-half-alt"></i>
-                                                                @php
-                                                                    $halfReview=false
-                                                                @endphp
-                                                            @else
-                                                            <i class="fal fa-star"></i>
-                                                            @endif
-                                                        @endif
-                                                    @endfor
-                                                    <span>({{ $reviewQty }} {{ __('user.review') }})</span>
-                                                </p>
-                                                @endif
-
-                                                @if ($reviewQty == 0)
-                                                    <p class="rating">
-                                                        <i class="fal fa-star"></i>
-                                                        <i class="fal fa-star"></i>
-                                                        <i class="fal fa-star"></i>
-                                                        <i class="fal fa-star"></i>
-                                                        <i class="fal fa-star"></i>
-                                                        <span>(0 {{ __('user.review') }})</span>
-                                                    </p>
-                                                @endif
-
-                                                <p><span>{{__('user.Store Name')}}:</span> {{ $user->seller->shop_name }}</p>
-                                                <p><span>{{__('user.Address')}}:</span> {{ $user->address }} {{ $user->city ? ','.$user->city->name : '' }} {{ $user->city ? ','.$user->city->countryState->name : '' }} {{ $user->city ? ','.$user->city->countryState->country->name : '' }}</p>
-                                                <p><span>{{__('user.Phone')}}:</span> {{ $user->phone }}</p>
-                                                <p><span>{{__('user.mail')}}:</span> {{ $user->email }}</p>
-                                                <a href="{{ route('seller-detail',['shop_name' => $user->seller->slug]) }}" class="see_btn">{{__('user.visit store')}}</a>
-                                                <a href="{{ route('user.chat-with-seller', $user->seller->slug) }}" class="see_btn">{{__('user.Chat with Seller')}}</a>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-12">
-                                            <div class="wsus__vendor_details">
-                                                {!! clean($user->seller->description) !!}
-                                            </div>
-                                        </div>
+                            <p class="my-3">Select Size: <b>3 HP</b></p>
+                            <div class="d-flex flex-wrap prod-size-block">
+                                <button class="prod-size"><b>0.75 HP</b> <br> <span class="price">$148.00</span></button>
+                                <button class="prod-size"><b>1 HP</b> <br> <span class="price">$138.00</span></button>
+                                <button class="prod-size"><b>1.5 HP</b> <br> <span class="price">$128.00</span></button>
+                                <button class="prod-size"><b>2 HP</b> <br> <span class="price">$204.00</span></button>
+                                <button class="prod-size active"><b>3 HP</b> <br> <span class="price">$198.00</span></button>
+                                <button class="prod-size"><b>4 HP</b> <br> <span class="price">$248.00</span></button>
+                                <button class="prod-size"><b>5 HP</b> <br> <span class="price">$298.00</span></button>
+                            </div>
+                        </div>
+                        <div class="accordion" id="prodDetailAccordian">
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="headingOne">
+                                    <button class="accordion-button text-uppercase font-700 collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#shortDescription" aria-expanded="true" aria-controls="shortDescription">
+                                        SHORT DESCRIPTION
+                                    </button>
+                                </h5>
+                                <div id="shortDescription" class="accordion-collapse collapse" aria-labelledby="headingOne"
+                                    data-bs-parent="#prodDetailAccordian">
+                                    <div class="accordion-body">
                                     </div>
                                 </div>
                             </div>
-                            @endif
-                            <div class="tab-pane fade" id="pills-contact2" role="tabpanel"
-                                aria-labelledby="pills-contact-tab2">
-                                <div class="wsus__pro_det_review">
-                                    <div class="wsus__pro_det_review_single">
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="headingTwo">
+                                    <button class="accordion-button text-uppercase font-700" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#prodOverView" aria-expanded="false" aria-controls="prodOverView">
+                                        Product Overview
+                                    </button>
+                                </h5>
+                                <div id="prodOverView" class="accordion-collapse collapse show" aria-labelledby="headingTwo"
+                                    data-bs-parent="#prodDetailAccordian">
+                                    <div class="accordion-body px-lg-5 py-lg-4">
                                         <div class="row">
-                                            <div class="col-xl-8 col-lg-7">
-                                                <div class="wsus__comment_area">
-                                                    <h4>{{__('user.Reviews')}} <span>{{ $totalProductReviewQty }}</span></h4>
-                                                    @foreach ($productReviews as $review)
-                                                    <div class="wsus__main_comment">
-                                                        <div class="wsus__comment_img">
-                                                            <img src="{{ $review->user->image ? asset($review->user->image) : asset($defaultProfile->image) }}" alt="user"
-                                                                class="img-fluid w-100">
-                                                        </div>
-                                                        <div class="wsus__comment_text replay">
-                                                            <h6>{{ $review->user->name }} <span>{{ $review->rating }} <i
-                                                                        class="fas fa-star"></i></span></h6>
-                                                            <span>{{ $review->created_at->format('d M, Y') }}</span>
-                                                            <p>
-                                                                {{ $review->review }}
-                                                            </p>
-                                                        </div>
-                                                    </div>
-                                                    @endforeach
-                                                    {{ $productReviews->links('custom_paginator') }}
+                                            <div class="col-lg-6 mb-2">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{{ asset('public/uploads/website-images/images/prod-view5.png') }}" alt="prod-view">
+                                                    <span class="ms-3 small">Powerful Motor</span>
                                                 </div>
                                             </div>
-                                            <div class="col-xl-4 col-lg-5 mt-4 mt-lg-0">
-                                                <div class="wsus__post_comment rev_mar" id="sticky_sidebar3">
-                                                    <h4>{{__('user.write a Review')}}</h4>
-                                                    <form id="reviewFormId">
-                                                        @csrf
-                                                        <p class="rating">
-                                                            <span>{{__('user.select your rating')}} : </span>
-                                                            <i class="fas fa-star product_rat" data-rating="1" onclick="productReview(1)"></i>
-                                                            <i class="fas fa-star product_rat" data-rating="2" onclick="productReview(2)"></i>
-                                                            <i class="fas fa-star product_rat" data-rating="3" onclick="productReview(3)"></i>
-                                                            <i class="fas fa-star product_rat" data-rating="4" onclick="productReview(4)"></i>
-                                                            <i class="fas fa-star product_rat" data-rating="5" onclick="productReview(5)"></i>
-                                                        </p>
-                                                        <div class="row">
-                                                            <div class="col-xl-12">
-                                                                <div class="col-xl-12">
-                                                                    <div class="wsus__single_com">
-                                                                        <textarea name="review" cols="3" rows="3"
-                                                                            placeholder="{{__('user.Write your review')}}"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <input type="hidden" id="product_id" name="product_id" value="{{ $product->id }}">
-                                                        <input type="hidden" name="rating" value="5" id="product_rating">
-                                                        <input type="hidden" name="seller_id" value="{{ $product->vendor_id }}">
-
-                                                        @if($recaptchaSetting->status==1)
-                                                            <div class="col-xl-12">
-                                                                <div class="wsus__single_com mb-3">
-                                                                    <div class="g-recaptcha" data-sitekey="{{ $recaptchaSetting->site_key }}"></div>
-                                                                </div>
-                                                            </div>
-                                                        @endif
-
-                                                        @auth
-                                                        <button class="common_btn" type="submit">{{__('user.submit review')}}</button>
-                                                        @else
-                                                        <a class="login_link" href="{{ route('login') }}">{{__('user.Before submit review, please login first')}}</a>
-                                                        @endauth
-
-                                                    </form>
+                                            <div class="col-lg-6 mb-2">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{{ asset('public/uploads/website-images/images/prod-view6.png') }}" alt="prod-view">
+                                                    <span class="ms-3 small">Mounting Bracket Included</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 mb-2">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{{ asset('public/uploads/website-images/images/prod-view1.png') }}" alt="prod-view">
+                                                    <span class="ms-3 small">High Performance</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 mb-2">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{{ asset('public/uploads/website-images/images/prod-view2.png') }}" alt="prod-view">
+                                                    <span class="ms-3 small">Fully Enclosed Fan</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 mb-2">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{{ asset('public/uploads/website-images/images/prod-view4.png') }}" alt="prod-view">
+                                                    <span class="ms-3 small">Sturdy & Durable Construction</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 mb-2">
+                                                <div class="d-flex align-items-center">
+                                                    <img src="{{ asset('public/uploads/website-images/images/prod-view3.png') }}" alt="prod-view">
+                                                    <span class="ms-3 small">Wide Application</span>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button text-uppercase font-700 collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#speciFications" aria-expanded="false" aria-controls="speciFications">
+                                        Specifications
+                                    </button>
+                                </h5>
+                                <div id="speciFications" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                    data-bs-parent="#prodDetailAccordian">
+                                    <div class="accordion-body">
+                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until
+                                        the collapse plugin adds the appropriate classes that we use to style each element.
+                                        These classes control the overall appearance, as well as the showing and hiding via CSS
+                                        transitions. You can modify any of this with custom CSS or overriding our default
+                                        variables. It's also worth noting that just about any HTML can go within the
+                                        <code>.accordion-body</code>, though the transition does limit overflow.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button text-uppercase font-700 collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#suppInfo" aria-expanded="false" aria-controls="suppInfo">
+                                        Supplier Info
+                                    </button>
+                                </h5>
+                                <div id="suppInfo" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                    data-bs-parent="#prodDetailAccordian">
+                                    <div class="accordion-body">
+                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until
+                                        the collapse plugin adds the appropriate classes that we use to style each element.
+                                        These classes control the overall appearance, as well as the showing and hiding via CSS
+                                        transitions. You can modify any of this with custom CSS or overriding our default
+                                        variables. It's also worth noting that just about any HTML can go within the
+                                        <code>.accordion-body</code>, though the transition does limit overflow.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 d-flex align-items-center justify-content-between">
+                            <div>
+                                <h5 class="text-uppercase">Product Enquiry</h5>
+                                <p>We're here to help.</p>
+                            </div>
+                            <div>
+                                <button class="btn-bg">Product Inquiry</button>
+                                <button class="black-btn">Contact Us</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -611,13 +338,136 @@
         </div>
     </section>
     <!--============================
-        PRODUCT DETAILS END
-    ==============================-->
-
+            PRODUCT DETAILS END
+        ==============================-->
 
     <!--============================
-        RELATED PRODUCT START
-    ==============================-->
+            RELATED PRODUCT START
+        ==============================-->
+    <div class="featured-products">
+        <div class="container pt-xl-5 pt-3">
+            <div class="mb-xl-3 mb-0 d-flex flex-wrap align-items-center justify-content-between">
+                <h4 class="mb-0">Compare Similar Items</h4>
+            </div>
+            <div class="row similar-item-section">
+                <div class="px-2 similar-item-block">
+                    <div class="inner">
+                        <p class="invisible current-item">Current Item</p>
+                        <div
+                            class="mt-2 position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/similar-item5.png') }}">
+                        </div>
+                        <div class="text-center">
+                            <h6 class="mb-1 name">1HP 1725 115-230</h6>
+                            <h6 class="price">$188.00</h6>
+                        </div>
+                        <div class="mt-2 spec-item">
+                            <p class="py-2 text-center small list"><b>Horsepower: </b>1HP</p>
+                            <p class="py-2 text-center small list"><b>RPM: </b>1725</p>
+                            <p class="py-2 text-center small list"><b>Voltage: </b>115-230</p>
+                            <p class="py-2 text-center small list"><b>Frequency: </b>60hz</p>
+                        </div>
+                        <div class="py-3 px-2">
+                            <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                            <button class="mt-2 black-btn w-100">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-2 similar-item-block active">
+                    <div class="inner">
+                        <p class="current-item">Current Item</p>
+                        <div
+                            class="mt-2 position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/similar-item1.png') }}">
+                        </div>
+                        <div class="text-center">
+                            <h6 class="mb-1 name">0.5HP 1725 115-230</h6>
+                            <h6 class="price">$198.00</h6>
+                        </div>
+                        <div class="mt-2 spec-item">
+                            <p class="py-2 text-center small list"><b>Horsepower: </b>1HP</p>
+                            <p class="py-2 text-center small list"><b>RPM: </b>1725</p>
+                            <p class="py-2 text-center small list"><b>Voltage: </b>115-230</p>
+                            <p class="py-2 text-center small list"><b>Frequency: </b>60hz</p>
+                        </div>
+                        <div class="py-3 px-2">
+                            <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                            <button class="mt-2 black-btn w-100">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-2 similar-item-block">
+                    <div class="inner">
+                        <p class="invisible current-item">Current Item</p>
+                        <div
+                            class="mt-2 position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/similar-item3.png') }}">
+                        </div>
+                        <div class="text-center">
+                            <h6 class="mb-1 name">1HP 3450 115-230</h6>
+                            <h6 class="price">$218.00</h6>
+                        </div>
+                        <div class="mt-2 spec-item">
+                            <p class="py-2 text-center small list"><b>Horsepower: </b>1HP</p>
+                            <p class="py-2 text-center small list"><b>RPM: </b>1725</p>
+                            <p class="py-2 text-center small list"><b>Voltage: </b>115-230</p>
+                            <p class="py-2 text-center small list"><b>Frequency: </b>60hz</p>
+                        </div>
+                        <div class="py-3 px-2">
+                            <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                            <button class="mt-2 black-btn w-100">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-2 similar-item-block">
+                    <div class="inner">
+                        <p class="invisible current-item">Current Item</p>
+                        <div
+                            class="mt-2 position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/similar-item2.png') }}">
+                        </div>
+                        <div class="text-center">
+                            <h6 class="mb-1 name">1.5HP 1725 115-230</h6>
+                            <h6 class="price">$230.00</h6>
+                        </div>
+                        <div class="mt-2 spec-item">
+                            <p class="py-2 text-center small list"><b>Horsepower: </b>1HP</p>
+                            <p class="py-2 text-center small list"><b>RPM: </b>1725</p>
+                            <p class="py-2 text-center small list"><b>Voltage: </b>115-230</p>
+                            <p class="py-2 text-center small list"><b>Frequency: </b>60hz</p>
+                        </div>
+                        <div class="py-3 px-2">
+                            <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                            <button class="mt-2 black-btn w-100">View Details</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-2 similar-item-block">
+                    <div class="inner">
+                        <p class="invisible current-item">Current Item</p>
+                        <div
+                            class="mt-2 position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <img src="{{ asset('public/uploads/website-images/images/similar-item1.png') }}">
+                        </div>
+                        <div class="text-center">
+                            <h6 class="mb-1 name">1.5HP 3450 115-230</h6>
+                            <h6 class="price">$260.00</h6>
+                        </div>
+                        <div class="mt-2 spec-item">
+                            <p class="py-2 text-center small list"><b>Horsepower: </b>1HP</p>
+                            <p class="py-2 text-center small list"><b>RPM: </b>1725</p>
+                            <p class="py-2 text-center small list"><b>Voltage: </b>115-230</p>
+                            <p class="py-2 text-center small list"><b>Frequency: </b>60hz</p>
+                        </div>
+                        <div class="py-3 px-2">
+                            <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                            <button class="mt-2 black-btn w-100">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="featured-products">
         <div class="container py-xl-5 py-3">
             <div class="mb-xl-3 mb-0 d-flex flex-wrap align-items-center justify-content-between">
@@ -626,8 +476,10 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 p-2">
                     <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
-                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
+                                aria-hidden="true"></span></button>
+                        <div
+                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
                             <img src="{{ asset('public/uploads/website-images/images/engine15.png') }}">
                             <a href="" class="position-absolute text-white quick-view">Quick View</a>
                         </div>
@@ -640,8 +492,10 @@
                 </div>
                 <div class="col-lg-3 col-md-6 p-2">
                     <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
-                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
+                                aria-hidden="true"></span></button>
+                        <div
+                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
                             <img src="{{ asset('public/uploads/website-images/images/engine2.png') }}">
                             <a href="" class="position-absolute text-white quick-view">Quick View</a>
                         </div>
@@ -655,8 +509,10 @@
                 </div>
                 <div class="col-lg-3 col-md-6 p-2">
                     <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
-                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
+                                aria-hidden="true"></span></button>
+                        <div
+                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
                             <img src="{{ asset('public/uploads/website-images/images/engine3.png') }}">
                             <a href="" class="position-absolute text-white quick-view">Quick View</a>
                         </div>
@@ -669,8 +525,10 @@
                 </div>
                 <div class="col-lg-3 col-md-6 p-2">
                     <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
-                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
+                                aria-hidden="true"></span></button>
+                        <div
+                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
                             <img src="{{ asset('public/uploads/website-images/images/engine8.png') }}">
                             <a href="" class="position-absolute text-white quick-view">Quick View</a>
                         </div>
@@ -692,8 +550,10 @@
             <div class="row">
                 <div class="col-lg-3 col-md-6 p-2">
                     <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
-                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
+                                aria-hidden="true"></span></button>
+                        <div
+                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
                             <img src="{{ asset('public/uploads/website-images/images/engine15.png') }}">
                             <a href="" class="position-absolute text-white quick-view">Quick View</a>
                         </div>
@@ -706,8 +566,10 @@
                 </div>
                 <div class="col-lg-3 col-md-6 p-2">
                     <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
-                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
+                                aria-hidden="true"></span></button>
+                        <div
+                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
                             <img src="{{ asset('public/uploads/website-images/images/engine2.png') }}">
                             <a href="" class="position-absolute text-white quick-view">Quick View</a>
                         </div>
@@ -721,8 +583,10 @@
                 </div>
                 <div class="col-lg-3 col-md-6 p-2">
                     <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
-                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
+                                aria-hidden="true"></span></button>
+                        <div
+                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
                             <img src="{{ asset('public/uploads/website-images/images/engine3.png') }}">
                             <a href="" class="position-absolute text-white quick-view">Quick View</a>
                         </div>
@@ -735,8 +599,10 @@
                 </div>
                 <div class="col-lg-3 col-md-6 p-2">
                     <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
-                        <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
+                                aria-hidden="true"></span></button>
+                        <div
+                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
                             <img src="{{ asset('public/uploads/website-images/images/engine8.png') }}">
                             <a href="" class="position-absolute text-white quick-view">Quick View</a>
                         </div>
@@ -751,200 +617,20 @@
         </div>
     </div>
     <!--============================
-        RELATED PRODUCT END
-    ==============================-->
-
-
-<script>
-    (function($) {
-        "use strict";
-        $(document).ready(function () {
-            $(".productVariant").on("change",function(){
-                calculateProductPrice();
-            })
-
-            $(".decrementProduct").on("click", function(){
-                let qty = $(".product_qty").val();
-                if(qty > 1){
-                    qty = qty - 1;
-                    $(".product_qty").val(qty);
-                    calculateProductPrice();
-                }
-            })
-
-            $(".incrementProduct").on("click", function(){
-                let stock_qty = "{{ $product->qty }}";
-
-                let qty = $(".product_qty").val();
-                if(parseInt(qty) < parseInt(stock_qty)){
-                    qty = qty*1 + 1*1;
-                    $(".product_qty").val(qty);
-                    calculateProductPrice();
-                }
-            })
-
-            $("#reportModalForm").on('submit', function(e){
-                e.preventDefault();
-                var isDemo = "{{ env('APP_VERSION') }}"
-                if(isDemo == 0){
-                    toastr.error('This Is Demo Version. You Can Not Change Anything');
-                    return;
-                }
-                $.ajax({
-                    type: 'post',
-                    data: $('#reportModalForm').serialize(),
-                    url: "{{ route('user.product-report') }}",
-                    success: function (response) {
-                        if(response.status == 1){
-                            toastr.success(response.message)
-                            $("#productReportModal").trigger("reset");
-                            $("#productReportModal").modal('hide')
-                        }
-                        if(response.status == 0){
-                            toastr.error(response.message)
-                        }
-                    },
-                    error: function(err) {
-                        alert('error')
-                    }
-                });
-            })
-
-            //start insert new cart item
-            $("#shoppingCartForm").on("submit", function(e){
-                e.preventDefault();
-                $.ajax({
-                    type: 'get',
-                    data: $('#shoppingCartForm').serialize(),
-                    url: "{{ route('add-to-cart') }}",
-                    success: function (response) {
-                        if(response.status == 0){
-                            toastr.error(response.message)
-                        }
-                        if(response.status == 1){
-                            toastr.success(response.message)
-                            $.ajax({
-                                type: 'get',
-                                url: "{{ route('load-sidebar-cart') }}",
-                                success: function (response) {
-                                   $("#load_sidebar_cart").html(response)
-                                   $.ajax({
-                                        type: 'get',
-                                        url: "{{ route('get-cart-qty') }}",
-                                        success: function (response) {
-                                            $("#cartQty").text(response.qty);
-                                        },
-                                    });
-                                },
-                            });
-                        }
-                    },
-                    error: function(response) {
-
-                    }
-                });
-            })
-            //start insert new cart item
-
-            // buy now item
-            $("#buyNowBtn").on("click", function(){
-                $.ajax({
-                    type: 'get',
-                    data: $('#shoppingCartForm').serialize(),
-                    url: "{{ route('add-to-cart') }}",
-                    success: function (response) {
-                        if(response.status == 0){
-                            toastr.error(response.message)
-                        }
-                        if(response.status == 1){
-                            window.location.href = "{{ route('cart') }}";
-                            toastr.success(response.message)
-                            $.ajax({
-                                type: 'get',
-                                url: "{{ route('load-sidebar-cart') }}",
-                                success: function (response) {
-                                   $("#load_sidebar_cart").html(response)
-                                   $.ajax({
-                                        type: 'get',
-                                        url: "{{ route('get-cart-qty') }}",
-                                        success: function (response) {
-                                            $("#cartQty").text(response.qty);
-                                        },
-                                    });
-                                },
-                            });
-                        }
-                    },
-                    error: function(response) {
-
-                    }
-                });
-            })
-
-            $("#reviewFormId").on('submit', function(e){
-                e.preventDefault();
-
-                var isDemo = "{{ env('APP_VERSION') }}"
-                if(isDemo == 0){
-                    toastr.error('This Is Demo Version. You Can Not Change Anything');
-                    return;
-                }
-                $.ajax({
-                    type: 'post',
-                    data: $('#reviewFormId').serialize(),
-                    url: "{{ route('user.store-product-review') }}",
-                    success: function (response) {
-                        if(response.status == 1){
-                            toastr.success(response.message)
-                            $("#reviewFormId").trigger("reset");
-                        }
-                        if(response.status == 0){
-                            toastr.error(response.message)
-                            $("#reviewFormId").trigger("reset");
-                        }
-                    },
-                    error: function(response) {
-                        if(response.responseJSON.errors.rating)toastr.error(response.responseJSON.errors.rating[0])
-                        if(response.responseJSON.errors.review)toastr.error(response.responseJSON.errors.review[0])
-                        if(!response.responseJSON.errors.rating || !response.responseJSON.errors.review){
-                            toastr.error("{{__('user.Please complete the recaptcha to submit the form')}}")
-                        }
-                    }
-                });
-            })
-
+            RELATED PRODUCT END
+        ==============================-->
+    <script>
+        $(function() {
+            $('#lightSlider').lightSlider({
+                gallery: true,
+                item: 1,
+                loop: true,
+                slideMargin: 0,
+                thumbItem: 9,
+                controls: false
+                // prevHtml: "<b>www</b>",
+                // nextHtml: "<b>eee</b>",
+            });
         });
-    })(jQuery);
-
-    function calculateProductPrice(){
-        $.ajax({
-            type: 'get',
-            data: $('#shoppingCartForm').serialize(),
-            url: "{{ route('calculate-product-price') }}",
-            success: function (response) {
-                let qty = $(".product_qty").val();
-                let price = response.productPrice * qty;
-                price = price.toFixed(2);
-                $("#product_price").text(price);
-                $("#mainProductPrice").text(price);
-            },
-            error: function(err) {
-                alert('error')
-            }
-        });
-    }
-
-    function productReview(rating){
-        $(".product_rat").each(function(){
-            var product_rat = $(this).data('rating')
-            if(product_rat > rating){
-                $(this).removeClass('fas fa-star').addClass('fal fa-star');
-            }else{
-                $(this).removeClass('fal fa-star').addClass('fas fa-star');
-            }
-        })
-        $("#product_rating").val(rating);
-    }
-
-</script>
+    </script>
 @endsection

@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/lightslider-master/dist/css/lightslider.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/jquery.nice-number.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/jquery.calendar.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/add_row_custon.css') }}">
@@ -1047,6 +1048,8 @@
     <script src="{{ asset('user/js/select2.min.js') }}"></script>
     <!--slick slider js-->
     <script src="{{ asset('user/js/slick.min.js') }}"></script>
+    <!--light slider js-->
+    <script src="{{ asset('public/lightslider-master/dist/js/lightslider.min.js') }}"></script>
     <!--simplyCountdown js-->
     <script src="{{ asset('user/js/simplyCountdown.js') }}"></script>
     <!--product zoomer js-->
