@@ -23,9 +23,10 @@ use App\Models\BusinessInformation;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Auth\Helper;
+use Illuminate\Support\Facades\Schema;
 use App\Http\Requests\CustomerRegister;
 use App\Providers\RouteServiceProvider;
-use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -154,15 +155,16 @@ class RegisterController extends Controller
     // CustomerRegister
     public function customerRegister(CustomerRegister $request)
     {
-        // dd(json_decode($request->keyValue));
-        // foreach (json_decode($request->keyValue) as $key => $data) {
-        //     return $data;
-        // }
-        // dd($request->all());
         if($request->role=='user'){
             RegisterCustomer::userRegistration($request);
         }else{
             RegisterCustomer::vendorRegistration($request);
+        }
+        if(Session::get('status')=='failed'){
+            Session::forget('status');
+            $notification = trans('Please correct file format');
+            $notification = array('messege' => $notification, 'alert-type' => 'error');
+            return redirect()->back()->with($notification);
         }
         $notification = trans('Registration Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');

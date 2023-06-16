@@ -126,6 +126,7 @@ class RegisterCustomer
         }
         $vendor = $user->id;
         $keyValue = json_decode($request->keyValue);
+        // dd($keyValue);
        $headerMapping = $keyValue;
         if (isset($request->file)) {
             $import = new ProductsImport($vendor,$keyValue,$headerMapping);
