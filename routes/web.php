@@ -135,7 +135,8 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('/seller-detail', [HomeController::class, 'sellerDetail'])->name('seller-detail');
         Route::get('/product', [HomeController::class, 'product'])->name('product');
         Route::get('/search-product', [HomeController::class, 'searchProduct'])->name('search-product');
-        Route::get('/product-detail/{slug}', [HomeController::class, 'productDetail'])->name('product-detail');
+        // Route::get('/product-detail/{slug}', [HomeController::class, 'productDetail'])->name('product-detail');
+        Route::view('/product-detail', 'product_detail');
         Route::get('/compare', [HomeController::class, 'compare'])->name('compare');
         Route::get('/add-to-compare/{id}', [HomeController::class, 'addToCompare'])->name('add-to-compare');
         Route::get('/remove-compare/{id}', [HomeController::class, 'removeCompare'])->name('remove-compare');

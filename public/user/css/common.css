@@ -216,7 +216,7 @@ button[disabled] {
     background-color: var(--red-theme);
     color: #FFF;
     box-shadow: 0 2px 10px  var(--theme-light-box-shadow);
-    border: 2px solid var(--red-theme);
+    border: none;
     -webkit-transition: all .3s;
     -o-transition: all .3s;
     transition: all .3s;
@@ -225,6 +225,22 @@ button[disabled] {
     font-size: 14px;
     padding: 10px 24px;
 }
+
+.black-btn {
+    background: #000000;
+    border: none;
+    color: #FFF;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    transition: all .3s;
+    font-size: 14px;
+    padding: 10px 24px;
+}
+
+.red-text {
+    color: #E82024;
+}
+
 body table th {
     white-space: nowrap;
 }
