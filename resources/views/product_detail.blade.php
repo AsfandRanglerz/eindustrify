@@ -219,6 +219,25 @@ input::-webkit-inner-spin-button {
 .prod-images-slider .dropdown-toggle:focus, .prod-images-slider .dropdown-toggle:active {
     box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
 }
+.specifications-table {
+    border-color: rgba(0, 0, 0, 0.3)!important;
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
+.specifications-table td {
+    padding: 10px 1.25rem!important;
+    font-size: 15px;
+}
+.specifications-table td.th {
+    width: 50%;
+    background: #F2F2F2!important;
+    font-weight: 600;
+}
+.specifications-table tr:last-child td {
+    border-bottom: 0;
+}
+.about-supplier {
+    border-top: 1px solid rgba(0, 0, 0, 0.3);
+}
 </style>
 
 @section('public-content')
@@ -325,6 +344,12 @@ input::-webkit-inner-spin-button {
                                 <div id="shortDescription" class="accordion-collapse collapse" aria-labelledby="headingOne"
                                     data-bs-parent="#prodDetailAccordian">
                                     <div class="accordion-body">
+                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until
+                                        the collapse plugin adds the appropriate classes that we use to style each element.
+                                        These classes control the overall appearance, as well as the showing and hiding via CSS
+                                        transitions. You can modify any of this with custom CSS or overriding our default
+                                        variables. It's also worth noting that just about any HTML can go within the
+                                        <code>.accordion-body</code>, though the transition does limit overflow.
                                     </div>
                                 </div>
                             </div>
@@ -392,12 +417,30 @@ input::-webkit-inner-spin-button {
                                 <div id="speciFications" class="accordion-collapse collapse" aria-labelledby="headingThree"
                                     data-bs-parent="#prodDetailAccordian">
                                     <div class="accordion-body">
-                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until
-                                        the collapse plugin adds the appropriate classes that we use to style each element.
-                                        These classes control the overall appearance, as well as the showing and hiding via CSS
-                                        transitions. You can modify any of this with custom CSS or overriding our default
-                                        variables. It's also worth noting that just about any HTML can go within the
-                                        <code>.accordion-body</code>, though the transition does limit overflow.
+                                        <div class="row">
+                                            <div class="col-sm-4 text-center">
+                                                <h6>Positive Seller Ratings</h6>
+                                                <h6 class="mt-3 theme-color">80%</h6>
+                                            </div>
+                                            <div class="col-sm-4 text-center">
+                                                <h6>Ship on Time</h6>
+                                                <h6 class="mt-3 theme-color">80%</h6>
+                                            </div>
+                                            <div class="col-sm-4 text-center">
+                                                <h6>Chat Response Rate</h6>
+                                                <h6 class="mt-3 theme-color">80%</h6>
+                                            </div>
+                                        </div>
+                                        <div class="mt-3 pt-4 about-supplier">
+                                            <div class="mb-3 d-flex justify-content-between align-items-center">
+                                                <h5>About Supplier</h5>
+                                                <a href="#" class="d-flex align-items-center">
+                                                    <img src="{{ asset('public/uploads/website-images/images/eye-icon.png') }}">
+                                                    <span class="ms-2 text-decoration-underline font-600 red-link">View</a>
+                                                </a>
+                                            </div>
+                                            <p>ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -410,14 +453,36 @@ input::-webkit-inner-spin-button {
                                 </h5>
                                 <div id="suppInfo" class="accordion-collapse collapse" aria-labelledby="headingThree"
                                     data-bs-parent="#prodDetailAccordian">
-                                    <div class="accordion-body">
-                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until
-                                        the collapse plugin adds the appropriate classes that we use to style each element.
-                                        These classes control the overall appearance, as well as the showing and hiding via CSS
-                                        transitions. You can modify any of this with custom CSS or overriding our default
-                                        variables. It's also worth noting that just about any HTML can go within the
-                                        <code>.accordion-body</code>, though the transition does limit overflow.
+                                    <div class="pb-0 accordion-body">
+                                        <b>Additional Documents</b>
+                                        <div class="mt-2 mb-3">
+                                            <a href="#" class="text-decoration-underline red-link">Product Manual</a>
+                                            <a href="#" class="ms-2 text-decoration-underline red-link">Product Catalog</a>
+                                        </div>
+                                        <b>Features</b>
                                     </div>
+                                    <table class="mt-3 mb-0 table specifications-table">
+                                        <tr>
+                                            <td class="th">Supplier</td>
+                                            <td>Mophorn</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="th">Speed</td>
+                                            <td>1725.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="th">Voltage</td>
+                                            <td>115 Volts</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="th">Horsepower</td>
+                                            <td>0.75 hp</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="th">Item Dimensions LxWxH</td>
+                                            <td>12 x 8 x 8 inche s</td>
+                                        </tr>
+                                    </table>
                                 </div>
                             </div>
                         </div>
