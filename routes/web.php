@@ -95,6 +95,7 @@ use App\Http\Controllers\Admin\SpecificationKeyController;
 
 
 use App\Http\Controllers\Seller\SellerDashboardController;
+use App\Http\Controllers\Vendor\VendorDashboardController;
 use App\Http\Controllers\Admin\TermsAndConditionController;
 use App\Http\Controllers\Admin\EmailConfigurationController;
 use App\Http\Controllers\Admin\HomepageVisibilityController;
@@ -260,9 +261,11 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         // });
 
         Route::group(['as' => 'vendor.', 'prefix' => '', 'middleware' => ['checkseller']], function () {
-            Route::get('dashboard', [VendorDashboardController::class, 'index']);
-            Route::get('vendor-dashboard', [HomeController::class, 'vendorDashboard']);
-
+            Route::get('vendor-dashboard', [VendorDashboardController::class, 'vendorDashboard']);
+            Route::get('vendor-product', [VendorDashboardController::class, 'vendorProduct']);
+            Route::post('delete-all-products', [VendorDashboardController::class, 'deleteAllProducts']);
+            Route::delete('product-delete/{id}', [VendorDashboardController::class, 'deleteProduct']);
+            // Route::view('vendor-product','vendor.vendor_product');
             // Route::get('my-profile', [SellerProfileController::class, 'index'])->name('my-profile');
             // Route::get('state-by-country/{id}', [SellerProfileController::class, 'stateByCountry'])->name('state-by-country');
             // Route::get('city-by-state/{id}', [SellerProfileController::class, 'cityByState'])->name('city-by-state');

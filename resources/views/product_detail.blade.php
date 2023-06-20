@@ -344,12 +344,13 @@ input::-webkit-inner-spin-button {
                                 <div id="shortDescription" class="accordion-collapse collapse" aria-labelledby="headingOne"
                                     data-bs-parent="#prodDetailAccordian">
                                     <div class="accordion-body">
-                                        <strong>This is the third item's accordion body.</strong> It is hidden by default, until
+                                        {{-- <strong>This is the third item's accordion body.</strong> It is hidden by default, until
                                         the collapse plugin adds the appropriate classes that we use to style each element.
                                         These classes control the overall appearance, as well as the showing and hiding via CSS
                                         transitions. You can modify any of this with custom CSS or overriding our default
                                         variables. It's also worth noting that just about any HTML can go within the
-                                        <code>.accordion-body</code>, though the transition does limit overflow.
+                                        <code>.accordion-body</code>, though the transition does limit overflow. --}}
+                                        {!!$product->long_description!!}
                                     </div>
                                 </div>
                             </div>
@@ -416,6 +417,50 @@ input::-webkit-inner-spin-button {
                                 </h5>
                                 <div id="speciFications" class="accordion-collapse collapse" aria-labelledby="headingThree"
                                     data-bs-parent="#prodDetailAccordian">
+                                    <div class="pb-0 accordion-body">
+                                        <b>Additional Documents</b>
+                                        <div class="mt-2 mb-3">
+                                            <a href="#" class="text-decoration-underline red-link">Product Manual</a>
+                                            <a href="#" class="ms-2 text-decoration-underline red-link">Product Catalog</a>
+                                        </div>
+                                        <b>Features</b>
+                                    </div>
+                                    <table class="mt-3 mb-0 table specifications-table">
+                                        @foreach ($product->specifications as $specification)
+                                        <tr>
+                                            <td class="th">{{$specification->key->key}}</td>
+                                            <td>{{$specification->specification}}</td>
+                                        </tr>    
+                                        @endforeach
+                                        
+                                        {{-- <tr>
+                                            <td class="th">Speed</td>
+                                            <td>1725.00</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="th">Voltage</td>
+                                            <td>115 Volts</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="th">Horsepower</td>
+                                            <td>0.75 hp</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="th">Item Dimensions LxWxH</td>
+                                            <td>12 x 8 x 8 inche s</td>
+                                        </tr> --}}
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h5 class="accordion-header" id="headingThree">
+                                    <button class="accordion-button text-uppercase font-700 collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#suppInfo" aria-expanded="false" aria-controls="suppInfo">
+                                        Supplier Info
+                                    </button>
+                                </h5>
+                                <div id="suppInfo" class="accordion-collapse collapse" aria-labelledby="headingThree"
+                                    data-bs-parent="#prodDetailAccordian">
                                     <div class="accordion-body">
                                         <div class="row">
                                             <div class="col-sm-4 text-center">
@@ -442,47 +487,6 @@ input::-webkit-inner-spin-button {
                                             <p>ed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h5 class="accordion-header" id="headingThree">
-                                    <button class="accordion-button text-uppercase font-700 collapsed" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#suppInfo" aria-expanded="false" aria-controls="suppInfo">
-                                        Supplier Info
-                                    </button>
-                                </h5>
-                                <div id="suppInfo" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                    data-bs-parent="#prodDetailAccordian">
-                                    <div class="pb-0 accordion-body">
-                                        <b>Additional Documents</b>
-                                        <div class="mt-2 mb-3">
-                                            <a href="#" class="text-decoration-underline red-link">Product Manual</a>
-                                            <a href="#" class="ms-2 text-decoration-underline red-link">Product Catalog</a>
-                                        </div>
-                                        <b>Features</b>
-                                    </div>
-                                    <table class="mt-3 mb-0 table specifications-table">
-                                        <tr>
-                                            <td class="th">Supplier</td>
-                                            <td>Mophorn</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="th">Speed</td>
-                                            <td>1725.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="th">Voltage</td>
-                                            <td>115 Volts</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="th">Horsepower</td>
-                                            <td>0.75 hp</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="th">Item Dimensions LxWxH</td>
-                                            <td>12 x 8 x 8 inche s</td>
-                                        </tr>
-                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -514,9 +518,9 @@ input::-webkit-inner-spin-button {
                 <h4 class="mb-0">Compare Similar Items</h4>
             </div>
             <div class="row similar-item-section">
-                <div class="px-2 similar-item-block">
+                <div class="px-2 similar-item-block active">
                     <div class="inner">
-                        <p class="invisible current-item">Current Item</p>
+                        <p class="current-item">Current Item</p>
                         <div
                             class="mt-2 position-relative text-center d-flex justify-content-center align-items-center img-holder">
                             <img src="{{ asset($product->thumb_image) }}">

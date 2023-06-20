@@ -96,6 +96,7 @@ $setting = App\Models\Setting::first();
         </div>
     </div>
 </header>
+
 <!--============================
         HEADER END
     ==============================-->
