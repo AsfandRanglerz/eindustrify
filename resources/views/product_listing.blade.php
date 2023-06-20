@@ -20,17 +20,17 @@
                                 {{$childcategory->category->name}}
                             </button>
                           </h2>
-                          <?php 
+                          <?php
                            $subcategories = App\Models\SubCategory::where('category_id',$childcategory->category->id)->where('status',1)->get();
                           ?>
                           <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                             <div class="accordion-body">
-                                @foreach ($subcategories as $subcategory)    
+                                @foreach ($subcategories as $subcategory)
                                 <div class="form-check mb-0">
                                     <input class="form-check-input" value="{{$subcategory->id}}" type="checkbox" id="motor{{$subcategory->id}}" {{ $subcategory->id == $childcategory->subCategory->id ? 'checked' : '' }}>
                                     <label class="form-check-label" for="motor{{$subcategory->id}}">{{$subcategory->name}}</label>
                                 </div>
-                            @endforeach                            
+                            @endforeach
                                 {{-- <div class="form-check mb-0">
                                     <input class="form-check-input" type="checkbox" id="motor2">
                                     <label class="form-check-label" for="motor2">Bearing Protection Rings</label>
@@ -57,8 +57,9 @@
                     <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item">Home</li>
-                            <li class="breadcrumb-item" aria-current="page">Electric Motors</li>
-                            <li class="breadcrumb-item active" aria-current="page">AC Motors & Accessories</li>
+                            <li class="breadcrumb-item" aria-current="page">{{$childcategory->category->name}}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{$childcategory->subCategory->name}}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{$childcategory->name}}</li>
                         </ol>
                     </nav>
                     <img src="{{ asset('public/uploads/website-images/images/ac-motors.png') }}" class="w-100">
@@ -73,7 +74,7 @@
                                 <div
                                     class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
                                     <img src="{{ asset($product->thumb_image) }}">
-                                    <a href="" class="position-absolute text-white quick-view">Quick View</a>
+                                    <a href="{{URL('product-detail/'. $product->slug)}}" class="position-absolute text-white quick-view">Quick View</a>
                                 </div>
                                 <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
                                 <div class="p-3">
@@ -81,9 +82,9 @@
                                     <span class="price">{{$product->price}}</span>
                                 </div>
                             </div>
-                        </div>    
+                        </div>
                         @endforeach
-                        
+
                         {{-- <div class="col-lg-4 col-md-6 p-2">
                             <div class="position-relative feature-product-section">
                                 <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"

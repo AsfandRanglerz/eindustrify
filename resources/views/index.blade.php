@@ -240,7 +240,7 @@
                         <div class="position-relative feature-product-section">
                             <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
                             <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                                <img src="{{ asset('public/uploads/website-images/images/engine15.png') }}">
+                                <img src="{{ asset($product->thumb_image) }}">
                                 <a href="" class="position-absolute text-white quick-view">Quick View</a>
                             </div>
                             <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>

@@ -61,6 +61,7 @@ return array(
     'Monolog\\' => array($vendorDir . '/monolog/monolog/src/Monolog'),
     'Mollie\\Laravel\\' => array($vendorDir . '/mollie/laravel-mollie/src'),
     'Mollie\\Api\\' => array($vendorDir . '/mollie/mollie-api-php/src'),
+    'Mockery\\' => array($vendorDir . '/mockery/mockery/library/Mockery'),
     'Mews\\Purifier\\' => array($vendorDir . '/mews/purifier/src'),
     'Matrix\\' => array($vendorDir . '/markbaker/matrix/classes/src'),
     'Maatwebsite\\Excel\\' => array($vendorDir . '/maatwebsite/excel/src'),

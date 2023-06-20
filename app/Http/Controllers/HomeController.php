@@ -276,7 +276,7 @@ class HomeController extends Controller
         return view('all_child_categories',compact('subcategory'));
     }
     public function productListing($slug){
-        
+
         $childcategory = ChildCategory::with('category','subCategory','products')->where(['slug' => $slug, 'status' => 1])->first();
         return view('product_listing',compact('childcategory'));
     }
@@ -446,30 +446,9 @@ class HomeController extends Controller
 
     public function productDetail($slug)
     {
-        $product = Product::where(['status' => 1, 'slug' => $slug])->first();
-        if (!$product) {
-            $notification = trans('user_validation.Something went wrong');
-            $notification = array('messege' => $notification, 'alert-type' => 'error');
-            return redirect()->back()->with($notification);
-        }
-        $paginateQty = CustomPagination::whereId('5')->first()->qty;
-        $productReviews = ProductReview::where(['status' => 1, 'product_id' => $product->id])->paginate($paginateQty);
-        $totalProductReviewQty = ProductReview::where(['status' => 1, 'product_id' => $product->id])->count();
-        $recaptchaSetting = GoogleRecaptcha::first();
-        $productVariants = ProductVariant::where(['status' => 1, 'product_id' => $product->id])->get();
-        $relatedProducts = Product::where(['category_id' => $product->category_id, 'status' => 1])->where('id', '!=', $product->id)->get()->take(10);
-        $currencySetting = Setting::first();
-        $banner = BannerImage::whereId('14')->first();
-        $setting = Setting::first();
-        $defaultProfile = BannerImage::whereId('15')->first();
-        $tagArray = json_decode($product->tags);
-        $tags = '';
-        if ($product->tags) {
-            foreach ($tagArray as $index => $tag) {
-                $tags .= $tag->value . ',';
-            }
-        }
-        return view('product_detail', compact('product', 'productReviews', 'totalProductReviewQty', 'productVariants', 'recaptchaSetting', 'relatedProducts', 'currencySetting', 'banner', 'setting', 'defaultProfile', 'tags'));
+        $product = Product::with('category','brand','specifications','productOverview','gallery','subCategory','childCategory')->where(['status' => 1, 'slug' => $slug])->first();
+        $relatedProducts = Product::where('sub_category_id',$product->sub_category_id)->where('status',1)->latest()->limit(4)->get();
+        return view('product_detail', compact('product','relatedProducts'));
     }
 
     public function addToCompare($id)
@@ -591,7 +570,6 @@ class HomeController extends Controller
         return redirect()->back()->with($notification);
     }
     public function vendorDashboard(){
-
         return view('vendor.index');
     }
     public function logout()

@@ -4,7 +4,8 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+
 class CheckSeller
 {
     /**
@@ -17,16 +18,14 @@ class CheckSeller
     public function handle(Request $request, Closure $next)
     {
         $user = Auth::guard('web')->user();
-        if($user->seller){
-            $seller = $user->seller;
-            if($seller->status == 1){
+        if(isset($user)) {
+            if ($user->status == 1) {
                 return $next($request);
-            }else{
-                return redirect()->route('home');
+            } else {
+                return redirect()->route('login');
             }
         }else{
-            return redirect()->route('home');
+            return redirect()->route('login');
         }
-
     }
 }

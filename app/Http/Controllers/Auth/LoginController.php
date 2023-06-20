@@ -41,12 +41,15 @@ class LoginController extends Controller
 
     public function loginPage()
     {
+        if(Auth::check()){
+            return redirect('vendor-dashboard');
+        }else{
         $banner = BreadcrumbImage::where(['id' => 5])->first();
         $background = BannerImage::whereId('13')->first();
         $recaptchaSetting = GoogleRecaptcha::first();
         $socialLogin = SocialLoginInformation::first();
         return view('login', compact('banner', 'background', 'recaptchaSetting', 'socialLogin'));
-    }
+    }}
 
     public function storeLogin(Request $request)
     {

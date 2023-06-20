@@ -135,8 +135,9 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('/seller-detail', [HomeController::class, 'sellerDetail'])->name('seller-detail');
         Route::get('/product', [HomeController::class, 'product'])->name('product');
         Route::get('/search-product', [HomeController::class, 'searchProduct'])->name('search-product');
-        // Route::get('/product-detail/{slug}', [HomeController::class, 'productDetail'])->name('product-detail');
-        Route::view('/product-detail', 'product_detail');
+        Route::get('/product-detail/{slug}', [HomeController::class, 'productDetail']);
+        // Route::view('/product-detail', 'product_detail');
+
         Route::get('/compare', [HomeController::class, 'compare'])->name('compare');
         Route::get('/add-to-compare/{id}', [HomeController::class, 'addToCompare'])->name('add-to-compare');
         Route::get('/remove-compare/{id}', [HomeController::class, 'removeCompare'])->name('remove-compare');
@@ -184,152 +185,153 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::post('/store-reset-password/{token}', [LoginController::class, 'storeResetPasswordPage'])->name('store-reset-password');
         Route::get('/user/logout', [LoginController::class, 'userLogout'])->name('user.logout');
 
-        Route::group(['as' => 'user.', 'prefix' => 'user'], function () {
-            Route::get('dashboard', [UserProfileController::class, 'dashboard'])->name('dashboard');
-            Route::get('order', [UserProfileController::class, 'order'])->name('order');
-            Route::get('pending-order', [UserProfileController::class, 'pendingOrder'])->name('pending-order');
-            Route::get('complete-order', [UserProfileController::class, 'completeOrder'])->name('complete-order');
-            Route::get('declined-order', [UserProfileController::class, 'declinedOrder'])->name('declined-order');
-            Route::get('order-show/{id}', [UserProfileController::class, 'orderShow'])->name('order-show');
-            Route::get('review', [UserProfileController::class, 'review'])->name('review');
-            Route::get('my-profile', [UserProfileController::class, 'myProfile'])->name('my-profile');
-            Route::post('update-profile', [UserProfileController::class, 'updateProfile'])->name('update-profile');
-            Route::get('address', [UserProfileController::class, 'address'])->name('address');
-            Route::get('change-password', [UserProfileController::class, 'changePassword'])->name('change-password');
-            Route::post('update-password', [UserProfileController::class, 'updatePassword'])->name('update-password');
-            Route::get('seller-registration', [UserProfileController::class, 'sellerRegistration'])->name('seller-registration');
-            Route::get('billing-address', [UserProfileController::class, 'editBillingAddress'])->name('billing-address');
-            Route::post('update-billing-address', [UserProfileController::class, 'updateBillingAddress'])->name('update-billing-address');
-            Route::get('shipping-address', [UserProfileController::class, 'editShippingAddress'])->name('shipping-address');
-            Route::post('update-shipping-address', [UserProfileController::class, 'updateShippingAddress'])->name('update-shipping-address');
-            Route::post('seller-request', [UserProfileController::class, 'sellerRequest'])->name('seller-request');
-            Route::get('wishlist', [UserProfileController::class, 'wishlist'])->name('wishlist');
-            Route::get('add-to-wishlist/{id}', [UserProfileController::class, 'addToWishlist'])->name('add-to-wishlist');
-            Route::get('remove-wishlist/{id}', [UserProfileController::class, 'removeWishlist'])->name('remove-wishlist');
-            Route::post('product-report', [UserProfileController::class, 'storeProductReport'])->name('product-report');
-            Route::post('store-product-review', [UserProfileController::class, 'storeProductReview'])->name('store-product-review');
-            Route::post('update-review/{id}', [UserProfileController::class, 'updateReview'])->name('update-review');
+        // Route::group(['as' => 'user.', 'prefix' => 'user'], function () {
+        //     Route::get('dashboard', [UserProfileController::class, 'dashboard'])->name('dashboard');
+        //     Route::get('order', [UserProfileController::class, 'order'])->name('order');
+        //     Route::get('pending-order', [UserProfileController::class, 'pendingOrder'])->name('pending-order');
+        //     Route::get('complete-order', [UserProfileController::class, 'completeOrder'])->name('complete-order');
+        //     Route::get('declined-order', [UserProfileController::class, 'declinedOrder'])->name('declined-order');
+        //     Route::get('order-show/{id}', [UserProfileController::class, 'orderShow'])->name('order-show');
+        //     Route::get('review', [UserProfileController::class, 'review'])->name('review');
+        //     Route::get('my-profile', [UserProfileController::class, 'myProfile'])->name('my-profile');
+        //     Route::post('update-profile', [UserProfileController::class, 'updateProfile'])->name('update-profile');
+        //     Route::get('address', [UserProfileController::class, 'address'])->name('address');
+        //     Route::get('change-password', [UserProfileController::class, 'changePassword'])->name('change-password');
+        //     Route::post('update-password', [UserProfileController::class, 'updatePassword'])->name('update-password');
+        //     Route::get('seller-registration', [UserProfileController::class, 'sellerRegistration'])->name('seller-registration');
+        //     Route::get('billing-address', [UserProfileController::class, 'editBillingAddress'])->name('billing-address');
+        //     Route::post('update-billing-address', [UserProfileController::class, 'updateBillingAddress'])->name('update-billing-address');
+        //     Route::get('shipping-address', [UserProfileController::class, 'editShippingAddress'])->name('shipping-address');
+        //     Route::post('update-shipping-address', [UserProfileController::class, 'updateShippingAddress'])->name('update-shipping-address');
+        //     Route::post('seller-request', [UserProfileController::class, 'sellerRequest'])->name('seller-request');
+        //     Route::get('wishlist', [UserProfileController::class, 'wishlist'])->name('wishlist');
+        //     Route::get('add-to-wishlist/{id}', [UserProfileController::class, 'addToWishlist'])->name('add-to-wishlist');
+        //     Route::get('remove-wishlist/{id}', [UserProfileController::class, 'removeWishlist'])->name('remove-wishlist');
+        //     Route::post('product-report', [UserProfileController::class, 'storeProductReport'])->name('product-report');
+        //     Route::post('store-product-review', [UserProfileController::class, 'storeProductReview'])->name('store-product-review');
+        //     Route::post('update-review/{id}', [UserProfileController::class, 'updateReview'])->name('update-review');
 
-            Route::get('chat-with-seller/{slug}', [MessageController::class, 'chatWithSeller'])->name('chat-with-seller');
-            Route::get('message', [MessageController::class, 'index'])->name('message');
-            Route::get('load-chat-box/{id}', [MessageController::class, 'loadChatBox'])->name('load-chat-box');
-            Route::get('load-new-message/{id}', [MessageController::class, 'loadNewMessage'])->name('load-new-message');
-            Route::get('send-message', [MessageController::class, 'sendMessage'])->name('send-message');
+        //     Route::get('chat-with-seller/{slug}', [MessageController::class, 'chatWithSeller'])->name('chat-with-seller');
+        //     Route::get('message', [MessageController::class, 'index'])->name('message');
+        //     Route::get('load-chat-box/{id}', [MessageController::class, 'loadChatBox'])->name('load-chat-box');
+        //     Route::get('load-new-message/{id}', [MessageController::class, 'loadNewMessage'])->name('load-new-message');
+        //     Route::get('send-message', [MessageController::class, 'sendMessage'])->name('send-message');
 
-            Route::group(['as' => 'checkout.', 'prefix' => 'checkout'], function () {
-                Route::get('/', [CheckoutController::class, 'checkout'])->name('checkout');
-                Route::get('/billing-address', [CheckoutController::class, 'checkoutBillingAddress'])->name('billing-address');
-                Route::post('/update-billing-address', [CheckoutController::class, 'updateCheckoutBillingAddress'])->name('update-billing-address');
-                Route::post('/update-shipping-address', [CheckoutController::class, 'updateShippingBillingAddress'])->name('update-shipping-address');
-                Route::get('/payment', [CheckoutController::class, 'payment'])->name('payment');
+        //     Route::group(['as' => 'checkout.', 'prefix' => 'checkout'], function () {
+        //         Route::get('/', [CheckoutController::class, 'checkout'])->name('checkout');
+        //         Route::get('/billing-address', [CheckoutController::class, 'checkoutBillingAddress'])->name('billing-address');
+        //         Route::post('/update-billing-address', [CheckoutController::class, 'updateCheckoutBillingAddress'])->name('update-billing-address');
+        //         Route::post('/update-shipping-address', [CheckoutController::class, 'updateShippingBillingAddress'])->name('update-shipping-address');
+        //         Route::get('/payment', [CheckoutController::class, 'payment'])->name('payment');
 
-                Route::post('/cash-on-delivery', [PaymentController::class, 'cashOnDelivery'])->name('cash-on-delivery');
-                Route::post('/pay-with-stripe', [PaymentController::class, 'payWithStripe'])->name('pay-with-stripe');
+        //         Route::post('/cash-on-delivery', [PaymentController::class, 'cashOnDelivery'])->name('cash-on-delivery');
+        //         Route::post('/pay-with-stripe', [PaymentController::class, 'payWithStripe'])->name('pay-with-stripe');
 
-                Route::get('/paypal-web-view', [PaypalController::class, 'paypalWebView'])->name('paypal-web-view');
+        //         Route::get('/paypal-web-view', [PaypalController::class, 'paypalWebView'])->name('paypal-web-view');
 
-                Route::get('/pay-with-paypal-from-api', [PaypalController::class, 'payWithPaypalFromApi'])->name('pay-with-paypal-from-api');
-                Route::get('/paypal-payment-success-from-api', [PaypalController::class, 'paypalPaymentSuccessFromApi'])->name('paypal-payment-success-from-api');
-                Route::get('/paypal-payment-cancled-from-api', [PaypalController::class, 'paypalPaymentCancledFromApi'])->name('paypal-payment-cancled-from-api');
-
-
-
-                Route::get('/pay-with-paypal', [PaypalController::class, 'payWithPaypal'])->name('pay-with-paypal');
-                Route::get('/paypal-payment-success', [PaypalController::class, 'paypalPaymentSuccess'])->name('paypal-payment-success');
-                Route::get('/paypal-payment-cancled', [PaypalController::class, 'paypalPaymentCancled'])->name('paypal-payment-cancled');
-                Route::post('/pay-with-razorpay', [PaymentController::class, 'payWithRazorpay'])->name('pay-with-razorpay');
-                Route::post('/pay-with-flutterwave', [PaymentController::class, 'payWithFlutterwave'])->name('pay-with-flutterwave');
-                Route::get('/pay-with-mollie', [PaymentController::class, 'payWithMollie'])->name('pay-with-mollie');
-                Route::get('/mollie-payment-success', [PaymentController::class, 'molliePaymentSuccess'])->name('mollie-payment-success');
-                Route::post('/pay-with-paystack', [PaymentController::class, 'payWithPayStack'])->name('pay-with-paystack');
-                Route::get('/pay-with-instamojo', [PaymentController::class, 'payWithInstamojo'])->name('pay-with-instamojo');
-                Route::get('/instamojo-response', [PaymentController::class, 'instamojoResponse'])->name('instamojo-response');
-                Route::post('/pay-with-bank', [PaymentController::class, 'payWithBank'])->name('pay-with-bank');
+        //         Route::get('/pay-with-paypal-from-api', [PaypalController::class, 'payWithPaypalFromApi'])->name('pay-with-paypal-from-api');
+        //         Route::get('/paypal-payment-success-from-api', [PaypalController::class, 'paypalPaymentSuccessFromApi'])->name('paypal-payment-success-from-api');
+        //         Route::get('/paypal-payment-cancled-from-api', [PaypalController::class, 'paypalPaymentCancledFromApi'])->name('paypal-payment-cancled-from-api');
 
 
-                Route::post('/pay-with-paymongo', [PaymentController::class, 'payWithPaymongo'])->name('pay-with-paymongo');
-                Route::get('/pay-with-grab-pay', [PaymentController::class, 'payWithPaymongoGrabPay'])->name('pay-with-grab-pay');
-                Route::get('/pay-with-gcash', [PaymentController::class, 'payWithPaymongoGcash'])->name('pay-with-gcash');
-                Route::get('/paymongo-payment-success', [PaymentController::class, 'paymongoPaymentSuccess'])->name('paymongo-payment-success');
-                Route::get('/paymongo-payment-cancled', [PaymentController::class, 'paymongoPaymentCancled'])->name('paymongo-payment-cancled');
-            });
 
-            Route::get('state-by-country/{id}', [UserProfileController::class, 'stateByCountry'])->name('state-by-country');
-            Route::get('city-by-state/{id}', [UserProfileController::class, 'cityByState'])->name('city-by-state');
-        });
-
-
-        Route::group(['as' => 'seller.', 'prefix' => 'seller', 'middleware' => ['checkseller']], function () {
-            Route::get('dashboard', [SellerDashboardController::class, 'index'])->name('dashboard');
-            Route::get('my-profile', [SellerProfileController::class, 'index'])->name('my-profile');
-            Route::get('state-by-country/{id}', [SellerProfileController::class, 'stateByCountry'])->name('state-by-country');
-            Route::get('city-by-state/{id}', [SellerProfileController::class, 'cityByState'])->name('city-by-state');
-            Route::put('update-seller-profile', [SellerProfileController::class, 'updateSellerProfile'])->name('update-seller-profile');
-            Route::get('change-password', [SellerProfileController::class, 'changePassword'])->name('change-password');
-            Route::put('password-update', [SellerProfileController::class, 'updatePassword'])->name('password-update');
-            Route::get('shop-profile', [SellerProfileController::class, 'myShop'])->name('shop-profile');
-            Route::put('update-seller-shop', [SellerProfileController::class, 'updateSellerSop'])->name('update-seller-shop');
-            Route::put('remove-seller-social-link/{id}', [SellerProfileController::class, 'removeSellerSocialLink'])->name('remove-seller-social-link');
-            Route::get('email-history', [SellerProfileController::class, 'emailHistory'])->name('email-history');
-
-            Route::resource('product', SellerProductController::class);
-            Route::put('product-status/{id}', [SellerProductController::class, 'changeStatus'])->name('product.status');
-            Route::put('removed-product-exist-specification/{id}', [SellerProductController::class, 'removedProductExistSpecification'])->name('removed-product-exist-specification');
-            Route::get('pending-product', [SellerProductController::class, 'pendingProduct'])->name('pending-product');
-            Route::get('product-highlight/{id}', [SellerProductController::class, 'productHighlight'])->name('product-highlight');
-            Route::put('update-product-highlight/{id}', [SellerProductController::class, 'productHighlightUpdate'])->name('update-product-highlight');
+        //         Route::get('/pay-with-paypal', [PaypalController::class, 'payWithPaypal'])->name('pay-with-paypal');
+        //         Route::get('/paypal-payment-success', [PaypalController::class, 'paypalPaymentSuccess'])->name('paypal-payment-success');
+        //         Route::get('/paypal-payment-cancled', [PaypalController::class, 'paypalPaymentCancled'])->name('paypal-payment-cancled');
+        //         Route::post('/pay-with-razorpay', [PaymentController::class, 'payWithRazorpay'])->name('pay-with-razorpay');
+        //         Route::post('/pay-with-flutterwave', [PaymentController::class, 'payWithFlutterwave'])->name('pay-with-flutterwave');
+        //         Route::get('/pay-with-mollie', [PaymentController::class, 'payWithMollie'])->name('pay-with-mollie');
+        //         Route::get('/mollie-payment-success', [PaymentController::class, 'molliePaymentSuccess'])->name('mollie-payment-success');
+        //         Route::post('/pay-with-paystack', [PaymentController::class, 'payWithPayStack'])->name('pay-with-paystack');
+        //         Route::get('/pay-with-instamojo', [PaymentController::class, 'payWithInstamojo'])->name('pay-with-instamojo');
+        //         Route::get('/instamojo-response', [PaymentController::class, 'instamojoResponse'])->name('instamojo-response');
+        //         Route::post('/pay-with-bank', [PaymentController::class, 'payWithBank'])->name('pay-with-bank');
 
 
-            Route::get('subcategory-by-category/{id}', [SellerProductController::class, 'getSubcategoryByCategory'])->name('subcategory-by-category');
-            Route::get('childcategory-by-subcategory/{id}', [SellerProductController::class, 'getChildcategoryBySubCategory'])->name('childcategory-by-subcategory');
+        //         Route::post('/pay-with-paymongo', [PaymentController::class, 'payWithPaymongo'])->name('pay-with-paymongo');
+        //         Route::get('/pay-with-grab-pay', [PaymentController::class, 'payWithPaymongoGrabPay'])->name('pay-with-grab-pay');
+        //         Route::get('/pay-with-gcash', [PaymentController::class, 'payWithPaymongoGcash'])->name('pay-with-gcash');
+        //         Route::get('/paymongo-payment-success', [PaymentController::class, 'paymongoPaymentSuccess'])->name('paymongo-payment-success');
+        //         Route::get('/paymongo-payment-cancled', [PaymentController::class, 'paymongoPaymentCancled'])->name('paymongo-payment-cancled');
+        //     });
+
+        //     Route::get('state-by-country/{id}', [UserProfileController::class, 'stateByCountry'])->name('state-by-country');
+        //     Route::get('city-by-state/{id}', [UserProfileController::class, 'cityByState'])->name('city-by-state');
+        // });
+
+        Route::group(['as' => 'vendor.', 'prefix' => '', 'middleware' => ['checkseller']], function () {
+            Route::get('dashboard', [VendorDashboardController::class, 'index']);
+            Route::get('vendor-dashboard', [HomeController::class, 'vendorDashboard']);
+
+            // Route::get('my-profile', [SellerProfileController::class, 'index'])->name('my-profile');
+            // Route::get('state-by-country/{id}', [SellerProfileController::class, 'stateByCountry'])->name('state-by-country');
+            // Route::get('city-by-state/{id}', [SellerProfileController::class, 'cityByState'])->name('city-by-state');
+            // Route::put('update-seller-profile', [SellerProfileController::class, 'updateSellerProfile'])->name('update-seller-profile');
+            // Route::get('change-password', [SellerProfileController::class, 'changePassword'])->name('change-password');
+            // Route::put('password-update', [SellerProfileController::class, 'updatePassword'])->name('password-update');
+            // Route::get('shop-profile', [SellerProfileController::class, 'myShop'])->name('shop-profile');
+            // Route::put('update-seller-shop', [SellerProfileController::class, 'updateSellerSop'])->name('update-seller-shop');
+            // Route::put('remove-seller-social-link/{id}', [SellerProfileController::class, 'removeSellerSocialLink'])->name('remove-seller-social-link');
+            // Route::get('email-history', [SellerProfileController::class, 'emailHistory'])->name('email-history');
+
+            // Route::resource('product', SellerProductController::class);
+            // Route::put('product-status/{id}', [SellerProductController::class, 'changeStatus'])->name('product.status');
+            // Route::put('removed-product-exist-specification/{id}', [SellerProductController::class, 'removedProductExistSpecification'])->name('removed-product-exist-specification');
+            // Route::get('pending-product', [SellerProductController::class, 'pendingProduct'])->name('pending-product');
+            // Route::get('product-highlight/{id}', [SellerProductController::class, 'productHighlight'])->name('product-highlight');
+            // Route::put('update-product-highlight/{id}', [SellerProductController::class, 'productHighlightUpdate'])->name('update-product-highlight');
 
 
-            Route::get('product-variant/{id}', [SellerProductVariantController::class, 'index'])->name('product-variant');
-            Route::get('create-product-variant/{id}', [SellerProductVariantController::class, 'create'])->name('create-product-variant');
-            Route::post('store-product-variant', [SellerProductVariantController::class, 'store'])->name('store-product-variant');
-            Route::get('edit-product-variant/{id}', [SellerProductVariantController::class, 'edit'])->name('edit-product-variant');
-            Route::put('update-product-variant/{id}', [SellerProductVariantController::class, 'update'])->name('update-product-variant');
-            Route::delete('delete-product-variant/{id}', [SellerProductVariantController::class, 'destroy'])->name('delete-product-variant');
-            Route::put('product-variant-status/{id}', [SellerProductVariantController::class, 'changeStatus'])->name('product-variant.status');
-
-            Route::get('product-variant-item', [SellerProductVariantItemController::class, 'index'])->name('product-variant-item');
-            Route::get('create-product-variant-item/{id}', [SellerProductVariantItemController::class, 'create'])->name('create-product-variant-item');
-            Route::post('store-product-variant-item', [SellerProductVariantItemController::class, 'store'])->name('store-product-variant-item');
-            Route::get('edit-product-variant-item/{id}', [SellerProductVariantItemController::class, 'edit'])->name('edit-product-variant-item');
-            Route::put('update-product-variant-item/{id}', [SellerProductVariantItemController::class, 'update'])->name('update-product-variant-item');
-            Route::delete('delete-product-variant-item/{id}', [SellerProductVariantItemController::class, 'destroy'])->name('delete-product-variant-item');
-            Route::put('product-variant-item-status/{id}', [SellerProductVariantItemController::class, 'changeStatus'])->name('product-variant-item.status');
-
-            Route::get('product-gallery/{id}', [SellerProductGalleryController::class, 'index'])->name('product-gallery');
-            Route::post('store-product-gallery', [SellerProductGalleryController::class, 'store'])->name('store-product-gallery');
-            Route::delete('delete-product-image/{id}', [SellerProductGalleryController::class, 'destroy'])->name('delete-product-image');
-            Route::put('product-gallery-status/{id}', [SellerProductGalleryController::class, 'changeStatus'])->name('product-gallery.status');
+            // Route::get('subcategory-by-category/{id}', [SellerProductController::class, 'getSubcategoryByCategory'])->name('subcategory-by-category');
+            // Route::get('childcategory-by-subcategory/{id}', [SellerProductController::class, 'getChildcategoryBySubCategory'])->name('childcategory-by-subcategory');
 
 
-            Route::get('product-review', [SellerProductReviewController::class, 'index'])->name('product-review');
-            Route::put('product-review-status/{id}', [SellerProductReviewController::class, 'changeStatus'])->name('product-review-status');
-            Route::get('show-product-review/{id}', [SellerProductReviewController::class, 'show'])->name('show-product-review');
+            // Route::get('product-variant/{id}', [SellerProductVariantController::class, 'index'])->name('product-variant');
+            // Route::get('create-product-variant/{id}', [SellerProductVariantController::class, 'create'])->name('create-product-variant');
+            // Route::post('store-product-variant', [SellerProductVariantController::class, 'store'])->name('store-product-variant');
+            // Route::get('edit-product-variant/{id}', [SellerProductVariantController::class, 'edit'])->name('edit-product-variant');
+            // Route::put('update-product-variant/{id}', [SellerProductVariantController::class, 'update'])->name('update-product-variant');
+            // Route::delete('delete-product-variant/{id}', [SellerProductVariantController::class, 'destroy'])->name('delete-product-variant');
+            // Route::put('product-variant-status/{id}', [SellerProductVariantController::class, 'changeStatus'])->name('product-variant.status');
+
+            // Route::get('product-variant-item', [SellerProductVariantItemController::class, 'index'])->name('product-variant-item');
+            // Route::get('create-product-variant-item/{id}', [SellerProductVariantItemController::class, 'create'])->name('create-product-variant-item');
+            // Route::post('store-product-variant-item', [SellerProductVariantItemController::class, 'store'])->name('store-product-variant-item');
+            // Route::get('edit-product-variant-item/{id}', [SellerProductVariantItemController::class, 'edit'])->name('edit-product-variant-item');
+            // Route::put('update-product-variant-item/{id}', [SellerProductVariantItemController::class, 'update'])->name('update-product-variant-item');
+            // Route::delete('delete-product-variant-item/{id}', [SellerProductVariantItemController::class, 'destroy'])->name('delete-product-variant-item');
+            // Route::put('product-variant-item-status/{id}', [SellerProductVariantItemController::class, 'changeStatus'])->name('product-variant-item.status');
+
+            // Route::get('product-gallery/{id}', [SellerProductGalleryController::class, 'index'])->name('product-gallery');
+            // Route::post('store-product-gallery', [SellerProductGalleryController::class, 'store'])->name('store-product-gallery');
+            // Route::delete('delete-product-image/{id}', [SellerProductGalleryController::class, 'destroy'])->name('delete-product-image');
+            // Route::put('product-gallery-status/{id}', [SellerProductGalleryController::class, 'changeStatus'])->name('product-gallery.status');
 
 
-            Route::get('product-report', [SellerProductReportControler::class, 'index'])->name('product-report');
-            Route::get('show-product-report/{id}', [SellerProductReportControler::class, 'show'])->name('show-product-report');
+            // Route::get('product-review', [SellerProductReviewController::class, 'index'])->name('product-review');
+            // Route::put('product-review-status/{id}', [SellerProductReviewController::class, 'changeStatus'])->name('product-review-status');
+            // Route::get('show-product-review/{id}', [SellerProductReviewController::class, 'show'])->name('show-product-review');
 
-            Route::resource('my-withdraw', WithdrawController::class);
-            Route::get('get-withdraw-account-info/{id}', [WithdrawController::class, 'getWithDrawAccountInfo'])->name('get-withdraw-account-info');
 
-            Route::get('all-order', [SellerOrderController::class, 'index'])->name('all-order');
-            Route::get('pending-order', [SellerOrderController::class, 'pendingOrder'])->name('pending-order');
-            Route::get('pregress-order', [SellerOrderController::class, 'pregressOrder'])->name('pregress-order');
-            Route::get('delivered-order', [SellerOrderController::class, 'deliveredOrder'])->name('delivered-order');
-            Route::get('completed-order', [SellerOrderController::class, 'completedOrder'])->name('completed-order');
-            Route::get('declined-order', [SellerOrderController::class, 'declinedOrder'])->name('declined-order');
-            Route::get('cash-on-delivery', [SellerOrderController::class, 'cashOnDelivery'])->name('cash-on-delivery');
-            Route::get('order-show/{id}', [SellerOrderController::class, 'show'])->name('order-show');
+            // Route::get('product-report', [SellerProductReportControler::class, 'index'])->name('product-report');
+            // Route::get('show-product-report/{id}', [SellerProductReportControler::class, 'show'])->name('show-product-report');
 
-            Route::get('message', [SellerMessageContoller::class, 'index'])->name('message');
-            Route::get('load-chat-box/{id}', [SellerMessageContoller::class, 'loadChatBox'])->name('load-chat-box');
-            Route::get('load-new-message/{id}', [SellerMessageContoller::class, 'loadNewMessage'])->name('load-new-message');
-            Route::get('send-message', [SellerMessageContoller::class, 'sendMessage'])->name('send-message');
+            // Route::resource('my-withdraw', WithdrawController::class);
+            // Route::get('get-withdraw-account-info/{id}', [WithdrawController::class, 'getWithDrawAccountInfo'])->name('get-withdraw-account-info');
+
+            // Route::get('all-order', [SellerOrderController::class, 'index'])->name('all-order');
+            // Route::get('pending-order', [SellerOrderController::class, 'pendingOrder'])->name('pending-order');
+            // Route::get('pregress-order', [SellerOrderController::class, 'pregressOrder'])->name('pregress-order');
+            // Route::get('delivered-order', [SellerOrderController::class, 'deliveredOrder'])->name('delivered-order');
+            // Route::get('completed-order', [SellerOrderController::class, 'completedOrder'])->name('completed-order');
+            // Route::get('declined-order', [SellerOrderController::class, 'declinedOrder'])->name('declined-order');
+            // Route::get('cash-on-delivery', [SellerOrderController::class, 'cashOnDelivery'])->name('cash-on-delivery');
+            // Route::get('order-show/{id}', [SellerOrderController::class, 'show'])->name('order-show');
+
+            // Route::get('message', [SellerMessageContoller::class, 'index'])->name('message');
+            // Route::get('load-chat-box/{id}', [SellerMessageContoller::class, 'loadChatBox'])->name('load-chat-box');
+            // Route::get('load-new-message/{id}', [SellerMessageContoller::class, 'loadNewMessage'])->name('load-new-message');
+            // Route::get('send-message', [SellerMessageContoller::class, 'sendMessage'])->name('send-message');
         });
     });
 
@@ -812,7 +814,7 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
     // Route::view('all-child-categories', 'all_child_categories');
     Route::get('all-child-categories/{slug}', [HomeController::class, 'allChildCategories']);
     // Route::view('vendor/index', 'vendor/index');
-    Route::get('vendor-dashboard', [HomeController::class, 'vendorDashboard']);
+
     Route::get('logout', [HomeController::class, 'logout']);
     Route::post('get-file-header', [HomeController::class, 'getFileHeader']);
     Route::get('help-center-details', [HelpCenterPagesController::class, 'helpCenterDetail']);

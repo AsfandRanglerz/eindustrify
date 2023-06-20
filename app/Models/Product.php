@@ -24,7 +24,14 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
+    public function subCategory()
+    {
+        return $this->belongsTo(SubCategory::class,'sub_category_id');
+    }
+    public function childCategory()
+    {
+        return $this->belongsTo(SubCategory::class,'child_category_id');
+    }
     public function wholesales()
     {
         return $this->hasMany(Wholesell::class)->orderBy('minimum_product', 'asc');
