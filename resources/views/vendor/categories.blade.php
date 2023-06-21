@@ -25,10 +25,9 @@
             font-weight: 600;
         }
 
-        .vendor-order-content .p {
-            font-size: 14px;
-        }
-
+        /* .vendor-order-content .p{
+                    font-size:14px;
+                } */
         .vendor-order-content .navbar-expand-lg .navbar-nav .nav-link {
             padding-right: 1.5rem;
             padding-left: 1.5rem;
@@ -106,6 +105,18 @@
         .vendor-order-content .sort-by {
             margin-top: -8px
         }
+
+        .vendor-order-content .padding {
+            background: #F2F2F2;
+        }
+
+        .vendor-order-content .table-striped {
+            background: #FBFBFB;
+        }
+
+        .vendor-order-content .table>:not(caption)>*>* {
+            padding: 1.5rem 0.5rem;
+        }
     </style>
 
 
@@ -113,13 +124,8 @@
         <div class="vendor-order-content">
             <div class="d-flex justify-content-between ">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('public/uploads/product-icon.png') }}" class="img-fluid" height="30px" width="30px">
-                    <h4 class="ms-3 text-black d-none d-sm-block">Products</h4>
-                </div>
-                <div class="d-flex align-items-center">
-                    <h6 class="text-end me-3">Export</h6>
-                    <h6>Import</h6>
-                    <a href="" class="btn order-btn ms-3 rounded-0 text-white">Add Product</a>
+                    <img src="{{ asset('public/uploads/category-img.png') }}" class="img-fluid" height="30px" width="30px">
+                    <h4 class="ms-3 text-black d-none d-sm-block">Categories</h4>
                 </div>
             </div>
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -133,19 +139,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" id="deleteCategory">Delete</a></li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Active</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Draft</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true"
-                                    id="deleteProducts">Delete</a>
                             </li>
                         </ul>
                         <form class="d-flex justify-content-center align-items-center ">
@@ -177,43 +174,41 @@
                                 <form action="/action_page.php"><input type="checkbox" id="checkAll"
                                         class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                             </td>
-                            <td class="text-center">Products</td>
-                            <td>Status</td>
-                            <td>Inventory</td>
-                            <td>Type</td>
+                            <td class="text-center">Title</td>
+                            <td>Products</td>
+                            <td>Product conditions</td>
                             <td>Action</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <form action="{{ URL('delete-all-products') }}" id="myForm" method="POST">
+                        <form action="{{ URL('delete-all-categories') }}" id="myForm" method="POST">
                             @csrf
-                            @foreach ($products as $product)
-                                <tr>
+                            @foreach ($user->categories as $category)
+                                <tr class="">
                                     <td>
                                         <input type="checkbox" id="vehicle1" class="check form-check-input ms-3"
-                                            name="id[]" value="{{ $product->id }}">
-
+                                            name="id[]" value="{{ $category->id }}">
                                     </td>
                                     <td>
-                                        <div class="d-flex align-items-center justify-content-center">
-                                            <img src="{{ asset($product->thumb_image) }}" class="img-fluid" height="50px"
-                                                width="50px">
-                                            <p class="ms-2 p">{{ $product->name }}</p>
+                                        <div class="d-flex align-items-center justify-content-start">
+                                            <img src="{{ asset($category->image) }}" class="img-fluid padding p-2"
+                                                height="45px" width="45px">
+                                            <p class="ms-2 p">{{ $category->name }}</p>
                                         </div>
                                     </td>
-                                    @if ($product->status == 1)
-                                        <td><span class="fas fa-circle circle-success"></span> Active</td>
-                                    @else
-                                        <td><span class="fas fa-circle circle-danger"></span> Deactive</td>
-                                    @endif
-                                    <td>{{ $product->qty }}</td>
-                                    <td>{{ $product->category->name }}</td>
+                                    <?php
+                                    $productsCount = App\Models\Product::where('category_id', $category->id)->where('vendor_id',$user->id)->count();
+                                    ?>
+                                    <td>{{ $productsCount }}</td>
+                                    <td>Product title contains Lubricant Oils
+                                        Product <br> Tag is equal to Lubricant Oils</td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <i class="fas fa-eye"></i>
                                             <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                class="btn-sm" onclick="deleteData({{ $product->id }})"><i
+                                                class="btn-sm" onclick="deleteData({{ $category->id }})"><i
                                                     class="fas fa-trash" aria-hidden="true"></i></a>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach
@@ -261,16 +256,17 @@
     @endif
     <script>
         function deleteData(id) {
-            $("#deleteForm").attr("action", '{{ url('product-delete') }}' + "/" + id)
+            $("#deleteForm").attr("action", '{{ url('category-delete') }}' + "/" + id)
         }
         $(document).ready(function() {
-            $("#deleteProducts").click(function(event) {
+            $("#deleteCategory").click(function(event) {
                 event.preventDefault(); // Prevents the default behavior of the anchor tag
 
                 $("#myForm").submit(); // Submits the form
                 $("#myForm").remove(); // Removes the form from the DOM
             });
         });
+
         $(document).ready(function() {
             $("#checkAll").click(function() {
                 $(".check").prop('checked', $(this).prop('checked'));

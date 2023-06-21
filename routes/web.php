@@ -263,8 +263,12 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::group(['as' => 'vendor.', 'prefix' => '', 'middleware' => ['checkseller']], function () {
             Route::get('vendor-dashboard', [VendorDashboardController::class, 'vendorDashboard']);
             Route::get('vendor-product', [VendorDashboardController::class, 'vendorProduct']);
+            Route::get('customer-listing', [VendorDashboardController::class, 'customerListing']);
+            Route::get('vendor-category', [VendorDashboardController::class, 'vendorCategory']);
             Route::post('delete-all-products', [VendorDashboardController::class, 'deleteAllProducts']);
             Route::delete('product-delete/{id}', [VendorDashboardController::class, 'deleteProduct']);
+            Route::delete('category-delete/{id}', [VendorDashboardController::class, 'deleteVendorCategory']);
+            Route::post('delete-all-categories', [VendorDashboardController::class, 'deleteAllVendorCategory']);
             // Route::view('vendor-product','vendor.vendor_product');
             // Route::get('my-profile', [SellerProfileController::class, 'index'])->name('my-profile');
             // Route::get('state-by-country/{id}', [SellerProfileController::class, 'stateByCountry'])->name('state-by-country');
