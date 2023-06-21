@@ -133,6 +133,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" id="deleteProducts">Delete</a></li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
@@ -187,8 +188,11 @@
                         @foreach ($products as $product)
                             <tr>
                                 <td>
-                                    <form action="{{URL('delete-all-products')}}"><input type="checkbox" id="vehicle1"
-                                            class="check form-check-input ms-3" name="id[]" value="{{$product->id}}"></form>
+                                    <form action="{{ URL('delete-all-products') }}" id="myForm" method="POST">
+                                      @csrf
+                                        <input type="checkbox" id="vehicle1" class="check form-check-input ms-3"
+                                            name="id[]" value="{{ $product->id }}">
+                                    </form>
                                 </td>
                                 <td>
                                     <div class="d-flex align-items-center justify-content-center">
@@ -258,6 +262,42 @@
         function deleteData(id) {
             $("#deleteForm").attr("action", '{{ url('product-delete') }}' + "/" + id)
         }
+
+
+
+$(document).ready(function() {
+  $('#deleteForm').submit(function(e) {
+    e.preventDefault(); // Prevent the form from submitting normally
+
+    var formData = $(this).serialize(); // Serialize the form data
+
+    $.ajax({
+      url: $(this).attr('action'), // Fetch the form action URL
+      type: 'POST',
+      data: formData,
+      success: function(response) {
+        // Handle the success response
+        console.log(response);
+        // You can perform additional actions such as updating the UI or displaying a success message
+      },
+      error: function(xhr, status, error) {
+        // Handle the error response
+        console.log(xhr.responseText);
+        // You can display an error message or handle the error as needed
+      }
+    });
+  });
+});
+
+
+
+
+
+
+
+
+
+
 
         $(document).ready(function() {
             $("#checkAll").click(function() {

@@ -23,6 +23,6 @@ class VendorDashboardController extends Controller
       return redirect()->back()->with('message', 'Record delete Successfully');
     }
     public function deleteAllProducts(Request $request){
-      dd($request->all());
+      dd($request->id);
     }
 }

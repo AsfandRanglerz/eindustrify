@@ -44,7 +44,7 @@
     <h6 class="heading">Orders</h6>
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/order.png') }}">Orders</a>
     <h6  class="heading">Products</h6>
-    <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/product.png') }}">Products</a>
+    <a href="{{URL('vendor-product')}}" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/product.png') }}">Products</a>
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/category.png') }}">Categories</a>
     <h6  class="heading">Customers</h6>
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/customer.png') }}">Customers</a>
