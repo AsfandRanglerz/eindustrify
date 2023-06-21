@@ -56,27 +56,39 @@ class User extends Authenticatable implements JWTSubject
         'city_id' => 'integer',
     ];
 
-    public function seller(){
+
+    public function categories(){
+        return $this->belongsToMany('App\Models\Category','vendor_categories','vendor_id','category_id');
+     }
+
+    public function seller()
+    {
         return $this->hasOne(Vendor::class);
     }
 
-    public function city(){
+    public function city()
+    {
         return $this->belongsTo(City::class);
     }
 
-    public function state(){
+    public function state()
+    {
         return $this->belongsTo(CountryState::class);
     }
-    public function billingAddress(){
+    public function billingAddress()
+    {
         return $this->hasOne(BillingAddress::class);
     }
-    public function shippingAddress(){
+    public function shippingAddress()
+    {
         return $this->hasOne(ShippingAddress::class);
     }
-    public function businessInformation(){
+    public function businessInformation()
+    {
         return $this->hasOne(BusinessInformation::class);
     }
-    public function country(){
+    public function country()
+    {
         return $this->belongsTo(Country::class);
     }
 
@@ -89,6 +101,4 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-
-
 }

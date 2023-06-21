@@ -133,7 +133,6 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" id="deleteProducts">Delete</a></li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
@@ -145,7 +144,8 @@
                                 <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Draft</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Delete</a>
+                                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true"
+                                    id="deleteProducts">Delete</a>
                             </li>
                         </ul>
                         <form class="d-flex justify-content-center align-items-center ">
@@ -185,38 +185,39 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($products as $product)
-                            <tr>
-                                <td>
-                                    <form action="{{ URL('delete-all-products') }}" id="myForm" method="POST">
-                                      @csrf
+                        <form action="{{ URL('delete-all-products') }}" id="myForm" method="POST">
+                            @csrf
+                            @foreach ($products as $product)
+                                <tr>
+                                    <td>
                                         <input type="checkbox" id="vehicle1" class="check form-check-input ms-3"
                                             name="id[]" value="{{ $product->id }}">
-                                    </form>
-                                </td>
-                                <td>
-                                    <div class="d-flex align-items-center justify-content-center">
-                                        <img src="{{ asset($product->thumb_image) }}" class="img-fluid" height="50px"
-                                            width="50px">
-                                        <p class="ms-2 p">{{ $product->name }}</p>
-                                    </div>
-                                </td>
-                                @if ($product->status == 1)
-                                    <td><span class="fas fa-circle circle-success"></span> Active</td>
-                                @else
-                                    <td><span class="fas fa-circle circle-danger"></span> Deactive</td>
-                                @endif
-                                <td>{{ $product->qty }}</td>
-                                <td>{{ $product->category->name }}</td>
-                                <td>
-                                    <div class="d-flex align-items-center">
-                                        <i class="fas fa-eye"></i>
-                                        <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                            class="btn-sm" onclick="deleteData({{ $product->id }})"><i
-                                                class="fas fa-trash" aria-hidden="true"></i></a>
-                                </td>
-                            </tr>
-                        @endforeach
+
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <img src="{{ asset($product->thumb_image) }}" class="img-fluid" height="50px"
+                                                width="50px">
+                                            <p class="ms-2 p">{{ $product->name }}</p>
+                                        </div>
+                                    </td>
+                                    @if ($product->status == 1)
+                                        <td><span class="fas fa-circle circle-success"></span> Active</td>
+                                    @else
+                                        <td><span class="fas fa-circle circle-danger"></span> Deactive</td>
+                                    @endif
+                                    <td>{{ $product->qty }}</td>
+                                    <td>{{ $product->category->name }}</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <i class="fas fa-eye"></i>
+                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#deleteModal"
+                                                class="btn-sm" onclick="deleteData({{ $product->id }})"><i
+                                                    class="fas fa-trash" aria-hidden="true"></i></a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </form>
                     </tbody>
                 </table>
             </div>
@@ -262,43 +263,14 @@
         function deleteData(id) {
             $("#deleteForm").attr("action", '{{ url('product-delete') }}' + "/" + id)
         }
+        $(document).ready(function() {
+            $("#deleteProducts").click(function(event) {
+                event.preventDefault(); // Prevents the default behavior of the anchor tag
 
-
-
-$(document).ready(function() {
-  $('#deleteForm').submit(function(e) {
-    e.preventDefault(); // Prevent the form from submitting normally
-
-    var formData = $(this).serialize(); // Serialize the form data
-
-    $.ajax({
-      url: $(this).attr('action'), // Fetch the form action URL
-      type: 'POST',
-      data: formData,
-      success: function(response) {
-        // Handle the success response
-        console.log(response);
-        // You can perform additional actions such as updating the UI or displaying a success message
-      },
-      error: function(xhr, status, error) {
-        // Handle the error response
-        console.log(xhr.responseText);
-        // You can display an error message or handle the error as needed
-      }
-    });
-  });
-});
-
-
-
-
-
-
-
-
-
-
-
+                $("#myForm").submit(); // Submits the form
+                $("#myForm").remove(); // Removes the form from the DOM
+            });
+        });
         $(document).ready(function() {
             $("#checkAll").click(function() {
                 $(".check").prop('checked', $(this).prop('checked'));
