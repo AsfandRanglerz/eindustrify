@@ -174,7 +174,9 @@
                                 class="dropdown-menu dropdown-menu-right animated-dropdown slideIn w-100 border-0 dark-box-shadow">
                                 <b
                                     class="text-muted text-uppercase d-block mb-2 user-name-text">{{ Auth::user()->first_name }}</b>
-                                <hr class="my-1">
+                                    <a class="dropdown-item" href="{{ URL('vendor-dashboard') }}"><span
+                                        class="fas fa-sign-out-alt mr-2"></span><b>Dashbaord</b></a>
+                                    <hr class="my-1">
                                 <a class="dropdown-item" href="{{ URL('logout') }}"><span
                                         class="fas fa-sign-out-alt mr-2"></span><b>Logout</b></a>
                             </div>
@@ -1285,7 +1287,7 @@
         $tawk_setting = App\Models\TawkChat::first();
         $cookie_consent = App\Models\CookieConsent::first();
         $setting = App\Models\Setting::first();
-        
+
     @endphp
     <script>
         let filter_max_val = "{{ $max_val }}";
