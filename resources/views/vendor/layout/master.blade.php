@@ -11,10 +11,10 @@
     @yield('meta')
 
     <link rel="icon" type="image/png" href="">
-    <link data-n-head="ssr" rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('user/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('public/plugin/bar.chart.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/jquery.nice-number.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/jquery.calendar.css') }}">
@@ -74,14 +74,18 @@
     </div>
     @include('vendor.common.footer')
     <script src="{{ asset('user/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
     </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.0/Chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
-    <script src="{{ asset('toastr/toastr.min.js') }}"></script>
-    <script type="text/javascript">
+    <script src="{{ asset('public/jquery.bar.chart.min.js') }}"></script>
+
+    </script>
+/javascript">
     function toastrPopUp() {
         toastr.options = {
             "closeButton": true,
