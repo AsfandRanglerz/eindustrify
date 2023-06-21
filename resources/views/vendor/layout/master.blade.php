@@ -51,6 +51,7 @@
     <link rel="stylesheet" href="{{ asset('dropzone/min/dropzone.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('user/css/dev.css') }}">
+    <link rel="stylesheet" href="{{ asset('ajax-file-uploader/css/jquery.uploader.css') }}">
 
     @include('theme_style_css')
 </head>
@@ -82,10 +83,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
     </script>
+    <script src="{{ asset('ajax-file-uploader/dist/jquery.uploader.min.js') }}"></script>
     <script src="{{ asset('public/jquery.bar.chart.min.js') }}"></script>
-
-    </script>
-/javascript">
+    <script type="text/javascript">
     function toastrPopUp() {
         toastr.options = {
             "closeButton": true,
