@@ -35,6 +35,30 @@ button {
     line-height: 1;
 }
 
+img.profile-user-pic {
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px var(--theme-color);
+    height: 45px;
+    object-fit: contain;
+    padding: 4px;
+    width: 45px;
+}
+
+#profContentBtn::after {
+    display: none;
+}
+
+#profContentBtn+.animated-dropdown {
+    top: 6px !important;
+}
+
+#profContentBtn+.dropdown-menu .user-name-text {
+    font-family: Inter,sans-serif;
+    font-size: 10px;
+    padding: 4px 16px;
+}
+
 a:hover {
     text-decoration: none;
 }

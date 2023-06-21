@@ -4,6 +4,10 @@ $setting = App\Models\Setting::first();
 <style>
 .dashboard-header {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    background: #FFF;
+    z-index: 1;
 }
 
 .dashboard-header .profile-user-pic {
