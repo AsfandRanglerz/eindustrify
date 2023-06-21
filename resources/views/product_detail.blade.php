@@ -238,6 +238,56 @@ input::-webkit-inner-spin-button {
 .about-supplier {
     border-top: 1px solid rgba(0, 0, 0, 0.3);
 }
+.read-review-mention {
+    background: #FFFFFF;
+    border: 1px solid var(--red-theme);
+    border-radius: 5px;
+    padding: 8px 16px;
+}
+
+.read-review-mention * {
+    font-weight: 700;
+}
+
+.user-review-section {
+    border: 1px solid #B7B7B7;
+    border-radius: 20px;
+}
+
+.user-review-section .user-prof-name {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+    border-radius: 50px;
+    background: #D9D9D9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-review-section .user-prof-name img {
+    width: 55px;
+}
+
+.user-review-section .progress {
+    width: 40%;
+    height: 25px!important;
+    border-radius: 22px!important;
+}
+.user-review-section .progress-bar.bg-danger {
+    background: #B0191E!important;
+    border-radius: 0px!important;
+}
+.user-review-section .rating-number {
+    width: 20px;
+    display: inline-block;
+    font-weight: 700;
+}
+.prod-images-slider .lSSlideOuter .lSPager.lSGallery li.active, .prod-images-slider .lSSlideOuter .lSPager.lSGallery li:hover {
+    border-radius: 0;
+    border: 2px solid #B0191E;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
 </style>
 
 @section('public-content')
@@ -430,9 +480,9 @@ input::-webkit-inner-spin-button {
                                         <tr>
                                             <td class="th">{{$specification->key->key}}</td>
                                             <td>{{$specification->specification}}</td>
-                                        </tr>    
+                                        </tr>
                                         @endforeach
-                                        
+
                                         {{-- <tr>
                                             <td class="th">Speed</td>
                                             <td>1725.00</td>
@@ -669,6 +719,146 @@ input::-webkit-inner-spin-button {
                         </div>
                     </div>
                 </div> --}}
+            </div>
+        </div>
+    </div>
+    <div class="featured-products">
+        <div class="container pt-xl-5 pb-xl-0 py-3 px-2">
+            <h4 class="mb-3">Ratings & Reviews</h4>
+            <p class="mb-3">Our <span class="text-decoration-underline">Community Guidelines</span> help customers write honest reviews.</p>
+            <div class="row col-12 mx-auto mb-2 py-5 align-items-center user-review-section">
+                <div class="col-sm-6 text-center">
+                    <h4>4.0</h4>
+                    <div class="my-1 line-height-1">
+                        <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                        <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                        <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                        <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                        <img src="{{ asset('public/uploads/website-images/images/rating-star2.png') }}">
+                    </div>
+                    <a href="#" class="red-link font-600 text-decoration-underline">429 Reviews</a>
+                </div>
+                <div class="col-sm-6 text-center">
+                    <div class="mb-2 d-flex">
+                        <div><span class="rating-number">5</span><img class="mx-2" src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}"></div>
+                        <div class="ms-2 me-3 progress">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 65%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <span>12</span>
+                    </div>
+                    <div class="mb-2 d-flex">
+                        <div><span class="rating-number">4</span><img class="mx-2" src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}"></div>
+                        <div class="ms-2 me-3 progress">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 35%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <span>21</span>
+                    </div>
+                    <div class="mb-2 d-flex">
+                        <div><span class="rating-number">3</span><img class="mx-2" src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}"></div>
+                        <div class="ms-2 me-3 progress">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 45%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <span>10</span>
+                    </div>
+                    <div class="mb-2 d-flex">
+                        <div><span class="rating-number">2</span><img class="mx-2" src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}"></div>
+                        <div class="ms-2 me-3 progress">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 25%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <span>24</span>
+                    </div>
+                    <div class="d-flex">
+                        <div><span class="rating-number">1</span><img class="mx-2" src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}"></div>
+                        <div class="ms-2 me-3 progress">
+                            <div class="progress-bar bg-danger" role="progressbar" style="width: 15%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                        <span>54</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="featured-products">
+        <div class="container pt-xl-5 pb-xl-0 py-3 px-2">
+            <h4 class="mb-3">Read reviews that mention</h4>
+            <div class="mb-xl-3 mb-0 d-flex flex-wrap align-items-baseline justify-content-between">
+                <div>
+                    <button class="read-review-mention"><span>Easy to Install</span><span class="ms-3">6</span></button>
+                    <button class="mx-2 read-review-mention"><span>Compressor</span><span class="ms-3">12</span></button>
+                    <button class="read-review-mention"><span>Great Value</span><span class="ms-3">22</span></button>
+                </div>
+                <fieldset class="sort-by">
+                    <legend>SORT BY</legend>
+                    <div class="dropdown">
+                        <a class="btn ps-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Top Reviews</a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="row col-12 mx-auto mb-2 py-5 align-items-center user-review-section">
+                <div class="col-sm-3 text-center">
+                    <div class="mb-2 user-prof-name">
+                        <img src="{{ asset('public/uploads/website-images/images/user1.png') }}">
+                    </div>
+                    <h6 class="name">David</h6>
+                </div>
+                <div class="col-sm-7">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star2.png') }}">
+                    <p class="mt-3">Wire diagram was extremely easy to follow. Already had wires segregated and in line to what theu should be. So hookup was a breeze. Turns on and works fine.There was small damage to back cover over plastic fan. Was not a big issue. I straightened it and put cover back on. Does not hit or rub after the fix.Is slightly noisier then the old motor but that is to be expected as the old motor was a different type and oiled bearing case motor.Seems to work as it should and run the compressor just fine.</p>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <p class="font-500">02/03/2023</p>
+                </div>
+            </div>
+            <div class="row col-12 mx-auto mb-2 py-5 align-items-center user-review-section">
+                <div class="col-sm-3 text-center">
+                    <div class="mb-2 user-prof-name">
+                        <img src="{{ asset('public/uploads/website-images/images/user1.png') }}">
+                    </div>
+                    <h6 class="name">David</h6>
+                </div>
+                <div class="col-sm-7">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star2.png') }}">
+                    <p class="mt-3">Wire diagram was extremely easy to follow. Already had wires segregated and in line to what theu should be. So hookup was a breeze. Turns on and works fine.There was small damage to back cover over plastic fan. Was not a big issue. I straightened it and put cover back on. Does not hit or rub after the fix.Is slightly noisier then the old motor but that is to be expected as the old motor was a different type and oiled bearing case motor.Seems to work as it should and run the compressor just fine.</p>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <p class="font-500">02/03/2023</p>
+                </div>
+            </div>
+            <div class="row col-12 mx-auto mb-2 py-5 align-items-center user-review-section">
+                <div class="col-sm-3 text-center">
+                    <div class="mb-2 user-prof-name">
+                        <img src="{{ asset('public/uploads/website-images/images/user1.png') }}">
+                    </div>
+                    <h6 class="name">David</h6>
+                </div>
+                <div class="col-sm-7">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}">
+                    <img src="{{ asset('public/uploads/website-images/images/rating-star2.png') }}">
+                    <p class="mt-3">Wire diagram was extremely easy to follow. Already had wires segregated and in line to what theu should be. So hookup was a breeze. Turns on and works fine.There was small damage to back cover over plastic fan. Was not a big issue. I straightened it and put cover back on. Does not hit or rub after the fix.Is slightly noisier then the old motor but that is to be expected as the old motor was a different type and oiled bearing case motor.Seems to work as it should and run the compressor just fine.</p>
+                </div>
+                <div class="col-sm-2 text-center">
+                    <p class="font-500">02/03/2023</p>
+                </div>
+            </div>
+            <div class="mt-4 text-center">
+                <a href="#" class="red-link text-decoration-underline font-500">Show 10 More Reviews</a>
             </div>
         </div>
     </div>
