@@ -100,6 +100,7 @@
         </div>
 
         <form action="{{URL('create-product')}}" method="POST" enctype="multipart/form-data">
+
         <div class="row mt-5">
             <div class="col-sm-8">
                 <label class="text-uppercase fw-bold">title</label>
@@ -110,12 +111,13 @@
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="long_description"></textarea>
                     </div>
                 {{-- </form> --}}
+
                 <div class="mt-3">
                     <h6 class="text-uppercase">Media</h6>
                     <input type="text" name="image[]" id="example" value="" />
                 </div>
                 {{-- <form class="mt-3"> --}}
-
+                <div id="items">
                     <div class="d-flex">
                         <div class=" me-sm-3">
                             <label class="text-uppercase">shipping weight</label>
@@ -143,12 +145,11 @@
                             <input type="number" id="quantity" class=" p-2" placeholder="$ 0.0" name="discount_price">
                         </div>
                     </div>
-               
+    </div>
+                    <div id='extra-item' ></div>
                 <div class="d-flex justify-content-between mt-3 p-3 border align-items-center">
                     <h6 class="text-uppercase fw-bold">variants</h6>
-                    <a href="">
-                        <h6 class="text-uppercase variant text-underline">+ variants</h6>
-                    </a>
+                    <button id="add" class="text-uppercase add-more variant text-underline fw-bold border-0" type="submit">+ variants</button>
                 </div>
                 <div class="text-end submitt mt-2">
                     <button type="submit" class="p-2 fw-bold">Submit</button>
@@ -192,7 +193,7 @@
                     <option value="d">dc</option> --}}
                 </select>
             </div>
-        
+
         </div>
     </form>
     </div>
@@ -224,9 +225,26 @@
 
 
         $('.js-example-basic-multiple').select2();
+        $(document).ready(function() {
+  $(".delete").hide();
+  //when the Add Field button is clicked
+  $("#add").click(function(e) {
+    console.log('thisssss')
+    $(".delete").fadeIn("1500");
+    //Append a new row of code to the "#items" div
+    const ele = $("#items").clone()
+    console.log(ele)
+    $('#extra-item').append(ele)
+
+
+  });
+  $("body").on("click", ".delete", function(e) {
+    $(".next-referral").last().remove();
+  });
+});
 
 
         CKEDITOR.replace('long_description');
     </script>
-    
+
 @endsection
