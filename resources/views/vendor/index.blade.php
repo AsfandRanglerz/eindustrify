@@ -246,7 +246,7 @@ object-fit:cover;
 <div class="row mt-3">
     <div class="col-md-8">
     <div class="border p-2 pb-4">
-    <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex mt-2 align-items-center justify-content-between">
     <p class="per">Total Revenue</p>
     <div class="d-flex align-items-center">
     <small class="small"><span class="fas fa-circle circle1 p-1"></span>Profit</small>
@@ -264,7 +264,7 @@ object-fit:cover;
     </div>
 
         <div class="col-md-4">
-            <div class="border rounded p-3 pb-2">
+            <div class="border rounded p-3 pb-3">
             <strong class="strong">Most Sold Items</strong>
             <div class="d-flex justify-content-between mt-2">
                 <p class="per-category">Motors</p>

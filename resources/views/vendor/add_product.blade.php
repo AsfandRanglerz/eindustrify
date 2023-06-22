@@ -15,33 +15,153 @@
         .jquery-uploader-select > .upload-button {
             height: unset;
         }
-.jquery-uploader-select > .upload-button span {
-    color: #BBBBBB;
-    text-transform: uppercase;
-    font-weight: 600;
+        .jquery-uploader-select > .upload-button span {
+        color: #BBBBBB;
+        text-transform: uppercase;
+        font-weight: 600;
+        }
+        .jquery-uploader-select-card:hover {
+            border-color: #b0191e;
+        }
+        .add-product-content .fa-arrow-left{
+            width: 30px;
+        }
+
+        .add-product-content button{
+            border: 1px solid #CCCCCC;
+            background: #fff;
+        }
+        .add-product-content .fa-eye, .fa-trash{
+        color:#7F7F7F;
+        font-size:16px;
+        cursor: pointer;
+        background: #F2F2F2;
+        }
+        .add-product-content .fa-trash:hover{
+        color:#B0191E;
+        }
+        .add-product-content .form-select:focus{
+        box-shadow:none;
+        outline:none;
+        border-color:#000;
+        }
+
+        .add-product-content label{
+        display:block;
+       }
+        .add-product-content .variant{
+            color:#B0191E;
+       }
+       .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
+    background:#B0191E;
+    color:#fff;
+    font-size: 15px;
 }
-.jquery-uploader-select-card:hover {
-    border-color: #b0191e;
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+    color: #FFF;
+    font-size: 15px;
+    background: #B0191E;
 }
+.select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
+    background-color: #B0191E !important;
+    color:#fff;
+}
+
     </style>
-    <div class="p-xl-4 p-2 admin-main-content border">
-        <button><span class="fa fa-long-arrow-alt-left"></span></button>
-        <h6>Add Product</h6>
+    <div class="p-xl-4 p-2 admin-main-content border add-product-content">
 
-        <div class="row">
+    <div class="d-flex align-items-center justify-content-between">
+    <div class="d-flex">
+    <button><span class="fas fa-arrow-left p-2"></span></button>
+        <h4 class="ms-2">Add Product</h4></div>
+        <div>
+            <span class="fas fa-eye p-2"></span>
+            <span class="fas fa-trash p-2"></span>
+        </div>
+    </div>
+
+        <div class="row mt-5">
             <div class="col-sm-8">
-                <label class="text-uppercase">title</label>
+                <label class="text-uppercase fw-bold">title</label>
                 <input type="text" class="form-control" placeholder="Add Product Name">
-
-                <h6 class="text-uppercase">Media</h6>
+            <form action="">
+    <div class="form-group mt-3">
+    <label for="exampleFormControlTextarea1" class="text-uppercase">description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" name="long_description"></textarea>
+  </div>
+</form>
+           <div class="mt-3">
+            <h6 class="text-uppercase">Media</h6>
                 <input type="text" id="example" value="" />
-
             </div>
-            <div class="col-sm-4">
-                <h6 class="text-uppercase">product status</h6>
-                <select name="" id="">
-                    <option value="">Draft</option>
+<form class="mt-3">
+
+<div class="d-flex">
+<div class=" me-sm-3">
+  <label class="text-uppercase">shipping weight</label>
+    <input id="name" type="number"  class=" p-2" placeholder="0.0"  value="" name="name" >
+  </div>
+
+  <div style="">
+    <label for="number">Qty</label>
+    <input type="number" id="quantity" class=" p-2" placeholder="kg" name="quantity" min="1" max="100">
+  </div>
+</div>
+
+<h6 class="text-uppercase  mt-3">pricing</h6>
+ <div class="d-flex">
+ <div class="mt-3 me-sm-3">
+
+  <label for="number" class="text-uppercase">price</label>
+    <input id="name" type="number"  class=" p-2" placeholder="$ 0.0"  value="" name="name" >
+  </div>
+  <div class="mt-3" style="">
+  <label for="number" class="text-uppercase ">discounted price</label>
+    <input type="number" id="quantity" class=" p-2" placeholder="$ 0.0" name="quantity">
+  </div>
+ </div>
+</form>
+<div class="d-flex justify-content-between mt-3 p-3 border align-items-center">
+<h6 class="text-uppercase fw-bold">variants</h6>
+<a href=""><h6 class="text-uppercase variant text-underline">+ variants</h6></a>
+</div>
+</div>
+            <div class="col-sm-4 product-status mt-1">
+                <h6 class="text-uppercase mb-2">product status</h6>
+                <select name="" id="" class="js-example-basic-single" aria-label="Default select example">
+                    <option value="dra">Draft</option>
+                    <option value="a">abc</option>
+                    <option value="d">dc</option>
                 </select>
+                <h6 class="text-uppercase mb-2 mt-3">product details</h6>
+                <label class="text-uppercase">category</label>
+                <select class="js-example-basic-single pt-2 pb-2 form-control" name="state">
+                <option value="find">find or select category</option>
+                    <option value="a">abc</option>
+                    <option value="d">dc</option>
+              </select>
+              </select>
+
+                <label class="text-uppercase mt-3">sub category</label>
+                <select class="js-example-basic-single pt-2 pb-2 form-control" name="state">
+                <option value="find">find or select category</option>
+                    <option value="a">abc</option>
+                    <option value="d">dc</option>
+              </select>
+              </select>
+
+                <label class="text-uppercase mt-3">child category</label>
+                <select class="js-example-basic-single pt-2 pb-2 form-control" name="state">
+                <option value="find">find or select category</option>
+                    <option value="a">abc</option>
+                    <option value="d">dc</option>
+              </select>
+              <label class="text-uppercase mb-2 mt-3">tags</label>
+                <select class="js-example-basic-multiple pt-2 pb-2 form-control"  name="states[]" multiple="multiple">
+                <option value="find">find or create tags</option>
+                    <option value="a">abc</option>
+                    <option value="d">dc</option>
+              </select>
             </div>
         </div>
     </div>
@@ -63,5 +183,18 @@
             multiple:true,
         });
     });
+    $('select').select2({
+  placeholder: ' please select your country',
+  allowClear: true
+});
+
+    $('.js-example-basic-single').select2();
+
+
+    $('.js-example-basic-multiple').select2();
+
+
+        CKEDITOR.replace( 'long_description');
+
     </script>
 @endsection
