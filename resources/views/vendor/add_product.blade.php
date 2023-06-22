@@ -52,6 +52,10 @@
         .add-product-content .variant{
             color:#B0191E;
        }
+        .add-product-content .submitt button{
+            background:#B0191E;
+            color:#fff;
+       }
        .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
     background:#B0191E;
     color:#fff;
@@ -124,6 +128,9 @@
 <div class="d-flex justify-content-between mt-3 p-3 border align-items-center">
 <h6 class="text-uppercase fw-bold">variants</h6>
 <a href=""><h6 class="text-uppercase variant text-underline">+ variants</h6></a>
+</div>
+<div class="text-end submitt mt-2">
+<button type="submit" class="p-2 fw-bold">Submit</button>
 </div>
 </div>
             <div class="col-sm-4 product-status mt-1">
