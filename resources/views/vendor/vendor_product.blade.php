@@ -207,7 +207,7 @@
                                         <td><span class="fas fa-circle circle-danger"></span> Deactive</td>
                                     @endif
                                     <td>{{ $product->qty }}</td>
-                                    <td>{{ $product->category->name }}</td>
+                                    <td>@if(isset($product->category)){{ $product->category->name }}@endif</td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <i class="fas fa-eye"></i>

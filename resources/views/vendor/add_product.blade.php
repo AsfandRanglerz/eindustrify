@@ -99,11 +99,11 @@
             </div>
         </div>
 
+        <form action="{{URL('create-product')}}" method="POST" enctype="multipart/form-data">
         <div class="row mt-5">
             <div class="col-sm-8">
                 <label class="text-uppercase fw-bold">title</label>
                 <input type="text" class="form-control" placeholder="Add Product Name" name="name">
-                <form action="{{URL('create-product')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group mt-3">
                         <label for="exampleFormControlTextarea1" class="text-uppercase">description</label>
@@ -192,10 +192,12 @@
                     <option value="d">dc</option> --}}
                 </select>
             </div>
-        </form>
+        
         </div>
+    </form>
     </div>
 @endsection
+
 @section('scripts')
     @if (\Illuminate\Support\Facades\Session::has('message'))
         <script>
@@ -226,4 +228,5 @@
 
         CKEDITOR.replace('long_description');
     </script>
+    
 @endsection
