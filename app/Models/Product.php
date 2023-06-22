@@ -19,7 +19,6 @@ class Product extends Model
         return $this->avgReview()->avg('rating') ?: '0';
     }
 
-
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -59,6 +58,10 @@ class Product extends Model
     public function productOverview()
     {
         return $this->hasMany(ProductOverview::class);
+    }
+    public function productVariant()
+    {
+        return $this->hasMany(ProductSize::class);
     }
     public function reviews()
     {

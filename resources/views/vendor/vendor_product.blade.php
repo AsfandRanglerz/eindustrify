@@ -119,7 +119,7 @@
                 <div class="d-flex align-items-center">
                     <h6 class="text-end me-3">Export</h6>
                     <h6>Import</h6>
-                    <a href="" class="btn order-btn ms-3 rounded-0 text-white">Add Product</a>
+                    <a href="{{URL('add-product')}}" class="btn order-btn ms-3 rounded-0 text-white">Add Product</a>
                 </div>
             </div>
             <nav class="navbar navbar-expand-lg navbar-light">

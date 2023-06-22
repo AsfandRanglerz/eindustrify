@@ -372,15 +372,18 @@ input::-webkit-inner-spin-button {
                                 <button class="btn-bg add-cart-btn">Add to Cart</button>
                             </div>
 
-                            <p class="my-3">Select Size: <b>3 HP</b></p>
+                            <p class="my-3">Select Size & Power: <b>3 HP</b></p>
                             <div class="d-flex flex-wrap prod-size-block">
-                                <button class="prod-size"><b>0.75 HP</b> <br> <span class="price">$148.00</span></button>
-                                <button class="prod-size"><b>1 HP</b> <br> <span class="price">$138.00</span></button>
+                                <button class="prod-size active"><b>{{$product->size}}</b> <br> <span class="price">${{$product->price}}.00</span></button>
+                                @foreach ($product->productVariant as $productVariant)
+                                <button class="prod-size"><b>{{$productVariant->product_size}}</b> <br> <span class="price">{{$productVariant->product_price}}</span></button>
+                                @endforeach
+                                {{-- <button class="prod-size"><b>1 HP</b> <br> <span class="price">$138.00</span></button>
                                 <button class="prod-size"><b>1.5 HP</b> <br> <span class="price">$128.00</span></button>
                                 <button class="prod-size"><b>2 HP</b> <br> <span class="price">$204.00</span></button>
                                 <button class="prod-size active"><b>3 HP</b> <br> <span class="price">$198.00</span></button>
                                 <button class="prod-size"><b>4 HP</b> <br> <span class="price">$248.00</span></button>
-                                <button class="prod-size"><b>5 HP</b> <br> <span class="price">$298.00</span></button>
+                                <button class="prod-size"><b>5 HP</b> <br> <span class="price">$298.00</span></button> --}}
                             </div>
                         </div>
                         <div class="accordion" id="prodDetailAccordian">

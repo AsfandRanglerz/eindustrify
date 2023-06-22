@@ -154,6 +154,7 @@ class ProductController extends Controller
         $product->brand_id = $request->brand;
         $product->sku = $request->sku;
         $product->price = $request->price;
+        $product->size = $request->size;
         // $product->offer_price = $request->offer_price;
         $product->qty = $request->quantity;
         $product->short_description = $request->short_description;
@@ -357,6 +358,7 @@ class ProductController extends Controller
         $product->brand_id = $request->brand;
         $product->sku = $request->sku;
         $product->price = $request->price;
+        $product->size = $request->size;
         // $product->offer_price = $request->offer_price;
         $product->qty = $request->quantity;
         $product->short_description = $request->short_description;

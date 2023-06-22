@@ -1,17 +1,17 @@
 @extends('admin.master_layout')
 @section('title')
     <title>
-        {{ __('Product Size') }}</title>
+        {{ __('Product Variants') }}</title>
 @endsection
 @section('admin-content')
     <!-- Main Content -->
     <div class="main-content">
         <section class="section">
             <div class="section-header">
-                <h1>{{ __('Product Sizes') }}</h1>
+                <h1>{{ __('Product Variants') }}</h1>
                 <div class="section-header-breadcrumb">
                     <div class="breadcrumb-item active"><a href="{{ route('admin.dashboard') }}">{{__('admin.Dashboard')}}</a></div>
-                    <div class="breadcrumb-item">{{ __('Product Size') }}</div>
+                    <div class="breadcrumb-item">{{ __('Product Variants') }}</div>
                 </div>
             </div>
 

@@ -49,4 +49,12 @@ class VendorDashboardController extends Controller
         VendorCategory::where('category_id',$request->id)->delete();
         return redirect()->back()->with('message', 'Categories delete Successfully');
     }
+    public function addProduct(){
+
+        $user = User::with('categories','subcategories','childcategories')->find(Auth::id());
+        return view('vendor.add_product',compact('user'));
+    }
+    public function createProduct(Request $request){
+      dd($request->all());
+    }
 }

@@ -27,7 +27,7 @@
                                     <div class="row">
                                         <input type="hidden" name="id" value="{{$id}}">
                                         <div class="form-group col-12">
-                                            <label>{{ __('Product Size') }} <span class="text-danger">*</span></label>
+                                            <label>{{ __('Variant') }} <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="product_size" placeholder="Size">
                                         </div>
                                         <div class="form-group col-12">

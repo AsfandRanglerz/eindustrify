@@ -113,7 +113,10 @@
                                             <label>{{ __('admin.SKU') }} </label>
                                             <input type="text" class="form-control" name="sku">
                                         </div>
-
+                                        <div class="form-group col-12">
+                                            <label>{{ __('Size (Power etc)') }} </label>
+                                            <input type="text" class="form-control" name="size">
+                                        </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('admin.Price') }} <span class="text-danger">*</span></label>
                                             <input type="text" class="form-control" name="price"
@@ -212,9 +215,6 @@
                                                 <option value="0">{{ __('admin.Inactive') }}</option>
                                             </select>
                                         </div>
-
-
-
                                         {{-- <div class="form-group col-12">
                                             <label>{{ __('admin.SEO Title') }}</label>
                                             <input type="text" class="form-control" name="seo_title"
@@ -225,7 +225,6 @@
                                             <label>{{ __('admin.SEO Description') }}</label>
                                             <textarea name="seo_description" id="" cols="30" rows="10" class="form-control text-area-5">{{ old('seo_description') }}</textarea>
                                         </div> --}}
-
                                         <div class="form-group col-12">
                                             <label>{{ __('admin.Specifications') }}</label>
                                             <div>

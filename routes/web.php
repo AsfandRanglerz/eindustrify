@@ -138,7 +138,7 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('/search-product', [HomeController::class, 'searchProduct'])->name('search-product');
         Route::get('/product-detail/{slug}', [HomeController::class, 'productDetail']);
         // Route::view('/product-detail', 'product_detail');
-        Route::view('/add-product', 'vendor.add_product');
+        // Route::view('/add-product', 'vendor.add_product');
 
         Route::get('/compare', [HomeController::class, 'compare'])->name('compare');
         Route::get('/add-to-compare/{id}', [HomeController::class, 'addToCompare'])->name('add-to-compare');
@@ -270,6 +270,10 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
             Route::delete('product-delete/{id}', [VendorDashboardController::class, 'deleteProduct']);
             Route::delete('category-delete/{id}', [VendorDashboardController::class, 'deleteVendorCategory']);
             Route::post('delete-all-categories', [VendorDashboardController::class, 'deleteAllVendorCategory']);
+            // Route::view('/add-product', 'vendor.add_product');
+            
+            Route::get('add-product', [VendorDashboardController::class, 'addProduct']);
+            Route::post('create-product', [VendorDashboardController::class, 'createProduct']);
             // Route::view('vendor-product','vendor.vendor_product');
             // Route::get('my-profile', [SellerProfileController::class, 'index'])->name('my-profile');
             // Route::get('state-by-country/{id}', [SellerProfileController::class, 'stateByCountry'])->name('state-by-country');

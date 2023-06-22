@@ -112,6 +112,10 @@
                                     <label>{{__('admin.SKU')}} </label>
                                    <input type="text" class="form-control" name="sku" value="{{ $product->sku }}">
                                 </div>
+                                <div class="form-group col-12">
+                                    <label>{{__('Size (Power etc)')}} </label>
+                                   <input type="text" class="form-control" name="size" value="{{ $product->size }}">
+                                </div>
 
                                 <div class="form-group col-12">
                                     <label>{{__('admin.Price')}} <span class="text-danger">*</span></label>

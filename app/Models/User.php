@@ -61,6 +61,13 @@ class User extends Authenticatable implements JWTSubject
         return $this->belongsToMany('App\Models\Category','vendor_categories','vendor_id','category_id');
      }
 
+     public function subcategories(){
+        return $this->belongsToMany('App\Models\SubCategory','vendor_sub_categories','vendor_id','sub_category_id');
+     }
+     public function childcategories(){
+        return $this->belongsToMany('App\Models\ChildCategory','vendor_child_categories','vendor_id','child_category_id');
+     }
+
     public function seller()
     {
         return $this->hasOne(Vendor::class);
