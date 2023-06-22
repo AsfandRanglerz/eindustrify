@@ -34,6 +34,18 @@
                                             <label>{{ __('Product Price') }} <span class="text-danger">*</span></label>
                                             <input type="text" id="name" class="form-control" name="product_price" placeholder="Price">
                                         </div>
+                                        <div class="form-group col-12">
+                                            <label>{{ __('Discount Price') }} <span class="text-danger">*</span></label>
+                                            <input type="text" id="name" class="form-control" name="discount_price" placeholder="Price">
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label>{{ __('SKU') }} <span class="text-danger">*</span></label>
+                                            <input type="text" id="name" class="form-control" name="sku" placeholder="Price">
+                                        </div>
+                                        <div class="form-group col-12">
+                                            <label>{{ __('Quantity') }} <span class="text-danger">*</span></label>
+                                            <input type="text" id="name" class="form-control" name="qty" placeholder="Price">
+                                        </div>
                                         {{-- <div class="form-group col-12">
                                     <label>{{__('admin.Status')}} <span class="text-danger">*</span></label>
                                     <select name="status" class="form-control">

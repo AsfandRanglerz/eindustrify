@@ -125,9 +125,9 @@
 
                                                                 {{-- <a class="dropdown-item has-icon" href="{{ route('admin.product-variant',$product->id) }}"><i class="fas fa-cog"></i>{{__('admin.Product Variant')}}</a> --}}
 
-                                                                {{-- <a class="dropdown-item has-icon"
+                                                                <a class="dropdown-item has-icon"
                                                                     href="{{ route('admin.product-size', $product->id) }}"><i
-                                                                        class="fas fa-cog"></i>{{ __('Size') }}</a> --}}
+                                                                        class="fas fa-cog"></i>{{ __('Variant') }}</a>
 
                                                                 <a class="dropdown-item has-icon"
                                                                     href="{{ route('admin.product-overview', $product->id) }}"><i
@@ -157,7 +157,6 @@
                 <div class="modal-body">
                     {{ __('admin.You can not delete this product. Because there are one or more order has been created in this product.') }}
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">{{ __('admin.Close') }}</button>
                 </div>

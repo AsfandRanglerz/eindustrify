@@ -342,8 +342,8 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        {{-- <div class="form-group col-12">
-                                            <label>{{ __('Product Size') }}</label>
+                                        <div class="form-group col-12">
+                                            <label>{{ __('Product Variant') }}</label>
                                             <div>
                                                 <a href="javascript::void()" id="manageSpecificationBox">
                                                     <input name="is_specification" id="status_toggle" type="checkbox"
@@ -355,13 +355,31 @@
                                         <div class="form-group col-12 specification-box">
                                             <div class="row">
                                                 <div class="col-md-5">
-                                                    <label>{{ __('Size') }} <span class="text-danger">*</span></label>
+                                                    <label>{{ __('Variant') }} <span class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="product_size[]">
                                                 </div>
                                                 <div class="col-md-5">
                                                     <label>{{ __('admin.Price') }} <span
                                                             class="text-danger">*</span></label>
                                                     <input type="text" class="form-control" name="product_price[]">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-5">
+                                                    <label>{{ __('Discount Price') }} <span class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="discount_price[]">
+                                                </div>
+                                                <div class="col-md-5">
+                                                    <label>{{ __('SKU') }} <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="product_sku[]">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-10">
+                                                    <label>{{ __('Quantity') }} <span
+                                                            class="text-danger">*</span></label>
+                                                    <input type="text" class="form-control" name="product_qty[]">
                                                 </div>
                                                 <div class="col-md-2">
                                                     <button type="button"
@@ -373,7 +391,7 @@
                                                 <div class="delete-specification-row">
                                                     <div class="row mt-2">
                                                         <div class="col-md-5">
-                                                            <label>{{ __('Size') }} <span
+                                                            <label>{{ __('Variant') }} <span
                                                                     class="text-danger">*</span></label>
                                                             <input type="text" class="form-control"
                                                                 name="product_size[]">
@@ -384,6 +402,25 @@
                                                             <input type="text" class="form-control"
                                                                 name="product_price[]">
                                                         </div>
+                                                        
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-5">
+                                                            <label>{{ __('Discount Price') }} <span class="text-danger">*</span></label>
+                                                            <input type="text" class="form-control" name="discount_price[]">
+                                                        </div>
+                                                        <div class="col-md-5">
+                                                            <label>{{ __('SKU') }} <span
+                                                                    class="text-danger">*</span></label>
+                                                            <input type="text" class="form-control" name="product_sku[]">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-10">
+                                                            <label>{{ __('Quantity') }} <span
+                                                                    class="text-danger">*</span></label>
+                                                            <input type="text" class="form-control" name="product_qty[]">
+                                                        </div>
                                                         <div class="col-md-2">
                                                             <button type="button"
                                                                 class="btn btn-danger plus_btn deleteSpeceficationBtn"><i
@@ -392,7 +429,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div> --}}
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-12">

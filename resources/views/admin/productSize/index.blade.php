@@ -28,8 +28,11 @@
                                         <thead>
                                             <tr>
                                                 <th>{{ __('#') }}</th>
-                                                <th>{{ __('Size') }}</th>
+                                                <th>{{ __('Variant') }}</th>
                                                 <th>{{ __('Price') }}</th>
+                                                <th>{{ __('Discount Price') }}</th>
+                                                <th>{{ __('SKU') }}</th>
+                                                <th>{{ __('Quantity') }}</th>
                                                 <th>{{ __('admin.Action') }}</th>
                                             </tr>
                                         </thead>
@@ -39,6 +42,9 @@
                                                     <td>{{$loop->iteration}}</td>
                                                     <td>{{ $product->product_size }}</td>
                                                     <td>{!! $product->product_price !!}</td>
+                                                    <td>{{ $product->discount_price }}</td>
+                                                    <td>{{ $product->sku }}</td>
+                                                    <td>{{ $product->qty }}</td>
                                                     <td>
                                                         <a href="{{ route('admin.product-size-edit', $product->id) }}"
                                                             class="btn btn-primary btn-sm"><i class="fa fa-edit"

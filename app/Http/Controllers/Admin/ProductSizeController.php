@@ -29,11 +29,17 @@ class ProductSizeController extends Controller
             [
                 'product_price' => 'required',
                 'product_size' => 'required',
+                'discount_price' => 'required',
+                'sku' => 'required',
+                'qty' => 'required',
               ]
         );
         $data = ProductSize::find($request->id);
         $data->product_size = $request->product_size;
         $data->product_price = $request->product_price;
+        $data->discount_price = $request->discount_price;
+        $data->sku = $request->sku;
+        $data->qty = $request->qty;
         $data->save();
         $notification = trans('Product Size Updated Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
@@ -47,11 +53,17 @@ class ProductSizeController extends Controller
             [
                 'product_price' => 'required',
                 'product_size' => 'required',
+                'discount_price' => 'required',
+                'sku' => 'required',
+                'qty' => 'required',
               ]
         );
         $data = new ProductSize();
         $data->product_size = $request->product_size;
         $data->product_price = $request->product_price;
+        $data->discount_price = $request->discount_price;
+        $data->sku = $request->sku;
+        $data->qty = $request->qty;
         $data->product_id = $request->id;
         $data->save();
         $notification = trans('Product Size Add Successfully');

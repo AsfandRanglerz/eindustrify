@@ -40,14 +40,14 @@
     }
 </style>
 <div class="sidebar">
-    <a href="" class="w-100 link active"><img src="{{ asset('/uploads/website-images/images/dashboard.png') }}">Dashboard</a>
+    <a href="{{URL('vendor-dashboard')}}" class="w-100 link {{ request()->is('vendor-dashboard') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/dashboard.png') }}">Dashboard</a>
     <h6 class="heading">Orders</h6>
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/order.png') }}">Orders</a>
     <h6  class="heading">Products</h6>
-    <a href="{{URL('vendor-product')}}" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/product.png') }}">Products</a>
-    <a href="{{URL('vendor-category')}}" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/category.png') }}">Categories</a>
+    <a href="{{URL('vendor-product')}}" class="w-100 link {{ request()->is('vendor-product') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/product.png') }}">Products</a>
+    <a href="{{URL('vendor-category')}}" class="w-100 link {{ request()->is('vendor-category') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/category.png') }}">Categories</a>
     <h6  class="heading">Customers</h6>
-    <a href="{{URL('customer-listing')}}" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/customer.png') }}">Customers</a>
+    <a href="{{URL('customer-listing')}}" class="w-100 link {{ request()->is('customer-listing') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/customer.png') }}">Customers</a>
     <h6  class="heading">Analytics & Reports</h6>
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/analytic.png') }}">Analytics</a>
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/report.png') }}">Reports</a>

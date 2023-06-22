@@ -38,6 +38,7 @@ class ProductController extends Controller
 
     public function index()
     {
+        // ->where(['vendor_id' => 0])
         $products = Product::with('category')->orderBy('id', 'desc')->get();
         $orderProducts = OrderProduct::all();
         $setting = Setting::first();
@@ -212,25 +213,28 @@ class ProductController extends Controller
                 }
             }
         }
-        // if ($request->product_price) {
-        //     $product_price = [];
-        //     if ($request->product_size) {
-        //         foreach ($request->product_size as $index => $product_size) {
-        //             if ($product_size) {
-        //                 if ($request->product_price[$index]) {
-        //                     if (!in_array($product_size, $product_price)) {
-        //                         $productSize = new ProductSize();
-        //                         $productSize->product_id = $product->id;
-        //                         $productSize->product_price = $request->product_price[$index];
-        //                         $productSize->product_size = $request->product_size[$index];
-        //                         $productSize->save();
-        //                     }
-        //                     $product_price[] = $product_size;
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
+        if ($request->product_price) {
+            $product_price = [];
+            if ($request->product_size) {
+                foreach ($request->product_size as $index => $product_size) {
+                    if ($product_size) {
+                        if ($request->product_price[$index]) {
+                            if (!in_array($product_size, $product_price)) {
+                                $productSize = new ProductSize();
+                                $productSize->product_id = $product->id;
+                                $productSize->product_price = $request->product_price[$index];
+                                $productSize->product_size = $request->product_size[$index];
+                                $productSize->discount_price = $request->discount_price[$index];
+                                $productSize->sku = $request->product_sku[$index];
+                                $productSize->qty = $request->product_qty[$index];
+                                $productSize->save();
+                            }
+                            $product_price[] = $product_size;
+                        }
+                    }
+                }
+            }
+        }
         $notification = trans('admin_validation.Created Successfully');
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect()->route('admin.product.index')->with($notification);
