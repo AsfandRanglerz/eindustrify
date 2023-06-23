@@ -155,7 +155,7 @@
                     <div id='extra-item'></div>
                     <div class="d-flex justify-content-between mt-3 p-3 border align-items-center">
                         <h6 class="text-uppercase fw-bold">variants</h6>
-                        <a id="add" class="text-uppercase add-more variant text-underline fw-bold border-0"
+                        <a href="" id="add" class="text-uppercase add-more variant text-underline fw-bold border-0"
                             >+ variants</a>
                     </div>
                     <div class="text-end submitt mt-2">
@@ -195,7 +195,7 @@
                         @endforeach
                     </select>
                     <label class="text-uppercase mb-2 mt-3">tags</label>
-                    <select class="js-example-basic-multiple pt-2 pb-2 form-control" name="tags[]" multiple="multiple">
+                    <select class="js-example-tokenizer pt-2 pb-2 form-control" name="tags[]" multiple="multiple">
                         <option value="find">find or create tags</option>
                         {{-- <option value="a">abc</option>
                     <option value="d">dc</option> --}}
@@ -224,14 +224,13 @@
                 multiple: true,
             });
         });
-        $('select').select2({
-            placeholder: ' please select your country',
-            allowClear: true
-        });
 
         $('.js-example-basic-single').select2();
 
-
+        $(".js-example-tokenizer").select2({
+        tags: true,
+        tokenSeparators: [',', ' ']
+        })
         $('.js-example-basic-multiple').select2();
         $(document).ready(function() {
             $(".delete").hide();
@@ -243,8 +242,6 @@
                 const ele = $("#items").clone()
                 console.log(ele)
                 $('#extra-item').append(ele)
-
-
             });
             $("body").on("click", ".delete", function(e) {
                 $(".next-referral").last().remove();
