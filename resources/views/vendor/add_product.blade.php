@@ -125,8 +125,13 @@
                                 name="sku">
                         </div>
 
-                        <div style="">
+                        <!-- <div>
                             <label for="number">Qty</label>
+                            <input type="number" id="quantity" class=" p-2" placeholder="Qty" name="qty"
+                                min="1" max="100">
+                        </div> -->
+                        <div class="ms-sm-3">
+                            <label for="number">Wt.</label>
                             <input type="number" id="quantity" class=" p-2" placeholder="kg" name="qty"
                                 min="1" max="100">
                         </div>
@@ -145,7 +150,7 @@
                             <input type="number" id="quantity" class=" p-2" placeholder="$ 0.0" name="discount_price">
                         </div>
                     </div>
-    </div>
+                 </div>
                     <div id='extra-item' ></div>
                 <div class="d-flex justify-content-between mt-3 p-3 border align-items-center">
                     <h6 class="text-uppercase fw-bold">variants</h6>
