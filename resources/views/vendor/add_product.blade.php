@@ -118,7 +118,7 @@
                 </div>
                 {{-- <form class="mt-3"> --}}
                 <div id="items">
-                    <div class="d-flex">
+                    <div class="d-flex mt-3">
                         <div class=" me-sm-3">
                             <label class="text-uppercase">shipping weight</label>
                             <input id="name" type="number" class=" p-2" placeholder="0.0" value=""
@@ -130,7 +130,7 @@
                             <input type="number" id="quantity" class=" p-2" placeholder="Qty" name="qty"
                                 min="1" max="100">
                         </div> -->
-                        <div class="ms-sm-3">
+                        <div>
                             <label for="number">Wt.</label>
                             <input type="number" id="quantity" class=" p-2" placeholder="kg" name="qty"
                                 min="1" max="100">
@@ -154,7 +154,7 @@
                     <div id='extra-item' ></div>
                 <div class="d-flex justify-content-between mt-3 p-3 border align-items-center">
                     <h6 class="text-uppercase fw-bold">variants</h6>
-                    <button id="add" class="text-uppercase add-more variant text-underline fw-bold border-0" type="submit">+ variants</button>
+                    <a href="" id="add" class="text-uppercase add-more variant text-underline fw-bold border-0" type="submit">+ variants</a>
                 </div>
                 <div class="text-end submitt mt-2">
                     <button type="submit" class="p-2 fw-bold">Submit</button>
