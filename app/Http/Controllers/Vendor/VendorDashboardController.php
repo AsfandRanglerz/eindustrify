@@ -136,6 +136,6 @@ class VendorDashboardController extends Controller
             }
         }
         $product->save();
-        dd('usman');
+        dd('suamdasn');
     }
 }
