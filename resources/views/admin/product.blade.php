@@ -39,7 +39,7 @@
                                                 <tr>
                                                     <td>{{ ++$index }}</td>
                                                     <a href="{{ route('product-detail', $product->slug) }}"></a>
-                                                    <td>{{ $product->short_name }}
+                                                    <td>{{ $product->name }}
                                                     </td>
                                                     <td>{{ $setting->currency_icon }}{{ $product->price }}</td>
                                                     <td> <img class="rounded-circle"

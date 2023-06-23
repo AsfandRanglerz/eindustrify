@@ -20,6 +20,7 @@ class RegisterCustomer
 {
     public static function userRegistration($request)
     {
+        
         $data = $request->only(['first_name', 'last_name', 'email', 'phone', 'role']);
         $data['password'] = Hash::make($request->password);
         $user = User::create($data);

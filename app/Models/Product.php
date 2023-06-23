@@ -29,7 +29,7 @@ class Product extends Model
     }
     public function childCategory()
     {
-        return $this->belongsTo(SubCategory::class,'child_category_id');
+        return $this->belongsTo(ChildCategory::class,'child_category_id');
     }
     public function wholesales()
     {

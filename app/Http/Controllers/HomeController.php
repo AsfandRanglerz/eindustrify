@@ -271,14 +271,16 @@ class HomeController extends Controller
         $brands = Brand::where('status', 1)->get();
         return view('child_category_listing', compact('subcategory', 'brands'));
     }
-    public function allChildCategories($slug){
+    public function allChildCategories($slug)
+    {
         $subcategory = SubCategory::with('childCategories', 'products')->where(['slug' => $slug, 'status' => 1])->first();
-        return view('all_child_categories',compact('subcategory'));
+        return view('all_child_categories', compact('subcategory'));
     }
-    public function productListing($slug){
+    public function productListing($slug)
+    {
 
-        $childcategory = ChildCategory::with('category','subCategory','products')->where(['slug' => $slug, 'status' => 1])->first();
-        return view('product_listing',compact('childcategory'));
+        $childcategory = ChildCategory::with('category', 'subCategory', 'products')->where(['slug' => $slug, 'status' => 1])->first();
+        return view('product_listing', compact('childcategory'));
     }
     public function termsAndCondition()
     {
@@ -446,9 +448,9 @@ class HomeController extends Controller
 
     public function productDetail($slug)
     {
-        $product = Product::with('category','brand','specifications','productOverview','gallery','subCategory','childCategory')->where(['status' => 1, 'slug' => $slug])->first();
-        $relatedProducts = Product::where('sub_category_id',$product->sub_category_id)->where('status',1)->latest()->limit(4)->get();
-        return view('product_detail', compact('product','relatedProducts'));
+        $product = Product::with('category', 'brand', 'specifications', 'productOverview', 'gallery', 'subCategory', 'childCategory')->where(['status' => 1, 'slug' => $slug])->first();
+        $relatedProducts = Product::where('sub_category_id', $product->sub_category_id)->where('status', 1)->latest()->limit(4)->get();
+        return view('product_detail', compact('product', 'relatedProducts'));
     }
 
     public function addToCompare($id)
@@ -569,7 +571,8 @@ class HomeController extends Controller
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
-    public function vendorDashboard(){
+    public function vendorDashboard()
+    {
         return view('vendor.index');
     }
     public function logout()
@@ -579,12 +582,12 @@ class HomeController extends Controller
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect('/login')->with($notification);
     }
-    public function getFileHeader(Request $request){
-        $header = Excel::toArray([],$request->file('excel-file'))[0][0];
+    public function getFileHeader(Request $request)
+    {
+        $header = Excel::toArray([], $request->file('excel-file'))[0][0];
         return response()->json([
             'success' => 'Status  successfully',
             'header' => $header,
         ]);
-
     }
 }

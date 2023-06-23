@@ -66,7 +66,6 @@ class CustomerRegister extends FormRequest
                 'vender_state_id' => 'required',
                 'vender_city_id' => 'required',
                 'vender_zip_code' => 'required',
-                'file' => 'required|mimes:csv,xlsx',
             ];
         }
     }

@@ -809,7 +809,7 @@
                                                                                             {{ $subCategory->name }}
                                                                                         </button>
                                                                                         <input class="form-check-input"
-                                                                                            name="suCategory_id[]"
+                                                                                            name="subcategory_id[]"
                                                                                             type="checkbox"
                                                                                             value="{{ $subCategory->id }}"
                                                                                             hidden>
@@ -834,7 +834,7 @@
                                                                                                         class="form-check mb-0 sub-cat-child">
                                                                                                         <input
                                                                                                             class="form-check-input"
-                                                                                                            name="child_category_id[]"
+                                                                                                            name="childcategory_id[]"
                                                                                                             type="checkbox"
                                                                                                             value="{{ $childCategory->id }}"
                                                                                                             id="accessoriesSub{{ $childCategory->id }}">

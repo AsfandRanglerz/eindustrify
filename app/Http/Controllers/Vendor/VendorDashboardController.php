@@ -99,7 +99,7 @@ class VendorDashboardController extends Controller
         // $product->qty = $request->qty;
         $product->long_description = $request->long_description;
         $product->video_link = $request->video_link;
-        // $product->tags = $request->tags;
+        $product->tags = $request->tags;
         $product->status = $request->status;
         $product->vendor_id = Auth::id();
 

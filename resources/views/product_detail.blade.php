@@ -344,8 +344,7 @@ input::-webkit-inner-spin-button {
                                 </ol>
                             </nav>
 
-                            <h3 class="col-lg-11">Mophorn 3 HP Electric Motor 1 Phase AC Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW Air Compressor Motor,
-                                115/230V</h3>
+                            <h3 class="col-lg-11">{{$product->name}}</h3>
                             <div class="mt-4 d-flex align-items-center">
                                 <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}" class="me-1">
                                 <img src="{{ asset('public/uploads/website-images/images/rating-star1.png') }}" class="me-1">
@@ -356,7 +355,7 @@ input::-webkit-inner-spin-button {
                             </div>
 
                             <div class="my-4 d-flex align-items-center">
-                                <h3 class="d-inline-block red-text">$198.00</h3>
+                                <h3 class="d-inline-block red-text">${{$product->price}}.00</h3>
                                 <s class="ms-3 me-2">$230.00</s>
                                 <b class="red-text">14% OFF</b>
                             </div>

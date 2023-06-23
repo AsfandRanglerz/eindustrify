@@ -155,7 +155,7 @@
                     <div id='extra-item'></div>
                     <div class="d-flex justify-content-between mt-3 p-3 border align-items-center">
                         <h6 class="text-uppercase fw-bold">variants</h6>
-                        <a id="add" class="text-uppercase add-more variant text-underline fw-bold border-0"
+                        <a href="" id="add" class="text-uppercase add-more variant text-underline fw-bold border-0"
                             >+ variants</a>
                     </div>
                     <div class="text-end submitt mt-2">
