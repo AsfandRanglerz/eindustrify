@@ -64,24 +64,24 @@ class VendorDashboardController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'slug' => 'required|unique:products',
+            // 'slug' => 'required|unique:products',
             'category_id' => 'required',
-            'short_description' => 'required',
+            // 'short_description' => 'required',
             'long_description' => 'required',
-            'brand' => 'required',
+            // 'brand' => 'required',
             'price' => 'required|numeric',
-            'qty' => 'required',
+            // 'qty' => 'required',
             'status' => 'required'
         ];
         $customMessages = [
             'name.required' => trans('admin_validation.Name is required'),
             'name.unique' => trans('admin_validation.Name is required'),
-            'slug.required' => trans('admin_validation.Slug is required'),
-            'slug.unique' => trans('admin_validation.Slug already exist'),
+            // 'slug.required' => trans('admin_validation.Slug is required'),
+            // 'slug.unique' => trans('admin_validation.Slug already exist'),
             'category_id.required' => trans('admin_validation.Category is required'),
             'long_description.required' => trans('admin_validation.Long description is required'),
-            'brand.required' => trans('admin_validation.Brand is required'),
-            'qty.required' => trans('admin_validation.Quantity is required'),
+            // 'brand.required' => trans('admin_validation.Brand is required'),
+            // 'qty.required' => trans('admin_validation.Quantity is required'),
             'status.required' => trans('admin_validation.Status is required'),
         ];
         $this->validate($request, $rules, $customMessages);
@@ -96,7 +96,7 @@ class VendorDashboardController extends Controller
         $product->sku = $request->sku;
         $product->price = $request->price;
         $product->size = $request->size;
-        $product->qty = $request->qty;
+        // $product->qty = $request->qty;
         $product->long_description = $request->long_description;
         $product->video_link = $request->video_link;
         // $product->tags = $request->tags;
@@ -136,6 +136,6 @@ class VendorDashboardController extends Controller
             }
         }
         $product->save();
-        dd('suamdasn');
+        return redirect('vendor-product')->with('message', 'Product create Successfully');
     }
 }
