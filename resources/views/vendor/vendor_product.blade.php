@@ -94,6 +94,10 @@
             align-items: baseline;
         }
 
+        .vendor-order-content td{
+            font-size:12px;
+        }
+
         .vendor-order-content [data-filter-item] {
             padding: 15px;
             border: 1px solid #fff;
@@ -314,7 +318,8 @@
                   <td>
                     <form action="/action_page.php"><input type="checkbox" id="checkAll" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                 </td>
-                <td class="text-center">Products</td>
+                <td colspan="2">Products</td>
+
                   <td>Status</td>
                   <td>Inventory</td>
                   <td>Type</td>
@@ -326,13 +331,13 @@
                 <td>
                     <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                 </td>
-                <td>    <div class="d-flex align-items-center justify-content-center">
+                <td class="">
                   <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  <p class="ms-2 p">Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</p>
-                  </div></td>
+                  </td>
+                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
                   <td><span class="fas fa-circle circle-success"></span>  Active</td>
-                  <td>01 23 2020</td>
-                  <td>Hashar</td>
+                  <td>294 instock for 4 variants</td>
+                  <td>Electric Motor</td>
                   <td>
                     <div class="d-flex">
                     <i class="fas fa-eye"></i>
@@ -344,13 +349,13 @@
                 <td >
                     <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                 </td>
-                <td>    <div class="d-flex align-items-center justify-content-center">
+                <td class="">
                   <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  <p class="ms-2 p">Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</p>
-                  </div></td>
+                  </td>
+                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
                   <td><span class="fas fa-circle circle-success"></span>  Active</td>
-                  <td>01 23 2020</td>
-                  <td>Hassan</td>
+                  <td>294 instock for 4 variants</td>
+                  <td>Electric Motor</td>
                   <td>
                     <div class="d-flex">
                     <i class="fas fa-eye"></i>
@@ -362,13 +367,13 @@
                 <td >
                     <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                 </td>
-                <td>    <div class="d-flex align-items-center justify-content-center">
+                <td class="">
                   <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  <p class="ms-2 p">Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</p>
-                  </div></td>
+                  </td>
+                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
                   <td><span class="fas fa-circle circle-success"></span>  Active</td>
-                  <td>01 23 2020</td>
-                  <td>Ali</td>
+                  <td>294 instock for 4 variants</td>
+                  <td>Electric Motor</td>
                   <td>
                     <div class="d-flex">
                     <i class="fas fa-eye"></i>
@@ -380,13 +385,13 @@
                 <td>
                     <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                 </td>
-                <td>    <div class="d-flex align-items-center justify-content-center">
+                <td class="">
                   <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  <p class="ms-2 p">Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</p>
-                  </div></td>
+                  </td>
+                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
                   <td><span class="fas fa-circle circle-success"></span>  Active</td>
-                  <td>01 23 2020</td>
-                  <td>Kashif</td>
+                  <td>294 instock for 4 variants</td>
+                  <td>Electric Motor</td>
                   <td>
                     <div class="d-flex">
                     <i class="fas fa-eye"></i>
@@ -398,13 +403,13 @@
                 <td >
                     <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                 </td>
-                <td>    <div class="d-flex align-items-center justify-content-center">
+                <td class="">
                   <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  <p class="ms-2 p">Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</p>
-                  </div></td>
+                  </td>
+                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
                   <td><span class="fas fa-circle circle-success"></span>  Active</td>
-                  <td>01 23 2020</td>
-                  <td>Rameez</td>
+                  <td>294 instock for 4 variants</td>
+                  <td>Electric Motor</td>
                   <td>
                     <div class="d-flex">
                     <i class="fas fa-eye"></i>
@@ -416,13 +421,13 @@
                 <td >
                     <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                 </td>
-                <td>    <div class="d-flex align-items-center justify-content-center">
+                <td class="">
                   <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  <p class="ms-2 p">Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</p>
-                  </div></td>
+                  </td>
+                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
                   <td><span class="fas fa-circle circle-success"></span>  Active</td>
-                  <td>01 23 2020</td>
-                  <td>Danial</td>
+                  <td>294 instock for 4 variants</td>
+                  <td>Electric Motor</td>
                   <td>
                     <div class="d-flex">
                     <i class="fas fa-eye"></i>
@@ -434,13 +439,13 @@
                 <td >
                     <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                 </td>
-                <td>    <div class="d-flex align-items-center justify-content-center">
+                <td class="">
                   <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  <p class="ms-2 p">Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</p>
-                  </div></td>
+                  </td>
+                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
                   <td><span class="fas fa-circle circle-success"></span>  active</td>
-                  <td>01 23 2020</td>
-                  <td>Saleem</td>
+                  <td>294 instock for 4 variants</td>
+                  <td>Electric Motor</td>
                   <td>
                     <div class="d-flex">
                     <i class="fas fa-eye"></i>
@@ -452,13 +457,13 @@
                 <td>
                     <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                 </td>
-                <td>    <div class="d-flex align-items-center justify-content-center">
+                <td class="">
                   <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  <p class="ms-2 p">Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</p>
-                  </div></td>
+                  </td>
+                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
                   <td><span class="fas fa-circle circle-success"></span>  active</td>
-                  <td>01 23 2020</td>
-                  <td>Salman</td>
+                  <td>294 instock for 4 variants</td>
+                  <td>Electric Motor</td>
                   <td>
                     <div class="d-flex">
                     <i class="fas fa-eye"></i>

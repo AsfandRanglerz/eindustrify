@@ -146,11 +146,11 @@ vertical-align: middle;
         <td>
             <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
         </td>
-        <td>Kashif</td>
-          <td><span class="fas fa-circle circle-success"></span>  active</td>
-          <td>01 23 2020</td>
-          <td>Salman</td>
-          <td>Salman</td>
+        <td>Alicia White</td>
+          <td><span class="fas fa-circle circle-success"></span>  subscribed</td>
+          <td>Houston, Texas</td>
+          <td>9 Order</td>
+          <td>$ 3,023.00</td>
 
           <td>
             <div class="d-flex">
@@ -163,12 +163,11 @@ vertical-align: middle;
         <td >
             <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
         </td>
-        <td>Kashif</td>
-          <td><span class="fas fa-circle circle-success"></span>  active</td>
-          <td>01 23 2020</td>
-          <td>Salman</td>
-          <td>Salman</td>
-
+        <td>Jack Black</td>
+          <td><span class="fas fa-circle circle-success"></span>  subscribed</td>
+          <td>Houston, Texas</td>
+          <td>2 Order</td>
+          <td>$ 3,023.00</td>
           <td>
             <div class="d-flex">
             <i class="fas fa-eye"></i>
@@ -181,10 +180,10 @@ vertical-align: middle;
             <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
         </td>
         <td>Kashif</td>
-          <td><span class="fas fa-circle circle-success"></span>  active</td>
-          <td>01 23 2020</td>
-          <td>Salman</td>
-          <td>Salman</td>
+          <td><span class="fas fa-circle circle-success"></span>  subscribed</td>
+          <td>Houston, Texas</td>
+          <td>2 Order</td>
+          <td>$ 3,023.00</td>
 
           <td>
             <div class="d-flex">
@@ -197,11 +196,28 @@ vertical-align: middle;
         <td>
             <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
         </td>
-        <td>Kashif</td>
-          <td><span class="fas fa-circle circle-success"></span>  active</td>
-          <td>01 23 2020</td>
-          <td>Salman</td>
-          <td>Salman</td>
+        <td>Jack Black</td>
+          <td><span class="fas fa-circle circle-success"></span>  subscribed</td>
+          <td>Houston, Texas</td>
+          <td>1 Order</td>
+          <td>$ 3,023.00</td>
+
+          <td>
+            <div class="d-flex">
+            <i class="fas fa-eye"></i>
+            <i class="fas fa-trash ms-2"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+        <td >
+            <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+        </td>
+        <td>Alex</td>
+          <td><span class="fas fa-circle circle-success"></span>  subscribed</td>
+          <td>Houston, Texas</td>
+          <td>2 Order</td>
+          <td>$ 3,023.00</td>
 
           <td>
             <div class="d-flex">
@@ -215,27 +231,10 @@ vertical-align: middle;
             <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
         </td>
         <td>Kashif</td>
-          <td><span class="fas fa-circle circle-success"></span>  active</td>
-          <td>01 23 2020</td>
-          <td>Salman</td>
-          <td>Salman</td>
-
-          <td>
-            <div class="d-flex">
-            <i class="fas fa-eye"></i>
-            <i class="fas fa-trash ms-2"></i>
-            </div>
-          </td>
-        </tr>
-        <tr>
-        <td >
-            <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-        </td>
-        <td>Kashif</td>
-          <td><span class="fas fa-circle circle-success"></span>  active</td>
-          <td>01 23 2020</td>
-          <td>Salman</td>
-          <td>Salman</td>
+          <td><span class="fas fa-circle circle-success"></span>  subscribed</td>
+          <td>Houston, Texas</td>
+          <td>3 Order</td>
+          <td>$ 3,023.00</td>
           <td>
             <div class="d-flex">
             <i class="fas fa-eye"></i>
@@ -247,11 +246,11 @@ vertical-align: middle;
         <td >
             <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
         </td>
-        <td>Kashif</td>
-          <td><span class="fas fa-circle circle-success"></span>  active</td>
-          <td>01 23 2020</td>
-          <td>Salman</td>
-          <td>Salman</td>
+        <td>jack</td>
+          <td><span class="fas fa-circle circle-success"></span>  subscribed</td>
+          <td>Houston, Texas</td>
+          <td>8 Order</td>
+          <td>$ 3,023.00</td>
           <td>
             <div class="d-flex">
             <i class="fas fa-eye"></i>
@@ -263,11 +262,11 @@ vertical-align: middle;
         <td>
             <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
         </td>
-        <td>Kashif</td>
-          <td><span class="fas fa-circle circle-success"></span>  active</td>
-          <td>01 23 2020</td>
-          <td>Salman</td>
-          <td>Salman</td>
+        <td>Jack Black</td>
+          <td><span class="fas fa-circle circle-success"></span>  subscribed</td>
+          <td>Houston, Texas</td>
+          <td>1 Order</td>
+          <td>$ 3,023.00</td>
           <td>
             <div class="d-flex">
             <i class="fas fa-eye"></i>
