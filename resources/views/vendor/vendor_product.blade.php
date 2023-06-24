@@ -196,8 +196,8 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center justify-content-center">
-                                            <img src="{{ asset($product->thumb_image) }}" class="img-fluid" height="50px"
-                                                width="50px">
+                                            <img src="{{ asset($product->thumb_image) }}" class="img-fluid" height="45px"
+                                                width="45px">
                                             <p class="ms-2 p">{{ $product->name }}</p>
                                         </div>
                                     </td>
