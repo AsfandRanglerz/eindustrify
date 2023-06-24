@@ -49,6 +49,18 @@ img.profile-user-pic {
     display: none;
 }
 
+.breadcrumb-item {
+    font-size: 15px;
+}
+.breadcrumb-item.active {
+    color: #000;
+    font-weight: 700;
+}
+.breadcrumb-item a:hover {
+    color: #b0191e;
+    text-decoration: underline;
+}
+
 #profContentBtn+.animated-dropdown {
     top: 6px !important;
 }

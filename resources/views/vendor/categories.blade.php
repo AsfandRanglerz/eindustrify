@@ -191,7 +191,9 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center justify-content-start">
-                                            <img src="{{ asset($category->image) }}" class="img-fluid padding p-2"
+                                            {{-- <img src="{{ asset($category->image) }}" class="img-fluid padding p-2"
+                                                height="45px" width="45px"> --}}
+                                                <img src="{{ asset('public/uploads/website-images/images/engine30.png') }}" class="img-fluid padding p-2"
                                                 height="45px" width="45px">
                                             <p class="ms-2 p">{{ $category->name }}</p>
                                         </div>

@@ -10,7 +10,13 @@
                 CUSTOM PAGES PAGE START
             ==============================-->
     <div class="featured-products">
-        <div class="container py-xl-5 py-3">
+        <div class="container pb-xl-5 py-3">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ URL('/') }}">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{$category->name}}</li>
+                </ol>
+            </nav>
             <div class="mb-xl-3 mb-2 d-flex flex-wrap align-items-center justify-content-between">
                 <h4>{{$category->name}}</h4>
                 <a href="{{ url('all-sub-categories/'.$category->slug) }}" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>

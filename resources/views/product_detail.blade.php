@@ -185,17 +185,6 @@ input::-webkit-inner-spin-button {
     align-items: center;
     justify-content: center;
 }
-.prod-detail-section .breadcrumb-item {
-    font-size: 15px;
-}
-.prod-detail-section .breadcrumb-item.active {
-    color: #000;
-    font-weight: 700;
-}
-.prod-detail-section .breadcrumb-item a:hover {
-    color: #b0191e;
-    text-decoration: underline;
-}
 
 .prod-images-slider .dropdown-toggle::after {
     display: none;
