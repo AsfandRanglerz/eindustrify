@@ -125,7 +125,7 @@
                 <h4 class="mb-0">Explore Product Categories</h4>
                 <a href="{{ url('/all-categories') }}" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>
             </div>
-            <div class="d-flex flex-wrap justify-content-between">
+            <div class="d-flex flex-wrap">
                 @foreach ($categories as $category)
                     <a class="product-cat-content" href="{{ url('sub-category-listing/'.$category->slug) }}">
                         <div class="image-holder">
