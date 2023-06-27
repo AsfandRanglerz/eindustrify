@@ -62,6 +62,7 @@ class VendorDashboardController extends Controller
     }
     public function createProduct(Request $request)
     {
+        dd($request->all());
         $rules = [
             'name' => 'required',
             // 'slug' => 'required|unique:products',

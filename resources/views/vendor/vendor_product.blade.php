@@ -113,7 +113,7 @@
     </style>
 
 
-    {{-- <div class="p-xl-4  p-2 admin-main-content border">
+    <div class="p-xl-4  p-2 admin-main-content border">
         <div class="vendor-order-content">
             <div class="d-flex justify-content-between ">
                 <div class="d-flex align-items-center">
@@ -250,7 +250,7 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
 
 
 
