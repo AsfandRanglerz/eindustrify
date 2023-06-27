@@ -84,10 +84,11 @@
         .vendor-order-content .base {
             align-items: baseline;
         }
-/*
-        .vendor-order-content td{
-            font-size:12px;
-        } */
+
+        /*
+            .vendor-order-content td{
+                font-size:12px;
+            } */
 
         .vendor-order-content [data-filter-item] {
             padding: 15px;
@@ -103,53 +104,56 @@
         }
 
         .vendor-order-content td {
-            text-align:center;
+            text-align: center;
         }
 
         /* .vendor-order-content table td:first-child {
-            text-align:center;
-        } */
+                text-align:center;
+            } */
     </style>
 
     <div class="p-xl-4  p-2 admin-main-content border">
         <div class="vendor-order-content">
-        <div class="d-flex justify-content-between ">
-        <div class="d-flex align-items-center">
-        <img src="{{ asset('public/uploads/tech-img.png') }}" class="img-fluid" height="30px" width="30px">
-        <h4 class="ms-3 text-black d-none d-sm-block">Technical Support</h4>
-        </div>
-        <div class="">
-        <a href="" class="btn order-btn ms-3 rounded-0 text-white">New Ticket</a>
-        </div>
-        </div>
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="w-100">
-            <div class="collapse navbar-collapse border p-2 mt-3" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0 base">
-              <li class="nav-item all-dropdown1 dropdown">
-                  <a class="nav-link dropdown-toggle all-dropdown-c" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    All
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Open</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Closed</a>
-                </li>
-              </ul>
-              <form class="d-flex justify-content-center align-items-center ">
-                <input type="text" class="p-2 m-2 rounded-0 search" id="searchInput" placeholder="search" data-search />
-              </form>
-            <fieldset class="sort-by">
+            <div class="d-flex justify-content-between ">
+                <div class="d-flex align-items-center">
+                    <img src="{{ asset('public/uploads/tech-img.png') }}" class="img-fluid" height="30px" width="30px">
+                    <h4 class="ms-3 text-black d-none d-sm-block">Technical Support</h4>
+                </div>
+                <div class="">
+                    <a href="{{ URL('new-ticket') }}" class="btn order-btn ms-3 rounded-0 text-white">New Ticket</a>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="w-100">
+                    <div class="collapse navbar-collapse border p-2 mt-3" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 base">
+                            <li class="nav-item all-dropdown1 dropdown">
+                                <a class="nav-link dropdown-toggle all-dropdown-c" href="#" id="navbarDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    All
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Open</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Closed</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex justify-content-center align-items-center ">
+                            <input type="text" class="p-2 m-2 rounded-0 search" id="searchInput" placeholder="search"
+                                data-search />
+                        </form>
+                        <fieldset class="sort-by">
                             <legend>SORT BY</legend>
                             <div class="dropdown">
-                                <a class="btn ps-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Top Reviews</a>
+                                <a class="btn ps-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Top Reviews</a>
 
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -159,132 +163,52 @@
                             </div>
                         </fieldset>
 
+                    </div>
+                </div>
+            </nav>
+            <div class=" rounded min pt-3 items">
+                <table class="table table-striped table-borderless">
+                    <thead class="table-dark align-items-center">
+                        <tr>
+                            <td>Ticket ID</td>
+                            <td>Category</td>
+                            <td>Date</td>
+                            <td>Subject</td>
+                            <td>Status</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($tickets as $ticket)
+                        <tr>
+                            <td>#{{$ticket->ticket_no}}</td>
+                            <td>Finance</td>
+                            <td>{{$ticket->date}}</td>
+                            <td>{{$ticket->subject}}</td>
+                            <td><span class="fas fa-circle circle-success"></span> {{$ticket->status}}</td>
+                            <td>
+                                <ul>
+                                    <li class="nav-item all-dropdown ">
+                                        <a class="nav-link" href="#" id="navbarDropdown" role="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false">
+                                            <img src="{{ asset('public/uploads/dotted-img.png') }}" class="img-fluid">
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                            <li><a class="dropdown-item" href="#">Action</a></li>
+                                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>    
+                        @endforeach
+                        
+                    </tbody>
+                </table>
             </div>
-          </div>
-        </nav>
-        <div class=" rounded min pt-3 items">
-            <table class="table table-striped table-borderless">
-              <thead class="table-dark align-items-center">
-                <tr >
-                <td>Ticket ID</td>
-                  <td>Category</td>
-                  <td>Date</td>
-                  <td>Subject</td>
-                  <td>Status</td>
-                  <td>Action</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                <td>#11232</td>
-                  <td>Finance</td>
-                  <td>Jun 29,2021</td>
-                  <td>Funds not recieved</td>
-                  <td><span class="fas fa-circle circle-success"></span> In progress</td>
-                  <td>
-                <ul>
-            <li class="nav-item all-dropdown ">
-          <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{ asset('public/uploads/dotted-img.png') }}" class="img-fluid">
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        </ul>
-                  </td>
-                </tr>
-                <tr>
-                <td> #11232</td>
-                  <td>Finance</td>
-                  <td>Jun 29,2021</td>
-                  <td>Funds not recieved</td>
-                  <td><span class="fas fa-circle circle-success"></span> In progress</td>
-                  <td>
-                           <ul>
-            <li class="nav-item all-dropdown ">
-          <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{ asset('public/uploads/dotted-img.png') }}" class="img-fluid">
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        </ul>
-                  </td>
-                </tr>
-                <tr>
-                <td>#11232</td>
-                  <td>Finance</td>
-                  <td>Jun 29,2021</td>
-                  <td>Funds not recieved</td>
-                  <td><span class="fas fa-circle circle-success"></span> In progress</td>
-                  <td>
-                           <ul>
-            <li class="nav-item all-dropdown ">
-          <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{ asset('public/uploads/dotted-img.png') }}" class="img-fluid">
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        </ul>
-                  </td>
-                </tr>
-                <tr>
-                <td>#11232 </td>
-                  <td>Finance</td>
-                  <td>Jun 29,2021</td>
-                  <td>Funds not recieved</td>
-                  <td><span class="fas fa-circle circle-success"></span> In progress</td>
-                  <td>
-                           <ul>
-            <li class="nav-item all-dropdown ">
-          <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{ asset('public/uploads/dotted-img.png') }}" class="img-fluid">
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        </ul>
-                  </td>
-                </tr>
-                <tr>
-                <td>#11232</td>
-                  <td>Finance</td>
-                  <td>Jun 29,2021</td>
-                  <td>Funds not recieved</td>
-                  <td><span class="fas fa-circle circle-success"></span> In progress</td>
-                  <td>
-                           <ul>
-            <li class="nav-item all-dropdown ">
-          <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          <img src="{{ asset('public/uploads/dotted-img.png') }}" class="img-fluid">
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        </ul>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
         </div>
-        </div>
+    </div>
 @endsection
 @section('scripts')
     @if (\Illuminate\Support\Facades\Session::has('message'))
