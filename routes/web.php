@@ -271,9 +271,12 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
             Route::delete('category-delete/{id}', [VendorDashboardController::class, 'deleteVendorCategory']);
             Route::post('delete-all-categories', [VendorDashboardController::class, 'deleteAllVendorCategory']);
             // Route::view('/add-product', 'vendor.add_product');
-            
+
             Route::get('add-product', [VendorDashboardController::class, 'addProduct']);
             Route::post('create-product', [VendorDashboardController::class, 'createProduct']);
+            Route::get('technical-support', [VendorDashboardController::class, 'technicalSupport']);
+            Route::get('new-ticket', [VendorDashboardController::class, 'technical_ticket']);
+            Route::post('create-ticket', [VendorDashboardController::class, 'createTicket']);
             // Route::view('vendor-product','vendor.vendor_product');
             // Route::get('my-profile', [SellerProfileController::class, 'index'])->name('my-profile');
             // Route::get('state-by-country/{id}', [SellerProfileController::class, 'stateByCountry'])->name('state-by-country');
@@ -826,6 +829,12 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
     // Route::view('all-child-categories', 'all_child_categories');
     Route::get('all-child-categories/{slug}', [HomeController::class, 'allChildCategories']);
     // Route::view('vendor/index', 'vendor/index');
+
+    // Route::view('technical-support', 'vendor.technical_support');
+    // Route::view('new-ticket', 'vendor.technical_ticket');
+    Route::view('order-return', 'vendor.order_return');
+    Route::view('order-detail', 'vendor.order_detail');
+
 
     Route::get('logout', [HomeController::class, 'logout']);
     Route::post('get-file-header', [HomeController::class, 'getFileHeader']);

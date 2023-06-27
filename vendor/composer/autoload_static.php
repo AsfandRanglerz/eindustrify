@@ -908,6 +908,7 @@ class ComposerStaticInit12a5bc84dbf3912e5e7a73106b315b62
         'App\\Models\\SubCategory' => __DIR__ . '/../..' . '/app/Models/SubCategory.php',
         'App\\Models\\Subscriber' => __DIR__ . '/../..' . '/app/Models/Subscriber.php',
         'App\\Models\\TawkChat' => __DIR__ . '/../..' . '/app/Models/TawkChat.php',
+        'App\\Models\\TechnicalSupport' => __DIR__ . '/../..' . '/app/Models/TechnicalSupport.php',
         'App\\Models\\TermsAndCondition' => __DIR__ . '/../..' . '/app/Models/TermsAndCondition.php',
         'App\\Models\\ThreeColumnCategory' => __DIR__ . '/../..' . '/app/Models/ThreeColumnCategory.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',

@@ -428,7 +428,8 @@ object-fit:cover;
           <td>Hassan</td>
           <td><span class="fas fa-circle circle-success"></span> delivered</td>
           <td>500</td>
-          <td>        <ul>
+          <td>
+            <ul>
             <li class="nav-item all-dropdown ">
           <a class="nav-link " href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             ...
@@ -439,7 +440,8 @@ object-fit:cover;
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
-        </ul></td>
+        </ul>
+    </td>
         </tr>
       </tbody>
     </table>

@@ -4,12 +4,15 @@ namespace App\Http\Controllers\Vendor;
 
 use Image;
 use index;
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\ProductSize;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\ProductGallery;
 use App\Models\VendorCategory;
+use App\Models\TechnicalSupport;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -100,7 +103,7 @@ class VendorDashboardController extends Controller
         // $product->qty = $request->qty;
         $product->long_description = $request->long_description;
         $product->video_link = $request->video_link;
-        $product->tags = $request->tags;
+        $product->tags = implode(',', $request->tags);
         $product->status = $request->status;
         $product->vendor_id = Auth::id();
 
@@ -114,29 +117,84 @@ class VendorDashboardController extends Controller
             \Image::make($file)->save(public_path($image_path));
             $product->image[0] = $image_path;
         }
-        if ($request->product_price) {
-            $product_price = [];
-            if ($request->product_size) {
-                foreach ($request->product_size as $index => $product_size) {
-                    if ($product_size) {
-                        if ($request->product_price[$index]) {
-                            if (!in_array($product_size, $product_price)) {
-                                $productSize = new ProductSize();
-                                $productSize->product_id = $product->id;
-                                $productSize->product_price = $request->product_price[$index];
-                                $productSize->product_size = $request->product_size[$index];
-                                $productSize->discount_price = $request->discount_price[$index];
-                                $productSize->sku = $request->product_sku[$index];
-                                $productSize->qty = $request->product_qty[$index];
-                                $productSize->save();
-                            }
-                            $product_price[] = $product_size;
-                        }
-                    }
-                }
-            }
-        }
+        // if ($request->file('image')) {
+        //     foreach ($request->file('image') as $data) {
+        //         $image = hexdec(uniqid()) . '.' . strtolower($data->getClientOriginalExtension());
+        //         $data->move(public_path('images'), $image);
+        //         ProductGallery::create([
+        //             'image' =>  'public/images/' . $image,
+        //             'product_id' => Auth::id(),
+        //         ]);
+        //     }
+        // }
+        // if ($request->product_price) {
+        //     $product_price = [];
+        //     if ($request->product_size) {
+        //         foreach ($request->product_size as $index => $product_size) {
+        //             if ($product_size) {
+        //                 if ($request->product_price[$index]) {
+        //                     if (!in_array($product_size, $product_price)) {
+        //                         $productSize = new ProductSize();
+        //                         $productSize->product_id = $product->id;
+        //                         $productSize->product_price = $request->product_price[$index];
+        //                         $productSize->product_size = $request->product_size[$index];
+        //                         $productSize->discount_price = $request->discount_price[$index];
+        //                         $productSize->sku = $request->product_sku[$index];
+        //                         $productSize->qty = $request->product_qty[$index];
+        //                         $productSize->save();
+        //                     }
+        //                     $product_price[] = $product_size;
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         $product->save();
         return redirect('vendor-product')->with('message', 'Product create Successfully');
+    }
+    public function technicalSupport()
+    {
+        $tickets = TechnicalSupport::get();
+        return view('vendor.technical_support',compact('tickets'));
+    }
+    public function technical_ticket()
+    {
+        
+        return view('vendor.technical_ticket');
+    }
+    public function createTicket(Request $request)
+    {
+        $rules = [
+            'subject' => 'required',
+            'description' => 'required',
+            'document' => 'required',
+        ];
+        $customMessages = [
+            'subject.required' => trans('subject is required'),
+            'description.required' => trans('description is required'),
+            'document.required' => trans('document is required'),
+        ];
+        $this->validate($request, $rules, $customMessages);
+        $tech = TechnicalSupport::latest('id')->first();
+        if (isset($tech)) {
+            $ticket_no = $tech->ticket_no;
+        } else {
+            $ticket_no = 0;
+        }
+        $data = new TechnicalSupport();
+        $data->subject = $request->subject;
+        $data->description = $request->description;
+        $data->ticket_no = $ticket_no + 1;
+        $data->date = Carbon::now();
+        $data->status = 'deleivered';
+        if ($request->hasfile('document')) {
+            $file = $request->file('document');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('images'), $filename);
+            $data->document = 'public/images/' . $filename;
+        }
+        $data->save();
+        return redirect('technical-support')->with('message', 'Ticket create Successfully');
     }
 }

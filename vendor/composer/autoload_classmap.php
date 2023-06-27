@@ -249,6 +249,7 @@ return array(
     'App\\Models\\SubCategory' => $baseDir . '/app/Models/SubCategory.php',
     'App\\Models\\Subscriber' => $baseDir . '/app/Models/Subscriber.php',
     'App\\Models\\TawkChat' => $baseDir . '/app/Models/TawkChat.php',
+    'App\\Models\\TechnicalSupport' => $baseDir . '/app/Models/TechnicalSupport.php',
     'App\\Models\\TermsAndCondition' => $baseDir . '/app/Models/TermsAndCondition.php',
     'App\\Models\\ThreeColumnCategory' => $baseDir . '/app/Models/ThreeColumnCategory.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',

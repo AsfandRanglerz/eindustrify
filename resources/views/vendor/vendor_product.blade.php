@@ -94,8 +94,8 @@
             align-items: baseline;
         }
 
-        .vendor-order-content td{
-            font-size:12px;
+        .vendor-order-content td {
+            font-size: 12px;
         }
 
         .vendor-order-content [data-filter-item] {
@@ -211,7 +211,7 @@
                                         <td><span class="fas fa-circle circle-danger"></span> Deactive</td>
                                     @endif
                                     <td>{{ $product->qty }}</td>
-                                    <td>@if(isset($product->category)){{ $product->category->name }}@endif</td>
+                                    <td>@if (isset($product->category)){{ $product->category->name }}@endif</td>
                                     <td>
                                         <div class="d-flex align-items-center">
                                             <i class="fas fa-eye"></i>
@@ -255,50 +255,53 @@
 
 
 
-    <div class="p-xl-4  p-2 admin-main-content border">
+    {{-- <div class="p-xl-4  p-2 admin-main-content border">
         <div class="vendor-order-content">
-        <div class="d-flex justify-content-between ">
-        <div class="d-flex align-items-center">
-        <img src="{{ asset('public/uploads/product-icon.png') }}" class="img-fluid" height="30px" width="30px">
-        <h4 class="ms-3 text-black d-none d-sm-block">Products</h4>
-        </div>
-        <div class="d-flex align-items-center">
-        <h6 class="text-end me-3">Export</h6>
-        <h6>Import</h6>
-        <a href="" class="btn order-btn ms-3 rounded-0 text-white">Add Product</a>
-        </div>
-        </div>
-        <nav class="navbar navbar-expand-lg navbar-light">
-          <div class="w-100">
-            <div class="collapse navbar-collapse border p-2 mt-3" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0 base">
-              <li class="nav-item all-dropdown dropdown">
-                  <a class="nav-link dropdown-toggle all-dropdown-c" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                    All
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Active</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Draft</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Delete</a>
-                </li>
-              </ul>
-              <form class="d-flex justify-content-center align-items-center ">
-                <input type="text" class="p-2 m-2 rounded-0 search" id="searchInput" placeholder="search" data-search />
-              </form>
-            <fieldset class="sort-by">
+            <div class="d-flex justify-content-between ">
+                <div class="d-flex align-items-center">
+                    <img src="{{ asset('public/uploads/product-icon.png') }}" class="img-fluid" height="30px" width="30px">
+                    <h4 class="ms-3 text-black d-none d-sm-block">Products</h4>
+                </div>
+                <div class="d-flex align-items-center">
+                    <h6 class="text-end me-3">Export</h6>
+                    <h6>Import</h6>
+                    <a href="" class="btn order-btn ms-3 rounded-0 text-white">Add Product</a>
+                </div>
+            </div>
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <div class="w-100">
+                    <div class="collapse navbar-collapse border p-2 mt-3" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 base">
+                            <li class="nav-item all-dropdown dropdown">
+                                <a class="nav-link dropdown-toggle all-dropdown-c" href="#" id="navbarDropdown"
+                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    All
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#">Action</a></li>
+                                    <li><a class="dropdown-item" href="#">Another action</a></li>
+                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Active</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Draft</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Delete</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex justify-content-center align-items-center ">
+                            <input type="text" class="p-2 m-2 rounded-0 search" id="searchInput" placeholder="search"
+                                data-search />
+                        </form>
+                        <fieldset class="sort-by">
                             <legend>SORT BY</legend>
                             <div class="dropdown">
-                                <a class="btn ps-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">Top Reviews</a>
+                                <a class="btn ps-1 dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                    data-bs-toggle="dropdown" aria-expanded="false">Top Reviews</a>
 
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
@@ -308,177 +311,194 @@
                             </div>
                         </fieldset>
 
-            </div>
-          </div>
-        </nav>
-        <div class=" rounded min pt-3 items">
-            <table class="table table-striped table-borderless">
-              <thead class="table-dark align-items-center">
-                <tr>
-                  <td>
-                    <form action="/action_page.php"><input type="checkbox" id="checkAll" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                </td>
-                <td colspan="2">Products</td>
+                    </div>
+                </div>
+            </nav>
+            <div class=" rounded min pt-3 items">
+                <table class="table table-striped table-borderless">
+                    <thead class="table-dark align-items-center">
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="checkAll"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td colspan="2">Products</td>
 
-                  <td>Status</td>
-                  <td>Inventory</td>
-                  <td>Type</td>
-                  <td>Action</td>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                <td>
-                    <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                </td>
-                <td class="">
-                  <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  </td>
-                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
-                  <td><span class="fas fa-circle circle-success"></span>  Active</td>
-                  <td>294 instock for 4 variants</td>
-                  <td>Electric Motor</td>
-                  <td>
-                    <div class="d-flex">
-                    <i class="fas fa-eye"></i>
-                    <i class="fas fa-trash ms-2"></i>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                <td >
-                    <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                </td>
-                <td class="">
-                  <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  </td>
-                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
-                  <td><span class="fas fa-circle circle-success"></span>  Active</td>
-                  <td>294 instock for 4 variants</td>
-                  <td>Electric Motor</td>
-                  <td>
-                    <div class="d-flex">
-                    <i class="fas fa-eye"></i>
-                    <i class="fas fa-trash ms-2"></i>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                <td >
-                    <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                </td>
-                <td class="">
-                  <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  </td>
-                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
-                  <td><span class="fas fa-circle circle-success"></span>  Active</td>
-                  <td>294 instock for 4 variants</td>
-                  <td>Electric Motor</td>
-                  <td>
-                    <div class="d-flex">
-                    <i class="fas fa-eye"></i>
-                    <i class="fas fa-trash ms-2"></i>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                <td>
-                    <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                </td>
-                <td class="">
-                  <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  </td>
-                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
-                  <td><span class="fas fa-circle circle-success"></span>  Active</td>
-                  <td>294 instock for 4 variants</td>
-                  <td>Electric Motor</td>
-                  <td>
-                    <div class="d-flex">
-                    <i class="fas fa-eye"></i>
-                    <i class="fas fa-trash ms-2"></i>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                <td >
-                    <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                </td>
-                <td class="">
-                  <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  </td>
-                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
-                  <td><span class="fas fa-circle circle-success"></span>  Active</td>
-                  <td>294 instock for 4 variants</td>
-                  <td>Electric Motor</td>
-                  <td>
-                    <div class="d-flex">
-                    <i class="fas fa-eye"></i>
-                    <i class="fas fa-trash ms-2"></i>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                <td >
-                    <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                </td>
-                <td class="">
-                  <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  </td>
-                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
-                  <td><span class="fas fa-circle circle-success"></span>  Active</td>
-                  <td>294 instock for 4 variants</td>
-                  <td>Electric Motor</td>
-                  <td>
-                    <div class="d-flex">
-                    <i class="fas fa-eye"></i>
-                    <i class="fas fa-trash ms-2"></i>
-                    </div>
-                  </td>
-                </tr>
-                <tr >
-                <td >
-                    <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                </td>
-                <td class="">
-                  <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  </td>
-                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
-                  <td><span class="fas fa-circle circle-success"></span>  active</td>
-                  <td>294 instock for 4 variants</td>
-                  <td>Electric Motor</td>
-                  <td>
-                    <div class="d-flex">
-                    <i class="fas fa-eye"></i>
-                    <i class="fas fa-trash ms-2"></i>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                <td>
-                    <form action="/action_page.php"><input type="checkbox" id="vehicle1" class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                </td>
-                <td class="">
-                  <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px" width="50px">
-                  </td>
-                  <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
-                  <td><span class="fas fa-circle circle-success"></span>  active</td>
-                  <td>294 instock for 4 variants</td>
-                  <td>Electric Motor</td>
-                  <td>
-                    <div class="d-flex">
-                    <i class="fas fa-eye"></i>
-                    <i class="fas fa-trash ms-2"></i>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                            <td>Status</td>
+                            <td>Inventory</td>
+                            <td>Type</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td class="">
+                                <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px"
+                                    width="50px">
+                            </td>
+                            <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
+                            <td><span class="fas fa-circle circle-success"></span> Active</td>
+                            <td>294 instock for 4 variants</td>
+                            <td>Electric Motor</td>
+                            <td>
+                                <div class="d-flex">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-trash ms-2"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td class="">
+                                <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px"
+                                    width="50px">
+                            </td>
+                            <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
+                            <td><span class="fas fa-circle circle-success"></span> Active</td>
+                            <td>294 instock for 4 variants</td>
+                            <td>Electric Motor</td>
+                            <td>
+                                <div class="d-flex">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-trash ms-2"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td class="">
+                                <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px"
+                                    width="50px">
+                            </td>
+                            <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
+                            <td><span class="fas fa-circle circle-success"></span> Active</td>
+                            <td>294 instock for 4 variants</td>
+                            <td>Electric Motor</td>
+                            <td>
+                                <div class="d-flex">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-trash ms-2"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td class="">
+                                <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px"
+                                    width="50px">
+                            </td>
+                            <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
+                            <td><span class="fas fa-circle circle-success"></span> Active</td>
+                            <td>294 instock for 4 variants</td>
+                            <td>Electric Motor</td>
+                            <td>
+                                <div class="d-flex">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-trash ms-2"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td class="">
+                                <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px"
+                                    width="50px">
+                            </td>
+                            <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
+                            <td><span class="fas fa-circle circle-success"></span> Active</td>
+                            <td>294 instock for 4 variants</td>
+                            <td>Electric Motor</td>
+                            <td>
+                                <div class="d-flex">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-trash ms-2"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td class="">
+                                <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px"
+                                    width="50px">
+                            </td>
+                            <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
+                            <td><span class="fas fa-circle circle-success"></span> Active</td>
+                            <td>294 instock for 4 variants</td>
+                            <td>Electric Motor</td>
+                            <td>
+                                <div class="d-flex">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-trash ms-2"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td class="">
+                                <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px"
+                                    width="50px">
+                            </td>
+                            <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
+                            <td><span class="fas fa-circle circle-success"></span> active</td>
+                            <td>294 instock for 4 variants</td>
+                            <td>Electric Motor</td>
+                            <td>
+                                <div class="d-flex">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-trash ms-2"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td class="">
+                                <img src="{{ asset('public/uploads/motor-img.png') }}" class="img-fluid" height="50px"
+                                    width="50px">
+                            </td>
+                            <td> Mophorn 3 HP Electric Motor 1 Phase AC <br> Motor 3450rpm 60Hz 56 Frame SPL Rot-CCW</td>
+                            <td><span class="fas fa-circle circle-success"></span> active</td>
+                            <td>294 instock for 4 variants</td>
+                            <td>Electric Motor</td>
+                            <td>
+                                <div class="d-flex">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-trash ms-2"></i>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        </div>
-        <div class="text-center mt-md-4">
-            <p>Learn more about <a href=""><strong class="text-underline">product</strong></a></p>
-        </div>
+    </div>
+    <div class="text-center mt-md-4">
+        <p>Learn more about <a href=""><strong class="text-underline">product</strong></a></p>
+    </div> --}}
 @endsection
 @section('scripts')
     @if (\Illuminate\Support\Facades\Session::has('message'))
