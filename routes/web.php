@@ -829,6 +829,9 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
 
     Route::view('technical-support', 'vendor.technical_support');
     Route::view('new-ticket', 'vendor.technical_ticket');
+    Route::view('order-return', 'vendor.order_return');
+    Route::view('order-detail', 'vendor.order_detail');
+
 
     Route::get('logout', [HomeController::class, 'logout']);
     Route::post('get-file-header', [HomeController::class, 'getFileHeader']);

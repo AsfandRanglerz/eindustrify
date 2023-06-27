@@ -90,13 +90,16 @@
 
 <div class="mt-3">
 <label for="subject" class="text-uppercase">attachments <span class="text-danger">*</span></label>
-<div id="htmlBox" class="box " type="file">
-        <div class="box-inside" id="file_upload" >
-            <img class="d-block mx-auto mb-md-4 mb-3" src="http://localhost/eindustrify/public/uploads/website-images/images/drag-drop.png">
+<div id="htmlBox" class="box file-upload">
+        <div class="box-inside" >
+   <input type="file">
+        <!-- <img class="d-block mx-auto mb-md-4 mb-3" src="http://localhost/eindustrify/public/uploads/website-images/images/drag-drop.png"> -->
             <h6 class="heading file-val">Click to upload or Drag and Drop</h6>
             <small class="d-block mt-2">Maximum file size 50MB</small>
+
         </div>
     </div>
+
     <div class="mt-3">
         <button type="button " class=" submit-btn p-3">Submit</button>
     </div>
@@ -116,18 +119,7 @@
         </script>
     @endif
     <script>
-function uploadFiles() {
-        var files = document.getElementById('file_upload').files;
-        if(files.length==0){
-          alert("Please first choose or drop any file(s)...");
-          return;
-        }
-        var filenames="";
-        for(var i=0;i<files.length;i++){
-          filenames+=files[i].name+"\n";
-        }
-        alert("Selected file(s) :\n____________________\n"+filenames);
-      }
+$('.file-upload').file_upload();
     </script>
 
 @endsection
