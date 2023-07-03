@@ -44,7 +44,7 @@
                                                 ?>
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $technicalSupport->ticket_no }}</td>
+                                                    <td>#{{ $technicalSupport->ticket_no }}</td>
                                                     <td>{{ $date->format('M d, Y') }}</td>
                                                     <td>{{ $technicalSupport->subject }}</td>
                                                     <td>{{ $technicalSupport->description }}</td>
