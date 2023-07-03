@@ -230,6 +230,20 @@
                                     name="discount_price">
                             </div>
                         </div>
+                        <div class="d-flex flex-wrap">
+                            <div class="mt-3 me-sm-3">
+                                <label class="text-uppercase">SKU</label>
+                                <input id="sku" type="number" class="p-2" placeholder="SKU" name="SKU1">
+                            </div>
+                            <div class="mt-3" style="">
+                                <label  class="text-uppercase ">Varient</label>
+                                <input type="text" class="p-2" placeholder="1 HP" name="varient1">
+                            </div>
+                            <div class="mt-3" style="">
+                                <label class="text-uppercase ">Quantity</label>
+                                <input type="number" class="p-2" placeholder="Quantity" name="quantity1">
+                            </div>
+                        </div>
                     </div>
                     <div id="items1" class="d-none">
                         <div class="d-flex mt-3">
@@ -248,7 +262,6 @@
                         <h6 class="text-uppercase  mt-3">pricing</h6>
                         <div class="d-flex">
                             <div class="mt-3 me-sm-3">
-
                                 <label for="number" class="text-uppercase">price</label>
                                 <input id="name" type="number" class=" p-2" placeholder="$ 0.0" value=""
                                     name="price1">
@@ -257,6 +270,21 @@
                                 <label for="number" class="text-uppercase ">discounted price</label>
                                 <input type="number" id="quantity" class=" p-2" placeholder="$ 0.0"
                                     name="discount_price1">
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-wrap">
+                            <div class="mt-3 me-sm-3">
+                                <label class="text-uppercase">SKU</label>
+                                <input id="sku" type="number" class="p-2" placeholder="SKU" name="SKU1">
+                            </div>
+                            <div class="mt-3" style="">
+                                <label  class="text-uppercase ">Varient</label>
+                                <input type="text" class="p-2" placeholder="1 HP" name="varient1">
+                            </div>
+                            <div class="mt-3" style="">
+                                <label class="text-uppercase ">Quantity</label>
+                                <input type="number" class="p-2" placeholder="Quantity" name="quantity1">
                             </div>
                         </div>
                     </div>
