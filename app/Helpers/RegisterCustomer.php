@@ -78,7 +78,7 @@ class RegisterCustomer
         $bussiness_information['industry_id'] = $request->bussiness_industry_type_id;
         $bussiness_information['user_id'] = $user->id;
         $bussiness_information['vat'] = $request->vendor_vat;
-        // $bussiness_information['total_employee'] = $request->vendor_total_employee;
+        $bussiness_information['total_employee'] = $request->vendor_total_employee;
         $bussiness_information->save();
 
         // Billing Address
