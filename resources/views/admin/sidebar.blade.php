@@ -304,6 +304,16 @@
                             href="{{ route('admin.customer-support') }}">{{ __('Customer Support') }}</a></li>
                 </ul>
             </li>
+            <li class="nav-item dropdown {{ Route::is('admin.technical-support') ? 'active' : '' }}">
+                <a href="#" class="nav-link has-dropdown"><i
+                        class="fas fa-th-large"></i><span>{{ __('Technical Support') }}</span></a>
+
+                <ul class="dropdown-menu">
+
+                    <li class="{{ Route::is('admin.technical-support') ? 'active' : '' }}"><a class="nav-link"
+                            href="{{ route('admin.technical-support') }}">{{ __('Technical Support') }}</a></li>
+                </ul>
+            </li>
             {{-- <li class="nav-item dropdown {{ Route::is('admin.service.*') || Route::is('admin.maintainance-mode') || Route::is('admin.announcement') || Route::is('admin.mega-menu-category.*') || Route::is('admin.mega-menu-sub-category') || Route::is('admin.create-mega-menu-sub-category') || Route::is('admin.edit-mega-menu-sub-category') || Route::is('admin.mega-menu-banner') ||  Route::is('admin.slider.*') || Route::is('admin.home-page') || Route::is('admin.banner-image.index') || Route::is('admin.topbar-contact') || Route::is('admin.homepage-one-visibility') || Route::is('admin.cart-bottom-banner') || Route::is('admin.shop-page') || Route::is('admin.seo-setup') || Route::is('admin.menu-visibility') || Route::is('admin.product-detail-page') || Route::is('admin.default-avatar') || Route::is('admin.seller-conditions') ? 'active' : '' }}">
             <a href="#" class="nav-link has-dropdown"><i class="fas fa-globe"></i><span>{{__('admin.Manage Website')}}</span></a>
 

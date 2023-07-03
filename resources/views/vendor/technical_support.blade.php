@@ -86,9 +86,9 @@
         }
 
         /*
-            .vendor-order-content td{
-                font-size:12px;
-            } */
+                .vendor-order-content td{
+                    font-size:12px;
+                } */
 
         .vendor-order-content [data-filter-item] {
             padding: 15px;
@@ -108,8 +108,8 @@
         }
 
         /* .vendor-order-content table td:first-child {
-                text-align:center;
-            } */
+                    text-align:center;
+                } */
     </style>
 
     <div class="p-xl-4  p-2 admin-main-content border">
@@ -139,7 +139,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Open</a>
+                                <a class="nav-link" href="{{URL('help-center-details')}}">Open</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Closed</a>
@@ -180,30 +180,33 @@
                     </thead>
                     <tbody>
                         @foreach ($tickets as $ticket)
-                        <tr>
-                            <td>#{{$ticket->ticket_no}}</td>
-                            <td>Finance</td>
-                            <td>{{$ticket->date}}</td>
-                            <td>{{$ticket->subject}}</td>
-                            <td><span class="fas fa-circle circle-success"></span> {{$ticket->status}}</td>
-                            <td>
-                                <ul>
-                                    <li class="nav-item all-dropdown ">
-                                        <a class="nav-link" href="#" id="navbarDropdown" role="button"
-                                            data-bs-toggle="dropdown" aria-expanded="false">
-                                            <img src="{{ asset('public/uploads/dotted-img.png') }}" class="img-fluid">
-                                        </a>
-                                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                            <li><a class="dropdown-item" href="#">Action</a></li>
-                                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>    
+                            <?php
+                            $date = \Carbon\Carbon::parse($ticket->date);
+                            ?>
+                            <tr>
+                                <td>#{{ $ticket->ticket_no }}</td>
+                                <td>Finance</td>
+                                <td>{{ $date->format('M d, Y') }}</td>
+                                <td>{{ $ticket->subject }}</td>
+                                <td><span class="fas fa-circle circle-success"></span> {{ $ticket->status }}</td>
+                                <td>
+                                    <ul>
+                                        <li class="nav-item all-dropdown ">
+                                            <a class="nav-link" href="#" id="navbarDropdown" role="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <img src="{{ asset('public/uploads/dotted-img.png') }}" class="img-fluid">
+                                            </a>
+                                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </td>
+                            </tr>
                         @endforeach
-                        
+
                     </tbody>
                 </table>
             </div>

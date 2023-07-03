@@ -94,6 +94,7 @@ use App\Http\Controllers\Admin\SpecificationKeyController;
 
 
 
+use App\Http\Controllers\Admin\TechnicalSupportController;
 use App\Http\Controllers\Seller\SellerDashboardController;
 use App\Http\Controllers\Vendor\VendorDashboardController;
 use App\Http\Controllers\Admin\TermsAndConditionController;
@@ -598,7 +599,9 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
 
         Route::get('terms-condition', [PolicyController::class, 'getTermsCondition'])->name('terms-condition');
         Route::get('terms-condition-edit/{id}', [PolicyController::class, 'getEditTermsCondition'])->name('terms-condition-edit');
+        Route::get('technical-support-edit/{id}', [PolicyController::class, 'getTechnicalSupportEdit'])->name('technical-support-edit');
         Route::post('update-terms-condition', [PolicyController::class, 'updateTermsCondition'])->name('update-terms-condition');
+        Route::post('update-technical-support', [PolicyController::class, 'updateTechnicalSupport'])->name('update-technical-support');
 
         Route::get('terms-registration', [PolicyController::class, 'getTermsRegistration'])->name('terms-registration');
         Route::get('terms-registration-edit/{id}', [PolicyController::class, 'getEditTermsRegistration'])->name('terms-registration-edit');
@@ -653,6 +656,13 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
 
         Route::get('customer-support', [CustomerSupportController::class, 'getCustomerSupport'])->name('customer-support');
         Route::delete('customer-support-delete/{id}', [CustomerSupportController::class, 'destroy'])->name('customer-support-delete');
+
+
+        Route::get('technical-support', [TechnicalSupportController::class, 'getTechnicalSupport'])->name('technical-support');
+        Route::get('technical-support-edit/{id}', [TechnicalSupportController::class, 'getTechnicalSupportEdit'])->name('technical-support-edit');
+        Route::post('update-technical-support', [TechnicalSupportController::class, 'updateTechnicalSupport'])->name('update-technical-support');
+        Route::delete('technical-support-delete/{id}', [TechnicalSupportController::class, 'destroy'])->name('technical-support-delete');
+
 
         Route::get('state-by-country/{id}', [SellerController::class, 'stateByCountry'])->name('state-by-country');
         Route::get('city-by-state/{id}', [SellerController::class, 'cityByState'])->name('city-by-state');
