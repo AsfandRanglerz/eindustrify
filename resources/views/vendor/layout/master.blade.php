@@ -76,7 +76,7 @@
     </div>
     @include('vendor.common.footer')
     <script>
-      
+
     <script src="{{ asset('user/js/jquery-3.6.0.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
@@ -93,6 +93,7 @@
     <script src="{{ asset('ajax-file-uploader/dist/jquery.uploader.min.js') }}"></script>
     <script src="{{ asset('public/jquery.bar.chart.min.js') }}"></script>
     <script src="{{ asset('toastr/toastr.min.js') }}"></script>
+    <script src="{{ asset('intl-tel-input-master/build/js/intlTelInput.min.js') }}"></script>
     <script>
         @if (Session::has('messege'))
             var type = "{{ Session::get('alert-type', 'info') }}"
