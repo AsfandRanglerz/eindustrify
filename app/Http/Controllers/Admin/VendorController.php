@@ -13,6 +13,7 @@ use App\Models\Country;
 use App\Models\Product;
 use App\Models\Setting;
 use App\Models\Category;
+use App\Models\Industry;
 use App\Mail\SendPassword;
 use App\Helpers\MailHelper;
 use App\Models\BannerImage;
@@ -380,7 +381,8 @@ class VendorController extends Controller
     {
         $country = Country::get();
         $categories = Category::get();
-        return view('admin.create-vendor', compact('country', 'categories'));
+        $industries = Industry::get();
+        return view('admin.create-vendor', compact('country', 'categories','industries'));
     }
 
     public function createVendor(Request $request)
@@ -398,7 +400,7 @@ class VendorController extends Controller
             'billing_department' => 'required',
             'billing_country_id' => 'required',
             'billing_state_id' => 'required',
-            'billing_city_id' => 'required',
+            'billing_city_name' => 'required',
             'billing_zip_code' => 'required',
         ], [
             'business_name.required' => 'The bussiness name field is required.',
@@ -408,7 +410,7 @@ class VendorController extends Controller
             'billing_street_address.required' => 'The billing street address field is required.',
             'billing_department.required' => 'The billing department field is required.',
             'billing_country_id.required' => 'The billing country  field is required.',
-            'billing_city_id.required' => 'The billing city  field is required.',
+            'billing_city_name.required' => 'The billing city  field is required.',
             'billing_state_id.required' => 'The billing state  field is required.',
             'billing_zip_code.required' => 'The billing zip code  field is required.',
         ]);
@@ -426,7 +428,7 @@ class VendorController extends Controller
         $bussiness_information['name'] = $request->bussiness_phone;
         $bussiness_information['phone'] = $request->bussiness_phone;
         $bussiness_information['tax_id'] = $request->bussiness_tax_id;
-        $bussiness_information['industry_type'] = $request->bussiness_industry_type;
+        $bussiness_information['industry_id'] = $request->bussiness_industry_type;
         $bussiness_information['user_id'] = $user->id;
         $bussiness_information['vat'] = $request->bussiness_vat;
         $bussiness_information['total_employee'] = $request->total_employee;
@@ -439,7 +441,7 @@ class VendorController extends Controller
         $billing_address['department'] = $request->billing_department;
         $billing_address['country_id'] = $request->billing_country_id;
         $billing_address['state_id'] = $request->billing_state_id;
-        $billing_address['city_id'] = $request->billing_city_id;
+        $billing_address['city_name'] = $request->billing_city_name;
         $billing_address['zip_code'] = $request->billing_zip_code;
         $billing_address->save();
 
@@ -485,13 +487,14 @@ class VendorController extends Controller
     public function edit($id)
     {
         $categories = Category::get();
+        $industries = Industry::get();
         $subcategories = SubCategory::get();
         $childcategories = ChildCategory::get();
         $data = User::find($id);
         $country = Country::get();
         $billingState = CountryState::where('country_id', $data->billingAddress->country->id)->get();
         $billingCity = City::where('country_state_id', $data->billingAddress->countryState->id)->get();
-        return view('admin.edit-vendor', compact('data', 'country', 'billingState', 'billingCity', 'categories', 'subcategories', 'childcategories'));
+        return view('admin.edit-vendor', compact('data','industries','country', 'billingState', 'billingCity', 'categories', 'subcategories', 'childcategories'));
     }
     // vendor Update
     public function update(Request $request)
@@ -509,7 +512,7 @@ class VendorController extends Controller
             'billing_department' => 'required',
             'billing_country_id' => 'required',
             'billing_state_id' => 'required',
-            'billing_city_id' => 'required',
+            'billing_city_name' => 'required',
             'billing_zip_code' => 'required',
         ], [
             'business_name.required' => 'The bussiness name field is required.',
@@ -519,7 +522,7 @@ class VendorController extends Controller
             'billing_street_address.required' => 'The billing street address field is required.',
             'billing_department.required' => 'The billing department field is required.',
             'billing_country_id.required' => 'The billing country  field is required.',
-            'billing_city_id.required' => 'The billing city  field is required.',
+            'billing_city_name.required' => 'The billing city  field is required.',
             'billing_state_id.required' => 'The billing state  field is required.',
             'billing_zip_code.required' => 'The billing zip code  field is required.',
         ]);
@@ -531,7 +534,7 @@ class VendorController extends Controller
         $bussiness_information['name'] = $request->bussiness_phone;
         $bussiness_information['phone'] = $request->bussiness_phone;
         $bussiness_information['tax_id'] = $request->bussiness_tax_id;
-        $bussiness_information['industry_type'] = $request->bussiness_industry_type;
+        $bussiness_information['industry_id'] = $request->bussiness_industry_type;
         $bussiness_information['user_id'] = $user->id;
         $bussiness_information['vat'] = $request->bussiness_vat;
         $bussiness_information['total_employee'] = $request->total_employee;
@@ -544,7 +547,7 @@ class VendorController extends Controller
         $billing_address['department'] = $request->billing_department;
         $billing_address['country_id'] = $request->billing_country_id;
         $billing_address['state_id'] = $request->billing_state_id;
-        $billing_address['city_id'] = $request->billing_city_id;
+        $billing_address['city_name'] = $request->billing_city_name;
         $billing_address['zip_code'] = $request->billing_zip_code;
         $billing_address->save();
 

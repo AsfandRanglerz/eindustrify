@@ -274,90 +274,26 @@
                     </div>
                 </div>
                 <div class="row position-absolute pt-3 pb-4 product-categories-dropdown">
+                    <?php
+                    $categories = App\Models\Category::with('subCategories')->limit(5)->get();
+                    ?>
+                    @foreach ($categories as $category)
                     <div class="col-md-2">
-                        <img src="{{ asset('public/uploads/website-images/images/engine1.png') }}"
+                        <img src="{{ asset($category->image) }}"
                             class="product-cat-img">
-                        <h6 class="my-2 main-heading">Electric Motors</h6>
+                        <h6 class="my-2 main-heading">{{$category->name}}</h6>
                         <ul class="list-links">
-                            <li><a href="" class="link">AC Motors</a></li>
-                            <li><a href="" class="link">Bearing Protection Rings</a></li>
-                            <li><a href="" class="link">DC Motors & Accessories</a></li>
-                            <li><a href="" class="link">Dynamic Braking</a></li>
-                            <li><a href="" class="link">Encoders & Accessories</a></li>
-                            <li><a href="" class="link">Motor Bases</a></li>
-                            <li><a href="" class="link">Electric Motors</a></li>
-                            <li><a href="" class="link">Motor Brakes</a></li>
+                            @foreach ($category->subCategories as $subcategory)
+                            <li><a href="{{URL('child-category-listing/'.$subcategory->slug)}}" class="link">{{$subcategory->name}}</a></li>
+                            @endforeach
                         </ul>
-                        <a href="" class="mt-2 view-link">View All</a>
+                        <a href="{{URL('sub-category-listing/'.$category->slug)}}" class="mt-2 view-link">View All</a>
                     </div>
-                    <div class="col-md-2">
-                        <img src="{{ asset('public/uploads/website-images/images/engine12.png') }}"
-                            class="product-cat-img">
-                        <h6 class="my-2 main-heading">Pneumatic Products</h6>
-                        <ul class="list-links">
-                            <li><a href="" class="link">AC Motors</a></li>
-                            <li><a href="" class="link">Bearing Protection Rings</a></li>
-                            <li><a href="" class="link">DC Motors & Accessories</a></li>
-                            <li><a href="" class="link">Dynamic Braking</a></li>
-                            <li><a href="" class="link">Encoders & Accessories</a></li>
-                            <li><a href="" class="link">Motor Bases</a></li>
-                            <li><a href="" class="link">Electric Motors</a></li>
-                            <li><a href="" class="link">Motor Brakes</a></li>
-                        </ul>
-                        <a href="" class="mt-2 view-link">View All</a>
-                    </div>
-                    <div class="col-md-2">
-                        <img src="{{ asset('public/uploads/website-images/images/engine13.png') }}"
-                            class="product-cat-img">
-                        <h6 class="my-2 main-heading">Couplings</h6>
-                        <ul class="list-links">
-                            <li><a href="" class="link">AC Motors</a></li>
-                            <li><a href="" class="link">Bearing Protection Rings</a></li>
-                            <li><a href="" class="link">DC Motors & Accessories</a></li>
-                            <li><a href="" class="link">Dynamic Braking</a></li>
-                            <li><a href="" class="link">Encoders & Accessories</a></li>
-                            <li><a href="" class="link">Motor Bases</a></li>
-                            <li><a href="" class="link">Electric Motors</a></li>
-                            <li><a href="" class="link">Motor Brakes</a></li>
-                        </ul>
-                        <a href="" class="mt-2 view-link">View All</a>
-                    </div>
-                    <div class="col-md-2">
-                        <img src="{{ asset('public/uploads/website-images/images/engine19.png') }}"
-                            class="product-cat-img">
-                        <h6 class="my-2 main-heading">Filtration</h6>
-                        <ul class="list-links">
-                            <li><a href="" class="link">AC Motors</a></li>
-                            <li><a href="" class="link">Bearing Protection Rings</a></li>
-                            <li><a href="" class="link">DC Motors & Accessories</a></li>
-                            <li><a href="" class="link">Dynamic Braking</a></li>
-                            <li><a href="" class="link">Encoders & Accessories</a></li>
-                            <li><a href="" class="link">Motor Bases</a></li>
-                            <li><a href="" class="link">Electric Motors</a></li>
-                            <li><a href="" class="link">Motor Brakes</a></li>
-                        </ul>
-                        <a href="" class="mt-2 view-link">View All</a>
-                    </div>
-                    <div class="col-md-2">
-                        <img src="{{ asset('public/uploads/website-images/images/engine18.png') }}"
-                            class="product-cat-img">
-                        <h6 class="my-2 main-heading">Tools</h6>
-                        <ul class="list-links">
-                            <li><a href="" class="link">AC Motors</a></li>
-                            <li><a href="" class="link">Bearing Protection Rings</a></li>
-                            <li><a href="" class="link">DC Motors & Accessories</a></li>
-                            <li><a href="" class="link">Dynamic Braking</a></li>
-                            <li><a href="" class="link">Encoders & Accessories</a></li>
-                            <li><a href="" class="link">Motor Bases</a></li>
-                            <li><a href="" class="link">Electric Motors</a></li>
-                            <li><a href="" class="link">Motor Brakes</a></li>
-                        </ul>
-                        <a href="" class="mt-2 view-link">View All</a>
-                    </div>
+                    @endforeach
                     <div class="col-md-2 d-flex flex-column justify-content-center product-cat-last-section">
                         <h6 class="text-uppercase small">More</h6>
                         <h5 class="my-1 text-uppercase main-heading">Categories</h5>
-                        <a href="" class="view-all">View All Categories</a>
+                        <a href="{{URL('all-categories')}}" class="view-all">View All Categories</a>
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-9">

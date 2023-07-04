@@ -58,5 +58,5 @@
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/dollar.png') }}">Payments</a>
     <h6  class="heading">Account Preferences</h6>
     <a href="{{URL('technical-support')}}" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/tech-support.png') }}">Technical Support</a>
-    <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/question.png') }}">Help Center</a>
+    <a href="{{URL('help-center-details')}}" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/question.png') }}">Help Center</a>
 </div>

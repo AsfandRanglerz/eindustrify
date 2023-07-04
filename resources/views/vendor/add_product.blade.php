@@ -233,15 +233,15 @@
                         <div class="d-flex flex-wrap">
                             <div class="mt-3 me-sm-3">
                                 <label class="text-uppercase">SKU</label>
-                                <input id="sku" type="number" class="p-2" placeholder="SKU" name="SKU1">
+                                <input id="sku" type="number" class="p-2" placeholder="SKU" name="sku">
                             </div>
                             <div class="mt-3" style="">
-                                <label  class="text-uppercase ">Varient</label>
-                                <input type="text" class="p-2" placeholder="1 HP" name="varient1">
+                                <label  class="text-uppercase ">Variant</label>
+                                <input type="text" class="p-2" placeholder="1 HP" name="variant">
                             </div>
                             <div class="mt-3" style="">
                                 <label class="text-uppercase ">Quantity</label>
-                                <input type="number" class="p-2" placeholder="Quantity" name="quantity1">
+                                <input type="number" class="p-2" placeholder="Quantity" name="qty">
                             </div>
                         </div>
                     </div>
@@ -250,12 +250,12 @@
                             <div class=" me-sm-3">
                                 <label class="text-uppercase">shipping weight</label>
                                 <input id="name" type="number" class=" p-2" placeholder="0.0" value=""
-                                    name="sku1">
+                                    name="product_shipping_weight[]">
                             </div>
                             <div class="">
                                 <label for="number">Wt.</label>
                                 <input type="text" id="quantity" class=" p-2" placeholder="kg" value="kg"
-                                    name="unit1" min="1" max="100">
+                                    name="product_unit[]" min="1" max="100">
                             </div>
                         </div>
 
@@ -264,27 +264,27 @@
                             <div class="mt-3 me-sm-3">
                                 <label for="number" class="text-uppercase">price</label>
                                 <input id="name" type="number" class=" p-2" placeholder="$ 0.0" value=""
-                                    name="price1">
+                                    name="product_price[]">
                             </div>
                             <div class="mt-3" style="">
                                 <label for="number" class="text-uppercase ">discounted price</label>
                                 <input type="number" id="quantity" class=" p-2" placeholder="$ 0.0"
-                                    name="discount_price1">
+                                    name="product_discount_price[]">
                             </div>
                         </div>
 
                         <div class="d-flex flex-wrap">
                             <div class="mt-3 me-sm-3">
                                 <label class="text-uppercase">SKU</label>
-                                <input id="sku" type="number" class="p-2" placeholder="SKU" name="SKU1">
+                                <input id="product_sku[]" type="number" class="p-2" placeholder="SKU" name="product_sku[]">
                             </div>
                             <div class="mt-3" style="">
                                 <label  class="text-uppercase ">Varient</label>
-                                <input type="text" class="p-2" placeholder="1 HP" name="varient1">
+                                <input type="text" class="p-2" placeholder="1 HP" name="product_size[]">
                             </div>
                             <div class="mt-3" style="">
                                 <label class="text-uppercase ">Quantity</label>
-                                <input type="number" class="p-2" placeholder="Quantity" name="quantity1">
+                                <input type="number" class="p-2" placeholder="Quantity" name="product_qty[]">
                             </div>
                         </div>
                     </div>

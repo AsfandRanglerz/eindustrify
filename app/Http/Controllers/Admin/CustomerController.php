@@ -9,6 +9,7 @@ use App\Models\City;
 use App\Models\User;
 use App\Models\Order;
 use App\Models\Country;
+use App\Models\Industry;
 use App\Models\Wishlist;
 use App\Mail\SendPassword;
 use App\Helpers\MailHelper;
@@ -157,7 +158,8 @@ class CustomerController extends Controller
         $city = City::get();
         $state = CountryState::get();
         $country = Country::get();
-        return view('admin.create-customer', compact('city', 'state', 'country'));
+        $industries = Industry::get();
+        return view('admin.create-customer', compact('city', 'state', 'country','industries'));
     }
     public function createCustomer(Request $request)
     {
@@ -175,14 +177,14 @@ class CustomerController extends Controller
             'shipping_street_address' => 'required',
             'shipping_department' => 'required',
             'shipping_country_id' => 'required',
-            'shipping_city_id' => 'required',
+            'shipping_city_name' => 'required',
             'shipping_state_id' => 'required',
             'shipping_zip_code' => 'required',
             'billing_street_address' => 'required',
             'billing_department' => 'required',
             'billing_country_id' => 'required',
             'billing_state_id' => 'required',
-            'billing_city_id' => 'required',
+            'billing_city_name' => 'required',
             'billing_zip_code' => 'required',
         ], [
             'business_name.required' => 'The bussiness name field is required.',
@@ -192,13 +194,13 @@ class CustomerController extends Controller
             'shipping_street_address.required' => 'The shipping street address field is required.',
             'shipping_department.required' => 'The shipping department field is required.',
             'shipping_country_id.required' => 'The shipping country  field is required.',
-            'shipping_city_id.required' => 'The shipping city  field is required.',
+            'shipping_city_name.required' => 'The shipping city  field is required.',
             'shipping_state_id.required' => 'The shipping state  field is required.',
             'shipping_zip_code.required' => 'The shipping zip code  field is required.',
             'billing_street_address.required' => 'The billing street address field is required.',
             'billing_department.required' => 'The billing department field is required.',
             'billing_country_id.required' => 'The billing country  field is required.',
-            'billing_city_id.required' => 'The billing city  field is required.',
+            'billing_city_name.required' => 'The billing city  field is required.',
             'billing_state_id.required' => 'The billing state  field is required.',
             'billing_zip_code.required' => 'The billing zip code  field is required.',
         ]);
@@ -215,7 +217,7 @@ class CustomerController extends Controller
         $bussiness_information['name'] = $request->bussiness_phone;
         $bussiness_information['phone'] = $request->bussiness_phone;
         $bussiness_information['tax_id'] = $request->bussiness_tax_id;
-        $bussiness_information['industry_type'] = $request->bussiness_industry_type;
+        $bussiness_information['industry_id'] = $request->bussiness_industry_type;
         $bussiness_information['user_id'] = $user->id;
         $bussiness_information->save();
 
@@ -226,7 +228,7 @@ class CustomerController extends Controller
         $shipping_address['department'] = $request->shipping_department;
         $shipping_address['country_id'] = $request->shipping_country_id;
         $shipping_address['state_id'] = $request->shipping_state_id;
-        $shipping_address['city_id'] = $request->shipping_city_id;
+        $shipping_address['city_name'] = $request->shipping_city_name;
         $shipping_address['zip_code'] = $request->shipping_zip_code;
         $shipping_address->save();
 
@@ -237,7 +239,7 @@ class CustomerController extends Controller
         $billing_address['department'] = $request->billing_department;
         $billing_address['country_id'] = $request->billing_country_id;
         $billing_address['state_id'] = $request->billing_state_id;
-        $billing_address['city_id'] = $request->billing_city_id;
+        $billing_address['city_name'] = $request->billing_city_name;
         $billing_address['zip_code'] = $request->billing_zip_code;
         $billing_address->save();
 
@@ -249,12 +251,13 @@ class CustomerController extends Controller
     public function edit($id)
     {
         $data = User::find($id);
+        $industries = Industry::get();
         $country = Country::get();
         $state = CountryState::where('country_id', $data->shippingAddress->country->id)->get();
         $city = City::where('country_state_id', $data->shippingAddress->countryState->id)->get();
         $billingState = CountryState::where('country_id', $data->billingAddress->country->id)->get();
         $billingCity = City::where('country_state_id', $data->billingAddress->countryState->id)->get();
-        return view('admin.edit-customer', compact('data', 'country', 'state', 'city', 'billingState', 'billingCity'));
+        return view('admin.edit-customer', compact('data','industries','country', 'state', 'city', 'billingState', 'billingCity'));
     }
     public function update(Request $request)
     {
@@ -270,14 +273,14 @@ class CustomerController extends Controller
             'shipping_street_address' => 'required',
             'shipping_department' => 'required',
             'shipping_country_id' => 'required',
-            'shipping_city_id' => 'required',
+            'shipping_city_name' => 'required',
             'shipping_state_id' => 'required',
             'shipping_zip_code' => 'required',
             'billing_street_address' => 'required',
             'billing_department' => 'required',
             'billing_country_id' => 'required',
             'billing_state_id' => 'required',
-            'billing_city_id' => 'required',
+            'billing_city_name' => 'required',
             'billing_zip_code' => 'required',
         ], [
             'business_name.required' => 'The bussiness name field is required.',
@@ -287,13 +290,13 @@ class CustomerController extends Controller
             'shipping_street_address.required' => 'The shipping street address field is required.',
             'shipping_department.required' => 'The shipping department field is required.',
             'shipping_country_id.required' => 'The shipping country  field is required.',
-            'shipping_city_id.required' => 'The shipping city  field is required.',
+            'shipping_city_name.required' => 'The shipping city  field is required.',
             'shipping_state_id.required' => 'The shipping state  field is required.',
             'shipping_zip_code.required' => 'The shipping zip code  field is required.',
             'billing_street_address.required' => 'The billing street address field is required.',
             'billing_department.required' => 'The billing department field is required.',
             'billing_country_id.required' => 'The billing country  field is required.',
-            'billing_city_id.required' => 'The billing city  field is required.',
+            'billing_city_name.required' => 'The billing city  field is required.',
             'billing_state_id.required' => 'The billing state  field is required.',
             'billing_zip_code.required' => 'The billing zip code  field is required.',
         ]);
@@ -307,7 +310,7 @@ class CustomerController extends Controller
         $bussiness_information['name'] = $request->bussiness_phone;
         $bussiness_information['phone'] = $request->bussiness_phone;
         $bussiness_information['tax_id'] = $request->bussiness_tax_id;
-        $bussiness_information['industry_type'] = $request->bussiness_industry_type;
+        $bussiness_information['industry_id'] = $request->bussiness_industry_type;
         $bussiness_information['user_id'] = $user->id;
         $bussiness_information->save();
 
@@ -318,7 +321,7 @@ class CustomerController extends Controller
         $shipping_address['department'] = $request->shipping_department;
         $shipping_address['country_id'] = $request->shipping_country_id;
         $shipping_address['state_id'] = $request->shipping_state_id;
-        $shipping_address['city_id'] = $request->shipping_city_id;
+        $shipping_address['city_name'] = $request->shipping_city_name;
         $shipping_address['zip_code'] = $request->shipping_zip_code;
         $shipping_address->save();
 
@@ -329,7 +332,7 @@ class CustomerController extends Controller
         $billing_address['department'] = $request->billing_department;
         $billing_address['country_id'] = $request->billing_country_id;
         $billing_address['state_id'] = $request->billing_state_id;
-        $billing_address['city_id'] = $request->billing_city_id;
+        $billing_address['city_name'] = $request->billing_city_name;
         $billing_address['zip_code'] = $request->billing_zip_code;
         $billing_address->save();
 

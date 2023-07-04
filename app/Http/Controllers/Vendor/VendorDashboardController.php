@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use App\Models\ProductGallery;
 use App\Models\VendorCategory;
 use App\Models\TechnicalSupport;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -24,7 +25,8 @@ class VendorDashboardController extends Controller
     }
     public function vendorProduct()
     {
-        $products = Product::where('status', 1)->where('vendor_id', Auth::id())->get();
+        $products = Product::with('gallery')->where('status', 1)->where('vendor_id', Auth::id())->get();
+        
         return view('vendor.vendor_product', compact('products'));
     }
     public function customerListing()
@@ -106,57 +108,63 @@ class VendorDashboardController extends Controller
 
         $product->is_undefine = 1;
         $product->is_specification = $request->is_specification ? 1 : 0;
-        if ($request->hasFile('image')) {
-            $file = $request->file('image');
-            $extension = $file->getClientOriginalExtension();
-            $image_name = Str::slug($request->name) . date('-Y-m-d-h-i-s-') . rand(999, 9999) . '.' . $extension;
-            $image_path = 'uploads/custom-images/' . $image_name;
-            \Image::make($file)->save(public_path($image_path));
-            $product->image[0] = $image_path;
+
+        if ($request->hasfile('image')) {
+            $file = $request->file('image')[0];
+            $extension = $file->getClientOriginalExtension(); // getting image extension
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('/uploads'), $filename);
+            $product->thumb_image = 'public/uploads/' . $filename;
         }
-        // if ($request->file('image')) {
-        //     foreach ($request->file('image') as $data) {
-        //         $image = hexdec(uniqid()) . '.' . strtolower($data->getClientOriginalExtension());
-        //         $data->move(public_path('images'), $image);
-        //         ProductGallery::create([
-        //             'image' =>  'public/images/' . $image,
-        //             'product_id' => Auth::id(),
-        //         ]);
-        //     }
-        // }
-        // if ($request->product_price) {
-        //     $product_price = [];
-        //     if ($request->product_size) {
-        //         foreach ($request->product_size as $index => $product_size) {
-        //             if ($product_size) {
-        //                 if ($request->product_price[$index]) {
-        //                     if (!in_array($product_size, $product_price)) {
-        //                         $productSize = new ProductSize();
-        //                         $productSize->product_id = $product->id;
-        //                         $productSize->product_price = $request->product_price[$index];
-        //                         $productSize->product_size = $request->product_size[$index];
-        //                         $productSize->discount_price = $request->discount_price[$index];
-        //                         $productSize->sku = $request->product_sku[$index];
-        //                         $productSize->qty = $request->product_qty[$index];
-        //                         $productSize->save();
-        //                     }
-        //                     $product_price[] = $product_size;
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
         $product->save();
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $data) {
+                if ($data->isValid()) {
+                    $image = hexdec(uniqid()) . '.' . strtolower($data->getClientOriginalExtension());
+                    $data->move(public_path('images'), $image);
+                    ProductGallery::create([
+                        'image' =>  'public/images/' . $image,
+                        'product_id' => $product->id,
+                    ]);
+                }
+            }
+        }
+
+        if ($request->product_price) {
+            $product_price = [];
+            if ($request->product_size) {
+                foreach ($request->product_size as $index => $product_size) {
+                    if ($product_size) {
+                        if ($request->product_price[$index]) {
+                            if (!in_array($product_size, $product_price)) {
+                                $productSize = new ProductSize();
+                                $productSize->product_id = $product->id;
+                                $productSize->product_price = $request->product_price[$index];
+                                $productSize->product_size = $request->product_size[$index];
+                                $productSize->discount_price = $request->discount_price[$index];
+                                $productSize->sku = $request->product_sku[$index];
+                                $productSize->qty = $request->product_qty[$index];
+                                $productSize->shipping_weight = $request->product_shipping_weight[$index] . $request->product_unit[$index];
+                                $productSize->save();
+                            }
+                            $product_price[] = $product_size;
+                        }
+                    }
+                }
+            }
+        }
+
+
         return redirect('vendor-product')->with('message', 'Product create Successfully');
     }
     public function technicalSupport()
     {
         $tickets = TechnicalSupport::get();
-        return view('vendor.technical_support',compact('tickets'));
+        return view('vendor.technical_support', compact('tickets'));
     }
     public function technical_ticket()
     {
-        
+
         return view('vendor.technical_ticket');
     }
     public function createTicket(Request $request)

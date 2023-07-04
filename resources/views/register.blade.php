@@ -485,14 +485,15 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">City <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-city" name="shipping_city_id"
+                                                    {{-- <select class="form-control select-city" name="shipping_city_id"
                                                         id="user_shipping_city_id">
                                                         <option value=""></option>
                                                         @foreach ($city as $city_data)
                                                             <option value="{{ $city_data->id }}">{{ $city_data->name }}
                                                             </option>
                                                         @endforeach
-                                                    </select>
+                                                    </select> --}}
+                                                    <input type="text" name="shipping_city_name" class="form-control" id="" placeholder="City Name">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Postal/zip code</label>
@@ -599,14 +600,15 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">City <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-city" name="billing_city_id"
+                                                    {{-- <select class="form-control select-city" name="billing_city_id"
                                                         id="user_billing_city_id">
                                                         <option value=""></option>
                                                         @foreach ($city as $city_data)
                                                             <option value="{{ $city_data->id }}">{{ $city_data->name }}
                                                             </option>
                                                         @endforeach
-                                                    </select>
+                                                    </select> --}}
+                                                    <input type="text" class="form-control" placeholder="City Name" name="billing_city_name">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Postal/zip code</label>
@@ -725,10 +727,11 @@
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">City <span
                                                             class="required">*</span></label>
-                                                    <select class="form-control select-city" id="vendor_city_id"
+                                                    {{-- <select class="form-control select-city" id="vendor_city_id"
                                                         name="vender_city_id">
                                                         <option value=""></option>
-                                                    </select>
+                                                    </select> --}}
+                                                    <input type="text" name="vender_city_name" placeholder="City Name" class="form-control" id="">
                                                 </div>
                                                 <div class="form-group col-md-6">
                                                     <label class="text-uppercase">Postal/zip code</label>

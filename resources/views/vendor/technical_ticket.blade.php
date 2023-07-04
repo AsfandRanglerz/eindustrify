@@ -91,7 +91,7 @@
                 <input type="text" name="subject" class="form-control rounded-0" placeholder="subject">
             </div>
             <div class="mt-3">
-                <label for="subject" class="text-uppercase">Subject <span class="text-danger">*</span></label>
+                <label for="subject" class="text-uppercase">Description<span class="text-danger">*</span></label>
                 <textarea name="description" class="w-100" id="" cols="1" rows="10"></textarea>
             </div>
 

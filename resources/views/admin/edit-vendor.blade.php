@@ -134,11 +134,10 @@
                                         <div class="form-group col-12">
                                             <label>{{ __('Industry Type') }} <span class="text-danger">*</span></label>
                                             <select name="bussiness_industry_type" class="form-control" id="">
-                                                <option value="1">Select Industry</option>
-                                                <option value="1" @if ($data->businessInformation->industry_type == '1') selected @endif>
-                                                    Industry One</option>
-                                                <option value="2" @if ($data->businessInformation->industry_type == '2') selected @endif>
-                                                    Industry Two</option>
+                                                <option value="">Select Industry</option>
+                                                    @foreach ($industries as $industry)
+                                                    <option value="{{$industry->id}}" @if ($data->businessInformation->industry_id == $industry->id) selected @endif>{{$industry->name}}</option>
+                                                    @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group col-12">
@@ -200,7 +199,7 @@
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('City') }} <span class="text-danger">*</span></label>
-                                            <select name="billing_city_id" class="form-control"
+                                            {{-- <select name="billing_city_id" class="form-control"
                                                 id="response_billing_city_append">
                                                 <option value="">Select City</option>
                                                 @foreach ($billingCity as $city_data)
@@ -209,7 +208,8 @@
                                                         {{ $city_data->name }}
                                                     </option>
                                                 @endforeach
-                                            </select>
+                                            </select> --}}
+                                            <input type="text" class="form-control" name="billing_city_name" value="{{$data->billingAddress->city_name}}" placeholder="City Name">
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Postal/Zip Code') }} <span class="text-danger">*</span></label>

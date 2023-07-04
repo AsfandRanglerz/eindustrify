@@ -42,8 +42,10 @@
                                                     <td>{{ $product->name }}
                                                     </td>
                                                     <td>{{ $setting->currency_icon }}{{ $product->price }}</td>
-                                                    <td> <img class="rounded-circle"
-                                                            src="{{ asset($product->thumb_image) }}" alt=""
+                                                    <td>
+                                                       <?php $image = $product->gallery->first(); ?>
+                                                        <img class="rounded-circle"
+                                                            src="{{ asset($image->image) }}" alt=""
                                                             width="100px" height="100px"></td>
                                                     <td>
                                                         @if ($product->is_undefine == 1)

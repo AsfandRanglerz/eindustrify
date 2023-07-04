@@ -41,7 +41,7 @@ class RegisterCustomer
         $shipping_address['department'] = $request->shipping_department;
         $shipping_address['country_id'] = $request->shipping_country_id;
         $shipping_address['state_id'] = $request->shipping_state_id;
-        $shipping_address['city_id'] = $request->shipping_city_id;
+        $shipping_address['city_name'] = $request->shipping_city_name;
         $shipping_address['zip_code'] = $request->shipping_zip_code;
         $shipping_address->save();
 
@@ -52,7 +52,7 @@ class RegisterCustomer
         $billing_address['department'] = $request->billing_department;
         $billing_address['country_id'] = $request->billing_country_id;
         $billing_address['state_id'] = $request->billing_state_id;
-        $billing_address['city_id'] = $request->billing_city_id;
+        $billing_address['city_name'] = $request->billing_city_name;
         $billing_address['zip_code'] = $request->billing_zip_code;
         $billing_address->save();
     }
@@ -88,7 +88,7 @@ class RegisterCustomer
         $billing_address['department'] = $request->vendor_department;
         $billing_address['country_id'] = $request->vender_country_id;
         $billing_address['state_id'] = $request->vender_state_id;
-        $billing_address['city_id'] = $request->vender_city_id;
+        $billing_address['city_name'] = $request->vender_city_name;
         $billing_address['zip_code'] = $request->vender_zip_code;
         $billing_address->save();
 

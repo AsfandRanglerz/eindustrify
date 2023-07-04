@@ -38,14 +38,14 @@ class CustomerRegister extends FormRequest
                 'shipping_street_address' => 'required',
                 'shipping_department' => 'required',
                 'shipping_country_id' => 'required',
-                'shipping_city_id' => 'required',
+                'shipping_city_name' => 'required',
                 'shipping_state_id' => 'required',
                 'shipping_zip_code' => 'required',
                 'billing_street_address' => 'required',
                 'billing_department' => 'required',
                 'billing_country_id' => 'required',
                 'billing_state_id' => 'required',
-                'billing_city_id.required' => 'The billing city  field is required.',
+                'billing_city_name.required' => 'The billing city  field is required.',
                 'billing_zip_code' => 'required',
             ];
         }else{
@@ -64,7 +64,7 @@ class CustomerRegister extends FormRequest
                 'vendor_department' => 'required',
                 'vender_country_id' => 'required',
                 'vender_state_id' => 'required',
-                'vender_city_id' => 'required',
+                'vender_city_name' => 'required',
                 'vender_zip_code' => 'required',
             ];
         }
@@ -80,13 +80,13 @@ class CustomerRegister extends FormRequest
                 'shipping_street_address.required' => 'The shipping street address field is required.',
                 'shipping_department.required' => 'The shipping department field is required.',
                 'shipping_country_id.required' => 'The shipping country  field is required.',
-                'shipping_city_id.required' => 'The shipping city  field is required.',
+                'shipping_city_name.required' => 'The shipping city  field is required.',
                 'shipping_state_id.required' => 'The shipping state  field is required.',
                 'shipping_zip_code.required' => 'The shipping zip code  field is required.',
                 'billing_street_address.required' => 'The billing street address field is required.',
                 'billing_department.required' => 'The billing department field is required.',
                 'billing_country_id.required' => 'The billing country  field is required.',
-                'billing_city_id.required' => 'The billing city  field is required.',
+                'billing_city_name.required' => 'The billing city  field is required.',
                 'billing_state_id.required' => 'The billing state  field is required.',
                 'billing_zip_code.required' => 'The billing zip code  field is required.',
             ];
@@ -100,7 +100,7 @@ class CustomerRegister extends FormRequest
                 'vendor_department.required' => 'The billing department field is required.',
                 'vender_country_id.required' => 'The billing country  field is required.',
                 'vender_state_id.required' => 'The billing state  field is required.',
-                'vender_city_id.required' => 'The billing city  field is required.',
+                'vender_city_name.required' => 'The billing city  field is required.',
                 'vender_zip_code.required' => 'The billing zip code  field is required.',
             ];
         }

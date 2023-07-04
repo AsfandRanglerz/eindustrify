@@ -92,9 +92,10 @@
                                         <div class="form-group col-12">
                                             <label>{{ __('Industry Type') }} <span class="text-danger">*</span></label>
                                             <select name="bussiness_industry_type" class="form-control" id="">
-                                                <option value="1">Select Industry</option>
-                                                <option value="1">Industry One</option>
-                                                <option value="2">Industry Two</option>
+                                                <option value="">Select Industry</option>
+                                                @foreach ($industries as $industry)
+                                                <option value="{{$industry->id}}">{{$industry->name}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <div class="form-group col-12">
@@ -146,14 +147,15 @@
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('City') }} <span class="text-danger">*</span></label>
-                                            <select name="billing_city_id" class="form-control"
+                                            {{-- <select name="billing_city_id" class="form-control"
                                                 id="response_billing_city_append">
-                                                <option value="1">Select City</option>
+                                                <option value="1">Select City</option> --}}
                                                 {{-- @foreach ($city as $city_data)
                                                     <option value="{{ $city_data->id }}">{{ $city_data->name }}
                                                     </option>
                                                 @endforeach --}}
-                                            </select>
+                                            {{-- </select> --}}
+                                            <input type="text" name="billing_city_name" class="form-control" placeholder="City Name">
                                         </div>
                                         <div class="form-group col-12">
                                             <label>{{ __('Postal/Zip Code') }} <span class="text-danger">*</span></label>

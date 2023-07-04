@@ -39,7 +39,7 @@ class ProductController extends Controller
     public function index()
     {
         // ->where(['vendor_id' => 0])
-        $products = Product::with('category')->orderBy('id', 'desc')->get();
+        $products = Product::with('category','gallery')->orderBy('id', 'desc')->get();
         $orderProducts = OrderProduct::all();
         $setting = Setting::first();
         return view('admin.product', compact('products', 'orderProducts', 'setting'));
@@ -127,14 +127,7 @@ class ProductController extends Controller
         $this->validate($request, $rules, $customMessages);
 
         $product = new Product();
-        if ($request->thumb_image) {
-            $extention = $request->thumb_image->getClientOriginalExtension();
-            $image_name = Str::slug($request->name) . date('-Y-m-d-h-i-s-') . rand(999, 9999) . '.' . $extention;
-            $image_name = 'uploads/custom-images/' . $image_name;
-            Image::make($request->thumb_image)
-                ->save(public_path() . '/' . $image_name);
-            $product->thumb_image = $image_name;
-        }
+
 
         if ($request->banner_image) {
             $extention = $request->banner_image->getClientOriginalExtension();
@@ -173,6 +166,18 @@ class ProductController extends Controller
         // $product->seo_description = $request->seo_description ? $request->seo_description : $request->name;
         $product->save();
 
+
+        if ($request->hasFile('thumb_image')) {
+            $data = $request->file('thumb_image');
+            if ($data->isValid()) {
+                $image = hexdec(uniqid()) . '.' . strtolower($data->getClientOriginalExtension());
+                $data->move(public_path('images'), $image);
+                ProductGallery::create([
+                    'image' =>  'public/images/' . $image,
+                    'product_id' => $product->id,
+                ]);
+            }
+        }
         if ($request->is_specification) {
             $exist_specifications = [];
             if ($request->keys) {
