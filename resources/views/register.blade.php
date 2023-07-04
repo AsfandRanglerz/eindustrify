@@ -663,6 +663,9 @@
                                                     <select class="form-control" id="noEmployees"
                                                         name="vendor_total_employee">
                                                         <option value=""></option>
+                                                        <option value="5 to 10">5 to 10</option>
+                                                        <option value="11 to 10">11 to 20</option>
+                                                        <option value="21 to 10">21 to 30</option>
                                                     </select>
                                                 </div>
                                                 <div class="form-group col-md-6">

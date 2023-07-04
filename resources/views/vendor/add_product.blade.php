@@ -85,6 +85,79 @@
             background-color: #B0191E !important;
             color: #fff;
         }
+
+        .box {
+            width: 100%;
+            min-height: 150px;
+            cursor: pointer;
+            background: #F7F7F7;
+            border: 2px dashed rgba(48, 48, 48, 0.3);
+        }
+
+        .box-inside {
+            text-align: center;
+            padding: 4em 20px;
+            margin-bottom: 0;
+        }
+
+        .box-inside .heading {
+            font-family: 'Inter';
+            font-weight: 600;
+            color: rgba(28, 28, 28, 0.5);
+        }
+
+        .box .upload__inputfile {
+            width: 0.1px;
+            height: 0.1px;
+            opacity: 0;
+            overflow: hidden;
+            position: absolute;
+            z-index: -1;
+        }
+
+        .box .upload__btn-box {
+            margin-bottom: 10px;
+        }
+
+        .box .upload__img-wrap {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .box .upload__img-box {
+            width: 33.3%;
+            padding: 0 10px;
+            margin-bottom: 12px;
+        }
+
+        .box .upload__img-close {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            text-align: center;
+            line-height: 24px;
+            z-index: 1;
+            cursor: pointer;
+        }
+
+        .box .upload__img-close:after {
+            content: "✖";
+            font-size: 14px;
+            color: white;
+        }
+
+        .box .img-bg {
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+            padding-bottom: 100%;
+            border: 1px solid #CCCCCC;
+        }
     </style>
     <div class="p-xl-4 p-2 admin-main-content border add-product-content">
 
@@ -113,8 +186,20 @@
                     {{-- </form> --}}
 
                     <div class="mt-3">
-                        <h6 class="text-uppercase">Media</h6>
-                        <input type="text" name="image[]" id="example" value="" />
+                        <label class="text-uppercase">Media</label>
+                        <div class="upload__box box">
+                            <div class="upload__btn-box">
+                                <label class="upload__btn box-inside">
+                                    <img class="d-block mx-auto mb-md-4 mb-3"
+                                        src="{{ asset('/public/uploads/website-images/images/drag-drop.png') }}">
+                                    <h6 class="heading file-val">Click to upload or Drag and Drop</h6>
+                                    <small class="d-block mt-2">Maximum file size 50MB</small>
+                                    <input type="file" multiple="" data-max_length="20" class="upload__inputfile"
+                                        name="image[]">
+                                </label>
+                            </div>
+                            <div class="upload__img-wrap"></div>
+                        </div>
                     </div>
                     {{-- <form class="mt-3"> --}}
                     <div id="items">
@@ -124,12 +209,6 @@
                                 <input id="name" type="number" class=" p-2" placeholder="0.0" value=""
                                     name="sku">
                             </div>
-
-                            <!-- <div>
-                                <label for="number">Qty</label>
-                                <input type="number" id="quantity" class=" p-2" placeholder="Qty" name="qty"
-                                    min="1" max="100">
-                            </div> -->
                             <div class="">
                                 <label for="number">Wt.</label>
                                 <input type="text" id="quantity" class=" p-2" placeholder="kg" value="kg"
@@ -151,12 +230,69 @@
                                     name="discount_price">
                             </div>
                         </div>
+                        <div class="d-flex flex-wrap">
+                            <div class="mt-3 me-sm-3">
+                                <label class="text-uppercase">SKU</label>
+                                <input id="sku" type="number" class="p-2" placeholder="SKU" name="SKU1">
+                            </div>
+                            <div class="mt-3" style="">
+                                <label  class="text-uppercase ">Varient</label>
+                                <input type="text" class="p-2" placeholder="1 HP" name="varient1">
+                            </div>
+                            <div class="mt-3" style="">
+                                <label class="text-uppercase ">Quantity</label>
+                                <input type="number" class="p-2" placeholder="Quantity" name="quantity1">
+                            </div>
+                        </div>
+                    </div>
+                    <div id="items1" class="d-none">
+                        <div class="d-flex mt-3">
+                            <div class=" me-sm-3">
+                                <label class="text-uppercase">shipping weight</label>
+                                <input id="name" type="number" class=" p-2" placeholder="0.0" value=""
+                                    name="sku1">
+                            </div>
+                            <div class="">
+                                <label for="number">Wt.</label>
+                                <input type="text" id="quantity" class=" p-2" placeholder="kg" value="kg"
+                                    name="unit1" min="1" max="100">
+                            </div>
+                        </div>
+
+                        <h6 class="text-uppercase  mt-3">pricing</h6>
+                        <div class="d-flex">
+                            <div class="mt-3 me-sm-3">
+                                <label for="number" class="text-uppercase">price</label>
+                                <input id="name" type="number" class=" p-2" placeholder="$ 0.0" value=""
+                                    name="price1">
+                            </div>
+                            <div class="mt-3" style="">
+                                <label for="number" class="text-uppercase ">discounted price</label>
+                                <input type="number" id="quantity" class=" p-2" placeholder="$ 0.0"
+                                    name="discount_price1">
+                            </div>
+                        </div>
+
+                        <div class="d-flex flex-wrap">
+                            <div class="mt-3 me-sm-3">
+                                <label class="text-uppercase">SKU</label>
+                                <input id="sku" type="number" class="p-2" placeholder="SKU" name="SKU1">
+                            </div>
+                            <div class="mt-3" style="">
+                                <label  class="text-uppercase ">Varient</label>
+                                <input type="text" class="p-2" placeholder="1 HP" name="varient1">
+                            </div>
+                            <div class="mt-3" style="">
+                                <label class="text-uppercase ">Quantity</label>
+                                <input type="number" class="p-2" placeholder="Quantity" name="quantity1">
+                            </div>
+                        </div>
                     </div>
                     <div id='extra-item'></div>
                     <div class="d-flex justify-content-between mt-3 p-3 border align-items-center">
                         <h6 class="text-uppercase fw-bold">variants</h6>
-                        <button type="button" id="add" class="text-uppercase add-more variant text-underline fw-bold border-0"
-                            >+ variants</button>
+                        <button type="button" id="add"
+                            class="text-uppercase add-more variant text-underline fw-bold border-0">+ variants</button>
                     </div>
                     <div class="text-end submitt mt-2">
                         <button type="submit" class="p-2 fw-bold">Submit</button>
@@ -219,35 +355,90 @@
         </script>
     @endif
     <script>
-        $(function() {
-            $("#example").uploader({
-                multiple: true,
-            });
-        });
-
         $('.js-example-basic-single').select2();
 
         $(".js-example-tokenizer").select2({
-        tags: true,
-        tokenSeparators: [',', ' ']
+            tags: true,
+            tokenSeparators: [',', ' ']
         })
         $('.js-example-basic-multiple').select2();
         $(document).ready(function() {
+            ImgUpload();
             $(".delete").hide();
             //when the Add Field button is clicked
             $("#add").click(function(e) {
-                console.log('thisssss')
                 $(".delete").fadeIn("1500");
                 //Append a new row of code to the "#items" div
-                const ele = $("#items").clone()
-                console.log(ele)
-                $('#extra-item').append(ele)
+                const ele = $("#items1").clone();
+                ele.removeClass('d-none');
+                $('#extra-item').append(ele);
             });
             $("body").on("click", ".delete", function(e) {
                 $(".next-referral").last().remove();
             });
         });
 
+        function ImgUpload() {
+            var imgWrap = "";
+            var imgArray = [];
+
+            $('.upload__inputfile').each(function() {
+                $(this).on('change', function(e) {
+                    imgWrap = $(this).closest('.upload__box').find('.upload__img-wrap');
+                    var maxLength = $(this).attr('data-max_length');
+
+                    var files = e.target.files;
+                    var filesArr = Array.prototype.slice.call(files);
+                    var iterator = 0;
+                    filesArr.forEach(function(f, index) {
+
+                        if (!f.type.match('image.*')) {
+                            return;
+                        }
+
+                        if (imgArray.length > maxLength) {
+                            return false
+                        } else {
+                            var len = 0;
+                            for (var i = 0; i < imgArray.length; i++) {
+                                if (imgArray[i] !== undefined) {
+                                    len++;
+                                }
+                            }
+                            if (len > maxLength) {
+                                return false;
+                            } else {
+                                imgArray.push(f);
+
+                                var reader = new FileReader();
+                                reader.onload = function(e) {
+                                    var html =
+                                        "<div class='upload__img-box'><div style='background-image: url(" +
+                                        e.target.result + ")' data-number='" + $(
+                                            ".upload__img-close").length + "' data-file='" + f
+                                        .name +
+                                        "' class='img-bg'><div class='upload__img-close'></div></div></div>";
+                                    imgWrap.append(html);
+                                    iterator++;
+                                }
+                                reader.readAsDataURL(f);
+                            }
+                        }
+                    });
+                });
+            });
+
+            $('body').on('click', ".upload__img-close", function(e) {
+                var file = $(this).parent().data("file");
+                for (var i = 0; i < imgArray.length; i++) {
+                    if (imgArray[i].name === file) {
+                        imgArray.splice(i, 1);
+                        break;
+                    }
+                }
+                $(this).parent().parent().remove();
+            });
+        }
 
         CKEDITOR.replace('long_description');
     </script>
