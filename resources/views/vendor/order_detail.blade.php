@@ -36,7 +36,7 @@
             background: #fff;
         }
 
-        .order-detail-page .fa-eye,
+        .order-detail-page .fa-pen,
         .fa-trash {
             color: #7F7F7F;
             font-size: 16px;
@@ -68,20 +68,62 @@
         }
 
         .select2-container--default .select2-selection--multiple .select2-selection__choice__remove:hover {
-            background: #B0191E;
+            background: #000;
             color: #fff;
             font-size: 15px;
         }
-
+        .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #000;
+    border-color: #000;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+    cursor: default;
+    padding-left: 12px;
+    padding-right: 12px;
+}
         .select2-container--default .select2-selection--multiple .select2-selection__choice__display {
             color: #FFF;
             font-size: 15px;
-            background: #B0191E;
+            background: #000;
         }
 
         .select2-container--default .select2-results__option--highlighted.select2-results__option--selectable {
-            background-color: #B0191E !important;
+            background-color: #000 !important;
             color: #fff;
+        }
+        .order-detail-page .base {
+            align-items: baseline;
+        }
+
+        .order-detail-page [data-filter-item] {
+            padding: 15px;
+            border: 1px solid #fff;
+        }
+
+        .order-detail-page .hidden {
+            display: none;
+        }
+
+        .order-detail-page .sort-by {
+            margin-top: -8px
+        }
+
+        .order-detail-page .min{
+    overflow: auto;
+}
+        .order-detail-page .padding {
+            background: #F2F2F2;
+        }
+
+        .order-detail-page .table-striped {
+            background: #FBFBFB;
+        }
+
+        .order-detail-page .table>:not(caption)>*>* {
+            padding: 1.5rem 0.5rem;
+        }
+        .order-detail-page table {
+            min-width: 400px;
         }
     </style>
     <div class="p-xl-4 p-2 admin-main-content border order-detail-page">
@@ -112,51 +154,77 @@
             <h6 class="text-uppercase">Media</h6>
             <input type="text" name="image[]" id="example" value="" />
         </div>
-        <div id="items">
-            <div class="d-flex mt-3">
-                <div class=" me-sm-3">
-                    <label class="text-uppercase">shipping weight</label>
-                    <input id="name" type="number" class=" p-2" placeholder="0.0" value=""
-                        name="sku">
-                </div>
 
-                <!-- <div>
-                    <label for="number">Qty</label>
-                    <input type="number" id="quantity" class=" p-2" placeholder="Qty" name="qty"
-                        min="1" max="100">
-                </div> -->
-                <div class="">
-                    <label for="number">Wt.</label>
-                    <input type="text" id="quantity" class=" p-2" placeholder="kg" value="kg"
-                        name="unit" min="1" max="100">
-                </div>
-            </div>
-
-            <h6 class="text-uppercase  mt-3">pricing</h6>
-            <div class="d-flex">
-                <div class="mt-3 me-sm-3">
-
-                    <label for="number" class="text-uppercase">price</label>
-                    <input id="name" type="number" class=" p-2" placeholder="$ 0.0" value=""
-                        name="price">
-                </div>
-                <div class="mt-3" style="">
-                    <label for="number" class="text-uppercase ">discounted price</label>
-                    <input type="number" id="quantity" class=" p-2" placeholder="$ 0.0"
-                        name="discount_price">
-                </div>
-            </div>
-        </div>
         <div id='extra-item'></div>
-        <div class="d-flex justify-content-between mt-3 p-3 border align-items-center">
+        <div class="d-flex justify-content-between mt-3 p-3 align-items-center">
             <h6 class="text-uppercase fw-bold">variants</h6>
             <button type="button" id="add" class="text-uppercase add-more variant text-underline fw-bold border-0"
                 >+ variants</button>
         </div>
-        <div class="text-end submitt mt-2">
-            <button type="submit" class="p-2 fw-bold">Submit</button>
-        </div>
+        <table class="table table-striped table-borderless">
+                    <thead class="table-dark align-items-center">
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="checkAll"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td>SKU</td>
+                            <td>Variant</td>
+                            <td>Price</td>
+                            <td>Discount Price</td>
+                            <td>Quantity</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <form action="" method="POST">
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id="vehicle1" class="check form-check-input ms-3"
+                                            name="" value="">
+                                    </td>
+                                    <td>
+                                    121
+                                    </td>
+                                    <td>3 HP</td>
+                                        <td>$500.00</td>
+                                    <td>$500.00</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span>21</span>
+                                            <span class="fas fa-pen ms-2"></span>
+                                            <a href="" class="btn-sm"><span class="fas fa-trash" aria-hidden="true"></span></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" id="vehicle1" class="check form-check-input ms-3"
+                                            name="" value="">
+                                    </td>
+                                    <td>
+                                    121
+                                    </td>
+                                    <td>3 HP</td>
+                                        <td>$500.00</td>
+                                    <td>$500.00</td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <span>21</span>
+                                            <span class="fas fa-pen ms-3"></span>
+                                            <a href="" class="btn-sm"><span class="fas fa-trash" aria-hidden="true"></span></a>
+                                        </div>
+                                    </td>
+                                </tr>
+                        </form>
+                    </tbody>
+                </table>
+
+
+
+
     </div>
+
+
     <div class="col-sm-4 product-status mt-1">
         <h6 class="text-uppercase mb-2">product status</h6>
         <select name="status" id="" class="js-example-basic-single"
@@ -165,9 +233,9 @@
             <option value="1">Active</option>
             <option value="0">Deactive</option>
         </select>
-        <h6 class="text-uppercase mb-2 mt-3">product details</h6>
+        <h6 class="text-uppercase mb-2 mt-3">product orgonization</h6>
         <label class="text-uppercase">category</label>
-        <select class="js-example-basic-single pt-2 pb-2 form-control" name="category_id">
+        <select class="js-example-basic-single pt-2 pb-2 form-control" name="category_id" multiple="multiple">
             <option value="">select category</option>
 
                 <option value=""></option>
@@ -197,6 +265,7 @@
 
 </div>
 </form>
+
 
     </div>
 @endsection
@@ -241,7 +310,22 @@
                 $(".next-referral").last().remove();
             });
         });
-
+        $(document).ready(function() {
+    $("#checkAll").click(function () {
+        $(".check").prop('checked', $(this).prop('checked'));
+    });
+    $('#searchInput').on('keyup', function() {
+        var searchTerm = $(this).val().toLowerCase();
+        $('table tr').each(function() {
+            var lineText = $(this).text().toLowerCase();
+            if (lineText.indexOf(searchTerm) === -1) {
+                $(this).hide();
+            } else {
+                $(this).show();
+            }
+        });
+    });
+});
 
         CKEDITOR.replace('long_description');
     </script>
