@@ -91,6 +91,8 @@
             border-bottom: 1px solid #CCCCCC;
         }
     </style>
+    <form action="{{URL('update-store')}}" method="POST" enctype="multipart/form-data">
+        @csrf
     <div class="admin-main-content border add-product-content">
         <div class="row mx-auto store-header">
             <div class="col-xl-11 py-4 mx-auto d-flex align-items-center justify-content-between">
@@ -102,31 +104,29 @@
             </div>
         </div>
 
-
         <div class="row my-4 col-xl-11 mx-auto">
             <div class="col-sm-4">
                 <label class="text-uppercase h6">Profile Picture</label>
                 <div class="small-12 medium-2 large-2 columns">
                     <div class="circle">
-                        <img class="profile-pic"
-                            src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
+                        <img class="profile-pic" src="{{ asset($vendor->image) }}">
                     </div>
                     <div class="p-image">
                         <span class="fa fa-camera upload-button"></span>
                     </div>
-                    <input class="file-upload" type="file" accept="image/*" />
+                    <input class="file-upload" type="file" name="image" accept="image/*" />
                 </div>
             </div>
             <div class="col-sm-8">
                 <div class="box" id="bannerImgSelect">
                     <div class="box-inside">
                         <img class="d-block mx-auto mb-md-4 mb-3"
-                            src="{{ asset('/public/uploads/website-images/images/drag-drop.png') }}">
+                            src="{{ asset($vendor->businessInformation->banner_image) }}">
                         <h6 class="heading file-val">Click to upload banner</h6>
                         <small class="d-block mt-2">Maximum file size 50MB. Banner size is (1900 x 300)</small>
                     </div>
                 </div>
-                <input type="file" accept="image/*" id="fileBannerImg" class="d-none" />
+                <input type="file" accept="image/*" id="fileBannerImg" name="banner_image" class="d-none" />
             </div>
         </div>
         <div class="bg-grey">
@@ -135,50 +135,54 @@
         <div class="my-4 col-xl-11 mx-auto">
             <div class="row mb-3 mx-auto">
                 <div class="form-group col-md-6">
-                    <label class="text-uppercase">business name <span
-                            class="required">*</span></label>
-                    <input type="text" class="form-control"
-                        name="vendor_business_name" placeholder="XYZ Business">
+                    <label class="text-uppercase">business name <span class="required">*</span></label>
+                    <input type="text" class="form-control" name="vendor_business_name"
+                        value="{{ $vendor->businessInformation->name }}" placeholder="XYZ Business">
                 </div>
                 <div class="form-group col-md-6">
-                    <label class="text-uppercase">Tax ID number <span
-                            class="required">*</span></label>
-                    <input type="text" name="vendor_tax_id" class="form-control"
-                        placeholder="Tax ID Number">
+                    <label class="text-uppercase">Tax ID number <span class="required">*</span></label>
+                    <input type="text" name="vendor_tax_id" value="{{ $vendor->businessInformation->tax_id }}"
+                        class="form-control" placeholder="Tax ID Number">
                 </div>
             </div>
             <div class="row mb-3 mx-auto">
                 <div class="form-group col-md-6">
-                    <label class="text-uppercase">Industry <span
-                            class="required">*</span></label>
+                    <label class="text-uppercase">Industry <span class="required">*</span></label>
                     <select class="form-control indus-type" name="vendor_industry_type">
                         <option value=""></option>
+                        @foreach ($industries as $industry)
+                            <option value="{{ $industry->id }}"
+                                {{ $vendor->businessInformation->industry_id == $industry->id ? 'selected' : '' }}>
+                                {{ $industry->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-md-6">
-                    <label class="text-uppercase">VAT Number <span
-                            class="required">*</span></label>
-                    <input type="text" name="vendor_vat" class="form-control"
-                        placeholder="Enter VAT Number">
+                    <label class="text-uppercase">VAT Number <span class="required">*</span></label>
+                    <input type="text" name="vendor_vat" value="{{ $vendor->businessInformation->vat }}"
+                        class="form-control" placeholder="Enter VAT Number">
                 </div>
             </div>
             <div class="row mb-3 mx-auto">
                 <div class="form-group col-md-6">
                     <label class="text-uppercase">No. of employees</label>
-                    <select class="form-control" id="noEmployees"
-                        name="vendor_total_employee">
+                    <select class="form-control" id="noEmployees" name="vendor_total_employee">
                         <option value=""></option>
-                        <option value="5 to 10">5 to 10</option>
-                        <option value="11 to 10">11 to 20</option>
-                        <option value="21 to 10">21 to 30</option>
+                        <option value="5 to 10"
+                            {{ $vendor->businessInformation->total_employee >= 5 && $vendor->businessInformation->total_employee <= 10 ? 'selected' : '' }}>
+                            5 to 10</option>
+                        <option value="11 to 20"
+                            {{ $vendor->businessInformation->total_employee >= 11 && $vendor->businessInformation->total_employee <= 20 ? 'selected' : '' }}>
+                            11 to 20</option>
+                        <option value="21 to 30"
+                            {{ $vendor->businessInformation->total_employee >= 21 && $vendor->businessInformation->total_employee <= 30 ? 'selected' : '' }}>
+                            21 to 30</option>
                     </select>
                 </div>
                 <div class="form-group col-md-6">
-                    <label class="text-uppercase">Business number <span
-                            class="required">*</span></label>
-                    <input type="tel" class="form-control"
-                        placeholder="Business Number" name="vendor_business_phone"
-                        id="businessNumber2">
+                    <label class="text-uppercase">Business number <span class="required">*</span></label>
+                    <input type="tel" class="form-control" placeholder="Business Number" name="vendor_business_phone"
+                     value="{{$vendor->businessInformation->phone}}"   id="businessNumber2">
                 </div>
             </div>
         </div>
@@ -188,35 +192,33 @@
         <div class="col-xl-11 my-4 mx-auto">
             <div class="row mb-3 mx-auto">
                 <div class="form-group col-md-6">
-                    <label class="text-uppercase">Street address line 1 <span
-                            class="required">*</span></label>
-                    <input type="text" name="shipping_street_address"
-                        value="{{ old('shipping_street_address') }}" class="form-control"
-                        placeholder="Street, 6001 W Waco Dr #314">
+                    <label class="text-uppercase">Street address line 1 <span class="required">*</span></label>
+                    <input type="text" name="billing_street_address" value="{{$vendor->billingAddress->street_address}}"
+                        class="form-control" placeholder="Street, 6001 W Waco Dr #314">
                 </div>
                 <div class="form-group col-md-6">
-                    <label class="text-uppercase">Suite, building, department etc <span
-                            class="required">*</span></label>
-                    <input type="text" name="shipping_department"
-                        value="{{ old('shipping_department') }}" class="form-control"
-                        placeholder="Suite, building, department etc">
+                    <label class="text-uppercase">Suite, building, department etc <span class="required">*</span></label>
+                    <input type="text" name="billing_department" value="{{$vendor->billingAddress->department}}"
+                        class="form-control" placeholder="Suite, building, department etc">
                 </div>
             </div>
             <div class="row mb-3 mx-auto">
                 <div class="form-group col-md-6">
-                    <label class="text-uppercase">Country/Region* <span
-                            class="required">*</span></label>
-                    <select class="form-control select-country"
-                        id="user_shipping_country_id" name="shipping_country_id">
+                    <label class="text-uppercase">Country/Region* <span class="required">*</span></label>
+                    <select class="form-control select-country" id="user_shipping_country_id" name="billing_country_id">
                         <option value=""></option>
+                        @foreach ($country as $item)
+                            <option value="{{ $item->id }}"  {{ $vendor->billingAddress->country_id == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                        @endforeach
                     </select>
                 </div>
                 <div class="form-group col-md-6">
-                    <label class="text-uppercase">state <span
-                            class="required">*</span></label>
-                    <select class="form-control select-state" name="shipping_state_id"
-                        id="user_shipping_state_id">
+                    <label class="text-uppercase">state <span class="required">*</span></label>
+                    <select class="form-control select-state" name="billing_state_id" id="user_shipping_state_id">
                         <option value=""></option>
+                        @foreach ($state as $item)
+                            <option value="{{ $item->id }}" {{ $vendor->billingAddress->state_id == $item->id ? 'selected' : '' }}>{{ $item->name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -234,22 +236,22 @@
                     </select>
                 </div> --}}
                 <div class="form-group col-md-6">
-                    <label class="text-uppercase">City <span
-                            class="required">*</span></label>
-                    <select class="form-control select-city" name="shipping_city_id"
+                    <label class="text-uppercase">City <span class="required">*</span></label>
+                    <input type="text" class="form-control" value="{{$vendor->billingAddress->city_name}}" name="billing_city_name" placeholder="City Name">
+                    {{-- <select class="form-control select-city" name="shipping_city_id"
                         id="user_shipping_city_id">
                         <option value=""></option>
-                    </select>
+                    </select> --}}
                 </div>
                 <div class="form-group col-md-6">
                     <label class="text-uppercase">Postal/zip code</label>
-                    <input type="text" name="shipping_zip_code"
-                        value="{{ old('shipping_zip_code') }}" class="form-control"
-                        placeholder="147001">
+                    <input type="text" name="billing_zip_code" value="{{$vendor->billingAddress->zip_code}}"
+                        class="form-control" placeholder="147001">
                 </div>
             </div>
         </div>
     </div>
+</form>
 @endsection
 
 @section('scripts')
@@ -335,6 +337,32 @@
                     utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.9/js/utils.js"
                 });
             }
+        });
+
+
+        $(function() {
+            $("#user_shipping_country_id").change(function() {
+                var selectedText = $(this).find("option:selected").text();
+                var countryId = $(this).val();
+                $.ajax({
+                    url: '{{ URL::to('/vendor-gett-states') }}',
+                    type: 'GET',
+                    data: {
+                        'id': countryId
+                    },
+                    success: function(response) {
+                        $('#user_shipping_state_id').empty();
+                        $('#response_billing_state_append').html(
+                            '<option value="" disabled selected>Select State</option>');
+                        $.each(response.data, function(key, value) {
+                            $("#user_shipping_state_id").append(
+                                '<option value="' + value
+                                .id +
+                                '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
         });
     </script>
 

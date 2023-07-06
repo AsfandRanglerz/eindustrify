@@ -201,8 +201,9 @@
                                     <td>
                                         <div class="d-flex align-items-center justify-content-center">
                                             <?php $image = $product->gallery->first(); ?>
+                                            @if(isset($image))
                                             <img src="{{ asset($image->image) }}" class="img-fluid" height="45px"
-                                                width="45px">
+                                                width="45px">@endif
                                             <p class="ms-2 p">{{ $product->name }}</p>
                                         </div>
                                     </td>

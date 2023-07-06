@@ -92,6 +92,7 @@ return array(
     'App\\Http\\Controllers\\Admin\\SliderController' => $baseDir . '/app/Http/Controllers/Admin/SliderController.php',
     'App\\Http\\Controllers\\Admin\\SpecificationKeyController' => $baseDir . '/app/Http/Controllers/Admin/SpecificationKeyController.php',
     'App\\Http\\Controllers\\Admin\\SubscriberController' => $baseDir . '/app/Http/Controllers/Admin/SubscriberController.php',
+    'App\\Http\\Controllers\\Admin\\TechnicalSupportController' => $baseDir . '/app/Http/Controllers/Admin/TechnicalSupportController.php',
     'App\\Http\\Controllers\\Admin\\TermsAndConditionController' => $baseDir . '/app/Http/Controllers/Admin/TermsAndConditionController.php',
     'App\\Http\\Controllers\\Admin\\VendorController' => $baseDir . '/app/Http/Controllers/Admin/VendorController.php',
     'App\\Http\\Controllers\\Admin\\WithdrawMethodController' => $baseDir . '/app/Http/Controllers/Admin/WithdrawMethodController.php',

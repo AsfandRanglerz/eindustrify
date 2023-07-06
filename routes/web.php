@@ -182,8 +182,7 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('/forget-password', [LoginController::class, 'forgetPage'])->name('forget-password');
         Route::post('/send-forget-password', [LoginController::class, 'sendForgetPassword'])->name('send-forget-password');
         // Route::view('/reset-password', 'reset_password');
-        Route::view('/add-store-details', 'vendor.add_store_details');
-        Route::view('/taxes-duties', 'vendor.taxes_duties');
+
         Route::get('/reset-password/{token}', [LoginController::class, 'resetPassword']);
         Route::post('/update-password', [LoginController::class, 'updatePassword']);
         // Route::get('/reset-password/{token}', [LoginController::class, 'resetPasswordPage'])->name('reset-password');
@@ -280,6 +279,11 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
             Route::get('technical-support', [VendorDashboardController::class, 'technicalSupport']);
             Route::get('new-ticket', [VendorDashboardController::class, 'technical_ticket']);
             Route::post('create-ticket', [VendorDashboardController::class, 'createTicket']);
+            Route::get('add-store-details', [VendorDashboardController::class, 'add_store_details']);
+            Route::get('/vendor-gett-states', [VendorDashboardController::class, 'vendorGetStates']);
+
+            Route::post('update-store', [VendorDashboardController::class, 'updateStore']);
+            // Route::view('/add-store-details', 'vendor.add_store_details');
             // Route::view('vendor-product','vendor.vendor_product');
             // Route::get('my-profile', [SellerProfileController::class, 'index'])->name('my-profile');
             // Route::get('state-by-country/{id}', [SellerProfileController::class, 'stateByCountry'])->name('state-by-country');
@@ -539,7 +543,7 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
 
         Route::get('get-states', [CustomerController::class, 'getStates']);
         Route::get('get-city', [CustomerController::class, 'getCity']);
-        Route::get('vendor-get-states', [VendorController::class, 'getStates']);
+        // Route::get('vendor-get-states', [VendorController::class, 'getStates']);
         Route::get('vendor-get-city', [VendorController::class, 'getCity']);
 
         Route::get('customer-list', [CustomerController::class, 'index'])->name('customer-list');

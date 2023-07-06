@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddIndustryIdToBusinessInformationTable extends Migration
+class AddUserIdToTechnicalSupports extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddIndustryIdToBusinessInformationTable extends Migration
      */
     public function up()
     {
-        Schema::table('business_information', function (Blueprint $table) {
-            $table->unsignedBigInteger('industry_id')->nullable();
-            $table->foreign('industry_id')->references('id')->on('industries')->onDelete('cascade');
+        Schema::table('technical_supports', function (Blueprint $table) {
+            $table->unsignedBigInteger('user_id')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -26,7 +26,7 @@ class AddIndustryIdToBusinessInformationTable extends Migration
      */
     public function down()
     {
-        Schema::table('business_information', function (Blueprint $table) {
+        Schema::table('technical_supports', function (Blueprint $table) {
             //
         });
     }

@@ -52,7 +52,7 @@
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/analytic.png') }}">Analytics</a>
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/report.png') }}">Reports</a>
     <h6  class="heading">Settings</h6>
-    <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/store.png') }}">Store Details</a>
+    <a href="{{URL('add-store-details')}}" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/store.png') }}">Store Details</a>
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/tax.png') }}">Taxes and Duties</a>
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/shipping.png') }}">Shipping Delivery</a>
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/dollar.png') }}">Payments</a>

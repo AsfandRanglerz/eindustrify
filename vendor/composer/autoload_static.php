@@ -751,6 +751,7 @@ class ComposerStaticInit12a5bc84dbf3912e5e7a73106b315b62
         'App\\Http\\Controllers\\Admin\\SliderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SliderController.php',
         'App\\Http\\Controllers\\Admin\\SpecificationKeyController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SpecificationKeyController.php',
         'App\\Http\\Controllers\\Admin\\SubscriberController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SubscriberController.php',
+        'App\\Http\\Controllers\\Admin\\TechnicalSupportController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TechnicalSupportController.php',
         'App\\Http\\Controllers\\Admin\\TermsAndConditionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TermsAndConditionController.php',
         'App\\Http\\Controllers\\Admin\\VendorController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/VendorController.php',
         'App\\Http\\Controllers\\Admin\\WithdrawMethodController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/WithdrawMethodController.php',

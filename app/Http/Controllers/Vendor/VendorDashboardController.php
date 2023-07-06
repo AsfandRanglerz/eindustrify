@@ -6,13 +6,18 @@ use Image;
 use index;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Country;
 use App\Models\Product;
+use App\Models\Industry;
 use App\Models\ProductSize;
 use Illuminate\Support\Str;
+use App\Models\CountryState;
 use Illuminate\Http\Request;
+use App\Models\BillingAddress;
 use App\Models\ProductGallery;
 use App\Models\VendorCategory;
 use App\Models\TechnicalSupport;
+use App\Models\BusinessInformation;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -26,7 +31,7 @@ class VendorDashboardController extends Controller
     public function vendorProduct()
     {
         $products = Product::with('gallery')->where('status', 1)->where('vendor_id', Auth::id())->get();
-        
+
         return view('vendor.vendor_product', compact('products'));
     }
     public function customerListing()
@@ -99,7 +104,7 @@ class VendorDashboardController extends Controller
         $product->sku = $request->sku;
         $product->price = $request->price;
         $product->size = $request->size;
-        // $product->qty = $request->qty;
+        $product->qty = $request->qty;
         $product->long_description = $request->long_description;
         $product->video_link = $request->video_link;
         $product->tags = implode(',', $request->tags);
@@ -141,7 +146,7 @@ class VendorDashboardController extends Controller
                                 $productSize->product_id = $product->id;
                                 $productSize->product_price = $request->product_price[$index];
                                 $productSize->product_size = $request->product_size[$index];
-                                $productSize->discount_price = $request->discount_price[$index];
+                                $productSize->discount_price = $request->product_discount_price[$index];
                                 $productSize->sku = $request->product_sku[$index];
                                 $productSize->qty = $request->product_qty[$index];
                                 $productSize->shipping_weight = $request->product_shipping_weight[$index] . $request->product_unit[$index];
@@ -159,7 +164,7 @@ class VendorDashboardController extends Controller
     }
     public function technicalSupport()
     {
-        $tickets = TechnicalSupport::get();
+        $tickets = TechnicalSupport::where('user_id',Auth::id())->get();
         return view('vendor.technical_support', compact('tickets'));
     }
     public function technical_ticket()
@@ -190,6 +195,7 @@ class VendorDashboardController extends Controller
         $data->subject = $request->subject;
         $data->description = $request->description;
         $data->ticket_no = $ticket_no + 1;
+        $data->user_id = Auth::id();
         $data->date = Carbon::now();
         $data->status = 'deleivered';
         if ($request->hasfile('document')) {
@@ -201,5 +207,81 @@ class VendorDashboardController extends Controller
         }
         $data->save();
         return redirect('technical-support')->with('message', 'Ticket create Successfully');
+    }
+    public function add_store_details(){
+        $industries = Industry::get();
+        $country = Country::get();
+        $state = CountryState::get();
+        $vendor = User::with('businessInformation','billingAddress')->find(Auth::id());
+      return view('vendor.add_store_details',compact('industries','country','state','vendor'));
+    }
+    public function vendorGetStates(Request $request){
+        $data =  CountryState::where('country_id', $request->id)->get();
+        return response()->json([
+            'success' => 'States Against Country',
+            'data' => $data,
+        ]);
+    }
+    public function updateStore(Request $request){
+        $request->validate([
+            'vendor_business_name' => 'required',
+            'vendor_business_phone' => 'required',
+            'vendor_tax_id' => 'required',
+            'vendor_industry_type' => 'required',
+            'billing_street_address' => 'required',
+            'billing_department' => 'required',
+            'billing_country_id' => 'required',
+            'billing_state_id' => 'required',
+            'billing_city_name' => 'required',
+            'billing_zip_code' => 'required',
+        ], [
+            'vendor_business_name.required' => 'The bussiness name field is required.',
+            'vendor_business_phone.required' => 'The bussiness phone field is required.',
+            'vendor_tax_id.required' => 'The bussiness tax id field is required.',
+            'vendor_industry_type.required' => 'The bussiness industry type field is required.',
+            'billing_street_address.required' => 'The billing street address field is required.',
+            'billing_department.required' => 'The billing department field is required.',
+            'billing_country_id.required' => 'The billing country  field is required.',
+            'billing_city_name.required' => 'The billing city  field is required.',
+            'billing_state_id.required' => 'The billing state  field is required.',
+            'billing_zip_code.required' => 'The billing zip code  field is required.',
+        ]);
+        $user = User::with('businessInformation','billingAddress')->find(Auth::id());
+        if ($request->hasfile('image')) {
+            $file = $request->file('image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '.' . $extension;
+            $file->move(public_path('images'), $filename);
+            $user->image = 'public/images/' . $filename;
+        }
+        $user->save();
+        $bussiness_information = BusinessInformation::find($user->businessInformation->id);
+        $bussiness_information['name'] = $request->vendor_business_name;
+        $bussiness_information['phone'] = $request->vendor_business_phone;
+        $bussiness_information['tax_id'] = $request->vendor_tax_id;
+        $bussiness_information['industry_id'] = $request->vendor_industry_type;
+        $bussiness_information['user_id'] = $user->id;
+        $bussiness_information['vat'] = $request->vendor_vat;
+        $bussiness_information['total_employee'] = $request->vendor_total_employee;
+        if ($request->hasfile('banner_image')) {
+            $file = $request->file('banner_image');
+            $extension = $file->getClientOriginalExtension();
+            $filename = time() . '1' . '.' . $extension;
+            $file->move(public_path('images'), $filename);
+            $bussiness_information->banner_image = 'public/images/' . $filename;
+        }
+        $bussiness_information->save();
+        $billing_address = BillingAddress::find($user->billingAddress->id);
+        $billing_address['user_id'] = $user->id;
+        $billing_address['street_address'] = $request->billing_street_address;
+        $billing_address['department'] = $request->billing_department;
+        $billing_address['country_id'] = $request->billing_country_id;
+        $billing_address['state_id'] = $request->billing_state_id;
+        $billing_address['city_name'] = $request->billing_city_name;
+        $billing_address['zip_code'] = $request->billing_zip_code;
+        $billing_address->save();
+        $notification = trans('Store Updated Successfully');
+        $notification = array('messege' => $notification, 'alert-type' => 'success');
+        return redirect()->back()->with($notification);
     }
 }

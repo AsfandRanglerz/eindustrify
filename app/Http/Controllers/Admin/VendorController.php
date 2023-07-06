@@ -531,7 +531,7 @@ class VendorController extends Controller
         $user = User::find($request->id);
         // Business Information
         $bussiness_information = BusinessInformation::find($user->businessInformation->id);
-        $bussiness_information['name'] = $request->bussiness_phone;
+        $bussiness_information['name'] = $request->bussiness_name;
         $bussiness_information['phone'] = $request->bussiness_phone;
         $bussiness_information['tax_id'] = $request->bussiness_tax_id;
         $bussiness_information['industry_id'] = $request->bussiness_industry_type;
