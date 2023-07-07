@@ -173,7 +173,7 @@
                     </div>
                 </div>
             </nav>
-            <div class=" rounded min pt-3 items">
+            <div class="rounded min pt-3 items">
                 <table class="table table-striped table-borderless">
                     <thead class="table-dark align-items-center">
                         <tr>
