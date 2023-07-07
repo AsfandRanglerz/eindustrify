@@ -184,6 +184,8 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         // Route::view('/reset-password', 'reset_password');
         Route::view('/shipping-delivery', 'vendor.shipping_delivery');
 
+    
+
         Route::get('/reset-password/{token}', [LoginController::class, 'resetPassword']);
         Route::post('/update-password', [LoginController::class, 'updatePassword']);
         // Route::get('/reset-password/{token}', [LoginController::class, 'resetPasswordPage'])->name('reset-password');
