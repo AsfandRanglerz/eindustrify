@@ -327,7 +327,7 @@ input::-webkit-inner-spin-button {
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                                     <li class="breadcrumb-item"><a href="#">{{$product->category->name}}</a></li>
-                                    <li class="breadcrumb-item"><a href="#">{{$product->subCategory->name}}</a></li>
+                                    <li class="breadcrumb-item"><a href="#">@if(isset($product->subCategory->name)){{$product->subCategory->name}}@endif</a></li>
                                     <li class="breadcrumb-item"><a href="#">{{$product->childCategory->name}}</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">{{$product->name}}</li>
                                 </ol>
@@ -866,7 +866,10 @@ input::-webkit-inner-spin-button {
                                 aria-hidden="true"></span></button>
                         <div
                             class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                            <img src="{{ asset($relatedProduct->thumb_image) }}">
+                            <?php 
+                            $image = $relatedProduct->gallery->first();
+                            ?>
+                            @if(isset($image))<img src="{{ asset($image->image) }}">@endif
                             <a href="{{URL('product-detail/'.$relatedProduct->slug)}}" class="position-absolute text-white quick-view">Quick View</a>
                         </div>
                         <button class="btn-bg add-cart-btn w-100">Add to Cart</button>
@@ -937,7 +940,28 @@ input::-webkit-inner-spin-button {
                 <h4 class="mb-0">Recently Viewed</h4>
             </div>
             <div class="row">
+                @if (isset($recentlyProducts))
+                @foreach($recentlyProducts as $recentlyProduct)
                 <div class="col-lg-3 col-md-6 p-2">
+                    <div class="position-relative feature-product-section">
+                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
+                                aria-hidden="true"></span></button>
+                        <div
+                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                            <?php  $image = $relatedProduct->gallery->first(); ?>
+                            <img src="{{ asset($image->image) }}">
+                            <a href="{{URL('product-detail/'.$recentlyProduct->slug)}}" class="position-absolute text-white quick-view">Quick View</a>
+                        </div>
+                        <button class="btn-bg add-cart-btn w-100">Add to Cart</button>
+                        <div class="p-3">
+                            <h6 class="mb-2">{{$recentlyProduct->name}}</h6>
+                            <span class="price">${{$recentlyProduct->price}}.00</span>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+                @endif
+                {{-- <div class="col-lg-3 col-md-6 p-2">
                     <div class="position-relative feature-product-section">
                         <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
                                 aria-hidden="true"></span></button>
@@ -1001,7 +1025,7 @@ input::-webkit-inner-spin-button {
                             <span class="price">$377.00</span>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

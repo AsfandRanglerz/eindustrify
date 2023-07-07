@@ -122,13 +122,14 @@
                                 aria-hidden="true"></span></button>
                         <div
                             class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                            <img src="{{ asset($product->thumb_image) }}">
+                            <?php $image = $product->gallery->first(); ?>
+                               @if(isset($image)) <img src="{{ asset($image->image) }}">@endif
                             <a href="" class="position-absolute text-white quick-view">Quick View</a>
                         </div>
                         <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
                         <div class="p-3">
                             <h6 class="mb-2">{{$product->name}}</h6>
-                            <span class="price">{{$product->price}}</span>
+                            <span class="price">${{$product->price}}.00</span>
                         </div>
                     </div>
                 </div>

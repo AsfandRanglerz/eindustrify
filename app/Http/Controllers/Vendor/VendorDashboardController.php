@@ -284,4 +284,10 @@ class VendorDashboardController extends Controller
         $notification = array('messege' => $notification, 'alert-type' => 'success');
         return redirect()->back()->with($notification);
     }
+    public function taxesDuties(){
+        return view('vendor.taxes_duties');
+    }
+    public function vendorPayments(){
+        return view('vendor.payments');
+    }
 }

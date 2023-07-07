@@ -264,11 +264,15 @@ class ProductController extends Controller
         $productSpecifications = ProductSpecification::where('product_id', $product->id)->get();
         $tagArray = json_decode($product->tags);
         $tags = '';
-        if ($product->tags) {
+
+        if ($product->tags && is_array($tagArray)) {
             foreach ($tagArray as $index => $tag) {
-                $tags .= $tag->value . ',';
+                if (is_object($tag) && isset($tag->value)) {
+                    $tags .= $tag->value . ',';
+                }
             }
         }
+
 
         return view('admin.edit_product', compact('categories', 'brands', 'productTaxs', 'retrunPolicies', 'specificationKeys', 'product', 'subCategories', 'childCategories', 'tags', 'productSpecifications'));
     }

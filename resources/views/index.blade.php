@@ -8,8 +8,8 @@
 
 @section('public-content')
     <!--============================
-                    BANNER PART START
-                ==============================-->
+                        BANNER PART START
+                    ==============================-->
     <section id="wsus__banner">
         <div class="container px-0">
             <div class="row wsus__banner_content_main">
@@ -32,10 +32,11 @@
                                         style="background-image:url({{ asset($homePage->image) }});">
                                         <div class="wsus__single_slider_text">
                                             @if (isset($homePage->pre_title))
-                                            <p class="text-white small heading-caption">Growth, Marketing & Sales Practice</p>
+                                                <p class="text-white small heading-caption">Growth, Marketing & Sales
+                                                    Practice</p>
                                             @endif
-                                            <h2 class="text-white main-heading">{{$homePage->title}}</h2>
-                                            <p class="text-white mt-2 mb-4 heading-caption">{{$homePage->post_title}}</p>
+                                            <h2 class="text-white main-heading">{{ $homePage->title }}</h2>
+                                            <p class="text-white mt-2 mb-4 heading-caption">{{ $homePage->post_title }}</p>
                                             <a class="view-more" href="#">View More</a>
                                         </div>
                                     </div>
@@ -116,22 +117,23 @@
         </div>
     </section>
     <!--============================
-            BANNER PART END
-        ==============================-->
+                BANNER PART END
+            ==============================-->
 
     <div class="grey-background">
         <div class="container pt-xl-5 pt-3 pb-xl-3">
             <div class="mb-xl-4 mb-2 d-flex flex-wrap align-items-center justify-content-between">
                 <h4 class="mb-0">Explore Product Categories</h4>
-                <a href="{{ url('/all-categories') }}" class="view-all">View All<span class="fas fa-caret-right ms-1"></span></a>
+                <a href="{{ url('/all-categories') }}" class="view-all">View All<span
+                        class="fas fa-caret-right ms-1"></span></a>
             </div>
             <div class="d-flex flex-wrap">
                 @foreach ($categories as $category)
-                    <a class="product-cat-content" href="{{ url('sub-category-listing/'.$category->slug) }}">
+                    <a class="product-cat-content" href="{{ url('sub-category-listing/' . $category->slug) }}">
                         <div class="image-holder">
                             <img src="{{ asset($category->image) }}">
                         </div>
-                        <h6 class="mt-3 px-4 text-center">{{$category->name}}</h6>
+                        <h6 class="mt-3 px-4 text-center">{{ $category->name }}</h6>
                     </a>
                 @endforeach
                 {{-- <a class="product-cat-content" href="{{ url('/sub-category-listing') }}">
@@ -238,15 +240,18 @@
                 @foreach ($products as $product)
                     <div class="col-lg-3 col-md-6 p-2">
                         <div class="position-relative feature-product-section">
-                            <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon" aria-hidden="true"></span></button>
-                            <div class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                                <img src="{{ asset($product->thumb_image) }}">
+                            <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
+                                    aria-hidden="true"></span></button>
+                            <div
+                                class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
+                                <?php $image = $product->gallery->first(); ?>
+                                <img src="{{ asset($image->image) }}">
                                 <a href="" class="position-absolute text-white quick-view">Quick View</a>
                             </div>
                             <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
                             <div class="p-3">
-                                <h6 class="mb-2">{{$product->name}}</h6>
-                                <span class="price">${{$product->price}}.00</span>
+                                <h6 class="mb-2">{{ $product->name }}</h6>
+                                <span class="price">${{ $product->price }}.00</span>
                             </div>
                         </div>
                     </div>
@@ -388,8 +393,8 @@
     </div>
 
     <!--============================
-                BRAND SLIDER END
-            ==============================-->
+                    BRAND SLIDER END
+                ==============================-->
     <div class="container" id="wsus__brand_sleder">
         <h4 class="text-center mb-4">Featured Brands and Partners</h4>
         <div class="brand_slider">
@@ -405,10 +410,10 @@
             <img src="{{ asset('public/uploads/website-images/images/feature-slider-3.png') }}"
                 alt="feature-slider-3.png">
             <img src="{{ asset('public/uploads/website-images/images/feature-slider-3.png') }}" --}}
-                alt="feature-slider-3.png">
+            alt="feature-slider-3.png">
         </div>
     </div>
     <!--============================
-                BRAND SLIDER END
-            ==============================-->
+                    BRAND SLIDER END
+                ==============================-->
 @endsection

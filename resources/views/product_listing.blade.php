@@ -73,7 +73,8 @@
                                         aria-hidden="true"></span></button>
                                 <div
                                     class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                                    <img src="{{ asset($product->thumb_image) }}">
+                                    <?php $image = $product->gallery->first(); ?>
+                                    @if(isset($image)) <img src="{{ asset($image->image) }}">@endif
                                     <a href="{{URL('product-detail/'. $product->slug)}}" class="position-absolute text-white quick-view">Quick View</a>
                                 </div>
                                 <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>

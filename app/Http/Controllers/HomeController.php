@@ -34,7 +34,6 @@ use App\Models\PopularPost;
 use App\Models\SubCategory;
 use App\Models\BlogCategory;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Models\ChildCategory;
 use App\Models\EmailTemplate;
 use App\Models\ProductReview;
@@ -50,8 +49,10 @@ use App\Models\TermsAndCondition;
 use App\Models\ProductVariantItem;
 use App\Models\ThreeColumnCategory;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 use App\Models\HomePageOneVisibility;
 use App\Mail\SubscriptionVerification;
+use Illuminate\Support\Facades\Cookie;
 use App\Mail\ContactMessageInformation;
 
 class HomeController extends Controller
@@ -61,7 +62,7 @@ class HomeController extends Controller
         $seoSetting = SeoSetting::find(1);
         $categories = Category::get();
         $homePageBanner = HomePageBanner::get();
-        $products = Product::where('is_featured', 1)->get();
+        $products = Product::with('gallery')->where('is_featured', 1)->get();
         $brands = Brand::where('is_featured', 1)->get();
         return view('index', compact('categories', 'products', 'brands', 'homePageBanner', 'seoSetting'));
     }
@@ -251,7 +252,7 @@ class HomeController extends Controller
     }
     public function subCategoryListing($slug)
     {
-        $category = Category::with('subCategories', 'products')->where(['slug' => $slug, 'status' => 1])->first();
+        $category = Category::with('subCategories', 'products.gallery')->where(['slug' => $slug, 'status' => 1])->first();
         $brands = Brand::where('status', 1)->get();
         return view('sub_category_listing', compact('category', 'brands'));
     }
@@ -262,24 +263,24 @@ class HomeController extends Controller
     }
     public function allSubCategories($slug)
     {
-        $category = Category::with('subCategories', 'products')->where(['slug' => $slug, 'status' => 1])->first();
+        $category = Category::with('subCategories', 'products.gallery')->where(['slug' => $slug, 'status' => 1])->first();
         return view('all_sub_categories', compact('category'));
     }
     public function childCategoryListing($slug)
     {
-        $subcategory = SubCategory::with('childCategories', 'products')->where(['slug' => $slug, 'status' => 1])->first();
+        $subcategory = SubCategory::with('childCategories', 'products.gallery')->where(['slug' => $slug, 'status' => 1])->first();
         $brands = Brand::where('status', 1)->get();
         return view('child_category_listing', compact('subcategory', 'brands'));
     }
     public function allChildCategories($slug)
     {
-        $subcategory = SubCategory::with('childCategories', 'products')->where(['slug' => $slug, 'status' => 1])->first();
+        $subcategory = SubCategory::with('childCategories', 'products.gallery')->where(['slug' => $slug, 'status' => 1])->first();
         return view('all_child_categories', compact('subcategory'));
     }
     public function productListing($slug)
     {
 
-        $childcategory = ChildCategory::with('category', 'subCategory', 'products')->where(['slug' => $slug, 'status' => 1])->first();
+        $childcategory = ChildCategory::with('category', 'subCategory', 'products.gallery')->where(['slug' => $slug, 'status' => 1])->first();
         return view('product_listing', compact('childcategory'));
     }
     public function termsAndCondition()
@@ -449,8 +450,23 @@ class HomeController extends Controller
     public function productDetail($slug)
     {
         $product = Product::with('category', 'brand', 'specifications', 'productOverview', 'gallery', 'subCategory', 'childCategory')->where(['status' => 1, 'slug' => $slug])->first();
-        $relatedProducts = Product::where('sub_category_id', $product->sub_category_id)->where('status', 1)->latest()->limit(4)->get();
-        return view('product_detail', compact('product', 'relatedProducts'));
+        $relatedProducts = Product::with('gallery')->where('sub_category_id', $product->sub_category_id)->where('status', 1)->latest()->limit(4)->get();
+       
+        $productIds = json_decode(request()->cookie('user-cookie'), true) ?? [];
+        $productIds = array_filter($productIds, function ($productId) use ($product) {
+            return $productId !== $product->id;
+        });
+        array_unshift($productIds, $product->id);
+        $expiration = Carbon::now()->addDay()->timestamp;
+        Cookie::queue('user-cookie', json_encode($productIds), $expiration);
+        $cookieRes = Cookie::get('user-cookie');
+        $productsIds = json_decode($cookieRes, true);
+        if ($productsIds) {
+        $recentlyProducts = Product::with('gallery')->whereIn('id',$productsIds)->where('status', 1)->get();
+        }else{
+            $recentlyProducts = Null;
+        }
+        return view('product_detail', compact('product', 'relatedProducts','recentlyProducts'));
     }
 
     public function addToCompare($id)
