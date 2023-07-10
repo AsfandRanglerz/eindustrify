@@ -195,7 +195,7 @@
                                     <h6 class="heading file-val">Click to upload or Drag and Drop</h6>
                                     <small class="d-block mt-2">Maximum file size 50MB</small>
                                     <input type="file" multiple="" data-max_length="20" class="upload__inputfile"
-                                        name="image[]">
+                                        name="image[]"accept="image/*">
                                 </label>
                             </div>
                             <div class="upload__img-wrap"></div>
@@ -245,7 +245,7 @@
                             </div>
                         </div>
                     </div>
-                    <div id="items1" class="d-none">
+                    <div class="item-block d-none">
                         <div class="d-flex mt-3">
                             <div class=" me-sm-3">
                                 <label class="text-uppercase">shipping weight</label>
@@ -334,8 +334,36 @@
                     <select class="js-example-tokenizer pt-2 pb-2 form-control" name="tags[]" multiple="multiple">
                         <option value="find">find or create tags</option>
                         {{-- <option value="a">abc</option>
-                    <option value="d">dc</option> --}}
+                        <option value="d">dc</option> --}}
                     </select>
+                    <div class="mt-3 mb-2 d-flex justify-content-between">
+                        <label class="text-uppercase mb-0">Specifications</label>
+                        <button type="button" id="addSpec" class="py-1 px-2 common_btn"><span class="fa fa-plus text-white me-2"></span>Add</button>
+                    </div>
+                    <select class="form-control mb-2">
+                        <option value="Key">Key</option>
+                    </select>
+                    <input type="text" placeholder="Specification" class="form-control">
+                    <div class="specification-block mt-2 d-none">
+                        <select class="form-control mb-2">
+                            <option value="Key">Key</option>
+                        </select>
+                        <input type="text" placeholder="Specification" class="form-control">
+                    </div>
+                    <div class="specification-section"></div>
+
+                    <div class="mt-3 mb-2 d-flex justify-content-between">
+                        <label class="text-uppercase mb-0">Product Overview</label>
+                        <button type="button" id="addprodOverview" class="py-1 px-2 common_btn"><span class="fa fa-plus text-white me-2"></span>Add</button>
+                    </div>
+                    <input type="text" placeholder="Title" class="form-control">
+                    <input type="file" class="mt-2 form-control" accept="image/*">
+                    <div class="product-overview-block mt-2 d-none">
+                        <input type="text" placeholder="Title" class="form-control">
+                        <input type="file" class="mt-2 form-control" accept="image/*">
+                    </div>
+                    <div class="product-overview-section"></div>
+                    <div class="mt-2 text-end"></div>
                 </div>
 
             </div>
@@ -369,12 +397,24 @@
             $("#add").click(function(e) {
                 $(".delete").fadeIn("1500");
                 //Append a new row of code to the "#items" div
-                const ele = $("#items1").clone();
+                const ele = $(".item-block:first").clone();
                 ele.removeClass('d-none');
                 $('#extra-item').append(ele);
             });
             $("body").on("click", ".delete", function(e) {
                 $(".next-referral").last().remove();
+            });
+
+            $(document).on('click', '#addSpec', function(e) {
+                const ele = $('.specification-block:first').clone();
+                ele.removeClass('d-none');
+                $('.specification-section').prepend(ele);
+            });
+
+            $(document).on('click', '#addprodOverview', function(e) {
+                const ele = $('.product-overview-block:first').clone();
+                ele.removeClass('d-none');
+                $('.product-overview-section').prepend(ele);
             });
         });
 
