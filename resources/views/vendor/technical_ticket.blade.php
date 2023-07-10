@@ -88,27 +88,24 @@
            @csrf
             <div>
                 <label for="subject" class="text-uppercase">Subject <span class="text-danger">*</span></label>
-                <input type="text" name="subject" class="form-control rounded-0" placeholder="subject">
+                <input type="text" name="subject" class="rounded-0 form-control" placeholder="subject">
             </div>
             <div class="mt-3">
                 <label for="subject" class="text-uppercase">Description<span class="text-danger">*</span></label>
-                <textarea name="description" class="w-100" id="" cols="1" rows="10"></textarea>
+                <textarea name="description" class="w-100 rounded-0 form-control" cols="1" rows="10"></textarea>
             </div>
 
             <div class="mt-3">
                 <label for="subject" class="text-uppercase">attachments <span class="text-danger">*</span></label>
-                <div id="htmlBox" class="box file-upload">
+                <div class="box py-5" id="attachmentFileBox">
                     <div class="box-inside">
-                        <input type="file" name="document">
-                        <!-- <img class="d-block mx-auto mb-md-4 mb-3" src="http://localhost/eindustrify/public/uploads/website-images/images/drag-drop.png"> -->
-                        <h6 class="heading file-val">Click to upload or Drag and Drop</h6>
+                        <h6 class="heading file-val">Click to upload file</h6>
                         <small class="d-block mt-2">Maximum file size 50MB</small>
-
                     </div>
                 </div>
-
+                <input type="file" accept=".xls,.xlsx, .docx, .pdf" id="attachmentFile" name="document" class="d-none" />
                 <div class="mt-3">
-                    <button type="button " class=" submit-btn p-3">Submit</button>
+                    <button type="button" class="submit-btn p-3">Submit</button>
                 </div>
             </div>
         </form>
@@ -127,7 +124,24 @@
         </script>
     @endif
     <script>
-        $('.file-upload').file_upload();
+        $(function() {
+            $(document).on('click', '#attachmentFileBox', function() {
+                $("#attachmentFile").click();
+            });
+
+            $('#attachmentFile').change(function() {
+                var file = this.files[0];
+                var fileSize = file.size;
+                var maxSize = 50 * 1024 * 1024; // 50 MB
+                if (fileSize < maxSize && file.length !== 0) {
+                    alert("Selected file is below the required file size limit of 50MB.");
+                    $('.file-val').text($('#attachmentFile').val().replace(/C:\\fakepath\\/i, ''));
+                } else {
+                    alert("Selected file exceeds the maximum file size limit of 50MB.");
+                    $(this).val(""); // Clear the file input
+                }
+            });
+        })
     </script>
 
 @endsection

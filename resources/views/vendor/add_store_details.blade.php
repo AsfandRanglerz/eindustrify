@@ -272,9 +272,15 @@
             });
 
             $('#fileBannerImg').change(function() {
-                var files = $(this).prop('files');
-                if (files.length !== 0) {
+                var file = this.files[0];
+                var fileSize = file.size;
+                var maxSize = 50 * 1024 * 1024; // 50 MB
+                if (fileSize < maxSize && file.length !== 0) {
+                    alert("Selected file is below the required file size limit of 50MB.");
                     $('.file-val').text($('#fileBannerImg').val().replace(/C:\\fakepath\\/i, ''));
+                } else {
+                    alert("Selected file exceeds the maximum file size limit of 50MB.");
+                    $(this).val(""); // Clear the file input
                 }
             });
 
