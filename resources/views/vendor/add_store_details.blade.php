@@ -88,7 +88,7 @@
         }
 
         .store-header {
-            border-bottom: 1px solid #CCCCCC;
+            border-bottom: 2px solid #CCCCCC;
         }
     </style>
     <form action="{{URL('update-store')}}" method="POST" enctype="multipart/form-data">

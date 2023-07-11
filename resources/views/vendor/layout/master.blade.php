@@ -59,7 +59,7 @@
 
 <body>
     @include('vendor.common.header')
-    <div class="container">
+    <div class="container-md">
         <div class="row">
             <div class="col-lg-3">
                 @include('vendor.common.sidebar')

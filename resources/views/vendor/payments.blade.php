@@ -3,7 +3,7 @@
 @section('content')
 <style>
     .store-header {
-        border-bottom: 1px solid #CCCCCC;
+        border-bottom: 2px solid #CCCCCC;
     }
     .connected-method {
         background: #F2F2F2;
