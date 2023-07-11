@@ -138,6 +138,8 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('/product', [HomeController::class, 'product'])->name('product');
         Route::get('/search-product', [HomeController::class, 'searchProduct'])->name('search-product');
         Route::get('/product-detail/{slug}', [HomeController::class, 'productDetail']);
+        Route::get('add-to-cart', [CartController::class, 'addToCart']);
+        Route::get('add-to-cart-remove', [CartController::class, 'remove']);
         // Route::view('/product-detail', 'product_detail');
         // Route::view('/add-product', 'vendor.add_product');
 

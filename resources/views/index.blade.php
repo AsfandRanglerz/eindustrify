@@ -8,8 +8,8 @@
 
 @section('public-content')
     <!--============================
-                        BANNER PART START
-                    ==============================-->
+                                BANNER PART START
+                            ==============================-->
     <section id="wsus__banner">
         <div class="container px-0">
             <div class="row wsus__banner_content_main">
@@ -117,8 +117,8 @@
         </div>
     </section>
     <!--============================
-                BANNER PART END
-            ==============================-->
+                        BANNER PART END
+                    ==============================-->
 
     <div class="grey-background">
         <div class="container pt-xl-5 pt-3 pb-xl-3">
@@ -248,7 +248,10 @@
                                 <img src="{{ asset($image->image) }}">
                                 <a href="" class="position-absolute text-white quick-view">Quick View</a>
                             </div>
-                            <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
+                            {{-- <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button> --}}
+                            <a id="{{ $product->id }}"
+                                class="add_cart add_to_cart btn btn-bg add-cart-btn w-100 rounded-0" href="javascript:;"
+                                tabindex="0">Add to Cart</a>
                             <div class="p-3">
                                 <h6 class="mb-2">{{ $product->name }}</h6>
                                 <span class="price">${{ $product->price }}.00</span>
@@ -256,145 +259,13 @@
                         </div>
                     </div>
                 @endforeach
-
-                {{-- <div class="col-lg-3 col-md-6 p-2">
-                    <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
-                                aria-hidden="true"></span></button>
-                        <div
-                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                            <img src="{{ asset('public/uploads/website-images/images/engine2.png') }}">
-                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
-                        </div>
-                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
-                        <div class="p-3">
-                            <h6 class="mb-2">Release device EM 24V-DC</h6>
-                            <span class="price">$377.00</span>
-                            <s class="ms-3">$8,200.00</s>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 p-2">
-                    <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
-                                aria-hidden="true"></span></button>
-                        <div
-                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                            <img src="{{ asset('public/uploads/website-images/images/engine3.png') }}">
-                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
-                        </div>
-                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
-                        <div class="p-3">
-                            <h6 class="mb-2">Release device EM 24V-DC</h6>
-                            <span class="price">$377.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 p-2">
-                    <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
-                                aria-hidden="true"></span></button>
-                        <div
-                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                            <img src="{{ asset('public/uploads/website-images/images/engine9.png') }}">
-                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
-                        </div>
-                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
-                        <div class="p-3">
-                            <h6 class="mb-2">Release device EM 24V-DC</h6>
-                            <span class="price">$377.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 p-2">
-                    <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
-                                aria-hidden="true"></span></button>
-                        <div
-                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                            <img src="{{ asset('public/uploads/website-images/images/engine16.png') }}">
-                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
-                        </div>
-                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
-                        <div class="p-3">
-                            <h6 class="mb-2">Release device EM 24V-DC</h6>
-                            <span class="price">$377.00</span>
-                            <s class="ms-3">$8,200.00</s>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 p-2">
-                    <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
-                                aria-hidden="true"></span></button>
-                        <div
-                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                            <img src="{{ asset('public/uploads/website-images/images/engine5.png') }}">
-                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
-                        </div>
-                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
-                        <div class="p-3">
-                            <h6 class="mb-2">Release device EM 24V-DC</h6>
-                            <span class="price">$377.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 p-2">
-                    <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
-                                aria-hidden="true"></span></button>
-                        <div
-                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                            <img src="{{ asset('public/uploads/website-images/images/engine17.png') }}">
-                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
-                        </div>
-                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
-                        <div class="p-3">
-                            <h6 class="mb-2">Release device EM 24V-DC</h6>
-                            <span class="price">$377.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 p-2">
-                    <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
-                                aria-hidden="true"></span></button>
-                        <div
-                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                            <img src="{{ asset('public/uploads/website-images/images/engine8.png') }}">
-                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
-                        </div>
-                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
-                        <div class="p-3">
-                            <h6 class="mb-2">Release device EM 24V-DC</h6>
-                            <span class="price">$377.00</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 p-2">
-                    <div class="position-relative feature-product-section">
-                        <button class="add-wishlist-btn"><span class="fa fa-heart-o wishlist-icon"
-                                aria-hidden="true"></span></button>
-                        <div
-                            class="position-relative text-center d-flex justify-content-center align-items-center img-holder">
-                            <img src="{{ asset('public/uploads/website-images/images/engine2.png') }}">
-                            <a href="" class="position-absolute text-white quick-view">Quick View</a>
-                        </div>
-                        <button class="btn btn-bg add-cart-btn w-100 rounded-0">Add to Cart</button>
-                        <div class="p-3">
-                            <h6 class="mb-2">Release device EM 24V-DC</h6>
-                            <span class="price">$377.00</span>
-                            <s class="ms-3">$8,200.00</s>
-                        </div>
-                    </div>
-                </div> --}}
             </div>
         </div>
     </div>
 
     <!--============================
-                    BRAND SLIDER END
-                ==============================-->
+                            BRAND SLIDER END
+                        ==============================-->
     <div class="container" id="wsus__brand_sleder">
         <h4 class="text-center mb-4">Featured Brands and Partners</h4>
         <div class="brand_slider">
@@ -414,6 +285,120 @@
         </div>
     </div>
     <!--============================
-                    BRAND SLIDER END
-                ==============================-->
+                            BRAND SLIDER END
+                        ==============================-->
+@endsection
+@section('js')
+    <script>
+        // $(function() {
+        //     $(".add_to_cart").click(function() {
+        //         var selectedText = $(this).find("option:selected").text();
+        //         var productId = $(this).attr('id');
+        //         $.ajax({
+        //             url: '{{ URL::to('/add-to-cart') }}',
+        //             type: 'GET',
+        //             data: {
+        //                 'id': productId
+        //             },
+        //             success: function(response) {
+        //                 $('#cartQty').empty();
+        //                 $('#cartQty').text(response.data);
+        //                 // Iterate through the cart items and append new details
+        //                 $('#cart_data').empty();
+        //                 $.each(response.cart, function(id, details) {
+        //                     var cartDetail = '<li>' +
+        //                         '<div class="wsus__cart_img">' +
+        //                         '<a href="#"><img src="' + details.image +
+        //                         '" alt="product" class="img-fluid w-100"></a>' +
+        //                         '<a class="wsis__del_icon add_to_cart_remove" id="' +
+        //                         id +
+        //                         '" href="javascript:;"><i class="fas fa-minus-circle"></i></a>' +
+        //                         '</div>' +
+        //                         '<div class="wsus__cart_text">' +
+        //                         '<a class="wsus__cart_title" href="' + details
+        //                         .productUrl + '">' + details.name + '</a>' +
+        //                         '<p><span>' + details.quantity + ' x</span>$' + details
+        //                         .price + '.00</p>' +
+        //                         '</div>' +
+        //                         '</li>';
+        //                     $('#cart_data').append(cartDetail);
+        //                 });
+        //             }
+        //         });
+        //     });
+        // });
+        $(function() {
+            $(document).on('click', '.add_to_cart', function() {
+                var selectedText = $(this).find("option:selected").text();
+                var productId = $(this).attr('id');
+                $.ajax({
+                    url: '{{URL::to('/add-to-cart')}}', // Update the URL to the correct endpoint
+                    type: 'GET',
+                    data: {
+                        'id': productId
+                    },
+                    success: function(response) {
+                        $('#cartQty').empty().text(response.data);
+                        $('#cart_data').empty();
+                        $.each(response.cart, function(id, details) {
+                            var cartDetail = $('<li>').html(
+                                '<div class="wsus__cart_img">' +
+                                '<a href="#"><img src="' + details.image +
+                                '" alt="product" class="img-fluid w-100"></a>' +
+                                '<a class="wsis__del_icon add_to_cart_remove" id="' +
+                                id +
+                                '" href="javascript:;"><i class="fas fa-minus-circle"></i></a>' +
+                                '</div>' +
+                                '<div class="wsus__cart_text">' +
+                                '<a class="wsus__cart_title" href="' + details
+                                .productUrl + '">' + details.name + '</a>' +
+                                '<p><span>' + details.quantity + ' x</span>$' +
+                                details.price + '.00</p>' +
+                                '</div>'
+                            );
+                            setTimeout(() => {
+                                $('#cart_data').append(cartDetail);
+                            }, 500);
+                        });
+                    }
+                });
+            });
+        });
+
+
+        $(document).on('click', '.add_to_cart_remove', function() {
+            var selectedText = $(this).find("option:selected").text();
+            var productId = $(this).attr('id');
+            $.ajax({
+                url: '{{ URL::to('/add-to-cart-remove') }}',
+                type: 'GET',
+                data: {
+                    'id': productId
+                },
+                success: function(response) {
+                    $('#cartQty').empty();
+                    $('#cartQty').text(response.data);
+                    // Iterate through the cart items and append new details
+                    $('#cart_data').empty();
+                    $.each(response.cart, function(id, details) {
+                        var cartDetail = '<li>' +
+                            '<div class="wsus__cart_img">' +
+                            '<a href="#"><img src="' + details.image +
+                            '" alt="product" class="img-fluid w-100"></a>' +
+                            '<a class="wsis__del_icon add_to_cart_remove" id="' + id +
+                            '" href="javascript:;"><i class="fas fa-minus-circle"></i></a>' +
+                            '</div>' +
+                            '<div class="wsus__cart_text">' +
+                            '<a class="wsus__cart_title" href="' + details.productUrl + '">' +
+                            details.name + '</a>' +
+                            '<p><span>' + details.quantity + ' x</span>$' + details.price +
+                            '.00</p>' +
+                            '</div>' +
+                            '</li>';
+                        $('#cart_data').append(cartDetail);
+                    });
+                }
+            });
+        });
+    </script>
 @endsection

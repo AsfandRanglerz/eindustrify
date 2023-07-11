@@ -236,7 +236,7 @@
                                 <input id="sku" type="number" class="p-2" placeholder="SKU" name="sku">
                             </div>
                             <div class="mt-3" style="">
-                                <label  class="text-uppercase ">Variant</label>
+                                <label class="text-uppercase ">Variant</label>
                                 <input type="text" class="p-2" placeholder="1 HP" name="variant">
                             </div>
                             <div class="mt-3" style="">
@@ -276,10 +276,11 @@
                         <div class="d-flex flex-wrap">
                             <div class="mt-3 me-sm-3">
                                 <label class="text-uppercase">SKU</label>
-                                <input id="product_sku[]" type="number" class="p-2" placeholder="SKU" name="product_sku[]">
+                                <input id="product_sku[]" type="number" class="p-2" placeholder="SKU"
+                                    name="product_sku[]">
                             </div>
                             <div class="mt-3" style="">
-                                <label  class="text-uppercase ">Varient</label>
+                                <label class="text-uppercase ">Varient</label>
                                 <input type="text" class="p-2" placeholder="1 HP" name="product_size[]">
                             </div>
                             <div class="mt-3" style="">
@@ -338,29 +339,39 @@
                     </select>
                     <div class="mt-3 mb-2 d-flex justify-content-between">
                         <label class="text-uppercase mb-0">Specifications</label>
-                        <button type="button" id="addSpec" class="py-1 px-2 common_btn"><span class="fa fa-plus text-white me-2"></span>Add</button>
+                        <button type="button" id="addSpec" class="py-1 px-2 common_btn"><span
+                                class="fa fa-plus text-white me-2"></span>Add</button>
                     </div>
-                    <select class="form-control mb-2">
-                        <option value="Key">Key</option>
+                    <select class="form-control mb-2" name="keys[]">
+                        <option value="Key">Keys</option>
+                        @foreach ($specificationKeys as $specificationKey)
+                            <option value="{{ $specificationKey->id }}">
+                                {{ $specificationKey->key }}</option>
+                        @endforeach
                     </select>
-                    <input type="text" placeholder="Specification" class="form-control">
+                    <input type="text" placeholder="Specification" class="form-control" name="specifications[]">
                     <div class="specification-block mt-2 d-none">
-                        <select class="form-control mb-2">
+                        <select class="form-control mb-2" name="keys[]">
                             <option value="Key">Key</option>
+                            @foreach ($specificationKeys as $specificationKey)
+                            <option value="{{ $specificationKey->id }}">
+                                {{ $specificationKey->key }}</option>
+                        @endforeach
                         </select>
-                        <input type="text" placeholder="Specification" class="form-control">
+                        <input type="text" placeholder="Specification" class="form-control" name="specifications[]">
                     </div>
                     <div class="specification-section"></div>
 
                     <div class="mt-3 mb-2 d-flex justify-content-between">
                         <label class="text-uppercase mb-0">Product Overview</label>
-                        <button type="button" id="addprodOverview" class="py-1 px-2 common_btn"><span class="fa fa-plus text-white me-2"></span>Add</button>
+                        <button type="button" id="addprodOverview" class="py-1 px-2 common_btn"><span
+                                class="fa fa-plus text-white me-2"></span>Add</button>
                     </div>
-                    <input type="text" placeholder="Title" class="form-control">
-                    <input type="file" class="mt-2 form-control" accept="image/*">
+                    <input type="text" placeholder="Title" class="form-control" name="product_overview_title[]">
+                    <input type="file" class="mt-2 form-control" accept="image/*" name="product_overview_image[]">
                     <div class="product-overview-block mt-2 d-none">
-                        <input type="text" placeholder="Title" class="form-control">
-                        <input type="file" class="mt-2 form-control" accept="image/*">
+                        <input type="text" placeholder="Title" class="form-control" name="product_overview_title[]">
+                        <input type="file" class="mt-2 form-control" accept="image/*" name="product_overview_image[]">
                     </div>
                     <div class="product-overview-section"></div>
                     <div class="mt-2 text-end"></div>

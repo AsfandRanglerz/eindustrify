@@ -16,11 +16,14 @@ use Illuminate\Http\Request;
 use App\Models\BillingAddress;
 use App\Models\ProductGallery;
 use App\Models\VendorCategory;
+use App\Models\ProductOverview;
 use App\Models\TechnicalSupport;
 use App\Models\BusinessInformation;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use App\Models\ProductSpecification;
 use Illuminate\Support\Facades\Auth;
+use App\Models\ProductSpecificationKey;
 
 class VendorDashboardController extends Controller
 {
@@ -68,7 +71,8 @@ class VendorDashboardController extends Controller
     {
 
         $user = User::with('categories', 'subcategories', 'childcategories')->find(Auth::id());
-        return view('vendor.add_product', compact('user'));
+        $specificationKeys = ProductSpecificationKey::all();
+        return view('vendor.add_product', compact('user','specificationKeys'));
     }
     public function createProduct(Request $request)
     {
@@ -134,7 +138,47 @@ class VendorDashboardController extends Controller
                 }
             }
         }
-
+        if ($request->keys) {
+            $exist_specifications = [];
+            if ($request->keys) {
+                foreach ($request->keys as $index => $key) {
+                    if ($key) {
+                        if ($request->specifications[$index]) {
+                            if (!in_array($key, $exist_specifications)) {
+                                $productSpecification = new ProductSpecification();
+                                $productSpecification->product_id = $product->id;
+                                $productSpecification->product_specification_key_id = $key;
+                                $productSpecification->specification = $request->specifications[$index];
+                                $productSpecification->save();
+                            }
+                            $exist_specifications[] = $key;
+                        }
+                    }
+                }
+            }
+        }
+        if ($request->file('product_overview_image')) {
+            $product_overview_image = [];
+            if ($request->product_overview_title) {
+                foreach ($request->product_overview_title as $index => $product_overview_title) {
+                    if ($product_overview_title) {
+                        if ($request->product_overview_image[$index]) {
+                            if (!in_array($product_overview_title, $product_overview_image)) {
+                                $productOverview = new ProductOverview();
+                                $productOverview->product_id = $product->id;
+                                $productOverview->title = $request->product_overview_title[$index];
+                                $doucments = $request->file('product_overview_image')[$index]->getClientOriginalName();
+                                $request->file('product_overview_image')[$index]->move('public/images/', $doucments);
+                                $file = 'public/images/' . $doucments;
+                                $productOverview['image'] = $file;
+                                $productOverview->save();
+                            }
+                            $product_overview_image[] = $product_overview_title;
+                        }
+                    }
+                }
+            }
+        }
         if ($request->product_price) {
             $product_price = [];
             if ($request->product_size) {

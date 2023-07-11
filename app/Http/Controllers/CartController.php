@@ -23,98 +23,40 @@ class CartController extends Controller
         return view('cart', compact('banner','banners','cartContents','setting','currencySetting'));
     }
 
-    public function addToCart(Request $request){
-        $itemExist = false;
-        $cartContents = Cart::content();
-        foreach($cartContents as $cartContent){
-            if($cartContent->id == $request->product_id) $itemExist = true;
+    public function addToCart(Request $request)
+    {
+        $product = Product::with('gallery')->findOrFail($request->id);
+       $image= $product->gallery->first();
+        $cart = session()->get('cart', []);
+
+        if(isset($cart[$request->id])) {
+            $cart[$request->id]['quantity']++;
+        } else {
+            $cart[$request->id] = [
+                "name" => $product->name,
+                "quantity" => 1,
+                "price" => $product->price,
+                "image" => $image->image
+            ];
         }
 
-        $productStock = Product::find($request->product_id);
-        if($productStock->qty == 0){
-            $notification = trans('user_validation.Product stock out');
-            return response()->json(['status' => 0, 'message' => $notification]);
-        }
-
-        if($productStock->qty < $request->quantity){
-            $notification = trans('user_validation.Quantity not available in our stock');
-            return response()->json(['status' => 0, 'message' => $notification]);
-        }
-
-        if($itemExist) {
-            $notification = trans('user_validation.Item already exist');
-            return response()->json(['status' => 0, 'message' => $notification]);
-        }
-        $variants = [];
-        $values = [];
-        $prices = [];
-        $variantPrice = 0;
-        if($request->variants){
-            foreach($request->variants as $index => $varr){
-                $variants[] = $request->variantNames[$index];
-                $item = ProductVariantItem::where(['id' => $request->items[$index]])->first();
-                $values[] = $item->name;
-                $prices[] = $item->price;
-            }
-            $variantPrice = $variantPrice + array_sum($prices);
-        }
-
-        $product = Product::with('tax')->find($request->product_id);
-        $tax_percentage = $product->tax->price;
-
-        $isCampaign = false;
-        $today = date('Y-m-d');
-        $campaign = CampaignProduct::where(['status' => 1, 'product_id' => $product->id])->first();
-        if($campaign){
-            $campaign = $campaign->campaign;
-            if($campaign->start_date <= $today &&  $today <= $campaign->end_date){
-                $isCampaign = true;
-            }
-            $campaignOffer = $campaign->offer;
-            $productPrice = $product->price;
-            $campaignOfferPrice = ($campaignOffer / 100) * $productPrice;
-            $totalPrice = $product->price;
-            $campaignOfferPrice = $totalPrice - $campaignOfferPrice;
-        }else{
-            $totalPrice = $product->price;
-            if($product->offer_price != null){
-                $offerPrice = $product->offer_price;
-            }
-        }
-
-        $productPrice = 0;
-        if($isCampaign){
-            $productPrice = $campaignOfferPrice + $variantPrice;
-            $tax_percentage_amount = ($tax_percentage / 100) * $productPrice;
-        }else{
-            if ($product->offer_price == null) {
-                $productPrice = $totalPrice + $variantPrice;
-                $tax_percentage_amount = ($tax_percentage / 100) * $productPrice;
-            }else {
-                $productPrice = $product->offer_price + $variantPrice;
-                $tax_percentage_amount = ($tax_percentage / 100) * $productPrice;
-            }
-        }
-
-        $data=array();
-        $data['id'] = $product->id;
-        $data['name'] = $product->short_name;
-        $data['qty'] = $request->quantity;
-        $data['price'] = $productPrice;
-        $data['weight'] = 1;
-        $data['options']['tax'] = $tax_percentage_amount;
-        $data['options']['coupon_price'] = 0;
-        $data['options']['image'] = $request->image;
-        $data['options']['slug'] = $request->slug;
-        $data['options']['variants'] = $variants;
-        $data['options']['values'] = $values;
-        $data['options']['prices'] = $prices;
-        Cart::add($data);
-
-        $notification = trans('user_validation.Item added successfully');
-        return response()->json(['status' => 1, 'message' => $notification]);
+        session()->put('cart', $cart);
+        $data = count((array) session('cart'));
+        $cart = (array) session('cart');
+        return response()->json(['success' => true, 'message' => 'Product added to cart successfully!','data'=>$data,'cart'=> $cart]);
     }
-
+    public function remove(Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            $cart = session('cart') ;
+            return response()->json(['success' => true, 'message' => 'Product remove to cart successfully!','cart'=> $cart]);
+        }
+    }
     public function addToBuy(Request $request){
         $itemExist = false;
         $cartContents = Cart::content();

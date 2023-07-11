@@ -174,9 +174,9 @@
                                 class="dropdown-menu dropdown-menu-right animated-dropdown slideIn w-100 border-0 dark-box-shadow">
                                 <b
                                     class="text-muted text-uppercase d-block mb-2 user-name-text">{{ Auth::user()->first_name }}</b>
-                                    <a class="dropdown-item" href="{{ URL('vendor-dashboard') }}"><span
+                                <a class="dropdown-item" href="{{ URL('vendor-dashboard') }}"><span
                                         class="fas fa-sign-out-alt mr-2"></span><b>Dashbaord</b></a>
-                                    <hr class="my-1">
+                                <hr class="my-1">
                                 <a class="dropdown-item" href="{{ URL('logout') }}"><span
                                         class="fas fa-sign-out-alt mr-2"></span><b>Logout</b></a>
                             </div>
@@ -195,7 +195,7 @@
                             <li class="mx-0"><a class="wsus__cart_icon" href="javascript:;"><img
                                         src="{{ asset('public/uploads/website-images/images/Vector.png') }}"
                                         alt="cart-img"><span
-                                        id="cartQty">{{ Cart::instance('default')->count() }}</span></a></li>
+                                        id="cartQty">{{ count((array) session('cart')) }}</span></a></li>
                             <a class="ms-2 wsus__cart_icon" href="javascript:;">Cart</a>
                         @endif
                     </ul>
@@ -206,44 +206,34 @@
             <h4>{{ __('user.SHOPPING CART') }} <span class="wsus_close_mini_cart"><i class="far fa-times"></i></span>
             </h4>
             <div id="load_sidebar_cart">
-                @if (Cart::instance('default')->count() == 0)
+                @if (count((array) session('cart')) == 0)
                     <h5 class="text-danger text-center">{{ 'Your Cart is empty' }}</h5>
                 @else
-                    <ul>
+                    <ul id="cart_data">
                         @php
-                            $sidebarCartSubTotal = 0;
-                            $sidebar_cart_contents = Cart::instance('default')->content();
+                            $total = 0;
                         @endphp
-                        @foreach ($sidebar_cart_contents as $sidebar_cart_content)
+                        @foreach ((array) session('cart') as $id => $details)
+                            @php $total += $details['price'] * $details['quantity'] @endphp
                             <li>
                                 <div class="wsus__cart_img">
-                                    <a href="#"><img src="{{ asset($sidebar_cart_content->options->image) }}"
-                                            alt="product" class="img-fluid w-100"></a>
-                                    <a class="wsis__del_icon"
-                                        onclick="sidebarCartItemRemove('{{ $sidebar_cart_content->rowId }}')"
+                                    <a href="#"><img src="{{ asset($details['image']) }}" alt="product"
+                                            class="img-fluid w-100"></a>
+                                    {{-- onclick="sidebarCartItemRemove('{{ $sidebar_cart_content->rowId }}')" --}}
+                                    <a class="wsis__del_icon add_to_cart_remove" id="{{ $id }}"
                                         href="javascript:;"><i class="fas fa-minus-circle"></i></a>
                                 </div>
                                 <div class="wsus__cart_text">
                                     <a class="wsus__cart_title"
-                                        href="{{ route('product-detail', $sidebar_cart_content->options->slug) }}">{{ $sidebar_cart_content->name }}</a>
-                                    <p><span>{{ $sidebar_cart_content->qty }} x</span>
-                                        {{ $currencySetting->currency_icon }}{{ $sidebar_cart_content->price }}</p>
+                                        href="{{ URL('product-detail/', $id) }}">{{ $details['name'] }}</a>
+                                    <p><span>{{ $details['quantity'] }} x</span>${{ $details['price'] }}.00</p>
                                 </div>
                             </li>
-
-                            @php
-                                $productPrice = $sidebar_cart_content->price;
-                                $total = $productPrice * $sidebar_cart_content->qty;
-                                $sidebarCartSubTotal += $total;
-                            @endphp
                         @endforeach
-
-
-
-
                     </ul>
                     <h5>{{ __('user.Sub Total') }}
-                        <span>{{ $currencySetting->currency_icon }}{{ $sidebarCartSubTotal }}</span></h5>
+                        <span>${{ $total }}.00</span>
+                    </h5>
                     <div class="wsus__minicart_btn_area">
                         <a class="common_btn" href="{{ route('cart') }}">{{ __('user.View Cart') }}</a>
                         <a class="common_btn"
@@ -275,25 +265,28 @@
                 </div>
                 <div class="row position-absolute pt-3 pb-4 product-categories-dropdown">
                     <?php
-                    $categories = App\Models\Category::with('subCategories')->limit(5)->get();
+                    $categories = App\Models\Category::with('subCategories')
+                        ->limit(5)
+                        ->get();
                     ?>
                     @foreach ($categories as $category)
-                    <div class="col-md-2">
-                        <img src="{{ asset($category->image) }}"
-                            class="product-cat-img">
-                        <h6 class="my-2 main-heading">{{$category->name}}</h6>
-                        <ul class="list-links">
-                            @foreach ($category->subCategories as $subcategory)
-                            <li><a href="{{URL('child-category-listing/'.$subcategory->slug)}}" class="link">{{$subcategory->name}}</a></li>
-                            @endforeach
-                        </ul>
-                        <a href="{{URL('sub-category-listing/'.$category->slug)}}" class="mt-2 view-link">View All</a>
-                    </div>
+                        <div class="col-md-2">
+                            <img src="{{ asset($category->image) }}" class="product-cat-img">
+                            <h6 class="my-2 main-heading">{{ $category->name }}</h6>
+                            <ul class="list-links">
+                                @foreach ($category->subCategories as $subcategory)
+                                    <li><a href="{{ URL('child-category-listing/' . $subcategory->slug) }}"
+                                            class="link">{{ $subcategory->name }}</a></li>
+                                @endforeach
+                            </ul>
+                            <a href="{{ URL('sub-category-listing/' . $category->slug) }}" class="mt-2 view-link">View
+                                All</a>
+                        </div>
                     @endforeach
                     <div class="col-md-2 d-flex flex-column justify-content-center product-cat-last-section">
                         <h6 class="text-uppercase small">More</h6>
                         <h5 class="my-1 text-uppercase main-heading">Categories</h5>
-                        <a href="{{URL('all-categories')}}" class="view-all">View All Categories</a>
+                        <a href="{{ URL('all-categories') }}" class="view-all">View All Categories</a>
                     </div>
                 </div>
                 <div class="col-xl-9 col-lg-9">
@@ -1223,7 +1216,7 @@
         $tawk_setting = App\Models\TawkChat::first();
         $cookie_consent = App\Models\CookieConsent::first();
         $setting = App\Models\Setting::first();
-
+        
     @endphp
     <script>
         let filter_max_val = "{{ $max_val }}";
