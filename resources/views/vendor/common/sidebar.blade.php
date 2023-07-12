@@ -42,7 +42,7 @@
 <div class="sidebar">
     <a href="{{URL('vendor-dashboard')}}" class="w-100 link {{ request()->is('vendor-dashboard') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/dashboard.png') }}">Dashboard</a>
     <h6 class="heading">Orders</h6>
-    <a href="{{URL('order-return')}}" class="w-100 link {{ request()->is('order-return') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/order.png') }}">Orders</a>
+    <a href="{{URL('order-listing')}}" class="w-100 link {{ request()->is('order-listing') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/order.png') }}">Orders</a>
     <h6  class="heading">Products</h6>
     <a href="{{URL('vendor-product')}}" class="w-100 link {{ request()->is('vendor-product') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/product.png') }}">Products</a>
     <a href="{{URL('vendor-category')}}" class="w-100 link {{ request()->is('vendor-category') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/category.png') }}">Categories</a>
