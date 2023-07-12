@@ -184,9 +184,9 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('/forget-password', [LoginController::class, 'forgetPage'])->name('forget-password');
         Route::post('/send-forget-password', [LoginController::class, 'sendForgetPassword'])->name('send-forget-password');
         // Route::view('/reset-password', 'reset_password');
-        Route::view('/shipping-delivery', 'vendor.shipping_delivery');
+      
 
-    
+
 
         Route::get('/reset-password/{token}', [LoginController::class, 'resetPassword']);
         Route::post('/update-password', [LoginController::class, 'updatePassword']);
@@ -290,6 +290,9 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
 
             Route::get('/taxes-duties', [VendorDashboardController::class, 'taxesDuties']);
             Route::get('/payments', [VendorDashboardController::class, 'vendorPayments']);
+            Route::get('order-return', [VendorDashboardController::class, 'orderReturn']);
+            Route::get('order-detail', [VendorDashboardController::class, 'orderDetail']);
+            Route::get('shipping-delivery', [VendorDashboardController::class, 'shippingDelivery']);
             // Route::view('/taxes-duties', 'vendor.taxes_duties');
             // Route::view('/payments', 'vendor.payments');
             // Route::view('/add-store-details', 'vendor.add_store_details');
@@ -857,8 +860,7 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
 
     // Route::view('technical-support', 'vendor.technical_support');
     // Route::view('new-ticket', 'vendor.technical_ticket');
-    Route::view('order-return', 'vendor.order_return');
-    Route::view('order-detail', 'vendor.order_detail');
+
 
 
     Route::get('logout', [HomeController::class, 'logout']);

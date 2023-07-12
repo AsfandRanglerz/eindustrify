@@ -42,7 +42,7 @@
 <div class="sidebar">
     <a href="{{URL('vendor-dashboard')}}" class="w-100 link {{ request()->is('vendor-dashboard') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/dashboard.png') }}">Dashboard</a>
     <h6 class="heading">Orders</h6>
-    <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/order.png') }}">Orders</a>
+    <a href="{{URL('order-return')}}" class="w-100 link {{ request()->is('order-return') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/order.png') }}">Orders</a>
     <h6  class="heading">Products</h6>
     <a href="{{URL('vendor-product')}}" class="w-100 link {{ request()->is('vendor-product') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/product.png') }}">Products</a>
     <a href="{{URL('vendor-category')}}" class="w-100 link {{ request()->is('vendor-category') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/category.png') }}">Categories</a>
@@ -52,11 +52,11 @@
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/analytic.png') }}">Analytics</a>
     <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/report.png') }}">Reports</a>
     <h6  class="heading">Settings</h6>
-    <a href="{{URL('add-store-details')}}" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/store.png') }}">Store Details</a>
-    <a href="{{URL('taxes-duties')}}" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/tax.png') }}">Taxes and Duties</a>
-    <a href="" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/shipping.png') }}">Shipping Delivery</a>
-    <a href="{{URL('payments')}}" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/dollar.png') }}">Payments</a>
+    <a href="{{URL('add-store-details')}}" class="w-100 link {{ request()->is('add-store-details') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/store.png') }}">Store Details</a>
+    <a href="{{URL('taxes-duties')}}" class="w-100 link {{ request()->is('taxes-duties') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/tax.png') }}">Taxes and Duties</a>
+    <a href="{{URL('shipping-delivery')}}" class="w-100 link {{ request()->is('shipping-delivery') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/shipping.png') }}">Shipping Delivery</a>
+    <a href="{{URL('payments')}}" class="w-100 link {{ request()->is('payments') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/dollar.png') }}">Payments</a>
     <h6  class="heading">Account Preferences</h6>
-    <a href="{{URL('technical-support')}}" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/tech-support.png') }}">Technical Support</a>
+    <a href="{{URL('technical-support')}}" class="w-100 link {{ request()->is('technical-support') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/tech-support.png') }}">Technical Support</a>
     <a href="{{URL('help-center-details')}}" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/question.png') }}">Help Center</a>
 </div>

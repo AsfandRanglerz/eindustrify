@@ -334,4 +334,13 @@ class VendorDashboardController extends Controller
     public function vendorPayments(){
         return view('vendor.payments');
     }
+    public function orderReturn(){
+       return view('vendor.order_return');
+    }
+    public function orderDetail(){
+       return view('vendor.order_detail');
+    }
+    public function shippingDelivery(){
+       return view('vendor.shipping_delivery');
+    }
 }
