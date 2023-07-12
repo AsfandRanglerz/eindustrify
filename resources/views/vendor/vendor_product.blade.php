@@ -58,12 +58,19 @@
         }
 
         .vendor-order-content input[type=text] {
-            width: 70px;
+            width: 0;
             border: 1px solid #ccc;
             border-radius: 0px;
             background-color: white;
-            -webkit-transition: width 0.4s ease-in-out;
-            transition: width 0.5s ease-in-out;
+        }
+
+        #searchInput {
+            padding: 10px;
+            font-size: 16px;
+            background-image: url(public/uploads/website-images/images/icon-search.png);
+            background-repeat: no-repeat;
+            background-position: 12px center;
+            padding-left: 30px;
         }
 
         .vendor-order-content .min {
@@ -153,8 +160,7 @@
                             </li>
                         </ul>
                         <form class="d-flex justify-content-center align-items-center ">
-                            <input type="text" class="p-2 m-2 rounded-0 search" id="searchInput" placeholder="search"
-                                data-search />
+                            <input type="text" id="searchInput" class="m-2" placeholder="Search...">
                         </form>
                         <fieldset class="sort-by">
                             <legend>SORT BY</legend>

@@ -1,7 +1,6 @@
 @extends('vendor.layout.master')
 @section('title', '')
 @section('content')
-
     <style>
         .vendor-order-content .order-btn {
             background: #B0191E;
@@ -25,9 +24,10 @@
             font-weight: 600;
         }
 
-        /* .vendor-order-content .p{
-                    font-size:14px;
-                } */
+        .vendor-order-content .p {
+            font-size: 14px;
+        }
+
         .vendor-order-content .navbar-expand-lg .navbar-nav .nav-link {
             padding-right: 1.5rem;
             padding-left: 1.5rem;
@@ -39,7 +39,15 @@
 
         .vendor-order-content table .circle-success {
             color: #4CE13F;
-            font-size: 10px;
+            font-size: 12px;
+        }
+        .vendor-order-content table .circle-pending {
+            color: #F29A2E;
+            font-size: 12px;
+        }
+        .vendor-order-content table .circle-canceled {
+            color: #EF0606;
+            font-size: 12px;
         }
 
         .vendor-order-content table .fa-eye,
@@ -96,43 +104,26 @@
             margin-bottom: 30px;
         }
 
-        .vendor-order-content .base {
-            align-items: baseline;
-        }
 
         .vendor-order-content [data-filter-item] {
             padding: 15px;
             border: 1px solid #fff;
         }
 
-        .vendor-order-content .hidden {
-            display: none;
-        }
-
         .vendor-order-content .sort-by {
             margin-top: -8px
         }
-
-        .vendor-order-content .padding {
-            background: #F2F2F2;
-        }
-
-        .vendor-order-content .table-striped {
-            background: #FBFBFB;
-        }
-
-        .vendor-order-content .table>:not(caption)>*>* {
-            padding: 1.5rem 0.5rem;
-        }
     </style>
-
-
-    <div class="p-xl-4  p-2 admin-main-content border">
+    <div class="p-xl-4 p-2 admin-main-content border">
         <div class="vendor-order-content">
             <div class="d-flex justify-content-between ">
                 <div class="d-flex align-items-center">
-                    <img src="{{ asset('public/uploads/category-img.png') }}" class="img-fluid" height="30px" width="30px">
-                    <h4 class="ms-3 text-black d-none d-sm-block">Categories</h4>
+                    <img src="{{ asset('public/uploads/product-icon.png') }}" class="img-fluid" height="30px" width="30px">
+                    <h4 class="ms-3 text-black d-none d-sm-block">Orders</h4>
+                </div>
+                <div class="d-flex align-items-center">
+                    <h6>Export</h6>
+                    <a href="" class="btn order-btn ms-3 rounded-0 text-white">Create Order</a>
                 </div>
             </div>
             <nav class="navbar navbar-expand-lg navbar-light">
@@ -146,10 +137,18 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" id="deleteCategory">Delete</a></li>
                                     <li><a class="dropdown-item" href="#">Another action</a></li>
                                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                                 </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Delivered</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Pending</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Canceled</a>
                             </li>
                         </ul>
                         <form class="d-flex justify-content-center align-items-center ">
@@ -172,7 +171,7 @@
                     </div>
                 </div>
             </nav>
-            <div class=" rounded min pt-3 items">
+            <div class="mt-2 table-responsive">
                 <table class="table table-striped table-borderless">
                     <thead class="table-dark align-items-center">
                         <tr>
@@ -180,47 +179,88 @@
                                 <form action="/action_page.php"><input type="checkbox" id="checkAll"
                                         class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                             </td>
-                            <td class="text-center">Title</td>
                             <td>Products</td>
-                            <td>Product conditions</td>
+                            <td>Order ID</td>
+                            <td>Date</td>
+                            <td>Customer name</td>
+                            <td>Status</td>
+                            <td>Amount</td>
                             <td>Action</td>
                         </tr>
                     </thead>
                     <tbody>
-                        <form action="{{ URL('delete-all-categories') }}" id="myForm" method="POST">
-                            @csrf
-                            @foreach ($user->categories as $category)
-                                <tr class="">
-                                    <td>
-                                        <input type="checkbox" id="vehicle1" class="check form-check-input ms-3"
-                                            name="id[]" value="{{ $category->id }}">
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center justify-content-start">
-                                            {{-- <img src="{{ asset($category->image) }}" class="img-fluid padding p-2"
-                                                height="45px" width="45px"> --}}
-                                                <img src="{{ asset('public/uploads/website-images/images/engine30.png') }}" class="img-fluid padding p-2"
-                                                height="45px" width="45px">
-                                            <p class="ms-2 p">{{ $category->name }}</p>
-                                        </div>
-                                    </td>
-                                    <?php
-                                    $productsCount = App\Models\Product::where('category_id', $category->id)->where('vendor_id',$user->id)->count();
-                                    ?>
-                                    <td>{{ $productsCount }}</td>
-                                    <td>Product title contains Lubricant Oils
-                                        Product <br> Tag is equal to Lubricant Oils</td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <i class="fas fa-eye"></i>
-                                            <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#deleteModal"
-                                                class="btn-sm" onclick="deleteData({{ $category->id }})"><i
-                                                    class="fas fa-trash" aria-hidden="true"></i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </form>
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td>Product Name</td>
+                            <td>#11232</td>
+                            <td>Jun 29,2023</td>
+                            <td>John Doe</td>
+                            <td><span class="fas fa-circle circle-success"></span> Delivered</td>
+                            <td>$400.00</td>
+                            <td>
+                                <div class="d-flex">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-trash ms-2"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td>Product Name</td>
+                            <td>#11232</td>
+                            <td>Jun 29,2023</td>
+                            <td>John Doe</td>
+                            <td><span class="fas fa-circle circle-pending"></span> Pending</td>
+                            <td>$288.00</td>
+                            <td>
+                                <div class="d-flex">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-trash ms-2"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td>Product Name</td>
+                            <td>#11232</td>
+                            <td>Jun 29,2023</td>
+                            <td>John Doe</td>
+                            <td class="d-flex align-items-center"><img src="{{ asset('public/uploads/website-images/images/return-request.png') }}" width="14" class="me-1" /> Return Requested</td>
+                            <td>$500.00</td>
+                            <td>
+                                <div class="d-flex">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-trash ms-2"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                            </td>
+                            <td>Product Name</td>
+                            <td>#11232</td>
+                            <td>Jun 29,2023</td>
+                            <td>John Doe</td>
+                            <td><span class="fas fa-circle circle-canceled"></span> Canceled</td>
+                            <td>$500.00</td>
+                            <td>
+                                <div class="d-flex">
+                                    <i class="fas fa-eye"></i>
+                                    <i class="fas fa-trash ms-2"></i>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -228,27 +268,6 @@
     </div>
     <div class="text-center mt-md-4">
         <p>Learn more about <a href=""><strong class="text-underline">product</strong></a></p>
-    </div>
-    <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">{{ __('admin.Item Delete Confirmation') }}</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <p>{{ __('admin.Are You sure delete this item ?') }}</p>
-                </div>
-                <div class="modal-footer bg-whitesmoke br">
-                    <form id="deleteForm" action="" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-danger">{{ __('admin.Yes, Delete') }}</button>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
 @endsection
 @section('scripts')
@@ -263,20 +282,8 @@
         </script>
     @endif
     <script>
-        function deleteData(id) {
-            $("#deleteForm").attr("action", '{{ url('category-delete') }}' + "/" + id)
-        }
-        $(document).ready(function() {
-            $("#deleteCategory").click(function(event) {
-                event.preventDefault(); // Prevents the default behavior of the anchor tag
-
-                $("#myForm").submit(); // Submits the form
-                $("#myForm").remove(); // Removes the form from the DOM
-            });
-        });
-
-        $(document).ready(function() {
-            $("#checkAll").click(function() {
+        $(function() {
+            $("#checkAll").click(function () {
                 $(".check").prop('checked', $(this).prop('checked'));
             });
             $('#searchInput').on('keyup', function() {
