@@ -186,7 +186,7 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         // Route::view('/reset-password', 'reset_password');
         Route::view('/order-listing', 'vendor.order_listing');
 
-
+        
 
         Route::get('/reset-password/{token}', [LoginController::class, 'resetPassword']);
         Route::post('/update-password', [LoginController::class, 'updatePassword']);
