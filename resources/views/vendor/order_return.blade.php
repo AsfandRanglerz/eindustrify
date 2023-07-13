@@ -117,7 +117,7 @@
         <div class="col-sm-11 py-4 mx-auto d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <div class="d-flex align-items-start">
-                    <button class="dash-back-btn"><span class="fas fa-arrow-left p-2"></span></button>
+                    <a href="{{URL('order-listing')}}" class="dash-back-btn"><span class="fas fa-arrow-left p-2"></span></a>
                     <div class="ms-3">
                         <div class="d-flex align-items-center">
                             <h3 class="d-inline-block">#481293</h3>
