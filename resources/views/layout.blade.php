@@ -164,6 +164,25 @@
                 </div>
                 <div class="col-xl-2 col-lg-3 position-relative reg-log-cart">
                     @if (Auth::id())
+                        @if (Auth::user()->role == 'vendor')
+                            <div class="dropdown ml-auto">
+                                <a class="p-0 btn dropdown-toggle rounded-circle" role="button" id="profContentBtn"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <img src="{{ asset('public/uploads/website-images/images/user-profile.png') }}"
+                                        class="profile-user-pic">
+                                </a>
+                                <div
+                                    class="dropdown-menu dropdown-menu-right animated-dropdown slideIn w-100 border-0 dark-box-shadow">
+                                    <b
+                                        class="text-muted text-uppercase d-block mb-2 user-name-text">{{ Auth::user()->first_name }}</b>
+                                    <a class="dropdown-item" href="{{ URL('vendor-dashboard') }}"><span
+                                            class="fas fa-sign-out-alt mr-2"></span><b>Dashbaord</b></a>
+                                    <hr class="my-1">
+                                    <a class="dropdown-item" href="{{ URL('logout') }}"><span
+                                            class="fas fa-sign-out-alt mr-2"></span><b>Logout</b></a>
+                                </div>
+                            </div>
+                        @else
                         <div class="dropdown ml-auto">
                             <a class="p-0 btn dropdown-toggle rounded-circle" role="button" id="profContentBtn"
                                 data-bs-toggle="dropdown" aria-expanded="false">
@@ -174,13 +193,14 @@
                                 class="dropdown-menu dropdown-menu-right animated-dropdown slideIn w-100 border-0 dark-box-shadow">
                                 <b
                                     class="text-muted text-uppercase d-block mb-2 user-name-text">{{ Auth::user()->first_name }}</b>
-                                <a class="dropdown-item" href="{{ URL('vendor-dashboard') }}"><span
+                                <a class="dropdown-item" href="{{ URL('user/customer-dashboard') }}"><span
                                         class="fas fa-sign-out-alt mr-2"></span><b>Dashbaord</b></a>
                                 <hr class="my-1">
                                 <a class="dropdown-item" href="{{ URL('logout') }}"><span
                                         class="fas fa-sign-out-alt mr-2"></span><b>Logout</b></a>
                             </div>
                         </div>
+                        @endif
                     @else
                         <ul class="w-unset wsus__icon_area">
                             <li class="mx-0"><a
@@ -279,7 +299,8 @@
                                             class="link">{{ $subcategory->name }}</a></li>
                                 @endforeach
                             </ul>
-                            <a href="{{ URL('sub-category-listing/' . $category->slug) }}" class="mt-2 view-link">View
+                            <a href="{{ URL('sub-category-listing/' . $category->slug) }}"
+                                class="mt-2 view-link">View
                                 All</a>
                         </div>
                     @endforeach
@@ -1216,7 +1237,7 @@
         $tawk_setting = App\Models\TawkChat::first();
         $cookie_consent = App\Models\CookieConsent::first();
         $setting = App\Models\Setting::first();
-        
+
     @endphp
     <script>
         let filter_max_val = "{{ $max_val }}";

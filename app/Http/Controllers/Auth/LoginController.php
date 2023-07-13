@@ -77,7 +77,7 @@ class LoginController extends Controller
                         if (Auth::user()->role == 'user') {
                             // dd('user');
                             // Auth::logout();
-                            return redirect('/')->with('message', 'Login Successfully');
+                            return redirect('user/dashboard')->with('message', 'Login Successfully');
                             // dd(Auth::id(), 'user');
                         } elseif (Auth::user()->role == 'vendor') {
 

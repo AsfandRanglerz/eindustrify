@@ -90,6 +90,7 @@ $setting = App\Models\Setting::first();
                     </a>
                     <div
                         class="dropdown-menu dropdown-menu-right animated-dropdown slideIn w-100 border-0 dark-box-shadow">
+                        {{-- {{Auth::user()->first_name}} --}}
                         <b class="text-muted text-uppercase d-block mb-2 user-name-text">{{Auth::user()->first_name}}</b>
                         <hr class="my-1">
                         <a class="dropdown-item" href="{{URL('logout')}}"><span

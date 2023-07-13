@@ -43,7 +43,7 @@
 <div class="sidebar">
     <h4>John Doe</h4>
     <p class="mb-4">Account Balance: <span class="red-text font-700">$0.00</span></p>
-    <a href="{{URL('customer-dashboard')}}" class="w-100 link {{ request()->is('customer-dashboard') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/dashboard.png') }}">Dashboard</a>
+    <a href="{{URL('user/dashboard')}}" class="w-100 link {{ request()->is('user/dashboard') ? 'active' : '' }}"><img src="{{ asset('/uploads/website-images/images/dashboard.png') }}">Dashboard</a>
     <h6 class="heading">Orders</h6>
     <a href="#" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/order.png') }}">Order History</a>
     <a href="#" class="w-100 link"><img src="{{ asset('/uploads/website-images/images/order.png') }}">Wishlist</a>

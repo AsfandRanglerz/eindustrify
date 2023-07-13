@@ -548,6 +548,9 @@ class UserProfileController extends Controller
     }
 
 
+    public function customerDashboard(){
+        return view('customer.index');
+    }
 
 
 }
