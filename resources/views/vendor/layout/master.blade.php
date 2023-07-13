@@ -10,6 +10,8 @@
     @yield('meta')
 
     <link rel="icon" type="image/png" href="">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/latest/css/pro-v4-shims.min.css" media="all">
+    <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/latest/css/pro.min.css" media="all">
     <link rel="stylesheet" href="{{ asset('user/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('user/css/select2.min.css') }}">
