@@ -210,7 +210,7 @@
                                     <td>$400.00</td>
                                     <td>
                                         <div class="d-flex">
-                                            <i class="fas fa-eye"></i>
+                                           <a href="{{URL('order-return')}}"> <i class="fas fa-eye"></i></a>
                                             <i class="fas fa-trash ms-2"></i>
                                         </div>
                                     </td>
