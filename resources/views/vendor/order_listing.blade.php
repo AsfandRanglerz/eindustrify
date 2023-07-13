@@ -177,100 +177,6 @@
                     </div>
                 </div>
             </nav>
-<<<<<<< HEAD
-            <div class="mt-2 table-responsive">
-                <table class="table table-striped table-borderless">
-                    <thead class="table-dark align-items-center">
-                        <tr>
-                            <td>
-                                <form action="/action_page.php"><input type="checkbox" id="checkAll"
-                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                            </td>
-                            <td>Products</td>
-                            <td>Order ID</td>
-                            <td>Date</td>
-                            <td>Customer name</td>
-                            <td>Status</td>
-                            <td>Amount</td>
-                            <td>Action</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
-                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                            </td>
-                            <td>Product Name</td>
-                            <td>#11232</td>
-                            <td>Jun 29,2023</td>
-                            <td>John Doe</td>
-                            <td><span class="fas fa-circle circle-success"></span> Delivered</td>
-                            <td>$400.00</td>
-                            <td>
-                                <div class="d-flex">
-                                    <a href="{{URL('order-return')}}"><i class="fas fa-eye"></i></a>
-                                    <i class="fas fa-trash ms-2"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
-                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                            </td>
-                            <td>Product Name</td>
-                            <td>#11232</td>
-                            <td>Jun 29,2023</td>
-                            <td>John Doe</td>
-                            <td><span class="fas fa-circle circle-pending"></span> Pending</td>
-                            <td>$288.00</td>
-                            <td>
-                                <div class="d-flex">
-                                    <i class="fas fa-eye"></i>
-                                    <i class="fas fa-trash ms-2"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
-                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                            </td>
-                            <td>Product Name</td>
-                            <td>#11232</td>
-                            <td>Jun 29,2023</td>
-                            <td>John Doe</td>
-                            <td class="d-flex align-items-center"><img src="{{ asset('public/uploads/website-images/images/return-request.png') }}" width="14" class="me-1" /> Return Requested</td>
-                            <td>$500.00</td>
-                            <td>
-                                <div class="d-flex">
-                                    <i class="fas fa-eye"></i>
-                                    <i class="fas fa-trash ms-2"></i>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <form action="/action_page.php"><input type="checkbox" id="vehicle1"
-                                        class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
-                            </td>
-                            <td>Product Name</td>
-                            <td>#11232</td>
-                            <td>Jun 29,2023</td>
-                            <td>John Doe</td>
-                            <td><span class="fas fa-circle circle-canceled"></span> Canceled</td>
-                            <td>$500.00</td>
-                            <td>
-                                <div class="d-flex">
-                                    <i class="fas fa-eye"></i>
-                                    <i class="fas fa-trash ms-2"></i>
-                                </div>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-=======
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="allTab">
                     <div class="mt-2 table-responsive">
@@ -496,7 +402,6 @@
                         </table>
                     </div>
                 </div>
->>>>>>> 5bfdcbd0eadd058686f4736dcb0e63c3288eb8d3
             </div>
         </div>
     </div>
