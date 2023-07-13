@@ -198,7 +198,7 @@
 
         .dashboard-front-pg .fa-circle {
             font-size: 7px;
-            color: #B0191E;
+            color: #03a4ff;
         }
 
         .dashboard-front-pg .circle2 {

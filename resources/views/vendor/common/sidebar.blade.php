@@ -1,7 +1,7 @@
 <style>
     .sidebar {
         border: 1px solid #CCCCCC;
-        padding: 20px 16px;
+        padding: 24px 16px;
     }
     .sidebar .heading {
         margin: 18px 0 12px 0;
@@ -21,6 +21,7 @@
         display: flex;
         align-items: center;
         font-weight: bold;
+        font-size: 15px;
     }
     .sidebar .link:hover {
         background: #B0191E;
