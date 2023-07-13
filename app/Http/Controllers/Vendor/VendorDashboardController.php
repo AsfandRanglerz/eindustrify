@@ -343,4 +343,7 @@ class VendorDashboardController extends Controller
     public function shippingDelivery(){
        return view('vendor.shipping_delivery');
     }
+    public function order_listing(){
+       return view('vendor.order_listing');
+    }
 }
