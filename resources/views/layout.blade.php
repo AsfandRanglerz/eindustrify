@@ -193,7 +193,7 @@
                                 class="dropdown-menu dropdown-menu-right animated-dropdown slideIn w-100 border-0 dark-box-shadow">
                                 <b
                                     class="text-muted text-uppercase d-block mb-2 user-name-text">{{ Auth::user()->first_name }}</b>
-                                <a class="dropdown-item" href="{{ URL('user/customer-dashboard') }}"><span
+                                <a class="dropdown-item" href="{{ URL('user/dashboard') }}"><span
                                         class="fas fa-sign-out-alt mr-2"></span><b>Dashbaord</b></a>
                                 <hr class="my-1">
                                 <a class="dropdown-item" href="{{ URL('logout') }}"><span
