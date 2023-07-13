@@ -184,13 +184,10 @@ Route::group(['middleware' => ['demo', 'XSS']], function () {
         Route::get('/forget-password', [LoginController::class, 'forgetPage'])->name('forget-password');
         Route::post('/send-forget-password', [LoginController::class, 'sendForgetPassword'])->name('send-forget-password');
         // Route::view('/reset-password', 'reset_password');
-<<<<<<< HEAD
         Route::view('/order-listing', 'vendor.order_listing');
         Route::view('/customer-dashboard', 'customer.index');
 
-=======
-       
->>>>>>> 841912d619f06aa9e502f470a8fe2fa92ed62dee
+
 
 
         Route::get('/reset-password/{token}', [LoginController::class, 'resetPassword']);
