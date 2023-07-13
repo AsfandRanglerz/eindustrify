@@ -41,10 +41,12 @@
             color: #4CE13F;
             font-size: 12px;
         }
+
         .vendor-order-content table .circle-pending {
             color: #F29A2E;
             font-size: 12px;
         }
+
         .vendor-order-content table .circle-canceled {
             color: #EF0606;
             font-size: 12px;
@@ -113,6 +115,11 @@
         .vendor-order-content .sort-by {
             margin-top: -8px
         }
+
+        .admin-main-content .navbar-nav .nav-link.active, .admin-main-content .navbar-nav .navbar-nav .show>.nav-link {
+            background: #EFD1D2;
+            color: #B0191E;
+        }
     </style>
     <div class="p-xl-4 p-2 admin-main-content border">
         <div class="vendor-order-content">
@@ -123,32 +130,31 @@
                 </div>
                 <div class="d-flex align-items-center">
                     <h6>Export</h6>
+                    <a href="" class="btn order-btn ms-3 rounded-0 text-white">Delete</a>
                     <a href="" class="btn order-btn ms-3 rounded-0 text-white">Create Order</a>
                 </div>
             </div>
             <nav class="navbar navbar-expand-lg navbar-light">
                 <div class="w-100">
                     <div class="collapse navbar-collapse border p-2 mt-3" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 base">
-                            <li class="nav-item all-dropdown dropdown">
-                                <a class="nav-link dropdown-toggle all-dropdown-c" href="#" id="navbarDropdown"
-                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    All
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                                </ul>
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 base nav" id="myTab" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link active" id="allTab" data-bs-toggle="tab"
+                                    data-bs-target="#all" type="button" role="tab" aria-controls="all"
+                                    aria-selected="true">All</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Delivered</a>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="deliveredTab" data-bs-toggle="tab"
+                                    data-bs-target="#delivered" type="button" role="tab" aria-controls="delivered"
+                                    aria-selected="true">Delivered</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Pending</a>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="pendingTab" data-bs-toggle="tab" data-bs-target="#pending"
+                                    type="button" role="tab" aria-controls="pending" aria-selected="false">Pending</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link " href="#" tabindex="-1" aria-disabled="true">Canceled</a>
+                            <li class="nav-item" role="presentation">
+                                <a class="nav-link" id="canceledTab" data-bs-toggle="tab" data-bs-target="#canceled"
+                                    type="button" role="tab" aria-controls="canceled" aria-selected="false">Canceled</a>
                             </li>
                         </ul>
                         <form class="d-flex justify-content-center align-items-center ">
@@ -171,6 +177,7 @@
                     </div>
                 </div>
             </nav>
+<<<<<<< HEAD
             <div class="mt-2 table-responsive">
                 <table class="table table-striped table-borderless">
                     <thead class="table-dark align-items-center">
@@ -263,6 +270,233 @@
                         </tr>
                     </tbody>
                 </table>
+=======
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="all" role="tabpanel" aria-labelledby="allTab">
+                    <div class="mt-2 table-responsive">
+                        <table class="table table-striped table-borderless">
+                            <thead class="table-dark align-items-center">
+                                <tr>
+                                    <td>
+                                        <form action="/action_page.php"><input type="checkbox" id="checkAll"
+                                                class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                                    </td>
+                                    <td>Products</td>
+                                    <td>Order ID</td>
+                                    <td>Date</td>
+                                    <td>Customer name</td>
+                                    <td>Status</td>
+                                    <td>Amount</td>
+                                    <td>Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                                class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                                    </td>
+                                    <td>Product Name</td>
+                                    <td>#11232</td>
+                                    <td>Jun 29,2023</td>
+                                    <td>John Doe</td>
+                                    <td><span class="fas fa-circle circle-success"></span> Delivered</td>
+                                    <td>$400.00</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <i class="fas fa-eye"></i>
+                                            <i class="fas fa-trash ms-2"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                                class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                                    </td>
+                                    <td>Product Name</td>
+                                    <td>#11232</td>
+                                    <td>Jun 29,2023</td>
+                                    <td>John Doe</td>
+                                    <td><span class="fas fa-circle circle-pending"></span> Pending</td>
+                                    <td>$288.00</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <i class="fas fa-eye"></i>
+                                            <i class="fas fa-trash ms-2"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                                class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                                    </td>
+                                    <td>Product Name</td>
+                                    <td>#11232</td>
+                                    <td>Jun 29,2023</td>
+                                    <td>John Doe</td>
+                                    <td class="d-flex align-items-center"><img
+                                            src="{{ asset('public/uploads/website-images/images/return-request.png') }}"
+                                            width="14" class="me-1" /> Return Requested</td>
+                                    <td>$500.00</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <i class="fas fa-eye"></i>
+                                            <i class="fas fa-trash ms-2"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                                class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                                    </td>
+                                    <td>Product Name</td>
+                                    <td>#11232</td>
+                                    <td>Jun 29,2023</td>
+                                    <td>John Doe</td>
+                                    <td><span class="fas fa-circle circle-canceled"></span> Canceled</td>
+                                    <td>$500.00</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <i class="fas fa-eye"></i>
+                                            <i class="fas fa-trash ms-2"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade show" id="delivered" role="tabpanel" aria-labelledby="deliveredTab">
+                    <div class="mt-2 table-responsive">
+                        <table class="table table-striped table-borderless">
+                            <thead class="table-dark align-items-center">
+                                <tr>
+                                    <td>
+                                        <form action="/action_page.php"><input type="checkbox" id="checkAll"
+                                                class="check form-check-input ms-3" name="vehicle1" value="Bike">
+                                        </form>
+                                    </td>
+                                    <td>Products</td>
+                                    <td>Order ID</td>
+                                    <td>Date</td>
+                                    <td>Customer name</td>
+                                    <td>Status</td>
+                                    <td>Amount</td>
+                                    <td>Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                                class="check form-check-input ms-3" name="vehicle1" value="Bike">
+                                        </form>
+                                    </td>
+                                    <td>Product Name</td>
+                                    <td>#11232</td>
+                                    <td>Jun 29,2023</td>
+                                    <td>John Doe</td>
+                                    <td><span class="fas fa-circle circle-success"></span> Delivered</td>
+                                    <td>$400.00</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <i class="fas fa-eye"></i>
+                                            <i class="fas fa-trash ms-2"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="pending" role="tabpanel" aria-labelledby="pendingTab">
+                    <div class="mt-2 table-responsive">
+                        <table class="table table-striped table-borderless">
+                            <thead class="table-dark align-items-center">
+                                <tr>
+                                    <td>
+                                        <form action="/action_page.php"><input type="checkbox" id="checkAll"
+                                                class="check form-check-input ms-3" name="vehicle1" value="Bike">
+                                        </form>
+                                    </td>
+                                    <td>Products</td>
+                                    <td>Order ID</td>
+                                    <td>Date</td>
+                                    <td>Customer name</td>
+                                    <td>Status</td>
+                                    <td>Amount</td>
+                                    <td>Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                                class="check form-check-input ms-3" name="vehicle1" value="Bike">
+                                        </form>
+                                    </td>
+                                    <td>Product Name</td>
+                                    <td>#11232</td>
+                                    <td>Jun 29,2023</td>
+                                    <td>John Doe</td>
+                                    <td><span class="fas fa-circle circle-pending"></span> Pending</td>
+                                    <td>$288.00</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <i class="fas fa-eye"></i>
+                                            <i class="fas fa-trash ms-2"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="canceled" role="tabpanel" aria-labelledby="canceledTab">
+                    <div class="mt-2 table-responsive">
+                        <table class="table table-striped table-borderless">
+                            <thead class="table-dark align-items-center">
+                                <tr>
+                                    <td>
+                                        <form action="/action_page.php"><input type="checkbox" id="checkAll"
+                                                class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                                    </td>
+                                    <td>Products</td>
+                                    <td>Order ID</td>
+                                    <td>Date</td>
+                                    <td>Customer name</td>
+                                    <td>Status</td>
+                                    <td>Amount</td>
+                                    <td>Action</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <form action="/action_page.php"><input type="checkbox" id="vehicle1"
+                                                class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                                    </td>
+                                    <td>Product Name</td>
+                                    <td>#11232</td>
+                                    <td>Jun 29,2023</td>
+                                    <td>John Doe</td>
+                                    <td><span class="fas fa-circle circle-canceled"></span> Canceled</td>
+                                    <td>$500.00</td>
+                                    <td>
+                                        <div class="d-flex">
+                                            <i class="fas fa-eye"></i>
+                                            <i class="fas fa-trash ms-2"></i>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+>>>>>>> 5bfdcbd0eadd058686f4736dcb0e63c3288eb8d3
             </div>
         </div>
     </div>
@@ -283,8 +517,8 @@
     @endif
     <script>
         $(function() {
-            $("#checkAll").click(function () {
-                $(".check").prop('checked', $(this).prop('checked'));
+            $('#checkAll').click(function() {
+                $(this).closest('.table').find('.check').prop('checked', $(this).prop('checked'));
             });
             $('#searchInput').on('keyup', function() {
                 var searchTerm = $(this).val().toLowerCase();
