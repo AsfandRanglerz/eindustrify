@@ -278,8 +278,8 @@
                             <thead class="table-dark align-items-center">
                                 <tr>
                                     <td>
-                                        <form action="/action_page.php"><input type="checkbox" id="checkAll"
-                                                class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                                        <form action="/action_page.php"><input type="checkbox"
+                                                class="check-all check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                                     </td>
                                     <td>Products</td>
                                     <td>Order ID</td>
@@ -375,8 +375,8 @@
                             <thead class="table-dark align-items-center">
                                 <tr>
                                     <td>
-                                        <form action="/action_page.php"><input type="checkbox" id="checkAll"
-                                                class="check form-check-input ms-3" name="vehicle1" value="Bike">
+                                        <form action="/action_page.php"><input type="checkbox"
+                                                class="check-all check form-check-input ms-3" name="vehicle1" value="Bike">
                                         </form>
                                     </td>
                                     <td>Products</td>
@@ -418,8 +418,8 @@
                             <thead class="table-dark align-items-center">
                                 <tr>
                                     <td>
-                                        <form action="/action_page.php"><input type="checkbox" id="checkAll"
-                                                class="check form-check-input ms-3" name="vehicle1" value="Bike">
+                                        <form action="/action_page.php"><input type="checkbox"
+                                                class="check-all check form-check-input ms-3" name="vehicle1" value="Bike">
                                         </form>
                                     </td>
                                     <td>Products</td>
@@ -461,8 +461,8 @@
                             <thead class="table-dark align-items-center">
                                 <tr>
                                     <td>
-                                        <form action="/action_page.php"><input type="checkbox" id="checkAll"
-                                                class="check form-check-input ms-3" name="vehicle1" value="Bike"></form>
+                                        <form action="/action_page.php"><input type="checkbox"
+                                                class="check-all check form-check-input ms-3" name="vehicle1" value="Bike"></form>
                                     </td>
                                     <td>Products</td>
                                     <td>Order ID</td>
@@ -517,7 +517,7 @@
     @endif
     <script>
         $(function() {
-            $('#checkAll').click(function() {
+            $('.check-all').click(function() {
                 $(this).closest('.table').find('.check').prop('checked', $(this).prop('checked'));
             });
             $('#searchInput').on('keyup', function() {
